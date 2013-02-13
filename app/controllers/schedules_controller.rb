@@ -9,6 +9,8 @@
 #
 
 class SchedulesController < ApplicationController
+  layout "main"
+
 	# Przeglądanie stworzonych planów (nazw, identyfikatorów)
   # GET /schedules
   def index

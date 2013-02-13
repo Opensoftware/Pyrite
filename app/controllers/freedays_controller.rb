@@ -1,5 +1,6 @@
 # encoding: utf-8
 class FreedaysController < ApplicationController
+  layout "main"
 
   # GET /freedays
   # GET /freedays.xml

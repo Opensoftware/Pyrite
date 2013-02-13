@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class SiatkaController < ApplicationController
+  layout "main"
 
   require 'tcpdf'
 
