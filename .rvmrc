@@ -1,1 +1,1 @@
-rvm use --create ruby-1.8.7-p371@siatka_demo
+rvm use --create ruby-1.8.7-p371@siatka1.0
