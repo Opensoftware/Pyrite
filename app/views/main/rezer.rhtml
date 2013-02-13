@@ -67,7 +67,13 @@
 			 <% end %>
  			</span>
 			<span class="right"><% @dl[6] == "A0" ? @b="#{@dl[5]}" : @b="#{@dl[6]}, #{@dl[5]}" %></span><br/>
+				<% if session[:uid].nil? %>
+				<%else%>
+				<% if current_user.has_role? 'moderator' %>
 				<%= link_to("Edytuj", {:controller => 'siatka', :action => 'edit', :params => { :id => @dl[5] }}) %>
+				<%else %>
+			  	<% end %>
+				<% end %>
 		                  </td>
  				</tr>
 			</table>

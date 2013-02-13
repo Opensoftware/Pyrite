@@ -67,12 +67,18 @@ Sala:  <%= collection_select(:room,:numer, Room.find(:all, :group => "numer").so
 			<table class="blokinfo" >
 				<tr height=15px><td class="head_info"><%= @dl[4] %> </td></tr>
 				<tr height=25%><td class="middle_info"><b><%= @dl[3] %></b><br/><small><%= @dl[0] %></small></b></td></tr>
-        <tr height=15px>
-          <td class="bottom_info">
-			      <span class="left"> </span>
-			      <span class="right"><% @dl[6] == "A0" ? @b="#{@dl[5]}" : @b="#{@dl[6]}, #{@dl[5]}" %></span><br/>
-			      	<%= link_to("Edytuj", {:controller => 'siatka', :action => 'edit', :params => { :id => @dl[5] }}) %>
-		      </td>
+				<tr height=15px><td class="bottom_info">
+			<span class="left">
+ 			</span>
+			<span class="right"><% @dl[6] == "A0" ? @b="#{@dl[5]}" : @b="#{@dl[6]}, #{@dl[5]}" %></span><br/>
+				<% if session[:uid].nil? %>
+				<% else %>
+				<% if current_user.has_role? 'moderator' %>
+				<%= link_to("Edytuj", {:controller => 'siatka', :action => 'edit', :params => { :id => @dl[5] }}) %>
+				<%else %>
+			  	<% end %>
+				<%end%>
+		                  </td>
  				</tr>
 			</table>
 

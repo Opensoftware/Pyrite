@@ -59,7 +59,10 @@ Grupa: <%= params[:dodaj][:grupa] %>
 			 <% end %>
  			</span>
 			<span class="right"></span><br/>
+				<% if current_user.has_role? 'moderator' %>
 				<%= link_to("Edytuj", {:controller => 'siatka', :action => 'edit', :params => { :id => @dl[5] }}) %>
+				<% end %>
+			  
 		                  </td>
  				</tr>
 			</table>
@@ -117,7 +120,9 @@ Grupa: <%= params[:dodaj][:grupa] %>
 				<tr height=15px><td class="bottom_info">
 			<span class="left"><%= @dl[1] %></span>
 			<span class="right"><%= @dl[6] == "A0" ? "" : ", #{@dl[6]}" %></span><br/>
+				<% if current_user.has_role? 'moderator' %>
 				<%= link_to("Edytuj", {:controller => 'siatka', :action => 'edit', :params => { :id => @dl[5] }}) %>
+				<% end %>
 		                  </td>
  				</tr>
 			</table>

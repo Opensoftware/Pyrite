@@ -12,6 +12,7 @@ class SchedulesController < ApplicationController
 	# Przeglądanie stworzonych planów (nazw, identyfikatorów)
   # GET /schedules
   def index
+	permit "moderator"
     @schedules = Schedule.find(:all)
 
     respond_to do |format|
@@ -23,6 +24,7 @@ class SchedulesController < ApplicationController
 	# Przeglądanie konkretnego wpisu.
   # GET /schedules/1
   def show
+	permit "moderator"
     @schedule = Schedule.find(params[:id])
 
     respond_to do |format|
@@ -35,6 +37,7 @@ class SchedulesController < ApplicationController
 	#
   # GET /schedules/new
   def new
+	permit "moderator"
     @schedule = Schedule.new
 
     respond_to do |format|
@@ -46,6 +49,7 @@ class SchedulesController < ApplicationController
 	# Edycja danego planu.
   # GET /schedules/1/edit
   def edit
+	permit "moderator"
     @schedule = Schedule.find(params[:id])
   end
 
@@ -53,6 +57,7 @@ class SchedulesController < ApplicationController
   # POST /schedules
 	#
   def create
+	permit "moderator"
     @schedule = Schedule.new(params[:schedule])
 
     respond_to do |format|
@@ -70,6 +75,7 @@ class SchedulesController < ApplicationController
 	# Zaktualizowanie edytowanego planu.
   # PUT /schedules/1
   def update
+	permit "moderator"
     @schedule = Schedule.find(params[:id])
 
     respond_to do |format|
@@ -87,6 +93,7 @@ class SchedulesController < ApplicationController
 	# Usunięcie danego planu.
   # DELETE /schedules/1
   def destroy
+	permit "admin"
     @schedule = Schedule.find(params[:id])
     @schedule.destroy
 

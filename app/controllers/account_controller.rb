@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  #include AuthenticatedSystem
+  include AuthenticatedSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
 
@@ -17,6 +17,9 @@ class AccountController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
+	  if !(current_user.has_role? 'user')
+        current_user.has_role 'user'
+	  end
       redirect_back_or_default(:controller => '/siatka', :action => 'index')
       session[:uid] = current_user.id
       flash[:notice] = "Zostałęś pomyslnie zalogowany"

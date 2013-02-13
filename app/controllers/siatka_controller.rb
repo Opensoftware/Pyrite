@@ -8,7 +8,7 @@ class SiatkaController < ApplicationController
   auto_complete_for :subject, :nazwa
   in_place_edit_for :plan, :dni
 
-  #before_filter :login_required, :except => [:drukujgrupe, :drukujsale, :showprow, :zestawienie]
+  before_filter :login_required, :except => [:drukujgrupe, :drukujsale, :showprow, :zestawienie]
 
   def render_404
     render :file => "public/404.html", :status => 404
@@ -347,6 +347,7 @@ class SiatkaController < ApplicationController
 	end
 
   def edit
+    permit "moderator"
     @sale = Room.find(:all)
     @salee = []
     for pl in @sale
@@ -455,6 +456,7 @@ class SiatkaController < ApplicationController
   end
 
   def del
+     permit "moderator"
      if params[:re] == "r"
         @main = Reservation.find_by_id(params[:id])
 	if @main.nil?
@@ -1021,7 +1023,8 @@ class SiatkaController < ApplicationController
  end
 
 	def konfiguracja
-	  @config = Setting.find(:first)
+		permit 'moderator'
+		@config = Setting.find(:first)
 		if request.post?
 			if !params[:config][:current_plan].nil? && !params[:config][:plan_to_edit].nil?
      		@config.current_plan = params[:config][:current_plan]
@@ -1033,6 +1036,7 @@ class SiatkaController < ApplicationController
 	end
 
 	def drukowanie
+		permit 'moderator'
 	end
 # metoda drukująca plany dla sal
 	def drukujsale

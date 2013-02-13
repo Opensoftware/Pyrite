@@ -4,39 +4,56 @@
 <tr>
 	<td>
 		<ul>
-			<li><p>
+			<% if (current_user.has_role? 'admin') %>
+			<li><p>	
 				<%= link_to("Uprawnienia", {:controller => 'siatka', :action => 'admin'}) %>
-			 </p></li>
-			<li><p>
+				<% end %> </p></li>
+			<% if (current_user.has_role? 'moderator') %> 
+			<li><p>	
         <%= link_to("Ustawienia systemu", {:controller => 'siatka', :action => 'konfiguracja'}) %>
-				</p></li>
-				<li><p>
+				<%end%></p></li>
+			<% if (current_user.has_role? 'kierownik') %> 
+				<li><p>	
+        <%= link_to("Stwórz konto", {:controller => 'account', :action => 'signup'}) %>
+				<%end%></p></li>
+			<% if (current_user.has_role? 'moderator') %> 
+				<li><p>	
         <%= link_to("Ustaw dni wolne", {:controller => 'freedays', :action => ''}) %>
-				</p></li>
-				<li><p>
+				<%end%></p></li>
+			<% if (current_user.has_role? 'moderator') %> 
+				<li><p>	
         <%= link_to("Zarządzaj planami", {:controller => 'schedules', :action => ''}) %>
-				</p></li>
-
+				<%end%></p></li>
+					
 
 		</ul>
 	</td>
 	<td>
 		<ul>
-			<li><p>
+			<% if (current_user.has_role? 'user') %>
+			<li><p>	
 				<%= link_to("Rezerwuj salę", {:controller => 'siatka', :action => 'rezerwacja'}) %>
-				</p></li>
-			<li><p>
+				<% end %> </p></li>
+				<% if (current_user.has_role? 'moderator') %> 
+			<li><p>	
         <%= link_to("Wprowadź dane", {:controller => 'siatka', :action => 'add'}) %>
-				</p></li>
-				<li><p>
+				<%end%></p></li>
+			<% if (current_user.has_role? 'moderator') %> 
+				<li><p>	
         <%= link_to("Wykrywanie kolizji sal", {:controller => 'siatka', :action => 'kolizje'}) %>
-				</p></li>
-				<li><p>
+				<%end%></p></li>
+			<% if (current_user.has_role? 'moderator') %> 
+				<li><p>	
         <%= link_to("Wykrywanie kolizji grup", {:controller => 'siatka', :action => 'kolizjegrup'}) %>
-				</p></li>
-				<li><p>
+				<%end%></p></li>
+			<% if (current_user.has_role? 'moderator') %> 
+				<li><p>	
         <%= link_to("Drukowanie planów", {:controller => 'siatka', :action => 'drukowanie'}) %>
-				</p></li>
+				<%end%></p></li>
+		<% if (current_user.has_role? 'moderator') %> 
+					<li><p>	
+        <%= link_to("Statystyki", {:controller => 'siatka', :action => 'statystyki'}) %>
+				<%end%></p></li>
 			</ul>
 	</td>
 </tr>

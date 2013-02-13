@@ -15,6 +15,7 @@ class FreedaysController < ApplicationController
   # GET /freedays/new
   # GET /freedays/new.xml
   def new
+	permit 'moderator'
     @freeday = Freeday.new
 
     respond_to do |format|
@@ -25,12 +26,14 @@ class FreedaysController < ApplicationController
 
   # GET /freedays/1/edit
   def edit
+	permit 'moderator'
     @freeday = Freeday.find(params[:id])
   end
 
   # POST /freedays
   # POST /freedays.xml
   def create
+	permit 'moderator'
     @freeday = Freeday.new(params[:freeday])
 			@freeday.start = params[:start]
 			@freeday.stop = params[:stop]
@@ -51,6 +54,7 @@ class FreedaysController < ApplicationController
   # PUT /freedays/1
   # PUT /freedays/1.xml
   def update
+	permit 'moderator'
     @freeday = Freeday.find(params[:freeday][:id])
  		@freeday.nazwa = params[:freeday][:nazwa]
 	  @freeday.start = params[:start]
@@ -70,6 +74,7 @@ class FreedaysController < ApplicationController
   # DELETE /freedays/1
   # DELETE /freedays/1.xml
   def destroy
+	permit 'moderator'
     @freeday = Freeday.find(params[:id])
     @freeday.destroy
 

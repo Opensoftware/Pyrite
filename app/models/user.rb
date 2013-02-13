@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
-    # Authorization plugin
-#    acts_as_authorized_user
-#    acts_as_authorizable
+  # Authorization plugin
+  acts_as_authorized_user
+  acts_as_authorizable
 
 
   validates_presence_of     :login, :email

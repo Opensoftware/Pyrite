@@ -5,18 +5,11 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  include AuthenticatedSystem
 
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
-rescue_from(::ActionController::UnknownAction) {redirect_to :controller => 'main' }
-  # See ActionController::RequestForgeryProtection for details
-  # Uncomment the :secret if you're not using the cookie session store
-  protect_from_forgery # :secret => '934f887bb913d9bf447db387e00cfa9b'
-  helper_method :current_user
-
-  def current_user
-    nil
-  end
+  filter_parameter_logging :password
+  rescue_from(::ActionController::UnknownAction) {redirect_to :controller => 'main' }
+  protect_from_forgery
 
 
 # metoda pobiera informacje na temat obecnie ustawionego planu zajęć
