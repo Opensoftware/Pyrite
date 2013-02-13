@@ -1,0 +1,91 @@
+
+  <% form_tag '',{ :id => "edycjaplanow"}  do %>
+  Sala:  <%= collection_select(:room,:numer, Room.find(:all, :group => "numer").sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
+  <% end %>
+
+<div align="center" id="Eplany">
+<p> Zajęcia w sali nr. <%= @sala %> <font size="1">
+
+<%= link_to("Pobierz plan", {:controller => 'siatka', :action => 'drukujsale', :params => { :sala => @sala}}) %></font></p>
+
+<br />
+
+    <table class="plan">
+
+	<tr class="tableHeader">
+	    <th> Godz </th> 
+            <th>Pon</th> 
+            <th>Wtorek</th>
+            <th>Środa</th>
+            <th>Czwartek</th>
+            <th>Piątek</th> 
+	</tr>
+
+	<% for go in @godz1 %>
+	  <% @i += 1 %>
+	  <% @j += 1 %>
+		<% @line +=1 %>
+	  <tr <%= @line > 4  ? "class='lightline'" : "" %> >
+			<% @line > 7 ? @line = 0 : "" %>
+	   <% @j == 4 ? @j=0 : "" %>
+           <% if @j == 1 %>
+	    <td class="hour" rowspan="4"><%= go + "-#{@godz[@i]}" %></td>
+	   <% end %>
+	   <% for dn in @dni %>
+        <% @dl = @qwe[go][dn].to_s.split("::") %> 
+	      <% if @dl[2].to_i != 0 %>
+					<% @blok += 1 %>
+					<% @blok_ln[dn] = @dl[2].to_i * 3 %>
+					<% @blok_ln[dn] -= 1 %>
+	       <td 
+	      	  <% if !@dl[5].include?("rezerwacja") %>
+	       			<%= @dl[4] == "W" ? "class='blok-w'" : "class='blok-cw'" %> 
+	   			  <% else %>
+		       		<%= @dl[4] == "W" ? "class='blok-wr'" : "class='blok-cwr'" %>
+			  	  <% end %>rowspan="<%= @dl[2].to_i * 3 %>" >
+						<table class="blokinfo" >
+							<tr height=15px><td class="head_info"><%= @dl[4] %> </td></tr>
+							<tr height=25%><td class="middle_info"><b><%= @dl[3] %></b><br/><small><%= @dl[0] %></small></b></td></tr>
+							<tr height=15px><td class="bottom_info">
+								<span class="left">
+								<% for i in @dl %>
+									<% if i.include?("gr.") %>
+									 <%= i %>
+									<% end %>
+								<%end %>
+								</span>
+								<span class="right"><br /> 
+									<% for i in @dl %>
+										<% if i.include?("rezerwacja na") %>
+											<% @k = i.split("$") %>
+											<%= Date.parse(@k[1]) %>,
+										<% end %>
+									 <%end %>
+								</span>
+							</td></tr>
+					</table>
+	      </td>
+
+		     <% else %>
+					 <% if @blok_ln[dn] != 0  %>
+					   <% @blok_ln[dn] -= 1 %>
+							<!--<td>#<%= @blok %> <%= @blok_ln %></td>-->
+			 		 <% else %>	
+			 			 <td class="blokpusty"></td> 
+					<%end%>
+	    	 <% end %>
+	     <% end %>
+	</tr>
+	<% end %>
+ </table>
+
+
+</div>
+
+<%= observe_form :edycjaplanow, 
+		:frequency => 1, 
+		:update => "Eplany", 
+		:complete => "Element.show('Eplany')", 
+		:url => { :action => "room" } 
+%>
+<br>

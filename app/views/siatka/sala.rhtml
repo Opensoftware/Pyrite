@@ -1,0 +1,19 @@
+Przeszukiwanie wolnej sali
+<br>
+<br>
+	<% form_tag 'adding',{ :id => "edycjaplanow"}  do %>
+        od	<%= select(:dodaj, :od, @listagodz ) %>
+        do 	<%= select(:dodaj, :do, @listagodz ) %>
+	Dzień   <%= select(:dodaj, :dni, @dni1) %>
+<% end %>
+
+<div align="center" id="Eplany">
+
+</div>
+
+<%= observe_form :edycjaplanow, 
+		:frequency => 1, 
+		:update => "Eplany", 
+		:complete => "Element.show('Eplany')", 
+		:url => { :action => "szukaj" } 
+%>

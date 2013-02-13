@@ -1,0 +1,7 @@
+* Moved acts_as_taggable, browser_filters, and simply_helpful into legacy -- all have either been deprecated or rolled into Rails core already [DHH]
+
+* Resource feeder turned out to be too restrictive and too hard to customize; replace it by atom_feed_helper [DHH]
+
+* Extract dynamic scaffolding plugin from core.  #7700 [Josh Peek]
+
+* Start a global changelog for the official Rails plugins.  [Jeremy Kemper]

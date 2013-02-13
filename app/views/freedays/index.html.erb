@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag 'plany' %>
+<table align="center">
+<th>Opis</th><th>Rozpoczęcie </th><th>Zakończenie</th><th>Modyfikuj</th>
+
+<% for freeday in @freedays %>
+  <tr>
+		<td class="date"><%= freeday.nazwa %></td>
+		<td class="date"><%= freeday.start.strftime("%Y-%m-%d") %></td>
+		<td class="date"><%= freeday.stop.strftime("%Y-%m-%d")  %></td>
+    <td class="date"><%= link_to 'Edytuj', edit_freeday_path(freeday) %> <%= link_to 'Usuń', freeday, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Dodaj nową przerwe', new_freeday_path %>

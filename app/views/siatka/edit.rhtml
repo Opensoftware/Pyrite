@@ -1,0 +1,101 @@
+<div><p style="color: red"><%= @msg %></p></div>
+<br /><br />
+<center>
+<table>
+		<% @dodaj.grupa = @grupy %>
+	<% form_tag "/siatka/adding" ,{ :id => "edycjaplanow"}  do %>
+<tr>
+	<td>
+	Godzina 	</td>
+	<td><%= select(:dodaj, :godz, @listagodz ) %>
+	</td>
+	<td>Prowadzący:
+	</td>
+	<td>
+	<%= text_field_with_auto_complete :lecturer, :lecture, { :value => @dodaj.prowadzacy, :size => 20},{:method => :get } %>
+	</td>
+	<td>Sala</td>
+	<td>
+		<div style="width: 150px"> <%= text_field_with_auto_complete :room, :numer, { :value => @dodaj.sala, :size => 5},{:method => :get, :min_chars => 0 } %> </div>
+	</td>
+	<td>
+	Długość zajęć: 
+	</td>
+	<td>
+	<%= select(:dodaj, :dlugosc, @dlugosc, :selected => @dodaj.dlugosc.to_s, :include_blank => false ) %>
+	</td>
+</tr>
+<tr>
+	<td>
+	Dzień</td><td> <%= select(:dodaj, :dni, @dni) %>
+	</td>
+	<td>Przedmiot:</td>
+	<td>
+	 <%= text_field_with_auto_complete :subject, :nazwa,{ :value => @dodaj.przedmiot, :size => 20},{:method => :get} %>
+	</td>
+	<td>
+		Rodzaj zajęć:	</td>
+	<td> <%= select(:dodaj, :rodzaj, @r) %><br />
+	</td>
+	<td>
+	Częstotliwość zajęc:</td>
+	<td>    
+	<% if @tmp[0] == "IDR" %>
+
+        <%else%>
+	<%= select(:dodaj, :czestotliwosc, @czest, :selected => @dodaj.czestotliwosc.to_s, :include_blank => false ) %>
+        <%end%>
+	</td>
+</tr>
+<tr>
+	<td>Grupa
+	</td><td>
+		<%= collection_select(:dodaj, :grupa, Group.find(:all, :group => "nazwa"), :nazwa, :nazwa, {:prompt => "Wybierz grupea"}, :multiple => true, :size => 7) %>
+	</td>
+	<% if @tmp[0] == "IDR" %>
+	 <td>
+	Termin rezerwacji:
+	 </td>
+	<td>    
+	<%= calendar_date_select_tag "date", "", :valid_date_check => "date >= (new Date()).stripTime()", :popup => :force %>
+	</td>
+	<% else %>
+	<td>Katedra</td>
+	<td>
+		<%= collection_select(:dodaj,:katedra, Department.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz katedre"}) %> <br />
+	</td>
+	<%end%>
+	<td>Budynek:  
+	</td>
+	<td>
+		<%= collection_select(:dodaj,:budynek, Building.find(:all).sort {|a,b| a.nazwa <=> b.nazwa}, :nazwa, :nazwa) %>
+	</td>
+	<td>
+	Uwagi:
+	</td>
+	<td>
+	<%= text_field 'dodaj', 'uwagi', :size => 20%>
+	<% if @tmp[0] =="IDR" %>
+	<%= hidden_field 'dodaj', 'idr', :value => @tmp[1] %>
+	<%else%>
+        <%= hidden_field 'dodaj', 'id', :value => @tmp[1] %>
+	<%end%>
+	</td>
+</tr>
+<tr>
+</tr>
+</table></center>
+<% if @tmp[0] == "IDR" %>
+	<% else %>
+	<%= submit_tag "Wyślij" %>
+<%end %>
+	<% end %>
+
+<%= link_to "Wróć", "javascript:history.back()" %>
+<% if @tmp[0] == "IDR" %>
+  <%= link_to("Skasuj wpis", {:controller => 'siatka', :action => 'del', :params => { :id => @tmp[1], :re => "r" }}) %>
+<%else%>
+  <%= link_to("Skasuj wpis", {:controller => 'siatka', :action => 'del', :params => { :id => @tmp[1] }}) %>
+<%end%>
+<br />
+<br />

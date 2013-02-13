@@ -1,0 +1,75 @@
+<%= stylesheet_link_tag 'plany' %>
+
+<h2>Podgląd wpisu rezerwacji</h2>
+<div id="msg" >
+	<p style="color: green;">	<%= flash[:notice] %> </p>
+	<p style="color: red;">	<%= flash[:error] %> </p>
+	<%= error_messages_for :plan %>
+	<br />
+</div>
+
+<div>
+	<% form_tag 'addrez'  do %>
+ 
+	<center>
+	<table id="formularz">
+	<tr>
+		<td class="formLabel">Godzina</td>
+		<td>
+			<%= (Time.parse("00:00") +  (@dodaj.godz = params[:dodaj][:godz]).to_i.minutes).strftime("%H:%M") %>
+			<%= hidden_field :dodaj, :godz %>
+		</td>
+		<td class="formLabel">Prowadzący:</td>
+		<td>
+			<%= @dodaj.prowadzacy = params[:lecturer][:lecture] %>
+			<%= hidden_field :dodaj, :prowadzacy %>
+		</td>
+		<td class="formLabel">Długość zajęć:</td>
+		<td>
+      <%= @dodaj.dlugosc = params[:dodaj][:dlugosc] %>
+		 	<%= hidden_field :dodaj, :dlugosc %>
+		</td>
+	</tr>
+	<tr>
+		<td class="formLabel">Rodzaj zajęć:	</td>
+		<td> 
+      <%= @dodaj.rodzaj = params[:dodaj][:rodzaj] %>
+			<%= hidden_field :dodaj, :rodzaj %>
+		</td>
+		<td class="formLabel">Przedmiot:</td>
+		<td>
+			<%= @dodaj.przedmiot = params[:subject][:nazwa] %>
+			<%= hidden_field :dodaj, :przedmiot %>
+		</td>
+	  <td class="formLabel">Termin rezerwacji:</td>
+		<td> 
+			<%= @dodaj.waznosc = params[:date] %>  
+			<%= hidden_field :dodaj, :waznosc  %>
+		</td>
+	</tr>
+	<tr>
+		<td class="formLabel">Grupa</td>
+		<td>
+  	  <%= @dodaj.grupa = params[:dodaj][:grupa] %>
+			<%= hidden_field :dodaj, :grupa %>
+		</td>
+		<td class="formLabel">Uwagi: </td>
+		<td>
+			<%= @dodaj.uwagi = params[:dodaj][:uwagi] %>
+			<%= hidden_field 'dodaj', 'uwagi'%>
+		</td>
+		<td class="formLabel">Sala</td>
+		<td>
+			<%= @dodaj.sala = params[:room][:numer] %>
+			<%= hidden_field :dodaj, :sala %>
+		</td>
+	</tr>
+	<tr></tr>
+</table>
+</center>
+<%= submit_tag "Zapisz", :confirm => "Anuluj aby przejżeć jeszcze raz dane, OK aby zapisać" %>
+<% end %>
+<%= link_to "Wstecz", "javascript:history.back()" %>
+<br /> <br />
+		Sale wykładowe: 31, 133, 115 (60 osób), 221, 213
+<br /><br />

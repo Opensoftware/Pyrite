@@ -1,0 +1,120 @@
+Potrzebne pakiety:
+
+rails 2.2.2
+fpdf-1.53
+builder-2.1.2
+xml-simple-1.0.11
+pdf-writer
+
+
+
+TODO
+
+	Przebudować aplikacje tak aby tablice przechowywujące informacje na temat planów nie były tworzone gdy nie ma takiej potrzeby
+	
+	Rozdzielic pliki css dla kązdego modułu
+	Wyeliminować odpytywanie z bazy o kursach
+
+	Dodać panel umożliwiający blokadę rezerwacji pewnych sal.
+	Dodać słowniki sal, prowadzących i przedmiotów.
+	Poprawić wyświetlanie planów dla prowadzących zajęcia. (Dodatkowo centrowanie planu zajęć dla nich)
+	Eksport do google calendar ... :) 
+	Przenoszenie planów na nowy rok (kopiowanie planów )
+	Poprawić przesyłanie danych między formularzami (tak aby wstecz pamiętało wszystkie pola wypełnione w formularzu)
+	Poprawić metode checkfreetime (normalizacja nazwy i sprawdzenie jej działa i odpowiednio jej okomentowanie
+WAŻNE 
+
+name.capitalize - pierwsza duża litera 
+
+
+gem install htmldoc
+
+w /usr/bin/gem 
+
++ require 'rubygems/gem_runner'
+
+
+
+
+NOWA WERSJA:
+
+Prowadzone przedmity przez katedry/wydziały
+Przeszukiwanie sal pod względem dostępności
+
+-------------------------------------------
+
+Wpisanie przedmiotu narzuca katedre ewentualnie mozliwosć zmiany ręcznej
+
+
+DODAĆ:
+przejrzec metody pod względem dostępności dla konkretnych kont
+
+
+ZAWIESZONE: Podział na zajęcia laboratoryjne czyli grupa raz jeszcze na pół
+
+---ZROBIONE:Wyświetlanie przy dopełnianiu wszystkiego co jest dostępne bez wprowadzania
+
+
+BEZPIECZEŃSTWO:Naprawienie SLQ Injection w wyszukiwanie Kursów find_by_sql
+
+
+-----------------------
+
+TODO:
+
+Wprowadzanie przedmiotów powiązać z katedrami
+przedmioty dla katedry - wyświeltanie informacji o prowadzących zajęciach 
+ilość godzin dla prowadzący - wykłady/ćwiczenia/labolatoria
+Dodanie tip do wydziałów 
+Naprawienie wyświeltania sali (aby tyle nie klikać)
+Zadługie nazwy w planie ? pierwsze 3 litery : skróty 
+Problem z wyświetlaniem grupy INNA 
+Wypływanie na wierzch divów ????
+
+Statystyki zajęć
+Estetyka, wyglad systemu 
+How TO 
+Konta dla użytkowników (prowadzacych) i (1 na wydział)  
+Blokada rezerwacji na dane okresy czasowe ( sesja etc.. )
+Tygodniowe plany zajęć 
+
+
+----------------------------------------------------------
+
+ROZWIĄZANE:możliwość wybrania kilku grup na raz (Wybór odpowiedniego kursu)
+
+ZROBIONE:dodawanie kilku grup do sali U2 , poprawne ich wyświetlanie
+ZROBIONE: Czy prowadzący ma być dodawany ? TAK
+ZROBIONE:Przeglądanie bez dostępu 
+ZROBIONE:Dodać możliwość prowadzenia zajęci w sali U2 dla wielu grup
+ZROBIONE:Sortowanie godziny i sal
+ZROBIONE:Nie działa przekazywanie parametru długość i częstotliwość przy edycji 
+ZROBIONE:Dodanie dodatkowych wydziałów:
+ZROBIONE:dostępność sal - zestawienie 
+ZROBIONE:Wyszukiwanie sal w zależności od dostępności
+ZROBIONE: Walidacja formularza pod względem wprowadzonej grupy,sali , prowadzącego
+ZROBIONE:Konwencja w nazewnictwie Kurs_ Rok_ Grupa_ nrGrupy np. 1A1GG2
+ZROBIONE:Dodatkowe grupy (KURSY) i wyświetlanie wraz z grupami KURSÓW 
+ZROBIONE: Edycja wpisów
+ZROBIONE:możliwość wpisania sali ręcznie dla innych budunków niż A0
+ZROBIONE:Pole uwagi przy dodawaniu planu
+ZROBIONE:dopełnianie wpisanych katedr, nazwisk
+ZROBIONE:Naprawienie odświeżania planów zajęć po powrocie z wpisu lub kasowania
+ZROBIONE:Zwiększyć długość zajęć do 7
+ZROBIONE:Zajecai dla grupy potem dla Kursu brak sprawdzania dostępności
+ZROBIONE:Usuwanie wpisów
+ZROBIONE:poprawienie wyświetlania
+ZROBIONE:Zapamiętywanie danych w formularzu (katedra, grupa)
+ZROBIONE:kolizja pomiędzy prowadzącymi a grupami, salami
+ZROBIONE:dwa okienka sale - grupy - możliwość zmiany zawartości dowolnego (komunikat odnośnie niedostępności grupy)
+ZROBIONE:Wyświetlanie: Nazwa przedmiotu sala Prowadzący
+ZROBIONE: Zgrać formulasz z wyswietlanie dublowanie grupy i sali usunąć
+ZROBIONE:dostępność prowadzącego , grupy, sali - zestawienie 
+ZROBIONE: Godziny lekcyjne przy wprowadzaniu wielokrotność 45 min
+ZROBIONE: NAPRAWIĆ przedmioty kilku członowe ! a także nazwiska prowadzących (poprzez zmiane separatora)
+ZROBIONE:Eliminacja przenoszenia na inne strony podczas wpisów  
+ZROBIONE: Poprawić wyświetlanie dat rozpoczęcie i zakończenie w dni wolne (tzn. bez godzin )
+ZROBIONE: Poprawić pozycjonowanie elementu "WYbierz salę którą chcesz zarezerwować" tak aby była równo z formularzem.
+
+
+comset 

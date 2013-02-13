@@ -1,0 +1,18 @@
+<% form_for(@schedule) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :nazwa %><br />
+    <%= f.text_field :nazwa %>
+  </p>
+  <p>
+    <%= f.label :rok %><br />
+    <%= f.text_field :rok %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Pokaż', @schedule %> |
+<%= link_to 'Wstecz', schedules_path %>

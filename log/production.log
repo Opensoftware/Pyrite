@@ -1,0 +1,102 @@
+
+
+Processing SiatkaController#index (for 188.113.109.165 at 2013-02-03 22:59:56) [GET]
+Rendering template within layouts/siatka
+Rendering siatka/index
+Completed in 273ms (View: 194, DB: 78) | 200 OK [http://opensoftware.pl/siatka]
+
+
+Processing SiatkaController#admin (for 188.113.109.165 at 2013-02-03 22:59:59) [GET]
+Rendering template within layouts/siatka
+Rendering siatka/admin
+Completed in 8ms (View: 6, DB: 1) | 200 OK [http://opensoftware.pl/siatka/admin]
+
+
+Processing SiatkaController#konfiguracja (for 188.113.109.165 at 2013-02-03 23:00:02) [GET]
+Rendering template within layouts/siatka
+Rendering siatka/konfiguracja
+Completed in 8ms (View: 7, DB: 2) | 200 OK [http://opensoftware.pl/siatka/konfiguracja]
+
+
+Processing SiatkaController#add (for 188.113.109.165 at 2013-02-03 23:00:05) [GET]
+Rendering template within layouts/siatka
+Rendering siatka/add
+Completed in 58ms (View: 43, DB: 13) | 200 OK [http://opensoftware.pl/siatka/add]
+
+
+Processing MainController#showprow (for 188.113.109.165 at 2013-02-03 23:00:10) [GET]
+  Parameters: {"commit"=>"Pokaż", "lecturer"=>{"lecture"=>"prof. Cojuhari"}}
+Rendering template within layouts/main
+Rendering main/showprow
+Completed in 17ms (View: 9, DB: 6) | 200 OK [http://opensoftware.pl/main/showprow?lecturer%5Blecture%5D=prof.+Cojuhari&commit=Poka%C5%BC]
+
+
+Processing SiatkaController#index (for 188.113.109.165 at 2013-02-03 23:00:13) [GET]
+Rendering template within layouts/siatka
+Rendering siatka/index
+Completed in 235ms (View: 180, DB: 56) | 200 OK [http://opensoftware.pl/siatka]
+
+
+Processing SiatkaController#index (for 188.113.109.165 at 2013-02-03 23:00:16) [GET]
+Rendering template within layouts/siatka
+Rendering siatka/index
+Completed in 240ms (View: 187, DB: 54) | 200 OK [http://opensoftware.pl/siatka]
+
+
+Processing MainController#showgroup (for 188.113.109.165 at 2013-02-03 23:00:25) [GET]
+  Parameters: {"plan"=>{"id"=>"1A"}, "commit"=>"Pokaż"}
+Rendering template within layouts/main
+Rendering main/showgroup
+Completed in 46ms (View: 26, DB: 16) | 200 OK [http://opensoftware.pl/main/showgroup?plan%5Bid%5D=1A&commit=Poka%C5%BC]
+
+
+Processing SiatkaController#index (for 188.113.109.165 at 2013-02-03 23:00:28) [GET]
+Rendering template within layouts/siatka
+Rendering siatka/index
+Completed in 237ms (View: 182, DB: 57) | 200 OK [http://opensoftware.pl/siatka]
+
+
+Processing MainController#index (for 188.113.109.165 at 2013-02-03 23:00:31) [GET]
+Rendering template within layouts/main
+Rendering main/index
+Completed in 251ms (View: 188, DB: 63) | 200 OK [http://opensoftware.pl/]
+
+
+Processing MainController#showroom (for 188.113.109.165 at 2013-02-03 23:00:34) [GET]
+  Parameters: {"commit"=>"Pokaż", "room"=>{"sala"=>"5"}}
+Rendering template within layouts/main
+Rendering main/showroom
+Completed in 107ms (View: 89, DB: 9) | 200 OK [http://opensoftware.pl/main/showroom?room%5Bsala%5D=5&commit=Poka%C5%BC]
+
+
+Processing MainController#showgroup (for 188.113.109.165 at 2013-02-03 23:00:48) [GET]
+  Parameters: {"plan"=>{"id"=>"1AIN2"}, "commit"=>"Pokaż"}
+Rendering template within layouts/main
+Rendering main/showgroup
+Completed in 50ms (View: 25, DB: 21) | 200 OK [http://opensoftware.pl/main/showgroup?plan%5Bid%5D=1AIN2&commit=Poka%C5%BC]
+
+
+Processing MainController#index (for 188.113.109.165 at 2013-02-03 23:15:29) [GET]
+Rendering template within layouts/main
+Rendering main/index
+Completed in 263ms (View: 185, DB: 75) | 200 OK [http://opensoftware.pl/]
+
+
+Processing MainController#showgroup (for 188.113.109.165 at 2013-02-03 23:15:33) [GET]
+  Parameters: {"plan"=>{"id"=>"1AIN1"}, "commit"=>"Pokaż"}
+Rendering template within layouts/main
+Rendering main/showgroup
+Completed in 147ms (View: 28, DB: 106) | 200 OK [http://opensoftware.pl/main/showgroup?plan%5Bid%5D=1AIN1&commit=Poka%C5%BC]
+
+
+Processing MainController#index (for 188.113.109.165 at 2013-02-03 23:15:36) [GET]
+Rendering template within layouts/main
+Rendering main/index
+Completed in 246ms (View: 116, DB: 130) | 200 OK [http://opensoftware.pl/]
+
+
+Processing MainController#showroom (for 188.113.109.165 at 2013-02-03 23:15:40) [GET]
+  Parameters: {"commit"=>"Pokaż", "room"=>{"sala"=>"13"}}
+Rendering template within layouts/main
+Rendering main/showroom
+Completed in 49ms (View: 17, DB: 18) | 200 OK [http://opensoftware.pl/main/showroom?room%5Bsala%5D=13&commit=Poka%C5%BC]

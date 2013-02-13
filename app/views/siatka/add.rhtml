@@ -1,0 +1,219 @@
+<%= stylesheet_link_tag 'plany' %>
+
+<h2> Dodanie wpisu </h2>
+<div align="center" class="flashinfo">
+<table>
+<tr>
+<% if !flash[:error].nil? %>
+  <td width="50px"><%= image_tag 'close32.png', :alt => 'informacja' %> </td>
+<% elsif !flash[:notice].nil? %>
+  <td width="50px"><%= image_tag 'accept32.png', :alt => 'informacja' %> </td>
+<% else %>
+	<td> </td>
+<% end %>
+  <td><p><%= flash[:notice] %> <%= flash[:error] %> <%= error_messages_for :plan %></p>
+	</td>
+</tr>
+</table>
+</div>
+<div>
+	<% form_tag 'adding',{ :id => "edycjaplanow"}  do %>
+        <% @dodaj.godz = params[:godz] %>
+        <% @dodaj.dlugosc = params[:dlugosc] %>
+        <% @dodaj.dni = params[:dni] %>
+        <% @dodaj.rodzaj = params[:rodzaj] %>
+        <% @dodaj.czestotliwosc = params[:czestotliwosc] %>
+        <% @dodaj.grupa = params[:grupa] %>
+        <% @dodaj.katedra = params[:katedra] %>
+        <% @dodaj.budynek = params[:budynek] %>
+        <% @dodaj.uwagi = params[:uwagi] %>
+
+<center>
+<table class="formularz">
+<tr>
+	<td rowspan=3>
+		<%= collection_select(:dodaj, :grupa, Group.find(:all, :group => "nazwa"), :nazwa, :nazwa, {:prompt => "Wybierz grupe"}, :multiple => true, :size => 7) %>
+	</td>
+	<td class="label">Godzina</td>
+	<td><%= select :dodaj, :godz, @listagodz%></td>
+	<td class="label">Prowadzący:</td>
+	<td><%= text_field_with_auto_complete :lecturer, :lecture, { :value => params[:prowadzacy], :size => 20},{:method => :get } %></td>
+	<td class="label">Sala</td>
+	<td>
+		<div style="width: 150px"> <%= text_field_with_auto_complete :room, :numer, { :value => params[:sala], :size => 5},{:method => :get, :min_chars => 0 } %></div>
+	</td>
+	<td class="label">Długość zajęć:</td>
+	<td><%= select(:dodaj, :dlugosc, @dlugosc, :selected => @dodaj.dlugosc.to_s, :include_blank => false ) %></td>
+</tr>
+<tr>
+	<td class="label">Dzień</td>
+  <td> <%= select(:dodaj, :dni, @dni) %></td>
+	<td class="label">Przedmiot:</td>
+	<td><%= text_field_with_auto_complete :subject, :nazwa, { :value => params[:przedmiot], :size => 20},{:method => :get } %></td>
+	<td class="label">Rodzaj zajęć:</td>
+  <td> <%= select(:dodaj, :rodzaj, @r) %></td>
+	<td class="label">Częstotliwość zajęc:</td>
+	<td><%= select(:dodaj, :czestotliwosc, @czest, :selected => @dodaj.czestotliwosc.to_s, :include_blank => false ) %></td>
+</tr>
+<tr>
+	<td class="label">Katedra</td>
+	<td><%= collection_select(:dodaj,:katedra, Department.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz katedre"}) %></td>
+	<td class="label">Budynek:</td>
+	<td><%= collection_select(:dodaj,:budynek,Building.find(:all).sort {|a,b| a.nazwa <=> b.nazwa}, :nazwa, :nazwa) %></td>
+	<td class="label">Uwagi:</td>
+	<td><%= text_field 'dodaj', 'uwagi', :size => 20%></td>
+</tr>
+<tr>
+</tr>
+</table></center>
+	<%= submit_tag "Wyślij" %>
+	<% end %>
+</div>
+<br />
+
+
+<%= observe_form :edycjaplanow,
+		:frequency => 1,
+		:update => "Eplany",
+		:complete => "Element.show('Eplany')",
+		:url => { :action => "preview" }
+%>
+
+<div id="Eplany">
+<table border=0 width="100%" id="glowny">
+<tr>
+<td width="50%">
+
+Sala: <%= params[:sala] %>
+</td>
+<td width="50%">
+Grupa: <%= params[:grupa] %>
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+    <table class="plan">
+	<tr style="font-size:small">
+	    <th id="tableHeader"> Godz </th>
+         <th>Pon</th>
+         <th>Wtorek</th>
+         <th>Środa</th>
+         <th>Czwartek</th>
+         <th>Piątek</th>
+	</tr>
+	<% for go in @godz1 %>
+	  <% @i += 1 %>
+	  <% @j += 1 %>
+	  <tr height="25">
+	   <% @j == 4 ? @j=0 : "" %>
+       <% if @j == 1 %>
+	        <td class="hour" rowspan="4"><%= go + "-#{@godz[@i]}" %></td>
+	 	   <% end %>
+	   <% for dn in @dni %>
+       <% @dl = @qwe1[go][dn].to_s.split("::") %>
+	     <% if @dl[2].to_i != 0 %>
+				 <% @blok += 1 %>
+			   <% @blok_ln[dn] = @dl[2].to_i * 3 %>
+			 	 <% @blok_ln[dn] -= 1 %>
+	       <td <%= @dl[4] == "W" ? "class='blok-w'" : "class='blok-cw'" %> rowspan="<%= @dl[2].to_i * 3 %>" >
+			  	 <table class="blokinfo" >
+						<tr height=15px><td class="head_info"><%= @dl[4] %> </td></tr>
+						<tr height=25%><td class="middle_info"><b><%= @dl[3] %></b><br/><small><%= @dl[0] %></small></b></td></tr>
+						<tr height=15px><td class="bottom_info">
+							<span class="left">
+							 <% for i in @dl %>
+							 <% if i.include?("gr.") %>
+							 <%= i %>
+							 <% end %>
+							 <% end %>
+ 							</span>
+					 <span class="right"><% @dl[6] == "A0" ? @b="#{@dl[5]}" : @b="#{@dl[6]}, #{@dl[5]}" %></span><br/>
+							<%= link_to("Edytuj", {:controller => 'siatka', :action => 'edit', :params => { :id => @dl[5] }}) %>
+						</td>
+ 					</tr>
+				 </table>
+
+	     </td>
+	     <% else %>
+				<% if @blok_ln[dn] != 0  %>
+					<% @blok_ln[dn] -= 1 %>
+					<!--<td>#<%= @blok %> <%= @blok_ln %></td>-->
+				<% else %>
+				<td class="blokpusty"></td>
+				<%end%>
+	    <% end %>
+  		<% end %>
+	<% end %>
+	</tr>
+      </table>
+
+ </td>
+ <td width="50%">
+    <table class="plan">
+
+	<tr style="font-size:small">
+	    <th id="tableHeader"> Godz </th>
+            <th>Pon</th>
+            <th>Wtorek</th>
+            <th>Środa</th>
+            <th>Czwartek</th>
+            <th>Piątek</th>
+	</tr>
+
+	<% @i = 3 %>
+	<% for go in @godz1 %>
+	  <% @i += 1 %>
+	  <% @j += 1 %>
+	  <tr height="25">
+	   <% @j == 4 ? @j=0 : "" %>
+           <% if @j == 1 %>
+	    <td class="hour" rowspan="4"><%= go + "-#{@godz[@i]}" %>
+	    </td>
+	   <% end %>
+	   <% for dn in @dni %>
+             <% @dl = @qwe[go][dn].to_s.split("::") %>
+	     <% if @dl[2].to_i != 0 %>
+		<% @blok += 1 %>
+		<% @blok_ln[dn] = @dl[2].to_i * 3 %>
+		<% @blok_ln[dn] -= 1 %>
+	       <td
+	       <% if !@dl[5].include?("rezerwacja") %>
+	       	<%= @dl[4] == "W" ? "class='blok-w'" : "class='blok-cw'" %>
+		<% else %>
+	       	<%= @dl[4] == "W" ? "class='blok-wr'" : "class='blok-cwr'" %>
+		<% end %>
+		rowspan="<%= @dl[2].to_i * 3 %>" >
+
+			<table class="blokinfo" >
+				<tr height=15px><td class="head_info"><%= @dl[4] %> </td></tr>
+				<tr height=25%><td class="middle_info"><b><%= @dl[3] %></b><br/><small><%= @dl[0] %></small></b></td></tr>
+				<tr height=15px><td class="bottom_info">
+			<span class="left"><%= @dl[1] %></span>
+			<span class="right"><% @dl[6] == "A0" ? @b="#{@dl[5]}" : @b="#{@dl[6]}, #{@dl[5]}" %></span><br/>
+				<%= link_to("Edytuj", {:controller => 'siatka', :action => 'edit', :params => { :id => @dl[5] }}) %>
+		                  </td>
+ 				</tr>
+			</table>
+
+	       </td>
+	     <% else %>
+		<% if @blok_ln[dn] != 0  %>
+			<% @blok_ln[dn] -= 1 %>
+			<!--<td>#<%= @blok %> <%= @blok_ln %></td>-->
+		<% else %>
+			<td class="blokpusty"></td>
+		<%end%>
+	     <% end %>
+
+        <% end %>
+
+
+	<% end %>
+	</tr>
+      </table>
+ </td>
+</table>
+
+
+</div>

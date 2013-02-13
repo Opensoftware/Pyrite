@@ -1,0 +1,97 @@
+<div id="time"> </div>
+
+<table align="center" id="panel">
+<tr>
+	<td>
+		<ul>
+			<li><p>
+				<%= link_to("Uprawnienia", {:controller => 'siatka', :action => 'admin'}) %>
+			 </p></li>
+			<li><p>
+        <%= link_to("Ustawienia systemu", {:controller => 'siatka', :action => 'konfiguracja'}) %>
+				</p></li>
+				<li><p>
+        <%= link_to("Ustaw dni wolne", {:controller => 'freedays', :action => ''}) %>
+				</p></li>
+				<li><p>
+        <%= link_to("Zarządzaj planami", {:controller => 'schedules', :action => ''}) %>
+				</p></li>
+
+
+		</ul>
+	</td>
+	<td>
+		<ul>
+			<li><p>
+				<%= link_to("Rezerwuj salę", {:controller => 'siatka', :action => 'rezerwacja'}) %>
+				</p></li>
+			<li><p>
+        <%= link_to("Wprowadź dane", {:controller => 'siatka', :action => 'add'}) %>
+				</p></li>
+				<li><p>
+        <%= link_to("Wykrywanie kolizji sal", {:controller => 'siatka', :action => 'kolizje'}) %>
+				</p></li>
+				<li><p>
+        <%= link_to("Wykrywanie kolizji grup", {:controller => 'siatka', :action => 'kolizjegrup'}) %>
+				</p></li>
+				<li><p>
+        <%= link_to("Drukowanie planów", {:controller => 'siatka', :action => 'drukowanie'}) %>
+				</p></li>
+			</ul>
+	</td>
+</tr>
+
+
+</table>
+
+<br>
+<div align="center">
+
+<table>
+ <tr>
+  <td> Rezerwacje: </td><td>
+  <% form_tag '/main/rezerwacje', {:method => 'get'} do %>
+	<%= collection_select(:room,:sala, Room.find(:all, :group => "numer").sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
+  </td>
+  <td>
+	<%= submit_tag "Pokaż" %>
+  </td><% end %>
+  </tr>
+<tr>
+<td> Plan sal: </td><td>
+<% form_tag '/main/showroom', {:method => 'get'} do %>
+	<%= collection_select(:room,:sala, Room.find(:all, :group => "numer").sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
+</td>
+<td>
+	<%= submit_tag "Pokaż" %>
+</td>
+<% end %>
+</td></tr><tr>
+<td>Plan prowadzących: </td><td>
+<% form_tag '/main/showprow', {:method => 'get'} do %>
+	<%= collection_select(:lecturer,:lecture, Lecturer.find(:all), :lecture, :lecture, {:prompt => "Wybierz prowadzącego"}) %>
+</td>
+<td>
+	<%= submit_tag "Pokaż" %>
+<% end %>
+</td>
+</tr>
+<td>Plan grup:</td><td>
+<% form_tag '/main/showgroup', {:method => 'get'} do %>
+	<%= collection_select(:plan,:id, Group.find(:all, :group => "nazwa"), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
+</td><td>
+	<%= submit_tag "Pokaż" %>
+<% end %>
+</td></tr>
+</table>
+<br>
+
+<p>Lista zajęć prowadzonych przez katedry/wydziały</p>
+<% form_tag '/main/showkatedra', {:method => "get"} do %>
+	<%= collection_select(:plan,:katedra, Department.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz katedre"}) %>
+	<%= submit_tag "Pokaż" %>
+<% end %>
+<br />
+
+</div>
+

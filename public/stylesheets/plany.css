@@ -1,0 +1,142 @@
+.plan tr td.hour {
+   background: #333666;
+	 border-color: #c6c2c2;
+   color: #FFFFFF;
+   vertical-align: middle;
+   text-align: center;
+   width: 25px;
+}
+.plan {
+   border-collapse: collapse;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 10px;
+
+}
+.plan tr {
+   width: 200px;
+   border: 1px solid #a6a2a2;
+}
+
+.plan tr.lightline {
+	 background-color: #b8d5d7;
+}
+.plan td {
+   width: 200px;
+   border: 1px solid #a6a2a2;
+}
+.navigate {
+   width: 70%;
+	 text-align: center;
+   border: 1px solid #000000;
+}
+
+.tableHeader {
+	background-color: #f5f5e9; 
+	font-size:small;
+}
+
+
+.blokpusty {
+   max-height: 25px;
+   height: 25px;
+}
+.blok {
+   background: #ddd;
+   padding: 0px;
+   margin: 0px;
+}
+.blok-w {
+   background: #8cd2ab;
+   margin: 0px;
+   padding: 0px;
+}
+.blok-wr {
+   background: #555abb;
+   margin: 0px;
+   padding: 0px;
+}
+
+.blok-cw {
+   background: #f5f6ab;
+   padding: 0px;
+   margin: 0px;
+}
+.blok-cwr {
+   background: #555abb;
+   padding: 0px;
+   margin: 0px;
+}
+.blok {
+   height: 100%;
+}
+
+.blokinfo {
+  height: 100%;
+}
+.blokinfo tr {
+	border: 0px;
+}
+
+.blok .blokinfo, .blok .blokinfo tr {
+   margin: 0px;
+   padding: 0px;
+}
+
+.blok tr td {
+   border: none;
+}
+.blok-w tr td {
+   border: none;
+}
+.blok-wr tr td {
+   border: none;
+}
+.blok-cw tr td {
+   border: none;
+}
+.blok-cwr tr td {
+   border: none;
+}
+
+.head_info {
+   text-align: right;
+   font-size: xx-small;
+}
+
+.middle_info {
+   text-align: center;
+   font-size: x-small;
+}
+
+.bottom .right {
+  color: red;
+}
+.formularz td{
+   border: 0px solid #000000;
+}
+
+#formularz td{
+   border: 0px solid #000000;
+}
+.sale td{
+   border: 0px solid #000000;
+}
+
+.label {
+	text-align: right;
+	padding-right: 5px;
+}
+.date {
+  padding: 5px; 
+} 
+.error {
+	color: red;
+}
+
+#flashinfo {
+  background: #FF9999;
+  text-decoration: none;
+  border: 1px solid;
+  width: 500px;
+  height: 40px;
+}

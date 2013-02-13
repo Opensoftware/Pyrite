@@ -1,0 +1,11 @@
+
+<% if @zm.nil? %>
+<span style="color: red"><%= hidden_field 'room', 'numer' %>Brak możliwość rezerwacji po terminie 30-09-2012</span>
+<%else%>
+  <% if @free.empty? %>
+  <span style="color: red"><%= hidden_field 'room', 'numer' %>Brak wolnych sal</span>
+  <%else%>
+
+	<%= select(:room, :numer, @free,  :include_blank => false ) %>
+  <% end%>
+<% end %>

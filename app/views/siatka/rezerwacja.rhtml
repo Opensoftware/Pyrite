@@ -1,0 +1,123 @@
+<%= stylesheet_link_tag 'plany' %>
+<%= javascript_include_tag 'calendar_date_select/calendar_date_select.js' %>
+<%= javascript_include_tag 'calendar_date_select/format_hyphen_ampm.js' %>
+<%= javascript_include_tag 'calendar_date_select/locale/pl.js' %>
+<%= stylesheet_link_tag 'calendar_date_select/silver.css' %>
+
+<style type="text/css">
+.lista  {
+ background: white; 
+ width: 70px;
+ border-left: 1px solid #666;
+ border-right: 1px solid #666;
+}
+#hideshow {
+ border: 1px solid #d4d4d4;
+ position: absolute;
+ z-index: 4;
+ display: none;
+}
+.lista:hover {
+ background: #ffffbb;
+}
+
+</style>
+
+<h2> Dodanie wpisu </h2>
+<div id="msg" >
+<p style="color: green;">	<%= flash[:notice] %> </p>
+<p style="color: red;">	<%= flash[:error] %> </p>
+	<%= error_messages_for :plan %>
+<br />
+</div>
+
+<div>
+	<% form_tag 'rrezerwacja',{ :id => "edycjaplanow"} do %>
+        <% @dodaj.godz = params[:godz] %>
+        <% @dodaj.dlugosc = params[:dlugosc] %>
+        <% @dodaj.dni = params[:dni] %>
+        <% @dodaj.rodzaj = params[:rodzaj] %>
+        <% @dodaj.grupa = params[:grupa] %>
+        <% @dodaj.budynek = params[:budynek] %>
+ 
+<center>
+<table id="formularz">
+<tr>
+	<td>
+	Godzina 	</td>
+	<td><%= select :dodaj, :godz, @listagodz%>
+	</td>
+	<td>Prowadzący:
+	</td>
+	<td>
+	<%= text_field_with_auto_complete :lecturer, :lecture, { :value => params[:prowadzacy], :size => 20},{:method => :get } %>
+	</td>
+	<td></td>
+	<td>
+	</td>
+	<td>
+	Długość zajęć:
+	</td>
+	<td>
+	<%= select(:dodaj, :dlugosc, @dlugosc, :selected => @dodaj.dlugosc.to_s, :include_blank => false ) %>
+	</td>
+</tr>
+<tr>
+	<td>
+		Rodzaj zajęć:	</td>
+	<td> <%= select(:dodaj, :rodzaj, @r) %><br />
+	<td>Przedmiot:</td>
+	<td>
+	 <%= text_field_with_auto_complete :subject, :nazwa, { :value => params[:przedmiot], :size => 20},{:method => :get } %>
+	</td>
+	</td>
+	<td>
+	</td><td>
+	</td>
+	 <td>
+	Termin rezerwacji:
+	 </td>
+	<td>    
+	<%= calendar_date_select_tag "date", "", :valid_date_check => "date >= (new Date()).stripTime()", :popup => :force %>
+	</td>
+</tr>
+<tr>
+	<td>Grupa
+	</td><td>
+		<%= collection_select(:dodaj, :grupa, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupe"}) %>
+	</td>
+	<td>Uwagi: </td>
+	<td><%= text_field 'dodaj', 'uwagi', :size => 20%></td>
+	<td>
+	</td>
+	<td>
+	</td>
+	<td>
+	</td>
+	<td>
+	</td>
+</tr>
+<tr>
+</tr>
+</table>
+<br />
+<table class="sale">
+<tr> <td>Wybierz salę którą chcesz zarezerwować:</td>
+     <td><div id="sale">
+     		<%= hidden_field 'room', 'numer'%></div></td>
+</tr>
+</table>
+</center>
+<br />
+
+	<%= submit_tag "Wyślij" %>
+	<% end %>
+<br /> <br />
+		Sale wykładowe: 31, 133, 115 (60 osób), 221, <br />
+<br /><br />
+<%= observe_form :formularz, 
+		:frequency => 1, 
+		:update => "sale", 
+		:complete => "Element.show('Eplany')", 
+		:url => { :action => "formularz" } 
+%>

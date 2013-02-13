@@ -1,0 +1,16 @@
+<% form_tag do -%>
+<table align="center">
+<tr><td>
+Login:</td><td>
+<%= text_field_tag 'login' %></td>
+</tr><tr><td>
+<p>Hasło:</td>
+<td><%= password_field_tag 'password' %></p></td>
+</tr>
+<!-- Uncomment this if you want this functionality
+<p><label for="remember_me">Remember me:</label>
+<%= check_box_tag 'remember_me' %></p>
+-->
+</table>
+<p><%= submit_tag 'Zaloguj' %></p>
+<% end -%>

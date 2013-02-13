@@ -1,0 +1,16 @@
+<table align="center">
+ <tr>
+		<th>L.p.</th>
+		<th width="150px">Nazwa</th>
+		<th>Rok akademicki</th>
+ </tr>
+ <tr height="30px">
+	<td><%=h @schedule.id %></td>
+	<td><%=h @schedule.nazwa %></td>
+	<td><%=h @schedule.rok %></td>
+ </tr>
+</table>
+<p></p>
+
+<%= link_to 'Edytuj', edit_schedule_path(@schedule) %> |
+<%= link_to 'Wstecz', schedules_path %>
