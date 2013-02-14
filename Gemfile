@@ -12,3 +12,7 @@ gem "pdf-writer"
 group :development do
   gem "ruby-debug"
 end
+
+group :production do
+  gem "psql"
+end
