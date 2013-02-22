@@ -5,7 +5,7 @@
 
 <% @room.numer = params[:room][:sala] %>
 	<% form_tag '',{ :id => "edycjaplanow"}  do %>
-Sala:  <%= collection_select(:room,:numer, Room.find(:all, :group => "numer").sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
+Sala:  <%= collection_select(:room,:numer, Room.find(:all).sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
 	<%= hidden_field(:plan,:wazneod, :value => @date) %>
 <% end %>
 
