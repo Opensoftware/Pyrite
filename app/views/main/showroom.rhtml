@@ -1,6 +1,6 @@
 
   <% form_tag '',{ :id => "edycjaplanow"}  do %>
-  Sala:  <%= collection_select(:room,:numer, Room.find(:all, :group => "numer").sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
+  Sala:  <%= collection_select(:room,:numer, Room.find(:all).sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
   <% end %>
 
 <div align="center" id="Eplany">
@@ -13,12 +13,12 @@
     <table class="plan">
 
 	<tr class="tableHeader">
-	    <th> Godz </th> 
-            <th>Pon</th> 
+	    <th> Godz </th>
+            <th>Pon</th>
             <th>Wtorek</th>
             <th>Środa</th>
             <th>Czwartek</th>
-            <th>Piątek</th> 
+            <th>Piątek</th>
 	</tr>
 
 	<% for go in @godz1 %>
@@ -32,14 +32,14 @@
 	    <td class="hour" rowspan="4"><%= go + "-#{@godz[@i]}" %></td>
 	   <% end %>
 	   <% for dn in @dni %>
-        <% @dl = @qwe[go][dn].to_s.split("::") %> 
+        <% @dl = @qwe[go][dn].to_s.split("::") %>
 	      <% if @dl[2].to_i != 0 %>
 					<% @blok += 1 %>
 					<% @blok_ln[dn] = @dl[2].to_i * 3 %>
 					<% @blok_ln[dn] -= 1 %>
-	       <td 
+	       <td
 	      	  <% if !@dl[5].include?("rezerwacja") %>
-	       			<%= @dl[4] == "W" ? "class='blok-w'" : "class='blok-cw'" %> 
+	       			<%= @dl[4] == "W" ? "class='blok-w'" : "class='blok-cw'" %>
 	   			  <% else %>
 		       		<%= @dl[4] == "W" ? "class='blok-wr'" : "class='blok-cwr'" %>
 			  	  <% end %>rowspan="<%= @dl[2].to_i * 3 %>" >
@@ -54,7 +54,7 @@
 									<% end %>
 								<%end %>
 								</span>
-								<span class="right"><br /> 
+								<span class="right"><br />
 									<% for i in @dl %>
 										<% if i.include?("rezerwacja na") %>
 											<% @k = i.split("$") %>
@@ -70,8 +70,8 @@
 					 <% if @blok_ln[dn] != 0  %>
 					   <% @blok_ln[dn] -= 1 %>
 							<!--<td>#<%= @blok %> <%= @blok_ln %></td>-->
-			 		 <% else %>	
-			 			 <td class="blokpusty"></td> 
+			 		 <% else %>
+			 			 <td class="blokpusty"></td>
 					<%end%>
 	    	 <% end %>
 	     <% end %>
@@ -82,10 +82,10 @@
 
 </div>
 
-<%= observe_form :edycjaplanow, 
-		:frequency => 1, 
-		:update => "Eplany", 
-		:complete => "Element.show('Eplany')", 
-		:url => { :action => "room" } 
+<%= observe_form :edycjaplanow,
+		:frequency => 1,
+		:update => "Eplany",
+		:complete => "Element.show('Eplany')",
+		:url => { :action => "room" }
 %>
 <br>

@@ -6,7 +6,7 @@
   <td> Rezerwacje: </td>
   	<td>
   	<% form_tag '/main/rezerwacje', {:method => 'get'} do %>
-	<%= collection_select(:room,:sala, Room.find(:all, :group => "numer").sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
+	<%= collection_select(:room,:sala, Room.find(:all).sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
 <%= submit_tag "Pokaż" %><% end %>
 	</td>
   <td></td>
@@ -14,7 +14,7 @@
   <tr>
   <td> Sala: </td><td>
   <% form_tag '/main/showroom', {:method => 'get'} do %>
-	<%= collection_select(:room,:sala, Room.find(:all, :group => "numer").sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
+	<%= collection_select(:room,:sala, Room.find(:all).sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
 	<%= submit_tag "Pokaż" %><% end %>
   </td>
   <td>
@@ -23,7 +23,7 @@
 <!-- <tr>
 <td>prowadzących: </td><td>
 <% form_tag '/main/showprow' , {:method => 'get'} do %>
-	<%= collection_select(:lecturer,:lecture, Lecturer.find(:all, :group => "lecture"), :lecture, :lecture, {:prompt => "Wybierz prowadzącego"}) %>
+	<%= collection_select(:lecturer,:lecture, Lecturer.find(:all), :lecture, :lecture, {:prompt => "Wybierz prowadzącego"}) %>
 	<%= submit_tag "Pokaż" %>
 <% end %>
 </td>
@@ -34,7 +34,7 @@
   <td> Grupa: </td>
   <td>
 	<% form_tag '/main/showgroup', {:method => 'get'} do %>
-	<%= collection_select(:plan,:id, Group.find(:all, :group => "nazwa"), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
+	<%= collection_select(:plan,:id, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
 	<%= submit_tag "Pokaż" %>
  <% end %>
   </td>
