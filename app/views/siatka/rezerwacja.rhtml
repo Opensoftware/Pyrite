@@ -6,7 +6,7 @@
 
 <style type="text/css">
 .lista  {
- background: white;
+ background: white; 
  width: 70px;
  border-left: 1px solid #666;
  border-right: 1px solid #666;
@@ -39,7 +39,7 @@
         <% @dodaj.rodzaj = params[:rodzaj] %>
         <% @dodaj.grupa = params[:grupa] %>
         <% @dodaj.budynek = params[:budynek] %>
-
+ 
 <center>
 <table id="formularz">
 <tr>
@@ -77,14 +77,14 @@
 	 <td>
 	Termin rezerwacji:
 	 </td>
-	<td>
+	<td>    
 	<%= calendar_date_select_tag "date", "", :valid_date_check => "date >= (new Date()).stripTime()", :popup => :force %>
 	</td>
 </tr>
 <tr>
 	<td>Grupa
 	</td><td>
-    <%= collection_select(:dodaj, :grupa, Group.find(:all, :group => :nazwa), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
+		<%= collection_select(:dodaj, :grupa, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupe"}) %>
 	</td>
 	<td>Uwagi: </td>
 	<td><%= text_field 'dodaj', 'uwagi', :size => 20%></td>
@@ -115,9 +115,9 @@
 <br /> <br />
 		Sale wykładowe: 31, 133, 115 (60 osób), 221, <br />
 <br /><br />
-<%= observe_form :formularz,
-		:frequency => 1,
-		:update => "sale",
-		:complete => "Element.show('Eplany')",
-		:url => { :action => "formularz" }
+<%= observe_form :formularz, 
+		:frequency => 1, 
+		:update => "sale", 
+		:complete => "Element.show('Eplany')", 
+		:url => { :action => "formularz" } 
 %>

@@ -32,7 +32,7 @@
 <table class="formularz">
 <tr>
 	<td rowspan=3>
-    <%= collection_select(:dodaj, :grupa, Group.find(:all, :group => :nazwa), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}, :multiple => true, :size => 7) %>
+		<%= collection_select(:dodaj, :grupa, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupe"}, :multiple => true, :size => 7) %>
 	</td>
 	<td class="label">Godzina</td>
 	<td><%= select :dodaj, :godz, @listagodz%></td>

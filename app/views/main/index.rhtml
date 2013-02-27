@@ -34,7 +34,7 @@
   <td> Grupa: </td>
   <td>
 	<% form_tag '/main/showgroup', {:method => 'get'} do %>
-    <%= collection_select(:plan,:id, Group.find(:all, :group => :nazwa), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
+	<%= collection_select(:plan,:id, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
 	<%= submit_tag "Pokaż" %>
  <% end %>
   </td>
