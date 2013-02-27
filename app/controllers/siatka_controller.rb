@@ -239,13 +239,11 @@ class SiatkaController < ApplicationController
     else
       @grupy = Group.find(:all)
     end
-    #pobranie aktualnego roku akademickiego
-    @rok = semestr
 
     pdf = TCPDF.new
     pdf.SetAutoPageBreak(false)
 
-    doc_title = "Rozkład Zajęć semestr zimowy 2012/2013";
+    doc_title = "Rozkład zajęć na semestr #{current_semester.semestr_rok}";
     doc_subject = "AGH";
     doc_keywords = "Plan zajęć";
     #set margins
@@ -267,7 +265,7 @@ class SiatkaController < ApplicationController
       pdf.SetFont("FreeSans", "", 14);
       pdf.SetLineWidth(0.3)
 
-      pdf.MultiCell(0, 5, "Rozkład Zajęć semestr zimowy #{@rok}/#{@rok.to_i + 1}", 0, 'C', 0, 1);
+      pdf.MultiCell(0, 5, "Rozkład Zajęć na semestr #{current_semester.semestr_rok}", 0, 'C', 0, 1);
       pdf.SetFont("FreeSans", "", 10);
       pdf.MultiCell(0, 5, "Rok #{@gru[0]}#{@gru[1]} #{@gru[2..5]}", 0, 'C', 0, 1);
       pdf.MultiCell(0, 5, "", 0, 'C', 0,1);
@@ -1030,8 +1028,6 @@ class SiatkaController < ApplicationController
      @gr = Room.find(:all)
    end
 
-   @rok = semestr
-
    pdf = TCPDF.new
    pdf.SetAutoPageBreak(false)
 
@@ -1044,14 +1040,14 @@ class SiatkaController < ApplicationController
      @size = []
      56.times { |i|      @size << 35 + i * 4 }
 
-     doc_title = "Rozkład Zajęć semestr zimowy 2012/2013";
+     doc_title = "Rozkład Zajęć na semestr #{current_semester.semestr_rok}";
      doc_subject = "AGH";
      doc_keywords = "Plan zajęć";
      pdf.AddPage();
      pdf.SetFont("FreeSans", "", 14);
      pdf.SetLineWidth(0.3)
 
-     pdf.MultiCell(0, 5, "Rozkład Zajęć semestr zimowy #{@rok}/#{@rok.to_i + 1}", 0, 'C', 0, 1);
+     pdf.MultiCell(0, 5, "Rozkład Zajęć na semestr #{current_semester.semestr_rok}", 0, 'C', 0, 1);
      pdf.SetFont("FreeSans", "", 10);
      pdf.MultiCell(0, 5, "Sala: #{sala.numer}", 0, 'C', 0, 1);
      pdf.MultiCell(0, 5, "", 0, 'C', 0,1);
@@ -1180,8 +1176,6 @@ class SiatkaController < ApplicationController
      @kierunki[name][:zajecia] << {:grupa => g, :zajecia_czw => grupa_czw, :zajecia_pia => grupa_pia}
    end
 
-
-   @rok = semestr
    render :layout => false
  end
 
