@@ -512,11 +512,11 @@ class SiatkaController < ApplicationController
       else
         # sprawdzanie dostępności sali
         if params[:room][:numer].to_s != "WF" && params[:room][:numer].to_s != "SJO"
-          @sp = Plan.find(:all, :conditions =>  ["id NOT LIKE '#{params[:dodaj][:id]}' AND sala = '#{params[:room][:numer]}' AND dni = '#{ params[:dodaj][:dni]}' AND plan_id = '#{getEditPlan}'"])
+          @sp = Plan.find(:all, :conditions =>  ["id != '#{params[:dodaj][:id].to_i}' AND sala = '#{params[:room][:numer]}' AND dni = '#{ params[:dodaj][:dni]}' AND plan_id = '#{getEditPlan}'"])
           # mtfk
           # tymczasowy fix na kolizje zajec ze starym semestrem
-          #  @sp2 = Reservation.find(:all, :conditions => "sala = '#{params[:room][:numer]}' AND dni ='#{params[:dodaj][:dni]}' AND id NOT LIKE '#{params[:dodaj][:id]}' AND waznosc >= '#{Date.parse(Time.now.strftime('%d-%m-%Y'))}'")
-          @sp2 = Reservation.find(:all, :conditions => "sala = '#{params[:room][:numer]}' AND dni ='#{params[:dodaj][:dni]}' AND id NOT LIKE '#{params[:dodaj][:id]}' AND waznosc >= '#{Date.parse('25-02-2013')}'")
+          #  @sp2 = Reservation.find(:all, :conditions => "sala = '#{params[:room][:numer]}' AND dni ='#{params[:dodaj][:dni]}' AND id != '#{params[:dodaj][:id].to_i}' AND waznosc >= '#{Date.parse(Time.now.strftime('%d-%m-%Y'))}'")
+          @sp2 = Reservation.find(:all, :conditions => "sala = '#{params[:room][:numer]}' AND dni ='#{params[:dodaj][:dni]}' AND id != '#{params[:dodaj][:id].to_i}' AND waznosc >= '#{Date.parse('25-02-2013')}'")
           for s in @sp2
             if checkfreetime(s.waznosc.strftime('%d-%m-%Y'))
               @dod = s.dlugosc.to_i * 3
@@ -544,7 +544,7 @@ class SiatkaController < ApplicationController
         end
         if @jest != 1
           #sprawdzanie wykładowcy
-          @sp = Plan.find(:all, :conditions => ["id NOT LIKE '#{params[:dodaj][:id]}' AND prowadzacy LIKE '#{params[:dodaj][:prowadzacy]}' AND plan_id = '#{getEditPlan}' AND dni LIKE '#{params[:dodaj][:dni]}' AND sala LIKE '#{params[:dodaj][:dni]}'"])
+          @sp = Plan.find(:all, :conditions => ["id != '#{params[:dodaj][:id].to_i}' AND prowadzacy LIKE '#{params[:dodaj][:prowadzacy]}' AND plan_id = '#{getEditPlan}' AND dni LIKE '#{params[:dodaj][:dni]}' AND sala LIKE '#{params[:dodaj][:dni]}'"])
           for s in @sp
             @dod = s.dlugosc.to_i * 3
             @godz1 = s.godz.to_i
@@ -774,7 +774,7 @@ class SiatkaController < ApplicationController
              @test = params[:dodaj][:grupa].split("")
              @tmp = @test[0].to_s + @test[1].to_s
              @kursy = Plan.find(:all, :conditions => {:plan_id => getEditPlan, :grupa => @tmp, :dni => @dzien})
-             @kursy2 = Reservation.find_by_sql("SELECT * from reservations WHERE grupa LIKE '#{@tmp}' AND  waznosc LIKE '%#{Date.parse(params[:dodaj][:waznosc])}%'")
+             @kursy2 = Reservation.find_by_sql("SELECT * from reservations WHERE grupa LIKE '#{@tmp}' AND  waznosc = '#{Date.parse(params[:dodaj][:waznosc])}'")
              for s in @kursy2
                @dod = s.dlugosc * 3
                @godz1 = s.godz.to_i

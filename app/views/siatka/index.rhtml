@@ -68,7 +68,7 @@
  <tr>
   <td> Rezerwacje: </td><td>
   <% form_tag '/main/rezerwacje', {:method => 'get'} do %>
-	<%= collection_select(:room,:sala, Room.find(:all, :group => "numer").sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
+	<%= collection_select(:room,:sala, Room.find(:all).sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
   </td>
   <td>
 	<%= submit_tag "Pokaż" %>
@@ -77,7 +77,7 @@
 <tr>
 <td> Plan sal: </td><td>
 <% form_tag '/main/showroom', {:method => 'get'} do %>
-	<%= collection_select(:room,:sala, Room.find(:all, :group => "numer").sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
+	<%= collection_select(:room,:sala, Room.find(:all).sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
 </td>
 <td>
 	<%= submit_tag "Pokaż" %>
@@ -95,7 +95,7 @@
 </tr>
 <td>Plan grup:</td><td>
 <% form_tag '/main/showgroup', {:method => 'get'} do %>
-	<%= collection_select(:plan,:id, Group.find(:all, :group => "nazwa"), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
+	<%= collection_select(:plan,:id, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
 </td><td>
 	<%= submit_tag "Pokaż" %>
 <% end %>
