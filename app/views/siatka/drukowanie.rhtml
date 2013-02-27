@@ -9,7 +9,7 @@
 
 <p>
 <% form_tag '/siatka/zestawienie', {:method => 'get'} do %>
-	<%= collection_select(:grupa,:nazwa, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
+  <%= collection_select(:grupa,:nazwa, Group.find(:all, :group => :nazwa), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
 </td><td>
 	<%= submit_tag "Pokaż" %>
 <% end %>

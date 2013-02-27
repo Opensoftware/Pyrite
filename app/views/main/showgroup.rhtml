@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'plany' %>
 	<% form_tag '',{ :id => "edycjaplanow"}  do %>
-<p align="center">Wybierz inną grupę:	<%= collection_select(:plan,:id, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %></p>
+    <p align="center">Wybierz inną grupę:	<%= collection_select(:plan,:id, Group.find(:all, :group => :nazwa), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %></p>
 <% end %>
 
 <div align="center" id="Eplany">
