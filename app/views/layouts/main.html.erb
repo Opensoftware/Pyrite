@@ -14,7 +14,7 @@
 <body>
   <div id="topmenu">
     <p><b> <%= Settings::UNIT_NAME %> </b> </br>System planów zajęć.</p>
-	<p> SIATKA NA SEMESTR: <%= Schedule.find_by_id(Setting.first.try(:current_plan)).try(:semestr_rok) %> </p>
+	  <p> SIATKA NA SEMESTR: <%= current_semester.try(:semestr_rok) %> </p>
     <div id="menu_container">
       <ul id="menu">
         <li><%= link_to_if(session[:uid].nil?, "Strona główna", :controller => 'main') do
