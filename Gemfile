@@ -10,6 +10,7 @@ gem "xml-simple", "1.0.11"
 gem "pdf-writer"
 
 group :development do
+  gem 'hirb'
   gem "ruby-debug"
 end
 
