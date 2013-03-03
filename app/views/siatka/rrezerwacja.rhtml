@@ -10,7 +10,7 @@
 
 <div>
 	<% form_tag 'addrez'  do %>
- 
+
 	<center>
 	<table id="formularz">
 	<tr>
@@ -32,7 +32,7 @@
 	</tr>
 	<tr>
 		<td class="formLabel">Rodzaj zajęć:	</td>
-		<td> 
+		<td>
       <%= @dodaj.rodzaj = params[:dodaj][:rodzaj] %>
 			<%= hidden_field :dodaj, :rodzaj %>
 		</td>
@@ -42,8 +42,8 @@
 			<%= hidden_field :dodaj, :przedmiot %>
 		</td>
 	  <td class="formLabel">Termin rezerwacji:</td>
-		<td> 
-			<%= @dodaj.waznosc = params[:date] %>  
+		<td>
+			<%= @dodaj.waznosc = params[:date] %>
 			<%= hidden_field :dodaj, :waznosc  %>
 		</td>
 	</tr>
@@ -70,6 +70,4 @@
 <%= submit_tag "Zapisz", :confirm => "Anuluj aby przejżeć jeszcze raz dane, OK aby zapisać" %>
 <% end %>
 <%= link_to "Wstecz", "javascript:history.back()" %>
-<br /> <br />
-		Sale wykładowe: 31, 133, 115 (60 osób), 221, 213
-<br /><br />
+<br><br>
