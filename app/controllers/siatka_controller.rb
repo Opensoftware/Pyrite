@@ -544,7 +544,7 @@ class SiatkaController < ApplicationController
         end
         if @jest != 1
           #sprawdzanie wykładowcy
-          @sp = Plan.find(:all, :conditions => ["id != '#{params[:dodaj][:id].to_i}' AND prowadzacy LIKE '#{params[:dodaj][:prowadzacy]}' AND plan_id = '#{getEditPlan}' AND dni LIKE '#{params[:dodaj][:dni]}'"])
+          @sp = Plan.find(:all, :conditions => ["id != '#{params[:dodaj][:id].to_i}' AND prowadzacy LIKE '#{params[:lecturer][:lecture]}' AND plan_id = '#{getEditPlan}' AND dni LIKE '#{params[:dodaj][:dni]}'"])
           for s in @sp
             @dod = s.dlugosc.to_i * 3
             @godz1 = s.godz.to_i
