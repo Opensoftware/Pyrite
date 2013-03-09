@@ -1,6 +1,10 @@
 pl:
   link_home: Strona główna
   link_sign_in: Logowanie
+  link_siatka: Siatka
+  link_sign_out: Wyloguj ( %{email} )
+  link_howto: Jak to działa
+  link_contact: Kontakt
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie

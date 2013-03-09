@@ -2,6 +2,9 @@ SiatkaGit::Application.routes.draw do
 
   devise_for :users
 
+  match "/siatka" => "siatka#index", :as => "siatka"
+  match "/howto" => "main#howto", :as => "howto"
+  match "/contact" => "main#kontakt", :as => "contact"
   resources :schedules
   root :to => 'main#index'
 

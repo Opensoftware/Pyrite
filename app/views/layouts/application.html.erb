@@ -17,16 +17,15 @@
 	  <p> SIATKA NA SEMESTR: <%= current_semester.try(:semestr_rok) %> </p>
     <div id="menu_container">
       <ul id="menu">
-        <li><%= link_to_if(session[:uid].nil?, t("link_home"), root_path) do
-          link_to("Siatka", {:controller => 'siatka'}) end %>   </li>
-        <li><%= link_to_if(session[:uid].nil?, t("link_sign_in"), new_user_session_path) do
-          link_to("Wyloguj ( #{current_user.login} )", {:controller => 'account', :action => "logout"}) end %></li>
-        <li>
-          <%= link_to "Jak to działa", :controller => 'main', :action => 'howto' %>
-        </li>
-        <li>
-          <%= link_to "Kontakt", :controller => 'main', :action => 'kontakt'  %>
-        </li>
+        <% if user_signed_in? %>
+          <li> <%= link_to t("link_siatka"), siatka_path %> </li>
+          <li> <%= link_to t("link_sign_out", :email => current_user.email), destroy_user_session_path, :method => :delete %> </li>
+        <% else %>
+          <li> <%= link_to t("link_home"), root_path %> </li>
+          <li> <%= link_to t("link_sign_in"), new_user_session_path %> </li>
+        <% end %>
+        <li> <%= link_to t("link_howto"), howto_path %> </li>
+        <li> <%= link_to t("link_contact"), contact_path %> </li>
       </ul>
       <div style="clear:both;"></div>
   </div>

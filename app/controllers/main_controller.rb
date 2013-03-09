@@ -383,10 +383,11 @@ class MainController < ApplicationController
 
   def kontakt
     @email = Settings::CONTACT_EMAIL
+    render :kontakt, :layout => "application"
   end
 
   def howto
-
+    render :howto, :layout => "application"
   end
 
   private
