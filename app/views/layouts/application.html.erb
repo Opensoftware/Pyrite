@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-
-<html lang="pl">
-<head>
-  <title>Siatka zajęć <%= @unit_name %> </title>
-  <%= stylesheet_link_tag 'application' %>
-  <%= stylesheet_link_tag 'plany' %>
-  <%= stylesheet_link_tag 'main' %>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siatka zajęć <%= @unit_name %> </title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'plany' %>
+    <%= stylesheet_link_tag 'main' %>
+  </head>
 <body>
   <div id="topmenu">
     <p><b> <%= @unit_name %> </b> </br>System planów zajęć.</p>
@@ -42,6 +45,11 @@
       </p>
     </div>
   </div>
+
+  <!-- Javascripts
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <%= javascript_include_tag "application" %>
 
 </body>
 </html>
