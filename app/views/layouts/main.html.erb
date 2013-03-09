@@ -2,7 +2,7 @@
 
 <html lang="pl">
 <head>
-  <title>Siatka zajęć <%= Settings::UNIT_NAME %> </title>
+  <title>Siatka zajęć <%= @unit_name %> </title>
   <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'plany' %>
   <%= stylesheet_link_tag 'main' %>
@@ -13,7 +13,7 @@
 </head>
 <body>
   <div id="topmenu">
-    <p><b> <%= Settings::UNIT_NAME %> </b> </br>System planów zajęć.</p>
+    <p><b> <%= @unit_name %> </b> </br>System planów zajęć.</p>
 	  <p> SIATKA NA SEMESTR: <%= current_semester.try(:semestr_rok) %> </p>
     <div id="menu_container">
       <ul id="menu">

@@ -1,9 +1,11 @@
 # encoding: utf-8
 class MainController < ApplicationController
+  before_filter :set_unit_name
 
   def index
-
+    render :index, :layout => "main"
   end
+
   require 'csv'
 
   def initialize()
@@ -380,11 +382,17 @@ class MainController < ApplicationController
 	end
 
   def kontakt
-
+    @email = Settings::CONTACT_EMAIL
   end
 
   def howto
 
   end
+
+  private
+
+    def set_unit_name
+      @unit_name = Settings::UNIT_NAME
+    end
 
 end
