@@ -1,7 +1,7 @@
 <h2>Konfiguracja systemu siatka</h2>
 
-<% form_tag 'konfiguracja' do %>
- 
+<%= form_tag 'konfiguracja' do %>
+
 <p>Plan do wyświetlania: <%= collection_select(:config, :current_plan, Schedule.find(:all), :id, :semestr_rok, {:prompt => "Wybierz plan"}) %>
 <p>Plan do edycji: <%= collection_select(:config, :plan_to_edit, Schedule.find(:all), :id, :semestr_rok, {:prompt => "Wybierz plan", :selected => @config.plan_to_edit}) %></p>
 <%= submit_tag 'Zapisz' %>

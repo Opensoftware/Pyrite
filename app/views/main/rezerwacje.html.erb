@@ -4,27 +4,27 @@
 <h2> Rezerwacje sal </h2>
 
 <% @room.numer = params[:room][:sala] %>
-	<% form_tag '',{ :id => "edycjaplanow"}  do %>
-Sala:  <%= collection_select(:room,:numer, Room.find(:all).sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
-	<%= hidden_field(:plan,:wazneod, :value => @date) %>
+<%= form_tag '',{ :id => "edycjaplanow"}  do %>
+  Sala:  <%= collection_select(:room,:numer, Room.find(:all).sort {|x,y| x.numer.to_i <=> y.numer.to_i}, :numer, :numer, {:prompt => "Wybierz sale"}) %>
+  <%= hidden_field(:plan,:wazneod, :value => @date) %>
 <% end %>
 
 <div id="Eplany">
 <table align="center" class="navigate">
-<tr>
-<td>
-  <%= link_to("<< poprzedni tydzień", {:controller => 'main', :action => 'rezerwacje', :params => { :data => Date.parse("#{@date - 7.days}"), :room => {:sala => @sala}}  } ) %>
-	<br /><span style="font-size:small"><%= @date - 7.days %></span>
-</td>
-<td>
-</td>
-<td>
-  <%= link_to("następny tydzień >>", {:controller => 'main', :action => 'rezerwacje', :params => { :data => Date.parse("#{@date.next_week}"), :room => {:sala => @sala} }}) %>
-	<br /><span style="font-size:small"><%= @date.next_week %></span>
-</td>
-</tr>
+  <tr>
+    <td>
+      <%= link_to("<< poprzedni tydzień", {:controller => 'main', :action => 'rezerwacje', :params => { :data => Date.parse("#{@date - 7.days}"), :room => {:sala => @sala}}  } ) %>
+      <br><span style="font-size:small"><%= @date - 7.days %></span>
+    </td>
+    <td>
+    </td>
+    <td>
+      <%= link_to("następny tydzień >>", {:controller => 'main', :action => 'rezerwacje', :params => { :data => Date.parse("#{@date.next_week}"), :room => {:sala => @sala} }}) %>
+      <br><span style="font-size:small"><%= @date.next_week %></span>
+    </td>
+  </tr>
 </table>
-<br />
+<br>
     <table class="plan" align="center">
 	<tr style="font-size:small">
 	    <td id="tableHeader">  </td>
@@ -93,7 +93,6 @@ Sala:  <%= collection_select(:room,:numer, Room.find(:all).sort {|x,y| x.numer.t
 	     <% end %>
 
         <% end %>
-
 
 	<% end %>
 	</tr>

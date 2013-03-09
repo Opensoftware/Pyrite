@@ -1,4 +1,4 @@
-<% form_for(@schedule) do |f| %>
+<%= form_for(@schedule) do |f| %>
   <%= f.error_messages %>
 
 <table align="center">
@@ -6,7 +6,7 @@
 		<td><%= f.label :nazwa %></td>
 		<td><%= f.text_field :nazwa %></td>
  </tr>
- <tr> 
+ <tr>
 	<td><%= f.label :rok %></td>
 	<td><%= f.text_field :rok %></td>
  </tr>

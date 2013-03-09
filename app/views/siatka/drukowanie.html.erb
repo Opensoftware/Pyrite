@@ -1,4 +1,4 @@
-<br />
+<br>
 
 <h2>Drukowanie planów </h2>
 <p><font><%= link_to("Pobierz plany dla sal", {:controller => 'siatka', :action => 'drukujsale'}) %></font></p>
@@ -8,7 +8,7 @@
 <h2> Drukowanie zestawien grup na czw, pia </h2>
 
 <p>
-<% form_tag '/siatka/zestawienie', {:method => 'get'} do %>
+<%= form_tag '/siatka/zestawienie', {:method => 'get'} do %>
 	<%= collection_select(:grupa,:nazwa, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupę"}) %>
 </td><td>
 	<%= submit_tag "Pokaż" %>

@@ -1,9 +1,9 @@
 <div><p style="color: red"><%= @msg %></p></div>
-<br /><br />
+<br><br>
 <center>
 <table>
 		<% @dodaj.grupa = @grupy %>
-	<% form_tag "/siatka/adding" ,{ :id => "edycjaplanow"}  do %>
+	<%= form_tag "/siatka/adding" ,{ :id => "edycjaplanow"}  do %>
 <tr>
 	<td>
 	Godzina 	</td>
