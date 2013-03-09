@@ -5,12 +5,9 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  include AuthenticatedSystem
+  # include AuthenticatedSystem
 
-  filter_parameter_logging :password
-  rescue_from(::ActionController::UnknownAction) {redirect_to :controller => 'main' }
   protect_from_forgery
-
   helper_method :current_semester
 
 
