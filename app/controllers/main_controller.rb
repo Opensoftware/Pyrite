@@ -3,7 +3,7 @@ class MainController < ApplicationController
   before_filter :set_unit_name
 
   def index
-    render :index, :layout => "main"
+    render :index, :layout => "application"
   end
 
   require 'csv'
