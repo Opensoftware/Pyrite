@@ -1,17 +1,22 @@
-# A sample Gemfile
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
+gem 'rails', '3.2.12'
 gem 'thin'
-gem "rails", "2.3.15"
-gem 'sqlite3'
-gem "fpdf", "1.53"
-gem "builder", "2.1.2"
-gem "xml-simple", "1.0.11"
-gem "pdf-writer"
+gem 'devise'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'therubyracer', :platforms => :ruby
+  gem 'uglifier', '>= 1.0.3'
+end
+
+gem 'jquery-rails'
 
 group :development do
   gem 'hirb'
-  gem "ruby-debug"
+  gem 'debugger'
+  gem 'sqlite3'
 end
 
 group :production do
