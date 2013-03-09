@@ -23,7 +23,7 @@ class AccountController < ApplicationController
 	  end
       redirect_back_or_default(:controller => '/siatka', :action => 'index')
       session[:uid] = current_user.id
-      flash[:notice] = "Zostałęś pomyslnie zalogowany"
+      flash[:notice] = t("notice_successfully_login")
     end
   end
 
@@ -34,7 +34,7 @@ class AccountController < ApplicationController
     @user.save!
     self.current_user = @user
     redirect_back_or_default(:controller => '/account', :action => 'index')
-    flash[:notice] = "Rejestracja przeprowadzona pomyślnie!"
+    flash[:notice] = t("notice_successfully_registered")
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
   end
@@ -44,7 +44,7 @@ class AccountController < ApplicationController
     cookies.delete :auth_token
     reset_session
     session[:uid] = nil
-    flash[:notice] = "Zostałeś wylogowany."
+    flash[:notice] = t("notice_successfully_logout")
     redirect_back_or_default(:controller => '/account', :action => 'index')
   end
 end
