@@ -17,9 +17,9 @@
 	  <p> SIATKA NA SEMESTR: <%= current_semester.try(:semestr_rok) %> </p>
     <div id="menu_container">
       <ul id="menu">
-        <li><%= link_to_if(session[:uid].nil?, "Strona główna", :controller => 'main') do
+        <li><%= link_to_if(session[:uid].nil?, t("link_home"), root_path) do
           link_to("Siatka", {:controller => 'siatka'}) end %>   </li>
-        <li><%= link_to_if(session[:uid].nil?, "Logowanie", :controller => "account", :action => "login") do
+        <li><%= link_to_if(session[:uid].nil?, t("link_sign_in"), new_user_session_path) do
           link_to("Wyloguj ( #{current_user.login} )", {:controller => 'account', :action => "logout"}) end %></li>
         <li>
           <%= link_to "Jak to działa", :controller => 'main', :action => 'howto' %>
@@ -34,6 +34,9 @@
 
 
   <div id="main">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield  %>
   </div>
   <br />

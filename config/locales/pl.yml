@@ -1,5 +1,6 @@
 pl:
   link_home: Strona główna
+  link_sign_in: Logowanie
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie

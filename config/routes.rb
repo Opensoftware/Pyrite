@@ -1,5 +1,6 @@
 SiatkaGit::Application.routes.draw do
 
+  devise_for :users
 
   resources :schedules
   root :to => 'main#index'
