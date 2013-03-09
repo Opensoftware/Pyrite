@@ -19,13 +19,6 @@
 </table>
 </div>
 
-<%= observe_form :edycjaplanow,
-		:frequency => 1,
-		:update => "Eplany",
-		:complete => "Element.show('Eplany')",
-		:url => { :action => "previewr" }
-%>
-
 <div id="Eplany">
 <table border=0 align="center" width="70%" id="glowny">
 <tr>
@@ -100,7 +93,7 @@ Sala: <%= params[:sala] %>
 				<% if current_user.has_role? 'moderator' %>
 				<%= link_to("Edytuj", {:controller => 'siatka', :action => 'edit', :params => { :id => @dl[5] }}) %>
 				<% end %>
-			  
+
 		                  </td>
  				</tr>
 			</table>

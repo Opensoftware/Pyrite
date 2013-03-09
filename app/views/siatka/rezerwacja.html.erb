@@ -112,10 +112,4 @@
 
 	<%= submit_tag "Wyślij" %>
 	<% end %>
-<br /><br />
-<%= observe_form :formularz,
-		:frequency => 1,
-		:update => "sale",
-		:complete => "Element.show('Eplany')",
-		:url => { :action => "formularz" }
-%>
+<br><br>
