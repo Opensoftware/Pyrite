@@ -5,6 +5,10 @@ SiatkaGit::Application.routes.draw do
   match "/siatka" => "siatka#index", :as => "siatka"
   match "/howto" => "main#howto", :as => "howto"
   match "/contact" => "main#kontakt", :as => "contact"
+
+  match "/siatka/rezerwacja" => "siatka#rezerwacja"
+
+
   resources :schedules
   resource :settings, :only => [:edit, :update]
   root :to => 'main#index'
