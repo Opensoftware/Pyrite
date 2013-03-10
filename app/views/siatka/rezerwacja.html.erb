@@ -50,7 +50,7 @@
 	<td>Prowadzący:
 	</td>
 	<td>
-	<%= text_field_with_auto_complete :lecturer, :lecture, { :value => params[:prowadzacy], :size => 20},{:method => :get } %>
+	<%= text_field :lecturer, :lecture, { :value => params[:prowadzacy], :size => 20} %>
 	</td>
 	<td></td>
 	<td>
@@ -68,7 +68,7 @@
 	<td> <%= select(:dodaj, :rodzaj, @r) %><br />
 	<td>Przedmiot:</td>
 	<td>
-	 <%= text_field_with_auto_complete :subject, :nazwa, { :value => params[:przedmiot], :size => 20},{:method => :get } %>
+	 <%= text_field :subject, :nazwa, { :value => params[:przedmiot], :size => 20} %>
 	</td>
 	</td>
 	<td>
