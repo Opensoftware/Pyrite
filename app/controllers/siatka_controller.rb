@@ -554,6 +554,7 @@ class SiatkaController < ApplicationController
      @salee << pl.numer
    end
    @salee = @salee.sort { |a,b| a.to_i <=> b.to_i}
+   render :rezerwacja, :layout => "application"
  end
 
  def rrezerwacja
