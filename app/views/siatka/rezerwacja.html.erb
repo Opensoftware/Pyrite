@@ -1,9 +1,3 @@
-<%= stylesheet_link_tag 'plany' %>
-<%= javascript_include_tag 'calendar_date_select/calendar_date_select.js' %>
-<%= javascript_include_tag 'calendar_date_select/format_hyphen_ampm.js' %>
-<%= javascript_include_tag 'calendar_date_select/locale/pl.js' %>
-<%= stylesheet_link_tag 'calendar_date_select/silver.css' %>
-
 <style type="text/css">
 .lista  {
  background: white;
@@ -78,7 +72,7 @@
 	Termin rezerwacji:
 	 </td>
 	<td>
-	<%= calendar_date_select_tag "date", "", :valid_date_check => "date >= (new Date()).stripTime()", :popup => :force %>
+    <%= text_field "date", "", :class => "datepicker" %>
 	</td>
 </tr>
 <tr>

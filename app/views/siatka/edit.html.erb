@@ -57,7 +57,7 @@
 	Termin rezerwacji:
 	 </td>
 	<td>
-	<%= calendar_date_select_tag "date", "", :valid_date_check => "date >= (new Date()).stripTime()", :popup => :force %>
+    <%= text_field "date", "", :class => "datepicker" %>
 	</td>
 	<% else %>
 	<td>Katedra</td>
