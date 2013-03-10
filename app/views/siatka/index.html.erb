@@ -4,61 +4,60 @@
 <tr>
 	<td>
 		<ul>
-			<% if (current_user.has_role? 'admin') %>
-			<li><p>
-				<%= link_to("Uprawnienia", {:controller => 'siatka', :action => 'admin'}) %>
-				<% end %> </p></li>
-			<% if (current_user.has_role? 'moderator') %>
-			<li><p>
-        <%= link_to("Ustawienia systemu", {:controller => 'siatka', :action => 'konfiguracja'}) %>
-				<%end%></p></li>
-			<% if (current_user.has_role? 'kierownik') %>
-				<li><p>
-        <%= link_to("Stwórz konto", {:controller => 'account', :action => 'signup'}) %>
-				<%end%></p></li>
-			<% if (current_user.has_role? 'moderator') %>
-				<li><p>
-        <%= link_to("Ustaw dni wolne", {:controller => 'freedays', :action => ''}) %>
-				<%end%></p></li>
-			<% if (current_user.has_role? 'moderator') %>
-				<li><p>
-        <%= link_to("Zarządzaj planami", {:controller => 'schedules', :action => ''}) %>
-				<%end%></p></li>
-
-
+			<% if can? :manage, User %>
+              <li>
+                <p> <%= link_to("Uprawnienia", {:controller => 'siatka', :action => 'admin'}) %> </p>
+              </li>
+            <% end %>
+			<% if can? :manage, Settings %>
+              <li>
+                <p> <%= link_to("Ustawienia systemu", {:controller => 'siatka', :action => 'konfiguracja'}) %> </p>
+              </li>
+            <% end %>
+			<% if can? :manage, User %>
+              <li>
+                <p> <%= link_to("Stwórz konto", {:controller => 'account', :action => 'signup'}) %> </p>
+              </li>
+            <% end %>
+			<% if can? :manage, Freeday %>
+              <li>
+                <p> <%= link_to("Ustaw dni wolne", {:controller => 'freedays', :action => ''}) %> </p>
+              </li>
+            <% end %>
+			<% if can? :manage, Schedule %>
+		      <li>
+                <p> <%= link_to("Zarządzaj planami", {:controller => 'schedules', :action => ''}) %> </p>
+              </li>
+            <% end %>
 		</ul>
 	</td>
-	<td>
-		<ul>
-			<% if (current_user.has_role? 'user') %>
-			<li><p>
-				<%= link_to("Rezerwuj salę", {:controller => 'siatka', :action => 'rezerwacja'}) %>
-				<% end %> </p></li>
-				<% if (current_user.has_role? 'moderator') %>
-			<li><p>
-        <%= link_to("Wprowadź dane", {:controller => 'siatka', :action => 'add'}) %>
-				<%end%></p></li>
-			<% if (current_user.has_role? 'moderator') %>
-				<li><p>
-        <%= link_to("Wykrywanie kolizji sal", {:controller => 'siatka', :action => 'kolizje'}) %>
-				<%end%></p></li>
-			<% if (current_user.has_role? 'moderator') %>
-				<li><p>
-        <%= link_to("Wykrywanie kolizji grup", {:controller => 'siatka', :action => 'kolizjegrup'}) %>
-				<%end%></p></li>
-			<% if (current_user.has_role? 'moderator') %>
-				<li><p>
-        <%= link_to("Drukowanie planów", {:controller => 'siatka', :action => 'drukowanie'}) %>
-				<%end%></p></li>
-		<% if (current_user.has_role? 'admin') %>
-					<li><p>
-        <%= link_to("Statystyki", {:controller => 'siatka', :action => 'statystyki'}) %>
-				<%end%></p></li>
-			</ul>
-	</td>
-</tr>
-
-
+    <td>
+      <ul>
+        <% if can? :manage, Plan %>
+          <li>
+            <p> <%= link_to("Rezerwuj salę", {:controller => 'siatka', :action => 'rezerwacja'}) %> </p>
+          </li>
+          <li>
+            <p> <%= link_to("Wprowadź dane", {:controller => 'siatka', :action => 'add'}) %></p>
+          </li>
+          <li>
+            <p> <%= link_to("Wykrywanie kolizji sal", {:controller => 'siatka', :action => 'kolizje'}) %> </p>
+          </li>
+          <li>
+            <p> <%= link_to("Wykrywanie kolizji grup", {:controller => 'siatka', :action => 'kolizjegrup'}) %> </p>
+          </li>
+          <li>
+            <p> <%= link_to("Drukowanie planów", {:controller => 'siatka', :action => 'drukowanie'}) %> </p>
+          </li>
+        <% end %>
+        <% if can? :manage, :all %>
+          <li>
+            <p> <%= link_to("Statystyki", {:controller => 'siatka', :action => 'statystyki'}) %> </p>
+          </li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
 </table>
 
 <br>

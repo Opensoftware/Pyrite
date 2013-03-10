@@ -14,4 +14,9 @@ class User < ActiveRecord::Base
   #validates_length_of       :email,    :within => 3..100
   #validates_uniqueness_of   :login, :case_sensitive => false
 
+
+  def admin?
+    return true if email.present?
+  end
+
 end

@@ -292,6 +292,7 @@ class SiatkaController < ApplicationController
   end
 
   def index
+    render :index, :layout => "application"
   end
 
   def uzup
