@@ -1,21 +1,2 @@
-<%= javascript_include_tag 'calendar_date_select/calendar_date_select.js' %>
-<%= javascript_include_tag 'calendar_date_select/format_hyphen_ampm.js' %>
-<%= javascript_include_tag 'calendar_date_select/locale/pl.js' %>
-<%= stylesheet_link_tag 'calendar_date_select/silver.css' %>
-<%= stylesheet_link_tag 'plany' %>
-
-
-<p class="error"><%= flash[:notice] %></p>
 <p> Dodaj nową przerwe w zajęciach</p>
-<%= form_tag 'create' do %>
-	<%= text_field :freeday, :nazwa %>
-	<%= calendar_date_select_tag :start, "", :valid_date_check => "date >= (new Date()).stripTime()", :popup => :force, :time => true %>
-	<%= calendar_date_select_tag :stop, "", :valid_date_check => "date >= (new Date()).stripTime()", :popup => :force, :time => true %>
-
-  <p>
-    <%= submit_tag "Zapisz" %>
-  </p>
-<% end %>
-
-<%= link_to 'Wstecz', freedays_path %>
-
+<%= render :partial => "form" %>

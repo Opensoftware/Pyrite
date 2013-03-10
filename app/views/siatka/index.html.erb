@@ -21,7 +21,7 @@
             <% end %>
 			<% if can? :manage, Freeday %>
               <li>
-                <p> <%= link_to("Ustaw dni wolne", {:controller => 'freedays', :action => ''}) %> </p>
+                <p> <%= link_to("Ustaw dni wolne", freedays_path) %> </p>
               </li>
             <% end %>
 			<% if can? :manage, Schedule %>

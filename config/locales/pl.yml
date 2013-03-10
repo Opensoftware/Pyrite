@@ -11,6 +11,9 @@ pl:
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
   notice_successfully_logout: Zostałeś wylogowany
   notice_settings_updated: Ustawienia systemu zostały zapisane
+  notice_successfully_saved: Wpis poprawnie zapisany.
+
+  error_invalid_data: Błędne dane.
 
   button_save: Zapisz
 
