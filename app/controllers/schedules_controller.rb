@@ -9,99 +9,82 @@
 #
 
 class SchedulesController < ApplicationController
-  layout "main"
 
-	# Przeglądanie stworzonych planów (nazw, identyfikatorów)
-  # GET /schedules
+  # Przeglądanie stworzonych planów (nazw, identyfikatorów)
   def index
-	permit "moderator"
+    authorize! :manage, Schedule
     @schedules = Schedule.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
-     # format.xml  { render :xml => @schedules }
     end
   end
 
-	# Przeglądanie konkretnego wpisu.
-  # GET /schedules/1
+  # Przeglądanie konkretnego wpisu.
   def show
-	permit "moderator"
+    authorize! :manage, Schedule
     @schedule = Schedule.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-  #    format.xml  { render :xml => @schedule }
     end
   end
 
 	# Ekran nowego planu
 	#
-  # GET /schedules/new
   def new
-	permit "moderator"
+    authorize! :manage, Schedule
     @schedule = Schedule.new
 
     respond_to do |format|
       format.html # new.html.erb
-    #  format.xml  { render :xml => @schedule }
     end
   end
 
-	# Edycja danego planu.
-  # GET /schedules/1/edit
+  # Edycja danego planu.
   def edit
-	permit "moderator"
+    authorize! :manage, Schedule
     @schedule = Schedule.find(params[:id])
   end
 
-	# Tworzenie nowego planu na podstawie otrzymanych parametrów.
-  # POST /schedules
-	#
+  # Tworzenie nowego planu na podstawie otrzymanych parametrów.
   def create
-	permit "moderator"
+    authorize! :manage, Schedule
     @schedule = Schedule.new(params[:schedule])
 
     respond_to do |format|
       if @schedule.save
         flash[:notice] = 'Plan zajęć stworzony pomyślnie.'
         format.html { redirect_to(@schedule) }
-  #      format.xml  { render :xml => @schedule, :status => :created, :location => @schedule }
       else
         format.html { render :action => "new" }
-   #     format.xml  { render :xml => @schedule.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-	# Zaktualizowanie edytowanego planu.
-  # PUT /schedules/1
+  # Zaktualizowanie edytowanego planu.
   def update
-	permit "moderator"
+    authorize! :manage, Schedule
     @schedule = Schedule.find(params[:id])
 
     respond_to do |format|
       if @schedule.update_attributes(params[:schedule])
         flash[:notice] = 'Plan zaktualizowany pomyślnie.'
         format.html { redirect_to(@schedule) }
-  #      format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-   #     format.xml  { render :xml => @schedule.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-	# Usunięcie danego planu.
-  # DELETE /schedules/1
+  # Usunięcie danego planu.
   def destroy
-	permit "admin"
+    authorize! :manage, Schedule
     @schedule = Schedule.find(params[:id])
     @schedule.destroy
 
     respond_to do |format|
       format.html { redirect_to(schedules_url) }
-  #    format.xml  { head :ok }
     end
   end
 end
