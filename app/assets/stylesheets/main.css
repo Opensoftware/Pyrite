@@ -1,5 +1,5 @@
 
-body { 
+body {
 text-align: center;
 }
 
@@ -8,19 +8,14 @@ text-align: center;
 }
 
 #topmenu {
-background-color: #f5f5e9; 
+background-color: #f5f5e9;
 color: black;
-text-align: center; 
+text-align: center;
 height: 170px;
 padding-top: 5px;
 font: small-caps 14px serif;
 border-collapse: collapse;
 border: 0px solid #000;
-}
-
-h1 {
-position:absolute;
-margin-left:100px;
 }
 
 .button {
@@ -36,7 +31,7 @@ margin-left:100px;
 
 .button:hover {
   border: 1px solid red;
-} 
+}
 
 #main {
 background-image: url("");
@@ -117,3 +112,5 @@ ul#menu li  .selected{
 #zest1 { width: 1000px}
 #zest1 .title { border-bottom: 1px solid #000; background-color: #A6A2A2;}
 .group_name td {background-color: #B8D5D7; border-bottom: 2px solid #000; font-size: 15px; text-align:center}
+
+#settings-container {width: 500px; margin: 0px auto;}

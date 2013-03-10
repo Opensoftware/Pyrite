@@ -1,11 +1,32 @@
 <h1> <%= t("header_edit_settings") %> </h1>
-<div>
-  <%= form_for @settings, :url => settings_path, :method => :put do |f|%>
-    Plan do wyświetlania: <%= f.collection_select(:current_plan, Schedule.find(:all), :id, :semestr_rok, {:prompt => "Wybierz plan"}) %>
-    Plan do edycji: <%= f.collection_select(:plan_to_edit, Schedule.find(:all), :id, :semestr_rok, {:prompt => "Wybierz plan"}) %>
-    Nazwa wydziału: <%= f.text_field :unit_name %>
-    Email kontaktowy: <%= f.text_field :email_contact %>
+<div id="settings-container">
+  <%= form_for @settings, :url => settings_path, :method => :put, :html => { :class => "form-horizontal" } do |f|%>
 
-    <%= f.submit t("button_save") %>
+    <div class="control-group">
+      <label class="control-label" for="settings_current_plan"> <%= t("label_current_plan") %></label>
+      <div class="controls">
+        <%= f.collection_select(:current_plan, Schedule.find(:all), :id, :semestr_rok, {:prompt => "Wybierz plan"}) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="settings_plan_to_edit"> <%= t("label_plan_to_edit") %></label>
+      <div class="controls">
+        <%= f.collection_select(:plan_to_edit, Schedule.find(:all), :id, :semestr_rok, {:prompt => "Wybierz plan"}) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="settings_unit_name"> <%= t("label_unit_name") %></label>
+      <div class="controls">
+        <%= f.text_field :unit_name %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="settings_email_contact"> <%= t("label_email_contact") %></label>
+      <div class="controls">
+        <%= f.text_field :email_contact %>
+      </div>
+    </div>
+
+    <%= f.submit t("button_save"), :class => "btn" %>
   <% end %>
 </div>

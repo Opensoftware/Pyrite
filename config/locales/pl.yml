@@ -15,3 +15,9 @@ pl:
   button_save: Zapisz
 
   header_edit_settings: Edycja ustawień systemu
+
+
+  label_current_plan: Plan do wyświetlania
+  label_plan_to_edit: Plan do edycji
+  label_unit_name: Nazwa wydziału
+  label_email_contact: Email kontaktowy
