@@ -1,8 +1,7 @@
-require 'sys/uname'
 PDFKit.configure do |config|
   #wkhtmltopdf integrated with pdfkit isn't the newest (have issues with page breaking in html tables),
   #download at least 0.10.0 version from http://code.google.com/p/wkhtmltopdf/downloads/list
-  if Sys::Uname.machine.include? "i686"
+  if RUBY_PLATFORM.include?("i686")
     config.wkhtmltopdf = "#{Rails.root}/bin/wkhtmltopdf-i386-0_11rc1"
   else
     config.wkhtmltopdf = "#{Rails.root}/bin/wkhtmltopdf-amd64-0_11rc1"
