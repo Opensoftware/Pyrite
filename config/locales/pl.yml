@@ -5,7 +5,13 @@ pl:
   link_sign_out: Wyloguj ( %{email} )
   link_howto: Jak to działa
   link_contact: Kontakt
+  link_settings: Ustawienia systemu
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
   notice_successfully_logout: Zostałeś wylogowany
+  notice_settings_updated: Ustawienia systemu zostały zapisane
+
+  button_save: Zapisz
+
+  header_edit_settings: Edycja ustawień systemu

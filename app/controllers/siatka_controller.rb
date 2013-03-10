@@ -892,19 +892,6 @@ class SiatkaController < ApplicationController
    end
  end
 
- def konfiguracja
-   permit 'moderator'
-   @config = Setting.find(:first)
-   if request.post?
-     if !params[:config][:current_plan].nil? && !params[:config][:plan_to_edit].nil?
-       @config.current_plan = params[:config][:current_plan]
-       @config.plan_to_edit = params[:config][:plan_to_edit]
-       @config.save
-     end
-   else
-   end
- end
-
  def drukowanie
    permit 'moderator'
  end

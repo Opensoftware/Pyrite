@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 # metoda pobiera informacje na temat obecnie ustawionego planu zajęć
 # return @baza - identyfikator oznaczający nazwę bazy danych na której operuje system
   def get_current_plan
-    #   @config = Setting.find(:first)
+    #   @config = Settings.find(:first)
     #   case @config.current_plan
     #       when 0 : @baza = OldPlan
     #     when 1 : @baza = Plan
@@ -26,17 +26,17 @@ class ApplicationController < ActionController::Base
 
   # pobranie aktualnego roku akademickiego
   def current_semester
-    Schedule.find_by_id(Setting.first.try(:current_plan))
+    Schedule.find_by_id(Settings.first.try(:current_plan))
   end
 
   # pobieranie id planów ustawionych do edycji
   def getEditPlan
-    return Setting.find(1).plan_to_edit
+    return Settings.find(1).plan_to_edit
   end
 
   # pobranie id planu ustawionego do przeglądania
   def getViewPlan
-    return Setting.find(1).current_plan
+    return Settings.find(1).current_plan
   end
 
 

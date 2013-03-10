@@ -11,7 +11,7 @@
             <% end %>
 			<% if can? :manage, Settings %>
               <li>
-                <p> <%= link_to("Ustawienia systemu", {:controller => 'siatka', :action => 'konfiguracja'}) %> </p>
+                <p> <%= link_to t("link_settings"), edit_settings_path %> </p>
               </li>
             <% end %>
 			<% if can? :manage, User %>

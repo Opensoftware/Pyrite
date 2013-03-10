@@ -385,7 +385,7 @@ class MainController < ApplicationController
 	end
 
   def kontakt
-    @email = Settings::CONTACT_EMAIL
+    @email = Settings.first.email_contact
     render :kontakt, :layout => "application"
   end
 
@@ -396,7 +396,7 @@ class MainController < ApplicationController
   private
 
     def set_unit_name
-      @unit_name = Settings::UNIT_NAME
+      @unit_name = Settings.first.unit_name
     end
 
 end
