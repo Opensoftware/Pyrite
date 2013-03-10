@@ -8,8 +8,7 @@ class SiatkaController < ApplicationController
   #auto_complete_for :subject, :nazwa
   #in_place_edit_for :plan, :dni
 
-
-  before_filter :login_required, :except => [:drukujgrupe, :drukujsale, :showprow, :zestawienie]
+  before_filter :authenticate_user!
 
   def render_404
     render :file => "public/404.html", :status => 404
