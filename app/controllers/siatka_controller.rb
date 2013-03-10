@@ -2,11 +2,12 @@
 class SiatkaController < ApplicationController
   layout "main"
 
+  # TODO replace by something new
+  #auto_complete_for :room, :numer
+  #auto_complete_for :lecturer, :lecture
+  #auto_complete_for :subject, :nazwa
+  #in_place_edit_for :plan, :dni
 
-  auto_complete_for :room, :numer
-  auto_complete_for :lecturer, :lecture
-  auto_complete_for :subject, :nazwa
-  in_place_edit_for :plan, :dni
 
   before_filter :login_required, :except => [:drukujgrupe, :drukujsale, :showprow, :zestawienie]
 
