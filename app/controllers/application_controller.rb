@@ -31,12 +31,12 @@ class ApplicationController < ActionController::Base
 
   # pobieranie id planów ustawionych do edycji
   def getEditPlan
-    return Settings.find(1).plan_to_edit
+    return Settings.first.plan_to_edit
   end
 
   # pobranie id planu ustawionego do przeglądania
   def getViewPlan
-    return Settings.find(1).current_plan
+    return Settings.first.current_plan
   end
 
 
