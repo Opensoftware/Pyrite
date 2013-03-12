@@ -6,7 +6,11 @@ SiatkaGit::Application.routes.draw do
   match "/howto" => "main#howto", :as => "howto"
   match "/contact" => "main#kontakt", :as => "contact"
 
+  # TODO replace by resources
   match "/siatka/rezerwacja" => "siatka#rezerwacja"
+  match "/siatka/rrezerwacja" => "siatka#rrezerwacja"
+  match "/siatka/addrez" => "siatka#addrez"
+  match "/siatka/formularz" => "siatka#formularz"
 
 
   resources :schedules

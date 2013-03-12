@@ -284,14 +284,7 @@ class MainController < ApplicationController
     @room = Room.new
 
     if request.get?
-			#@rezerwacje = Reservation.find(:all, :conditions => { :waznosc => [@date,@date + 1.days,@date + 2.days,@date+3.days,@date+4.days], :sala => @sala })
-			@rezerwacje = Reservation.find(:all, :conditions => { :waznosc => [@date], :sala => @sala })
-			@rezerwacje += Reservation.find(:all, :conditions => { :waznosc => [@date+1.days], :sala => @sala })
-			@rezerwacje += Reservation.find(:all, :conditions => { :waznosc => [@date+2.days], :sala => @sala })
-			@rezerwacje += Reservation.find(:all, :conditions => { :waznosc => [@date+3.days], :sala => @sala })
-			@rezerwacje += Reservation.find(:all, :conditions => { :waznosc => [@date+4.days], :sala => @sala })
-			@rezerwacje += Reservation.find(:all, :conditions => { :waznosc => [@date+5.days], :sala => @sala })
-			@rezerwacje += Reservation.find(:all, :conditions => { :waznosc => [@date+6.days], :sala => @sala })
+      @rezerwacje =  Reservation.where('waznosc BETWEEN ? AND ?', @date.beginning_of_day, @date.end_of_week.end_of_day).where(:sala => @sala )
       for pl in @rezerwacje
         @Gz = (pl.godz.to_i / 60)
         @Mz = pl.godz.to_i - @Gz.minutes

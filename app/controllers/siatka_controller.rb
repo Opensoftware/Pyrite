@@ -559,6 +559,7 @@ class SiatkaController < ApplicationController
 
  def rrezerwacja
    @dodaj = Reservation.new
+   render :layout => "application"
  end
 
  def addrez
@@ -612,7 +613,7 @@ class SiatkaController < ApplicationController
              @sp = Plan.find(:all, :conditions => {:sala => params[:dodaj][:sala], :dni => @dzien, :plan_id => getEditPlan})
            end
          else
-           @sp = "";
+           @sp = []
          end
          @sp2 = Reservation.find(:all, :conditions => {:sala => params[:dodaj][:sala],  :waznosc => Date.parse(params[:dodaj][:waznosc])})
          for s in @sp2
@@ -709,7 +710,7 @@ class SiatkaController < ApplicationController
                if checkfreetime(@date)
                  @sp1 = Plan.find(:all, :conditions => {:grupa => params[:dodaj][:grupa], :dni => @dzien, :plan_id => getEditPlan})
                else
-                 @sp1 =""
+                 @sp1 = []
                end
                @sp2 = Reservation.find(:all, :conditions => {:grupa => params[:dodaj][:grupa],  :waznosc => Date.parse(params[:dodaj][:waznosc])})
                for s in @sp2
@@ -772,11 +773,11 @@ class SiatkaController < ApplicationController
 
 #sprawdzanie dostepnosci sal dla rezerwacji
  def formularz
-   if params[:date].empty?
+   if params[:date].first.empty?
      @date = "1-01-2009"
    else
-     @date = params[:date]
-     @dzien = getpolishname(Date.parse(params[:date]).strftime("%a"))
+     @date = params[:date].first
+     @dzien = getpolishname(Date.parse(@date).strftime("%a"))
    end
    if Date.parse(@date) >= Date.parse("30-06-2013")
      @free = ""
@@ -792,7 +793,7 @@ class SiatkaController < ApplicationController
          @sp = Plan.find(:all, :conditions => {:dni => @dzien, :plan_id => getEditPlan})
        end
      else
-       @sp = ""
+       @sp = []
      end
      @sp2 = Reservation.find(:all, :conditions => { :waznosc => @date})
      for s in @sp

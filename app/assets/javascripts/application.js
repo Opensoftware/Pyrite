@@ -21,4 +21,26 @@
 $(document).ready(function() {
 
   $(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+  $("#reservation-form").change(function() {
+    var params = $(this).serialize();
+    var fetch_rooms_url = $(this).data("room-url");
+    $.ajax({
+        url: fetch_rooms_url,
+        dataType: 'script',
+        data: params,
+        type: "GET",
+        complete: function(jqXHR) {
+            if(jqXHR.status == 500 || jqXHR.status == 404 || jqXHR.status == 403) {
+                errorHandling(jqXHR.status);
+            } else {
+              $("#available-rooms-container").html(jqXHR.responseText);
+            }
+        }
+    });
+  });
 });
+
+function errorHandling(error) {
+    // TODO improve it a bit for example own modal with some help info.
+    alert(error);
+}

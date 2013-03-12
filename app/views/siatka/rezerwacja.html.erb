@@ -26,7 +26,7 @@
 </div>
 
 <div>
-	<%= form_tag 'rrezerwacja',{ :id => "edycjaplanow"} do %>
+  <%= form_tag 'rrezerwacja',{ :id => "reservation-form", "data-room-url" => "/siatka/formularz"} do %>
         <% @dodaj.godz = params[:godz] %>
         <% @dodaj.dlugosc = params[:dlugosc] %>
         <% @dodaj.dni = params[:dni] %>
@@ -35,75 +35,68 @@
         <% @dodaj.budynek = params[:budynek] %>
 
 <center>
-<table id="formularz">
-<tr>
-	<td>
-	Godzina 	</td>
-	<td><%= select :dodaj, :godz, @listagodz%>
-	</td>
-	<td>Prowadzący:
-	</td>
-	<td>
-	<%= text_field :lecturer, :lecture, { :value => params[:prowadzacy], :size => 20} %>
-	</td>
-	<td></td>
-	<td>
-	</td>
-	<td>
-	Długość zajęć:
-	</td>
-	<td>
-	<%= select(:dodaj, :dlugosc, @dlugosc, :selected => @dodaj.dlugosc.to_s, :include_blank => false ) %>
-	</td>
-</tr>
-<tr>
-	<td>
-		Rodzaj zajęć:	</td>
-	<td> <%= select(:dodaj, :rodzaj, @r) %><br />
-	<td>Przedmiot:</td>
-	<td>
-	 <%= text_field :subject, :nazwa, { :value => params[:przedmiot], :size => 20} %>
-	</td>
-	</td>
-	<td>
-	</td><td>
-	</td>
-	 <td>
-	Termin rezerwacji:
-	 </td>
-	<td>
-    <%= text_field "date", "", :class => "datepicker" %>
-	</td>
-</tr>
-<tr>
-	<td>Grupa
-	</td><td>
-		<%= collection_select(:dodaj, :grupa, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupe"}) %>
-	</td>
-	<td>Uwagi: </td>
-	<td><%= text_field 'dodaj', 'uwagi', :size => 20%></td>
-	<td>
-	</td>
-	<td>
-	</td>
-	<td>
-	</td>
-	<td>
-	</td>
-</tr>
-<tr>
-</tr>
-</table>
-<br />
+  <table id="formularz">
+    <tr>
+      <td>
+        Godzina 	</td>
+      <td><%= select :dodaj, :godz, @listagodz%>
+      </td>
+      <td>Prowadzący:
+      </td>
+      <td>
+        <%= text_field :lecturer, :lecture, { :value => params[:prowadzacy], :size => 20} %>
+      </td>
+      <td></td>
+      <td>
+      </td>
+      <td>
+        Długość zajęć:
+      </td>
+      <td>
+        <%= select(:dodaj, :dlugosc, @dlugosc, :selected => @dodaj.dlugosc.to_s, :include_blank => false ) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Rodzaj zajęć:	</td>
+      <td> <%= select(:dodaj, :rodzaj, @r) %><br />
+        <td>Przedmiot:</td>
+        <td>
+          <%= text_field :subject, :nazwa, { :value => params[:przedmiot], :size => 20} %>
+        </td>
+      </td>
+      <td>
+        </td><td>
+      </td>
+      <td>
+        Termin rezerwacji:
+      </td>
+      <td>
+        <%= text_field "date", "", :class => "datepicker" %>
+      </td>
+    </tr>
+    <tr>
+      <td>Grupa
+        </td><td>
+        <%= collection_select(:dodaj, :grupa, Group.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz grupe"}) %>
+      </td>
+      <td>Uwagi: </td>
+      <td><%= text_field 'dodaj', 'uwagi', :size => 20%></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </table>
+<br>
 <table class="sale">
-<tr> <td>Wybierz salę którą chcesz zarezerwować:</td>
-     <td><div id="sale">
-     		<%= hidden_field 'room', 'numer'%></div></td>
-</tr>
+  <tr> <td>Wybierz salę którą chcesz zarezerwować:</td>
+    <td><div id="available-rooms-container">
+        <%= hidden_field 'room', 'numer'%></div></td>
+  </tr>
 </table>
 </center>
 <br />
 
 	<%= submit_tag "Wyślij" %>
 	<% end %>
-<br><br>
