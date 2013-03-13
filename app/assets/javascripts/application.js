@@ -42,6 +42,23 @@ $(document).ready(function() {
         }
     });
   });
+  $("#new-block-form").change(function() {
+    var params = $(this).serialize();
+    var fetch_rooms_url = $(this).data("preview-url");
+    $.ajax({
+        url: fetch_rooms_url,
+        dataType: 'script',
+        data: params,
+        type: "GET",
+        complete: function(jqXHR) {
+            if(jqXHR.status == 500 || jqXHR.status == 404 || jqXHR.status == 403) {
+                errorHandling(jqXHR.status);
+            } else {
+              $("#schedules-container").html(jqXHR.responseText);
+            }
+        }
+    });
+  });
 });
 
 function errorHandling(error) {

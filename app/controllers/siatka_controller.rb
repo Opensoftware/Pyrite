@@ -258,37 +258,30 @@ class SiatkaController < ApplicationController
   end
 
   def preview
-    flash[:notice] = ""
+    @room_number = params[:room][:numer]
+    @groups = params[:dodaj][:grupa].reject(&:empty?)
     @dodaj = Plan.new
     @plany = Array.new
     @kursy = Array.new
-    if request.post?
-      @ustawGrupe = params[:g]
-      @ustawSala = params[:dodaj][:sala]
-      @sale = Plan.find(:all, :conditions => {:sala => params[:room][:numer], :plan_id => getEditPlan})
-      if !params[:dodaj][:grupa].nil?
-        for i in params[:dodaj][:grupa]
-          @test = i.split("")
-          @kursy += Plan.find(:all, :include => :groups, :conditions => {'groups.nazwa' => "#{@test[0]}#{@test[1]}", :plan_id => getEditPlan})
-          @plany += Plan.find(:all, :include => :groups, :conditions => {'groups.nazwa' => i, :plan_id => getEditPlan})
-        end
-      end
-      @Gz = params[:dodaj][:godz].to_i
-      @kom = (params[:dodaj][:dlugosc].to_f * 3).to_i
-      @spr = Array.new(@kom)
-      @kom.times { |i| @spr[i] = @Gz + ( i * 15 )}
-
-      @qwe = getblocs(@kursy)
-      @qwe = getblocs(@plany)
-      @qwe1 = getblocsroom(@sale)
-    else
-      @sale = Plan.find(:all)
-      @plany = Plan.find(:all)
-      respond_to do |format|
-        format.html # index.html.erb
+    @ustawGrupe = params[:g]
+    @ustawSala = params[:dodaj][:sala]
+    @sale = Plan.find(:all, :conditions => {:sala => params[:room][:numer], :plan_id => getEditPlan})
+    if !params[:dodaj][:grupa].nil?
+      for i in params[:dodaj][:grupa]
+        @test = i.split("")
+        @kursy += Plan.find(:all, :include => :groups, :conditions => {'groups.nazwa' => "#{@test[0]}#{@test[1]}", :plan_id => getEditPlan})
+        @plany += Plan.find(:all, :include => :groups, :conditions => {'groups.nazwa' => i, :plan_id => getEditPlan})
       end
     end
-    render :layout => false
+    @Gz = params[:dodaj][:godz].to_i
+    @kom = (params[:dodaj][:dlugosc].to_f * 3).to_i
+    @spr = Array.new(@kom)
+    @kom.times { |i| @spr[i] = @Gz + ( i * 15 )}
+
+    @qwe = getblocs(@kursy)
+    @qwe = getblocs(@plany)
+    @qwe1 = getblocsroom(@sale)
+    render :partial => "schedules_table", :layout => false
   end
 
   def index
@@ -304,6 +297,8 @@ class SiatkaController < ApplicationController
   end
 
   def add
+    @room_number = params[:sala]
+    @groups = params[:grupa].reject(&:empty?)
     @dodaj = Plan.new
     @sale = Room.find(:all)
     @salee = []
@@ -326,6 +321,7 @@ class SiatkaController < ApplicationController
         @qwe1 = getblocsroom(@sl)
       end
     end
+    render :layout => "application"
   end
 
   def del
@@ -535,11 +531,11 @@ class SiatkaController < ApplicationController
           @del = Plan.find_by_id(params[:dodaj][:id])
           @del.destroy
         end
-        @planid = Setting.find(:first)
+        @planid = Settings.find(:first)
         @pp = Plan.create(:plan_id => @planid.plan_to_edit , :godz => params[:dodaj][:godz], :katedra => params[:dodaj][:katedra], :dni => params[:dodaj][:dni], :dlugosc => params[:dodaj][:dlugosc], :sala => params[:room][:numer], :prowadzacy => params[:lecturer][:lecture], :czestotliwosc => params[:dodaj][:czestotliwosc],:przedmiot => params[:subject][:nazwa], :rodzaj => params[:dodaj][:rodzaj], :budynek => params[:dodaj][:budynek], :uwagi => params[:dodaj][:uwagi])
         for i in params[:dodaj][:grupa]
           @g = Group.find(:first, :conditions => {:nazwa => i})
-          @g.plans << @pp
+          @g.plans << @pp if @g
         end
       end
       redirect_to :action => "add", :params => {:godz => params[:dodaj][:godz], :katedra => params[:dodaj][:katedra], :dni => params[:dodaj][:dni], :grupa => params[:dodaj][:grupa], :dlugosc => params[:dodaj][:dlugosc], :sala => params[:room][:numer], :prowadzacy => params[:lecturer][:lecture], :czestotliwosc => params[:dodaj][:czestotliwosc],:przedmiot => params[:subject][:nazwa], :rodzaj => params[:dodaj][:rodzaj], :budynek => params[:dodaj][:budynek], :uwagi => params[:dodaj][:uwagi] }
