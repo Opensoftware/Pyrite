@@ -11,6 +11,10 @@ SiatkaGit::Application.routes.draw do
   match "/siatka/rrezerwacja" => "siatka#rrezerwacja"
   match "/siatka/addrez" => "siatka#addrez"
   match "/siatka/formularz" => "siatka#formularz"
+  match "/siatka/add" => "siatka#add"
+  match "/siatka/adding" => "siatka#adding"
+  match "/siatka/edit" => "siatka#edit"
+  match "/siatka/preview" => "siatka#preview"
 
 
   resources :schedules
@@ -24,8 +28,5 @@ SiatkaGit::Application.routes.draw do
     end
   end
   resources :siatka
-  # TODO replace by resources
-  get ":controller/:action/:id"
-  get ":controller/:action"
 
 end
