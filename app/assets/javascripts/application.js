@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.datepicker
+//= require jquery.ui.slider
 //= require jquery.ui.datepicker-pl
+//= require jquery-ui-timepicker-addon
+//= require localization/jquery-ui-timepicker-pl
 //= require twitter/bootstrap
 //= require_tree .
 
@@ -21,6 +24,7 @@
 $(document).ready(function() {
 
   $(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+  $(".datetimepicker").datetimepicker({ dateFormat: "dd/mm/yy" });
   $("#reservation-form").change(function() {
     var params = $(this).serialize();
     var fetch_rooms_url = $(this).data("room-url");

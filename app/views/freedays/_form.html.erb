@@ -1,7 +1,7 @@
 <%= form_for @freeday, :html => {:class => "form-horizontal"}  do |f| %>
 	<%= f.text_field :nazwa %>
-  <%= f.text_field :start, :class => "datepicker" %>
-  <%= f.text_field :stop, :class => "datepicker" %>
+  <%= f.text_field :start, :class => "datetimepicker" %>
+  <%= f.text_field :stop, :class => "datetimepicker" %>
 
   <p>
     <%= submit_tag "Zapisz" %>
