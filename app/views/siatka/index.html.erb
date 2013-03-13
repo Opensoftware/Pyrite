@@ -16,7 +16,7 @@
             <% end %>
 			<% if can? :manage, User %>
               <li>
-                <p> <%= link_to("Stwórz konto", {:controller => 'account', :action => 'signup'}) %> </p>
+                <p> <%= link_to "Stwórz konto", new_user_registration_path %> </p>
               </li>
             <% end %>
 			<% if can? :manage, Freeday %>
@@ -26,7 +26,7 @@
             <% end %>
 			<% if can? :manage, Schedule %>
 		      <li>
-                <p> <%= link_to("Zarządzaj planami", {:controller => 'schedules', :action => ''}) %> </p>
+                <p> <%= link_to("Zarządzaj planami", schedules_path) %> </p>
               </li>
             <% end %>
 		</ul>

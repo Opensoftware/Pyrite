@@ -15,6 +15,11 @@ SiatkaGit::Application.routes.draw do
   match "/siatka/adding" => "siatka#adding"
   match "/siatka/edit" => "siatka#edit"
   match "/siatka/preview" => "siatka#preview"
+  match "/siatka/admin" => "siatka#admin"
+  match "/siatka/kolizje" => "siatka#kolizje"
+  match "/siatka/kolizjegrup" => "siatka#kolizjegrup"
+  match "/siatka/drukowanie" => "siatka#drukowanie"
+  match "/siatka/statystyki" => "siatka#statystyki"
 
 
   resources :schedules
