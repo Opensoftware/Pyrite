@@ -200,9 +200,10 @@ class MainController < ApplicationController
 			@qwe = getblocsall(@mins)
     else
       respond_to do |format|
-        format.html # index.html.erb
+        format.html {render :layout => "application"} # index.html.erb
       end
     end
+    render :layout => "application"
   end
 
   def showgroup

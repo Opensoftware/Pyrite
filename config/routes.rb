@@ -20,6 +20,14 @@ SiatkaGit::Application.routes.draw do
   match "/siatka/kolizjegrup" => "siatka#kolizjegrup"
   match "/siatka/drukowanie" => "siatka#drukowanie"
   match "/siatka/statystyki" => "siatka#statystyki"
+  match "/siatka/drukujsale" => "siatka#drukujsale"
+  match "/siatka/drukujgrupe" => "siatka#drukujgrupe"
+  match "/main/exportToCSV" => "main#exportToCSV"
+  match "/main/rezerwacje" => "main#rezerwacje"
+  match "/main/showroom" => "main#showroom"
+  match "/main/showgroup" => "main#showgroup"
+  match "/main/showprow" => "main#showprow"
+  match "/main/showkatedra" => "main#showkatedra"
 
 
   resources :schedules
