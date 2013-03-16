@@ -29,6 +29,11 @@
                 <p> <%= link_to("Zarządzaj planami", schedules_path) %> </p>
               </li>
             <% end %>
+			<% if can? :manage, Room %>
+		      <li>
+                <p> <%= link_to t("link_classrooms"), rooms_path %> </p>
+              </li>
+            <% end %>
 		</ul>
 	</td>
     <td>

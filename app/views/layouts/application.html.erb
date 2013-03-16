@@ -32,10 +32,16 @@
 
 
   <div id="main">
-    <p class="notice"><%= flash[:notice] %></p>
-    <p class="alert"><%= flash[:error] %></p>
+    <div class="container">
+      <% if flash_messages %>
+        <div class="alert alert-block">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash_messages %>
+        </div>
+      <% end %>
 
-    <%= yield  %>
+      <%= yield  %>
+    </div>
   </div>
   <br />
   <footer id="footer_bg">

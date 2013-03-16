@@ -6,20 +6,39 @@ pl:
   link_howto: Jak to działa
   link_contact: Kontakt
   link_settings: Ustawienia systemu
+  link_classrooms: Zarządzaj salami
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
   notice_successfully_logout: Zostałeś wylogowany
   notice_settings_updated: Ustawienia systemu zostały zapisane
   notice_successfully_saved: Wpis poprawnie zapisany.
+  notice_classroom_updated: Sala została zaktualizowana.
+  notice_classroom_was_created: Nowa sala została utworzona.
 
   error_invalid_data: Błędne dane.
 
   button_save: Zapisz
+  button_delete: Usuń
+  button_edit: Edytuj
+  button_show: Wyświetl
+  button_back: Wstecz
+  button_new_classroom: Dodaj nową salę
 
   header_edit_settings: Edycja ustawień systemu
+  header_edit_classroom: Edycja sali
+  header_listing_classrooms: Lista sal
+  header_new_classroom: Dodaj nową salę
 
   label_current_plan: Plan do wyświetlania
   label_plan_to_edit: Plan do edycji
   label_unit_name: Nazwa wydziału
   label_email_contact: Email kontaktowy
+  label_classroom_name: Numer sali
+  label_classroom_type: Rodzaj
+  label_classroom_capacity: Ilość miejsc
+  label_classroom_comments: Uwagi
+  label_action: Akcja
+  label_building_name: Budynek
+
+  confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?

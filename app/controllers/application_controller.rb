@@ -8,8 +8,11 @@ class ApplicationController < ActionController::Base
   # include AuthenticatedSystem
 
   protect_from_forgery
-  helper_method :current_semester
+  helper_method :current_semester, :flash_messages
 
+  def flash_messages
+    flash[:notice] || flash[:error] || nil
+  end
 
 # metoda pobiera informacje na temat obecnie ustawionego planu zajęć
 # return @baza - identyfikator oznaczający nazwę bazy danych na której operuje system

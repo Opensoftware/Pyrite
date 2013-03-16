@@ -1,0 +1,29 @@
+<h1> <%= t "header_listing_classrooms" %> </h1>
+
+<%= link_to t("button_new_classroom") , new_room_path, :class => "btn btn-primary pull-right" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th> <%= t("label_classroom_name") %></th>
+      <th> <%= t("label_classroom_type") %></th>
+      <th> <%= t("label_classroom_capacity") %></th>
+      <th> <%= t("label_action") %> </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td> <%= room.name %> </td>
+        <td> <%= room.type %> </td>
+        <td> <%= room.capacity %> </td>
+        <td>
+          <%= link_to t("button_show"), room %>
+          <%= link_to t("button_edit"), edit_room_path(room) %>
+          <%= link_to t("button_delete"), room, method: :delete, data: { confirm: t("confirm_removing_classroom") } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

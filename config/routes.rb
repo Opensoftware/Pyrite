@@ -1,5 +1,7 @@
 SiatkaGit::Application.routes.draw do
 
+  resources :rooms
+
   devise_for :users
 
   match "/siatka" => "siatka#index", :as => "siatka"
