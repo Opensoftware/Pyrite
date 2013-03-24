@@ -233,7 +233,6 @@ class SiatkaController < ApplicationController
   end
 
   def edit
-    permit "moderator"
     @sale = Room.find(:all)
     @salee = []
     for pl in @sale
@@ -325,7 +324,6 @@ class SiatkaController < ApplicationController
   end
 
   def del
-    permit "moderator"
     if params[:re] == "r"
       @main = Reservation.find_by_id(params[:id])
       if @main.nil?
@@ -891,12 +889,10 @@ class SiatkaController < ApplicationController
  end
 
  def drukowanie
-   permit 'moderator'
  end
 
  #generowanie obciążeń sal i inne statystyki
  def statystyki
-   permit "admin"
    @salewykladowe = Room.find(:all, :conditions => { :rodzaj => "W" })
    @bloki = {'pon' => { '31' => Array.new, '133' => Array.new, '115' => Array.new, "221" => Array.new, "380" => Array.new},
      'wto' => { '31' => Array.new, '133' => Array.new, '115' => Array.new, "221" => Array.new, "380" => Array.new},
