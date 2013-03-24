@@ -23,3 +23,6 @@
   height: 140px;
   background-image: url("/images/test_badge.png");
 }
+
+.container { margin: auto; }
+.main-control-panel { margin: auto; width: 500px;}

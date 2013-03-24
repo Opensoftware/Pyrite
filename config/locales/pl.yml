@@ -40,5 +40,9 @@ pl:
   label_classroom_comments: Uwagi
   label_action: Akcja
   label_building_name: Budynek
+  label_reservations: Rezerwacje
+  label_classroom: Sale
+  label_group: Grupa
+  label_lecturer: Prowadzący
 
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
