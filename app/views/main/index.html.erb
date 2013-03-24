@@ -1,48 +1,5 @@
 <div class="main-control-panel">
-  <%= form_tag '/main/rezerwacje', :method => 'get', :class => "show-timetable-form" do %>
-    <div class="control-group">
-      <label class="control-label" for="reservations_timetable"> <%= t("label_reservations") %></label>
-      <div class="controls">
-        <%= collection_select(:room,:sala, Room.find(:all).sort {|x,y| x.numer.to_i <=> y.numer.to_i},
-                              :numer, :numer, {:prompt => "Wybierz sale"},
-                              :id => "reservations-timetable" ) %>
-         <%= submit_tag t("button_show"), :class => "btn" %>
-      </div>
-    </div>
-  <% end %>
-  <%= form_tag '/main/showroom', {:method => 'get', :class => "show-timetable-form"} do %>
-    <div class="control-group">
-      <label class="control-label" for="classrooms-timetable"> <%= t("label_classroom") %></label>
-      <div class="controls">
-        <%= collection_select(:room,:sala, Room.find(:all).sort {|x,y| x.numer.to_i <=> y.numer.to_i},
-                              :numer, :numer, {:prompt => "Wybierz sale"},
-                              :id => "classrooms-timetable") %>
-        <%= submit_tag t("button_show"), :class => "btn" %>
-      </div>
-    </div>
-  <% end %>
-  <%= form_tag '/main/showprow' , {:method => 'get', :class => "show-timetable-form" } do %>
-    <div class="control-group">
-      <label class="control-label" for="lecturers-timetable"> <%= t("label_lecturer") %></label>
-      <div class="controls">
-        <%= collection_select(:lecturer,:lecture, Lecturer.find(:all),
-                              :lecture, :lecture, {:prompt => "Wybierz prowadzącego"},
-                              :id => "lecturers-timetable") %>
-        <%= submit_tag t("button_show"), :class => "btn" %>
-      </div>
-    </div>
-  <% end %>
-  <%= form_tag '/main/showgroup', {:method => 'get', :class => "show-timetable-form"} do %>
-    <div class="control-group">
-      <label class="control-label" for="groups-timetable"> <%= t("label_group") %></label>
-      <div class="controls">
-        <%= collection_select(:plan,:id, Group.find(:all, :group => "nazwa"),
-                              :nazwa, :nazwa, {:prompt => "Wybierz grupę"},
-                              :id => "groups-timetable" ) %>
-        <%= submit_tag t("button_show"), :class => "btn" %>
-      </div>
-    </div>
-  <% end %>
+  <%= render :partial => "common/timetable-forms" %>
   <br>
   <div class="warning">
     !! PLAN ZAJĘĆ ZAMIESZCZONY NA STRONIE MOŻE ULEC ZMIANIE !!
