@@ -249,6 +249,7 @@ class SiatkaController < ApplicationController
         @grupy << i.nazwa
       end
     end
+    render :layout => "application"
   end
 
 
