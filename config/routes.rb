@@ -16,6 +16,7 @@ SiatkaGit::Application.routes.draw do
   match "/siatka/add" => "siatka#add"
   match "/siatka/adding" => "siatka#adding"
   match "/siatka/edit" => "siatka#edit"
+  match "/siatka/del" => "siatka#del"
   match "/siatka/preview" => "siatka#preview"
   match "/siatka/admin" => "siatka#admin"
   match "/siatka/kolizje" => "siatka#kolizje"
