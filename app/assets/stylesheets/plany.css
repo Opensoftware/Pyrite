@@ -1,6 +1,9 @@
+body {
+  line-height: 13px;
+}
 .plan tr td.hour {
    background: #333666;
-	 border-color: #c6c2c2;
+   border-color: #c6c2c2;
    color: #FFFFFF;
    vertical-align: middle;
    text-align: center;
@@ -18,7 +21,7 @@
 }
 
 .plan tr.lightline {
-	 background-color: #b8d5d7;
+  background-color: #b8d5d7;
 }
 .plan td {
    width: 200px;
@@ -31,7 +34,7 @@
 }
 
 .tableHeader {
-	background-color: #f5f5e9; 
+	background-color: #f5f5e9;
 	font-size:small;
 }
 
@@ -127,8 +130,8 @@
 	padding-right: 5px;
 }
 .date {
-  padding: 5px; 
-} 
+  padding: 5px;
+}
 .error {
 	color: red;
 }
