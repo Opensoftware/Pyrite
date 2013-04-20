@@ -18,7 +18,7 @@
 //= require jquery-ui-timepicker-addon
 //= require localization/jquery-ui-timepicker-pl
 //= require twitter/bootstrap
-//= require_tree .
+//= require fullcalendar/fullcalendar
 
 
 $(document).ready(function() {

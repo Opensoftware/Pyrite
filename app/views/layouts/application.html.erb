@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'plany' %>
     <%= stylesheet_link_tag 'main' %>
+    <%= yield :additional_stylesheets %>
   </head>
 <body>
   <div id="topmenu">
@@ -57,6 +58,7 @@
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
   <%= javascript_include_tag "application" %>
+  <%= yield :additional_javascript_libraries %>
 
 </body>
 </html>
