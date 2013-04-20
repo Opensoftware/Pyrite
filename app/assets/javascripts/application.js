@@ -19,6 +19,7 @@
 //= require localization/jquery-ui-timepicker-pl
 //= require twitter/bootstrap
 //= require fullcalendar/fullcalendar
+//= require jquery.busybox
 
 
 $(document).ready(function() {
