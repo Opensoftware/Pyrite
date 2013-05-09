@@ -1,0 +1,15 @@
+<div class="row">
+<div class="span3">
+  <dl class="dl-horizontal">
+    <dt> <%= t("label_academic_year_name") %> </dt>
+    <dd> <%= @academic_year.name %> </dd>
+    <dt> <%= t("label_academic_year_start_date") %> </dt>
+    <dd> <%= @academic_year.start_date %> </dd>
+    <dt> <%= t("label_academic_year_end_date") %> </dt>
+    <dd> <%= @academic_year.end_date %> </dd>
+  </dl>
+</div>
+</div>
+
+<%= link_to t("button_edit"), edit_academic_year_path(@academic_year) %> |
+<%= link_to t("button_back"), academic_years_path %>

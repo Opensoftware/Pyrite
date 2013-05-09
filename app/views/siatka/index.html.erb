@@ -34,6 +34,11 @@
                 <p> <%= link_to t("link_classrooms"), rooms_path %> </p>
               </li>
             <% end %>
+			<% if can? :manage, AcademicYear %>
+		      <li>
+                <p> <%= link_to t("link_academic_years"), academic_years_path %> </p>
+              </li>
+            <% end %>
 		</ul>
 	</td>
     <td>

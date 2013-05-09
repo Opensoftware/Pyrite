@@ -7,6 +7,7 @@ pl:
   link_contact: Kontakt
   link_settings: Ustawienia systemu
   link_classrooms: Zarządzaj salami
+  link_academic_years: Organizacja roku akademickiego
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
@@ -15,6 +16,8 @@ pl:
   notice_successfully_saved: Wpis poprawnie zapisany.
   notice_classroom_updated: Sala została zaktualizowana.
   notice_classroom_was_created: Nowa sala została utworzona.
+  notice_academic_year_was_created: Nowy rok akademicki został stworzony.
+  notice_academic_year_was_updated: Rok akademicki został zaktualizowany.
 
   error_invalid_data: Błędne dane.
 
@@ -24,11 +27,15 @@ pl:
   button_show: Wyświetl
   button_back: Wstecz
   button_new_classroom: Dodaj nową salę
+  button_new_academic_year: Nowy rok akademicki
 
   header_edit_settings: Edycja ustawień systemu
   header_edit_classroom: Edycja sali
   header_listing_classrooms: Lista sal
   header_new_classroom: Dodaj nową salę
+  header_listing_academic_years: Plany akademickie
+  header_new_academic_year: Nowy rok akademicki
+  header_edit_academic_year: Edycja roku akademickiego
 
   label_current_plan: Plan do wyświetlania
   label_plan_to_edit: Plan do edycji
@@ -44,5 +51,9 @@ pl:
   label_classroom: Sale
   label_group: Grupa
   label_lecturer: Prowadzący
+  label_academic_year_name: Nazwa
+  label_academic_year_start_date: Data rozpoczęcia
+  label_academic_year_end_date: Data zakończenia
 
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
+  confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?

@@ -1,0 +1,25 @@
+<%= form_for @academic_year, :html => { :class => "form-horizontal" } do |f| %>
+  <%= error_msgs_for @academic_year %>
+
+  <div class="control-group">
+    <label class="control-label" for=""> <%= t "label_academic_year_name" %></label>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for=""> <%= t "label_academic_year_start_date" %></label>
+    <div class="controls">
+      <%= f.text_field :start_date, :class => "datepicker" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for=""> <%= t "label_academic_year_end_date" %></label>
+    <div class="controls">
+      <%= f.text_field :end_date, :class => "datepicker" %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit t("button_save") %>
+  </div>
+<% end %>
