@@ -1,0 +1,28 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th> <%= t "label_academic_year_event_name" %> </th>
+      <th> <%= t "label_academic_year_event_start_date" %> </th>
+      <th> <%= t "label_academic_year_event_end_date" %> </th>
+      <th> <%= t "label_academic_year_event_lecture_free" %> </th>
+      <th> <%= t "label_actions" %> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.start_date.strftime("%F") %></td>
+        <td><%= event.end_date.strftime("%F") %></td>
+        <td><%= event.lecture_free %></td>
+        <td>
+          <%= link_to "<i class='icon-remove-sign'></i>".html_safe, academic_year_event_path(event.academic_year, event),
+                      :method => :delete, :class => "btn btn-danger button-remove-academic-year-event" ,
+                      :confirm => t("confirm_to_remove_academic_year_event"), :remote => true %>
+          <%= link_to "<i class='icon-pencil'></i>".html_safe, edit_academic_year_event_path(event.academic_year, event),
+                      :class => "btn btn-info button-edit-academic-year-event", :remote => true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

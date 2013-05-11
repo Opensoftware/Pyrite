@@ -18,13 +18,12 @@
 //= require jquery-ui-timepicker-addon
 //= require localization/jquery-ui-timepicker-pl
 //= require twitter/bootstrap
-//= require_tree .
 
 
 $(document).ready(function() {
 
-  $(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });
-  $(".datetimepicker").datetimepicker({ dateFormat: "dd/mm/yy" });
+  $(".datepicker").datepicker({ dateFormat: "yy-mm-dd" });
+  $(".datetimepicker").datetimepicker({ dateFormat: "yy-mm-dd" });
   $("#reservation-form").change(function() {
     var params = $(this).serialize();
     var fetch_rooms_url = $(this).data("room-url");

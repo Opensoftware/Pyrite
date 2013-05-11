@@ -26,8 +26,10 @@ pl:
   button_edit: Edytuj
   button_show: Wyświetl
   button_back: Wstecz
+  button_close: Anuluj
   button_new_classroom: Dodaj nową salę
   button_new_academic_year: Nowy rok akademicki
+  button_new_academic_year_event: Dodaj wydarzenie
 
   header_edit_settings: Edycja ustawień systemu
   header_edit_classroom: Edycja sali
@@ -36,6 +38,9 @@ pl:
   header_listing_academic_years: Plany akademickie
   header_new_academic_year: Nowy rok akademicki
   header_edit_academic_year: Edycja roku akademickiego
+  header_academic_year_events: Organizacja roku akademickiego
+
+  modal_header_new_academic_year_event: Dodaj nowe wydarzenie
 
   label_current_plan: Plan do wyświetlania
   label_plan_to_edit: Plan do edycji
@@ -54,6 +59,12 @@ pl:
   label_academic_year_name: Nazwa
   label_academic_year_start_date: Data rozpoczęcia
   label_academic_year_end_date: Data zakończenia
+  label_academic_year_event_name: Nazwa
+  label_academic_year_event_start_date: Data rozpoczęcia
+  label_academic_year_event_end_date: Data zakończenia
+  label_academic_year_event_lecture_free: Wolne od zajęć
+  label_actions: Akcja
 
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
   confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?
+  confirm_to_remove_academic_year_event: Jesteś pewny aby usunąć wydarzenie z oragnizacji roku akademickiego?

@@ -34,7 +34,10 @@ SiatkaGit::Application.routes.draw do
 
 
   resources :schedules
-  resources :academic_years
+  resources :academic_years do
+    resources :events, :controller => "academic_years/events"
+  end
+
   resource :settings, :only => [:edit, :update]
   root :to => 'main#index'
 

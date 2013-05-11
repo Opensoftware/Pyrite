@@ -1,0 +1,24 @@
+<div class="control-group">
+  <label class="control-label" for=""> <%= t "label_academic_year_event_name" %></label>
+  <div class="controls">
+    <%= event.text_field :name %>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for=""> <%= t "label_academic_year_event_start_date" %></label>
+  <div class="controls">
+    <%= event.text_field :start_date, :class => "datepicker", :value => @academic_year_event.try(:end_date).try(:strftime, "%F") %>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for=""> <%= t "label_academic_year_event_end_date" %></label>
+  <div class="controls">
+    <%= event.text_field :end_date, :class => "datepicker", :value => @academic_year_event.try(:end_date).try(:strftime, "%F") %>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for=""> <%= t "label_academic_year_event_lecture_free" %></label>
+  <div class="controls">
+    <%= event.check_box :lecture_free %>
+  </div>
+</div>

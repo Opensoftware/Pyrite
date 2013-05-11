@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509142333) do
+ActiveRecord::Schema.define(:version => 20130509151414) do
+
+  create_table "academic_year_events", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.boolean  "lecture_free"
+    t.integer  "academic_year_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "academic_years", :force => true do |t|
     t.date     "start_date"
