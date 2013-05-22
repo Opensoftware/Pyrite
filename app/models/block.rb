@@ -5,7 +5,7 @@ class Block < ActiveRecord::Base
   belongs_to :event
   belongs_to :block_type
 
-  has_many :groups
+  has_and_belongs_to_many :groups
 
   attr_accessible :name, :start, :end, :comments
 
