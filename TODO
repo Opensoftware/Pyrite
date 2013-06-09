@@ -13,7 +13,7 @@ Organizacja roku akademickiego:
 - Usunąć dni wolne ( zostało zastąpione przez nowy system bloków wraz z
   organizacją roku akademickiego )
 
-
+- Dodać relacje do usunia wszystkich blocków gdy usunięty zostaje block_types
 
 Potrzebne pakiety:
 
