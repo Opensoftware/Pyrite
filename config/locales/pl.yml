@@ -8,6 +8,7 @@ pl:
   link_settings: Ustawienia systemu
   link_classrooms: Zarządzaj salami
   link_academic_years: Organizacja roku akademickiego
+  link_block_types: Typy zajęć
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
@@ -30,6 +31,7 @@ pl:
   button_new_classroom: Dodaj nową salę
   button_new_academic_year: Nowy rok akademicki
   button_new_academic_year_event: Dodaj wydarzenie
+  button_new_block_type: Dodaj nowy typ
 
   header_add_new_block: Dodaj nowy blok zajęć
   header_edit_settings: Edycja ustawień systemu
@@ -40,9 +42,13 @@ pl:
   header_new_academic_year: Nowy rok akademicki
   header_edit_academic_year: Edycja roku akademickiego
   header_academic_year_events: Organizacja roku akademickiego
+  header_block_types: Dostępne typy zajęć
+  header_new_block_type: Nowy typ zajęć
+  header_edit_block_type: Edytuj typ zajęć
 
   modal_header_new_academic_year_event: Dodaj nowe wydarzenie
 
+  label_name: Nazwa
   label_current_plan: Plan do wyświetlania
   label_plan_to_edit: Plan do edycji
   label_unit_name: Nazwa wydziału
@@ -70,6 +76,9 @@ pl:
   label_block_end: Godzina zakończenia
   label_block_name: Nazwa bloku
   label_block_type: Rodzaj zajęć
+  label_block_type_name: Nazwa typu zajęć
+  label_block_type_short_name: Skrót
+  label_block_type_description: Opis
   label_room: Sala
   label_groups: Grupy
   label_comments: Uwagi
@@ -77,6 +86,7 @@ pl:
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
   confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?
   confirm_to_remove_academic_year_event: Jesteś pewny aby usunąć wydarzenie z oragnizacji roku akademickiego?
+  confirm_to_remove_block_type: Jesteś pewny aby usunąć dany typ zajeć? Wszystkie zajęcia posiadający ten typ zostaną usunięte.
 
   placeholder_block_start: Czas rozpoczęcia
   placeholder_block_end: Czas zakończenia

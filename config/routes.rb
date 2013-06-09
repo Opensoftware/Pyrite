@@ -1,7 +1,7 @@
 SiatkaGit::Application.routes.draw do
 
   namespace :block do
-    resources :types
+    resources :types, :except => [:show]
   end
 
 

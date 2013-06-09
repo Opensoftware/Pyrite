@@ -1,3 +1,3 @@
 class Block::Type < ActiveRecord::Base
-  attr_accessible :comment, :name, :short_name
+  attr_accessible :description, :name, :short_name
 end
