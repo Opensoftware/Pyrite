@@ -39,6 +39,11 @@
             <p> <%= link_to t("link_academic_years"), academic_years_path %> </p>
           </li>
         <% end %>
+        <% if can? :manage, Block::Type %>
+          <li>
+            <p> <%= link_to t("link_block_types"), block_types_path %> </p>
+          </li>
+        <% end %>
       </ul>
     </td>
     <td>
