@@ -23,7 +23,8 @@
 $(document).ready(function() {
 
   $(".datepicker").datepicker({ dateFormat: "yy-mm-dd" });
-  $(".datetimepicker").datetimepicker({ dateFormat: "yy-mm-dd" });
+  $(".datetimepicker").datetimepicker({ dateFormat: "yy-mm-dd, HH:mm", stepMinute: 15 });
+  $(".timepicker").timepicker({ timeFormat: "HH:mm", stepMinute: 15 });
   $("#reservation-form").change(function() {
     var params = $(this).serialize();
     var fetch_rooms_url = $(this).data("room-url");
