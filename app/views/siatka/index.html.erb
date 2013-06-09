@@ -1,46 +1,46 @@
 <div id="time"> </div>
 
 <table align="center" id="panel">
-<tr>
-	<td>
-		<ul>
-			<% if can? :manage, User %>
-              <li>
-                <p> <%= link_to("Uprawnienia", {:controller => 'siatka', :action => 'admin'}) %> </p>
-              </li>
-            <% end %>
-			<% if can? :manage, Settings %>
-              <li>
-                <p> <%= link_to t("link_settings"), edit_settings_path %> </p>
-              </li>
-            <% end %>
-			<% if can? :manage, User %>
-              <li>
-                <p> <%= link_to "Stwórz konto", new_user_registration_path %> </p>
-              </li>
-            <% end %>
-			<% if can? :manage, Freeday %>
-              <li>
-                <p> <%= link_to("Ustaw dni wolne", freedays_path) %> </p>
-              </li>
-            <% end %>
-			<% if can? :manage, Schedule %>
-		      <li>
-                <p> <%= link_to("Zarządzaj planami", schedules_path) %> </p>
-              </li>
-            <% end %>
-			<% if can? :manage, Room %>
-		      <li>
-                <p> <%= link_to t("link_classrooms"), rooms_path %> </p>
-              </li>
-            <% end %>
-			<% if can? :manage, AcademicYear %>
-		      <li>
-                <p> <%= link_to t("link_academic_years"), academic_years_path %> </p>
-              </li>
-            <% end %>
-		</ul>
-	</td>
+  <tr>
+    <td>
+      <ul>
+        <% if can? :manage, User %>
+          <li>
+            <p> <%= link_to("Uprawnienia", {:controller => 'siatka', :action => 'admin'}) %> </p>
+          </li>
+        <% end %>
+        <% if can? :manage, Settings %>
+          <li>
+            <p> <%= link_to t("link_settings"), edit_settings_path %> </p>
+          </li>
+        <% end %>
+        <% if can? :manage, User %>
+          <li>
+            <p> <%= link_to "Stwórz konto", new_user_registration_path %> </p>
+          </li>
+        <% end %>
+        <% if can? :manage, Freeday %>
+          <li>
+            <p> <%= link_to("Ustaw dni wolne", freedays_path) %> </p>
+          </li>
+        <% end %>
+        <% if can? :manage, Schedule %>
+          <li>
+            <p> <%= link_to("Zarządzaj planami", schedules_path) %> </p>
+          </li>
+        <% end %>
+        <% if can? :manage, Room %>
+          <li>
+            <p> <%= link_to t("link_classrooms"), rooms_path %> </p>
+          </li>
+        <% end %>
+        <% if can? :manage, AcademicYear %>
+          <li>
+            <p> <%= link_to t("link_academic_years"), academic_years_path %> </p>
+          </li>
+        <% end %>
+      </ul>
+    </td>
     <td>
       <ul>
         <% if can? :manage, Plan %>
@@ -76,8 +76,8 @@
 
   <p>Lista zajęć prowadzonych przez katedry/wydziały</p>
   <%= form_tag '/main/showkatedra', {:method => "get"} do %>
-  	<%= collection_select(:plan,:katedra, Department.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz katedre"}) %>
-  	<%= submit_tag "Pokaż" %>
+    <%= collection_select(:plan,:katedra, Department.find(:all), :nazwa, :nazwa, {:prompt => "Wybierz katedre"}) %>
+    <%= submit_tag "Pokaż" %>
   <% end %>
   <br>
 
