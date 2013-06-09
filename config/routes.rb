@@ -1,5 +1,10 @@
 SiatkaGit::Application.routes.draw do
 
+  namespace :block do
+    resources :types
+  end
+
+
   resources :rooms
 
   devise_for :users
@@ -37,6 +42,7 @@ SiatkaGit::Application.routes.draw do
   resources :academic_years do
     resources :events, :controller => "academic_years/events"
   end
+  resources :blocks, :only => [:new, :create]
 
   resource :settings, :only => [:edit, :update]
   root :to => 'main#index'

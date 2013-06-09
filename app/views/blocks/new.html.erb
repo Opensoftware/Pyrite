@@ -1,0 +1,38 @@
+<h2> <%= t("header_add_new_block") %> </h2>
+<br>
+<br>
+  <%= form_for @block, { :id => "new-block-form", "data-preview-url" => "/siatka/preview"} do |f| %>
+    <table>
+      <tr>
+        <td> <span class="label"> <%= t("label_groups") %> </span> </td>
+        <td> <span class="label"> <%= t("label_block_start") %> </span> </td>
+        <td> <span class="label"> <%= t("label_lecturer") %> </span> </td>
+        <td> <span class="label"> <%= t("label_room") %> </span> </td>
+        <td> <span class="label"> <%= t("label_comments") %> </span> </td>
+      </tr>
+      <tr>
+        <td rowspan=3><%= f.collection_select :group_ids, Group.all, :id, :name, {:selected => @block.group_ids}, {:multiple => true} %> </td>
+        <td> <%= f.text_field :start, :class => "timepicker", :placeholder => t("placeholder_block_start") %> </td>
+        <td> <%= f.text_field :lecturer, :placeholder => t("placeholder_lecturer") %> </td>
+        <td> <%= f.collection_select :room, Room.all, :id, :name, :prompt => t("prompt_room") %> </td>
+        <td> <%= f.text_field :comments %> </td>
+      </tr>
+      <tr>
+        <td> <span class="label"> <%= t("label_block_end") %> </span> </td>
+        <td> <span class="label"> <%= t("label_academic_year_event") %> </span> </td>
+        <td> <span class="label"> <%= t("label_block_type") %> </span> </td>
+        <td> <span class="label"> <%= t("label_block_name") %> </span> </td>
+      </tr>
+      <tr>
+        <td> <%= f.text_field :end, :class => "timepicker", :placeholder => t("placeholder_block_end") %> </td>
+        <td> <%= f.collection_select :event, AcademicYear::Event.all, :id, :name %> </td>
+        <td> <%= f.collection_select :block_type_id, Block::Type.all, :id, :name %> </td>
+        <td colspan=2> <%= f.text_field :name %> </td>
+      </tr>
+    </table>
+
+    <%= f.submit t("button_save"), :class => "submit-btn" %>
+  <% end %>
+
+<div id="schedules-container">
+</div>

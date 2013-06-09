@@ -31,6 +31,7 @@ pl:
   button_new_academic_year: Nowy rok akademicki
   button_new_academic_year_event: Dodaj wydarzenie
 
+  header_add_new_block: Dodaj nowy blok zajęć
   header_edit_settings: Edycja ustawień systemu
   header_edit_classroom: Edycja sali
   header_listing_classrooms: Lista sal
@@ -63,8 +64,22 @@ pl:
   label_academic_year_event_start_date: Data rozpoczęcia
   label_academic_year_event_end_date: Data zakończenia
   label_academic_year_event_lecture_free: Wolne od zajęć
+  label_academic_year_event: Plan dla
   label_actions: Akcja
+  label_block_start: Godzina rozpoczęcia
+  label_block_end: Godzina zakończenia
+  label_block_name: Nazwa bloku
+  label_block_type: Rodzaj zajęć
+  label_room: Sala
+  label_groups: Grupy
+  label_comments: Uwagi
 
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
   confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?
   confirm_to_remove_academic_year_event: Jesteś pewny aby usunąć wydarzenie z oragnizacji roku akademickiego?
+
+  placeholder_block_start: Czas rozpoczęcia
+  placeholder_block_end: Czas zakończenia
+  placeholder_lecturer: Prowadzący
+
+  prompt_room: Sala
