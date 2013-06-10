@@ -49,6 +49,9 @@ SiatkaGit::Application.routes.draw do
 
   resources :freedays
   resources :rooms do
+    member do
+      get :timetable
+    end
     collection do
       get :auto_complete_for_room_numer
     end

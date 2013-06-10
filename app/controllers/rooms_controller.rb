@@ -41,4 +41,8 @@ class RoomsController < ApplicationController
 
     redirect_to rooms_url
   end
+
+  def timetable
+  end
+
 end
