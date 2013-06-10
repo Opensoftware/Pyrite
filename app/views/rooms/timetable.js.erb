@@ -1,0 +1,11 @@
+$('#room-timetable').html('');
+$('#room-timetable').fullCalendar({
+	editable: false,
+	header: {
+		left: 'prev,next today',
+		center: 'title',
+		right: 'month,agendaWeek,agendaDay'
+	},
+	defaultView: 'agendaWeek',
+  events: <%= raw @events.to_json %>
+});

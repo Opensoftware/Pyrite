@@ -16,9 +16,13 @@
       </tr>
       <tr>
         <td rowspan=3><%= f.collection_select :group_ids, Group.all, :id, :name, {:selected => @block.group_ids}, {:multiple => true} %> </td>
-        <td> <%= f.text_field :start, :class => "timepicker", :placeholder => t("placeholder_block_start") %> </td>
-        <td> <%= f.text_field :lecturer, :placeholder => t("placeholder_lecturer") %> </td>
-        <td> <%= f.collection_select :room, Room.all, :id, :name, :prompt => t("prompt_room") %> </td>
+        <td> <%= f.text_field :start, :class => "datetimepicker", :placeholder => t("placeholder_block_start") %> </td>
+        <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name, :prompt => t("prompt_lecturer") %> </td>
+        <td>
+          <%= f.collection_select :room_id, Room.all, :id, :name,
+                                  {:prompt => t("prompt_room") },
+                                  {"data-timetable-url" => timetable_rooms_path} %>
+        </td>
         <td> <%= f.text_field :comments %> </td>
       </tr>
       <tr>
@@ -28,8 +32,8 @@
         <td> <span class="label"> <%= t("label_block_name") %> </span> </td>
       </tr>
       <tr>
-        <td> <%= f.text_field :end, :class => "timepicker", :placeholder => t("placeholder_block_end") %> </td>
-        <td> <%= f.collection_select :event, AcademicYear::Event.all, :id, :name %> </td>
+        <td> <%= f.text_field :end, :class => "datetimepicker", :placeholder => t("placeholder_block_end") %> </td>
+        <td> <%= f.collection_select :event_id, AcademicYear::Event.all, :id, :name %> </td>
         <td> <%= f.collection_select :block_type_id, Block::Type.all, :id, :name %> </td>
         <td colspan=2> <%= f.text_field :name %> </td>
       </tr>
@@ -38,5 +42,6 @@
     <%= f.submit t("button_save"), :class => "submit-btn" %>
   <% end %>
 
-<div id="schedules-container">
-</div>
+
+<div id="groups-timetable"> </div>
+<div id="room-timetable"></div>

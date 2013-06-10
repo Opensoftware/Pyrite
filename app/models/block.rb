@@ -7,6 +7,6 @@ class Block < ActiveRecord::Base
 
   has_and_belongs_to_many :groups
 
-  attr_accessible :name, :start, :end, :comments
+  attr_accessible :name, :start, :end, :comments, :group_ids, :lecturer_id, :room_id, :event_id, :block_type_id
 
 end
