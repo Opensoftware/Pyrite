@@ -4,9 +4,6 @@ SiatkaGit::Application.routes.draw do
     resources :types, :except => [:show]
   end
 
-
-  resources :rooms
-
   devise_for :users
 
   match "/siatka" => "siatka#index", :as => "siatka"
