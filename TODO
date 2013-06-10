@@ -15,6 +15,12 @@ Organizacja roku akademickiego:
 
 - Dodać relacje do usunia wszystkich blocków gdy usunięty zostaje block_types
 
+- Refaktoring dodawnia bloku w odniesieniu do Godzina rozpoczęcia, Godzina
+  zakończenia
+
+- Dostosować wygląd ładowanych podglądów w widoku blocks/new
+- Zarządzanie grupami scaffold dla Groups
+
 Potrzebne pakiety:
 
 rails 2.2.2
