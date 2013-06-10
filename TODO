@@ -9,6 +9,7 @@ Organizacja roku akademickiego:
   -- Dodanie automatu do wybierania odpowiedniego AcademicYear::Event np. z
   ustawień albo na podstawie obecnej daty (nigdy nie wyświetlaj wydarzeń z
   przeszłości)
+  -- wyświetlanie tylko eventów z przyszłości
 
 - Usunąć dni wolne ( zostało zastąpione przez nowy system bloków wraz z
   organizacją roku akademickiego )
