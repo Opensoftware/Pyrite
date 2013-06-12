@@ -67,3 +67,13 @@ function errorHandling(error) {
     // TODO improve it a bit for example own modal with some help info.
     alert(error);
 }
+
+function busyBoxOn(element) {
+ var loading = element.busyBox({
+   spinner:  '<img src="/assets/loading.gif">'
+ });
+}
+
+function busyBoxOff(element) {
+  element.busyBox('close');
+}
