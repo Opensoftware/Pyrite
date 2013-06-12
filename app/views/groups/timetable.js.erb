@@ -1,0 +1,11 @@
+$('#groups-timetable').html('');
+$('#groups-timetable').fullCalendar({
+	editable: false,
+	header: {
+		left: 'prev,next today',
+		center: 'title',
+		right: 'month,agendaWeek,agendaDay'
+	},
+	defaultView: 'agendaWeek',
+  events: <%= raw @events.to_json %>
+});

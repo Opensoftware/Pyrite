@@ -34,7 +34,14 @@ SiatkaGit::Application.routes.draw do
   match "/main/showprow" => "main#showprow"
   match "/main/showkatedra" => "main#showkatedra"
 
-  resources :groups
+  resources :groups do
+    member do
+      get :timetable
+    end
+    collection do
+      get :timetable
+    end
+  end
   resources :schedules
   resources :academic_years do
     resources :events, :controller => "academic_years/events"

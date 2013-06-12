@@ -15,7 +15,12 @@
         <td> <span class="label"> <%= t("label_comments") %> </span> </td>
       </tr>
       <tr>
-        <td rowspan=3><%= f.collection_select :group_ids, Group.all, :id, :name, {:selected => @block.group_ids}, {:multiple => true} %> </td>
+        <td rowspan=3>
+          <%= f.collection_select :group_ids, Group.all, :id, :name,
+                                  {:selected => @block.group_ids},
+                                  {:multiple => true, "data-timetable-url" => timetable_groups_path} %>
+
+        </td>
         <td> <%= f.text_field :start, :class => "datetimepicker", :placeholder => t("placeholder_block_start") %> </td>
         <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name, :prompt => t("prompt_lecturer") %> </td>
         <td>

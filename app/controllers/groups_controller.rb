@@ -1,83 +1,65 @@
 class GroupsController < ApplicationController
-  # GET /groups
-  # GET /groups.json
+  include BlocksHelper
+
+  respond_to :html, :js, :only => [:timetable]
+
   def index
     @groups = Group.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @groups }
-    end
   end
 
-  # GET /groups/1
-  # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @group }
-    end
   end
 
-  # GET /groups/new
-  # GET /groups/new.json
   def new
     @group = Group.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @group }
-    end
   end
 
-  # GET /groups/1/edit
   def edit
     @group = Group.find(params[:id])
   end
 
-  # POST /groups
-  # POST /groups.json
   def create
     @group = Group.new(params[:group])
 
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render json: @group, status: :created, location: @group }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+    if @group.save
+      redirect_to @group, notice: 'Group was successfully created.'
+    else
+      render action: "new"
     end
   end
 
-  # PUT /groups/1
-  # PUT /groups/1.json
   def update
     @group = Group.find(params[:id])
 
-    respond_to do |format|
-      if @group.update_attributes(params[:group])
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+    if @group.update_attributes(params[:group])
+      redirect_to @group, notice: 'Group was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
-  # DELETE /groups/1
-  # DELETE /groups/1.json
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
 
-    respond_to do |format|
-      format.html { redirect_to groups_url }
-      format.json { head :no_content }
+    redirect_to groups_url
+  end
+
+  def timetable
+    group_ids = params[:group_ids]
+    blocks = []
+    groups = []
+    begin
+      groups << Group.find(group_ids)
     end
+    groups.flatten!
+    groups.each do |group|
+      blocks << group.blocks
+    end
+
+    blocks.flatten!
+    @events = convert_blocks_to_events(blocks)
+    respond_with @events
   end
 end
