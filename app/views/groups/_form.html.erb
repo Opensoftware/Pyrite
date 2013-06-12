@@ -1,0 +1,13 @@
+<%= form_for @group, :html => { :class => "form-horizontal" } do |f| %>
+  <%= error_msgs_for @group %>
+
+  <div class="control-group">
+    <label class="control-label" for=""> <%= t "label_group_name" %></label>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit t("button_save") %>
+  </div>
+<% end %>

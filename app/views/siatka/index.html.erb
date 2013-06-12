@@ -44,6 +44,11 @@
             <p> <%= link_to t("link_block_types"), block_types_path %> </p>
           </li>
         <% end %>
+        <% if can? :manage, Group %>
+          <li>
+            <p> <%= link_to t("link_groups"), groups_path %> </p>
+          </li>
+        <% end %>
       </ul>
     </td>
     <td>

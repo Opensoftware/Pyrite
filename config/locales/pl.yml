@@ -9,6 +9,7 @@ pl:
   link_classrooms: Zarządzaj salami
   link_academic_years: Organizacja roku akademickiego
   link_block_types: Typy zajęć
+  link_groups: Grupy
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
@@ -32,6 +33,7 @@ pl:
   button_new_academic_year: Nowy rok akademicki
   button_new_academic_year_event: Dodaj wydarzenie
   button_new_block_type: Dodaj nowy typ
+  button_new_group: Dodaj nową grupę
 
   header_add_new_block: Dodaj nowy blok zajęć
   header_edit_settings: Edycja ustawień systemu
@@ -45,6 +47,9 @@ pl:
   header_block_types: Dostępne typy zajęć
   header_new_block_type: Nowy typ zajęć
   header_edit_block_type: Edytuj typ zajęć
+  header_listing_groups: Lista grup
+  header_edit_group: Edycja grupy
+  header_new_group: Nowa grupa
 
   modal_header_new_academic_year_event: Dodaj nowe wydarzenie
 
@@ -82,11 +87,13 @@ pl:
   label_room: Sala
   label_groups: Grupy
   label_comments: Uwagi
+  label_group_name: Nazwa grupy
 
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
   confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?
   confirm_to_remove_academic_year_event: Jesteś pewny aby usunąć wydarzenie z oragnizacji roku akademickiego?
   confirm_to_remove_block_type: Jesteś pewny aby usunąć dany typ zajeć? Wszystkie zajęcia posiadający ten typ zostaną usunięte.
+  confirm_removing_group: Jesteś pewny aby usunać daną grupę? Wszystkie blocki z nią związaną zostaną usunięte!
 
   placeholder_block_start: Czas rozpoczęcia
   placeholder_block_end: Czas zakończenia

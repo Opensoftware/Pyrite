@@ -21,6 +21,10 @@ Organizacja roku akademickiego:
 
 - Dostosować wygląd ładowanych podglądów w widoku blocks/new
 - Zarządzanie grupami scaffold dla Groups
+- Usuwanie grup wraz z blokami! Ostrzeżenie archiwizacja coś co pozwoli
+  zabezpieczyć straty.
+
+- Dodać paginacie dla grup i proste wyszukiwanie (jquer table)
 
 Potrzebne pakiety:
 

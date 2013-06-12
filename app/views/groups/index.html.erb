@@ -1,0 +1,22 @@
+<h1> <%= t "header_listing_groups" %> </h1>
+
+<%= link_to t("button_new_group"), new_group_path, :class => "btn btn-primary pull-right" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>  <%= t("label_group_name") %></th>
+      <th> <%= t("label_actions") %></th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td> <%= group.name %> </td>
+        <td>
+          <%= link_to 'Edit', edit_group_path(group) %>
+          <%= link_to 'Destroy', group, method: :delete, data: { confirm: t("confirm_removing_group") } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
