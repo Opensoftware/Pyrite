@@ -25,6 +25,8 @@ Organizacja roku akademickiego:
   zabezpieczyć straty.
 
 - Dodać paginacie dla grup i proste wyszukiwanie (jquer table)
+- zastąpic podgrupy w grupach poprzez relacje grupa - grupa jak nadrzędne
+  struktury
 
 Potrzebne pakiety:
 
