@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # include AuthenticatedSystem
 
   protect_from_forgery
-  helper_method :current_semester, :flash_messages
+  helper_method :current_academic_year, :flash_messages
 
   def flash_messages
     flash[:notice] || flash[:error] || nil
@@ -27,9 +27,10 @@ class ApplicationController < ActionController::Base
     return @baza
   end
 
-  # pobranie aktualnego roku akademickiego
-  def current_semester
-    Schedule.find_by_id(Settings.first.try(:current_plan))
+  # Fetch current academic year
+  def current_academic_year
+    academic_year_id = Settings.first.try(:current_plan)
+    AcademicYear.find_by_id(academic_year_id)
   end
 
   # pobieranie id planów ustawionych do edycji

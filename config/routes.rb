@@ -42,7 +42,6 @@ SiatkaGit::Application.routes.draw do
       get :timetable
     end
   end
-  resources :schedules
   resources :academic_years do
     resources :events, :controller => "academic_years/events"
   end

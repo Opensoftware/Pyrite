@@ -5,13 +5,13 @@
     <div class="control-group">
       <label class="control-label" for="settings_current_plan"> <%= t("label_current_plan") %></label>
       <div class="controls">
-        <%= f.collection_select(:current_plan, Schedule.find(:all), :id, :semestr_rok, {:prompt => "Wybierz plan"}) %>
+        <%= f.collection_select(:current_plan, AcademicYear.all, :id, :name, {:prompt => "Wybierz plan"}) %>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label" for="settings_plan_to_edit"> <%= t("label_plan_to_edit") %></label>
       <div class="controls">
-        <%= f.collection_select(:plan_to_edit, Schedule.find(:all), :id, :semestr_rok, {:prompt => "Wybierz plan"}) %>
+        <%= f.collection_select(:plan_to_edit, AcademicYear.all, :id, :name, {:prompt => "Wybierz plan"}) %>
       </div>
     </div>
     <div class="control-group">

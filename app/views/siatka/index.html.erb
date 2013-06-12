@@ -19,11 +19,6 @@
             <p> <%= link_to "Stwórz konto", new_user_registration_path %> </p>
           </li>
         <% end %>
-        <% if can? :manage, Schedule %>
-          <li>
-            <p> <%= link_to("Zarządzaj planami", schedules_path) %> </p>
-          </li>
-        <% end %>
         <% if can? :manage, Room %>
           <li>
             <p> <%= link_to t("link_classrooms"), rooms_path %> </p>
