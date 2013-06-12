@@ -26,3 +26,4 @@
 
 .container { margin: auto; }
 .main-control-panel { margin: auto; width: 500px;}
+#ui-datepicker-div { z-index: 9999999!important; } // make sure that datapicker will be always on top
