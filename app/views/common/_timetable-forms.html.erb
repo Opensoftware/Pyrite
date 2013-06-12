@@ -33,11 +33,11 @@
 <% end %>
 <%= form_tag '/main/showgroup', {:method => 'get', :class => "show-timetable-form"} do %>
   <div class="control-group">
-    <label class="control-label" for="groups-timetable"> <%= t("label_group") %></label>
+    <label class="control-label" for="group-timetable"> <%= t("label_group") %></label>
     <div class="controls">
       <%= collection_select(:plan,:id, Group.find(:all, :group => "nazwa"),
                             :nazwa, :nazwa, {:prompt => "Wybierz grupę"},
-                            :id => "groups-timetable" ) %>
+                            :id => "group-timetable" ) %>
       <%= submit_tag t("button_show"), :class => "btn" %>
     </div>
   </div>
