@@ -51,7 +51,6 @@ SiatkaGit::Application.routes.draw do
   resource :settings, :only => [:edit, :update]
   root :to => 'main#index'
 
-  resources :freedays
   resources :rooms do
     member do
       get :timetable

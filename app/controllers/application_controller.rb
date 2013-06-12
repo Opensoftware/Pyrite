@@ -108,16 +108,9 @@ class ApplicationController < ActionController::Base
 
   # pobranie informacji na temat okresów w których plan zajęc nie obowiązuje
   # date - zmienna reprezentujaca date która chcemy przyrównać (sprawdzić) do okresów
+  # TODO deprecated TOREMOVE
   def checkfreetime(date)
-    @free = Freeday.find(:all)
-    for i in @free
-
-      if  (Date.parse(i.start.strftime("%Y-%m-%d %H:%M %p")) <= Date.parse(date) && Date.parse(date) <= Date.parse(i.stop.strftime("%Y-%m-%d %H:%M %p")))
-        puts "++++"
-        return false
-      end
-    end
-    return true
+    raise "This method is deprecated"
   end
 
   # metoda zamieniająca angielską nazwe dnia tygodnia na polską

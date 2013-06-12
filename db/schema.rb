@@ -72,14 +72,6 @@ ActiveRecord::Schema.define(:version => 20130529191327) do
     t.datetime "updated_at"
   end
 
-  create_table "freedays", :force => true do |t|
-    t.datetime "start"
-    t.datetime "stop"
-    t.string   "nazwa"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "groups", :force => true do |t|
     t.string   "nazwa"
     t.integer  "liczba"
