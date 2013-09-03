@@ -2,10 +2,11 @@ $('#groups-timetable').html('');
 $('#groups-timetable').fullCalendar({
 	editable: false,
 	header: {
-		left: 'prev,next today',
-		center: 'title',
-		right: 'month,agendaWeek,agendaDay'
+		left: 'today',
+		center: '',
+		right: 'month,agendaWeek'
 	},
 	defaultView: 'agendaWeek',
+  allDaySlot: false,
   events: <%= raw @events.to_json %>
 });
