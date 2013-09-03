@@ -28,6 +28,8 @@ Organizacja roku akademickiego:
 - zastąpic podgrupy w grupach poprzez relacje grupa - grupa jak nadrzędne
   struktury
 
+- Paginacja dla sal
+
 Potrzebne pakiety:
 
 rails 2.2.2
