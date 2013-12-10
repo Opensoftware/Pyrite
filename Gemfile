@@ -5,6 +5,7 @@ gem 'thin'
 gem 'devise'
 gem 'pdfkit'
 gem "cancan"
+gem 'airbrake'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,8 +21,9 @@ gem 'jquery-rails'
 
 group :development do
   gem 'hirb'
-  gem 'debugger'
   gem 'sqlite3'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :production do
