@@ -9,6 +9,7 @@
     <table>
       <tr>
         <td> <span class="label"> <%= t("label_groups") %> </span> </td>
+        <td> <span class="label"> <%= t("label_day") %> </span> </td>
         <td> <span class="label"> <%= t("label_block_start") %> </span> </td>
         <td> <span class="label"> <%= t("label_lecturer") %> </span> </td>
         <td> <span class="label"> <%= t("label_room") %> </span> </td>
@@ -21,7 +22,8 @@
                                   {:multiple => true, "data-timetable-url" => timetable_groups_path} %>
 
         </td>
-        <td> <%= f.text_field :start, :class => "datetimepicker", :placeholder => t("placeholder_block_start") %> </td>
+        <td> <%= f.select :day, options_for_select(days_for_select), :prompt => t("prompt_day") %> </td>
+        <td> <%= f.text_field :start_date, :class => "timepicker", :placeholder => t("placeholder_block_start") %> </td>
         <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name, :prompt => t("prompt_lecturer") %> </td>
         <td>
           <%= f.collection_select :room_id, Room.all, :id, :name,
@@ -37,7 +39,7 @@
         <td> <span class="label"> <%= t("label_block_name") %> </span> </td>
       </tr>
       <tr>
-        <td> <%= f.text_field :end, :class => "datetimepicker", :placeholder => t("placeholder_block_end") %> </td>
+        <td> <%= f.text_field :end_date, :class => "timepicker", :placeholder => t("placeholder_block_end") %> </td>
         <td> <%= f.collection_select :event_id, AcademicYear::Event.all, :id, :name %> </td>
         <td> <%= f.collection_select :block_type_id, Block::Type.all, :id, :name %> </td>
         <td colspan=2> <%= f.text_field :name %> </td>

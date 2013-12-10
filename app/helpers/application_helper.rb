@@ -21,4 +21,10 @@ module ApplicationHelper
     end
 		@GMz
 	end
+
+  def days_for_select
+    # Day of the week in 0-6. Sunday is 0; Saturday is 6.
+    # Monday should be always first! Monday = 1
+    (I18n.t "date.abbr_day_names").zip((1..6).to_a + [0])
+  end
 end
