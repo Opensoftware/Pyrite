@@ -1,4 +1,7 @@
 pl:
+  date:
+    day_names: [Poniedziałek, Wtorek, Środa, Czwartek, Piątek, Sobota, Niedziela]
+    abbr_day_names: [Pon, Wto, Śro, Czw, Pią, Sob, Nie]
   link_home: Strona główna
   link_sign_in: Logowanie
   link_siatka: Siatka
@@ -20,6 +23,7 @@ pl:
   notice_classroom_was_created: Nowa sala została utworzona.
   notice_academic_year_was_created: Nowy rok akademicki został stworzony.
   notice_academic_year_was_updated: Rok akademicki został zaktualizowany.
+  notice_block_has_been_created: Blok został stworzony.
 
   error_invalid_data: Błędne dane.
 
@@ -88,6 +92,7 @@ pl:
   label_groups: Grupy
   label_comments: Uwagi
   label_group_name: Nazwa grupy
+  label_day: Dzień
 
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
   confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?
@@ -100,3 +105,4 @@ pl:
   placeholder_lecturer: Prowadzący
 
   prompt_room: Sala
+  prompt_day: Wybierz dzień
