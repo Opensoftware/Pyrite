@@ -10,7 +10,7 @@ class BlocksController < ApplicationController
     @block = Block.new(params[:block])
 
     if @block.save
-      flash[:notice] = t("block_has_been_created")
+      flash[:notice] = t("notice_block_has_been_created")
       redirect_to new_block_path
     else
       render :new
