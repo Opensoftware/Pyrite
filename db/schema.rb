@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529191327) do
+ActiveRecord::Schema.define(:version => 20130911212917) do
 
   create_table "academic_year_events", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(:version => 20130529191327) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "block_dates", :force => true do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "block_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "block_types", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -40,8 +48,6 @@ ActiveRecord::Schema.define(:version => 20130529191327) do
   end
 
   create_table "blocks", :force => true do |t|
-    t.datetime "start"
-    t.datetime "end"
     t.integer  "lecturer_id"
     t.integer  "event_id"
     t.integer  "room_id"
