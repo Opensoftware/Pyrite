@@ -10,12 +10,24 @@ class Block < ActiveRecord::Base
 
   attr_accessible :name, :start_date, :end_date, :comments, :group_ids, :lecturer_id, :room_id, :event_id, :block_type_id, :day
   attr_accessor :day, :start_date, :end_date
-  after_save :populate_dates # we need to have block id before we will create all dates
+  after_save :populate_dates # we need to have block id before we will create all dates TODO should be done in transaction
 
   def populate_dates
-    date_range = (event.start_date.to_date..event.end_date.to_date).select {|date| day.to_i == date.wday }
-    date_range.each do |date|
-      dates.create(:start_date => date, :end_date => date)
+    begin
+      start_hour = Time.parse(start_date).hour
+      start_min = Time.parse(start_date).min
+      end_hour = Time.parse(end_date).hour
+      end_min = Time.parse(end_date).min
+
+      date_range = (event.start_date.to_date..event.end_date.to_date).select {|date| day.to_i == date.wday }
+      date_range.each do |date|
+        block_start_date = Time::mktime(date.year, date.month, date.day, start_hour, start_min)
+        block_end_date = Time::mktime(date.year, date.month, date.day, end_hour, end_min)
+        dates.create(:start_date => block_start_date, :end_date => block_end_date)
+      end
+    rescue => e
+      # TODO logger
+      # TODO stop transaction
     end
   end
 
