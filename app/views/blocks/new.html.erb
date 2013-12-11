@@ -9,8 +9,8 @@
     <table>
       <tr>
         <td> <span class="label"> <%= t("label_groups") %> </span> </td>
-        <td> <span class="label"> <%= t("label_day") %> </span> </td>
         <td> <span class="label"> <%= t("label_block_start") %> </span> </td>
+        <td> <span class="label"> <%= t("label_day") %> </span> </td>
         <td> <span class="label"> <%= t("label_lecturer") %> </span> </td>
         <td> <span class="label"> <%= t("label_room") %> </span> </td>
         <td> <span class="label"> <%= t("label_comments") %> </span> </td>
@@ -22,8 +22,8 @@
                                   {:multiple => true, "data-timetable-url" => timetable_groups_path} %>
 
         </td>
-        <td> <%= f.select :day, options_for_select(days_for_select), :prompt => t("prompt_day") %> </td>
         <td> <%= f.text_field :start_date, :class => "timepicker", :placeholder => t("placeholder_block_start") %> </td>
+        <td> <%= f.select :day, options_for_select(days_for_select), :prompt => t("prompt_day") %> </td>
         <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name, :prompt => t("prompt_lecturer") %> </td>
         <td>
           <%= f.collection_select :room_id, Room.all, :id, :name,
