@@ -77,3 +77,31 @@ function busyBoxOn(element) {
 function busyBoxOff(element) {
   element.busyBox('close');
 }
+
+// Defaults for fullcalendar
+// TODO: make it configurable from the panel
+var fc_defaults = {
+  editable: false,
+  firstDay: 1,
+	header: {
+		left: '',
+		center: '',
+		right: ''
+	},
+	defaultView: 'agendaWeek',
+  allDaySlot: false,
+	columnFormat: {
+		month: 'ddd',
+		week: 'ddd',
+		day: 'dddd'
+	},
+  timeFormat: 'H:mm',
+  axisFormat: 'H:mm',
+  minTime: 6,
+  maxTime: 22
+}
+
+$.fn.fullCalendar_with_defaults = function(options) {
+  var settings = $.extend({}, fc_defaults, options);
+  this.fullCalendar(settings);
+};

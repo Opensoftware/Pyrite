@@ -1,12 +1,7 @@
 $('#groups-timetable').html('');
-$('#groups-timetable').fullCalendar({
-	editable: false,
-	header: {
-		left: 'today',
-		center: '',
-		right: 'month,agendaWeek'
-	},
-	defaultView: 'agendaWeek',
-  allDaySlot: false,
+var options = {
+  dayNamesShort: <%= raw fc_days %>,
   events: <%= raw @events.to_json %>
-});
+}
+
+$('#groups-timetable').fullCalendar_with_defaults(options);
