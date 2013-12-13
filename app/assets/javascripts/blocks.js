@@ -15,26 +15,37 @@ function fetch_blocks(fetch_timetable_url, params) {
   });
 }
 
+function refresh_room_timetable() {
+  var fetch_timetable_url = $("#block_room_id").data("timetable-url");
+  var room_id_value = $("#block_room_id").val();
+  var event_id = $("#block_event_id").val();
+  var params = {id: room_id_value, event_id: event_id};
+  busyBoxOn($("#room-timetable"));
+  fetch_blocks(fetch_timetable_url, params);
+  busyBoxOff($("#room-timetable"));
+}
+
+function refresh_group_timetable() {
+  var fetch_timetable_url = $("#block_group_ids").data("timetable-url");
+  var group_ids_value = $("#block_group_ids").val();
+  var event_id = $("#block_event_id").val();
+  var params = {group_ids: group_ids_value, event_id: event_id };
+  busyBoxOn($("#group-timetable"));
+  fetch_blocks(fetch_timetable_url, params);
+  busyBoxOff($("#group-timetable"));
+}
+
 $(document).ready(function() {
   $("#block_group_ids").on("change", function() {
-    var fetch_timetable_url = $(this).data("timetable-url");
-    var group_ids_value = $(this).val();
-    var params = {group_ids: group_ids_value };
-    busyBoxOn($("#group-timetable"));
-    fetch_blocks(fetch_timetable_url, params);
-    busyBoxOff($("#group-timetable"));
+    refresh_group_timetable();
   });
 
   $("#block_room_id").on("change", function() {
-    var fetch_timetable_url = $(this).data("timetable-url");
-    var room_id_value = $(this).val();
-    var params = {id: room_id_value };
-    busyBoxOn($("#room-timetable"));
-    fetch_blocks(fetch_timetable_url, params);
-    busyBoxOff($("#room-timetable"));
+    refresh_room_timetable();
   });
 
-  $("#block_event").on("change", function() {
-    alert("refresh both plans");
+  $("#block_event_id").on("change", function() {
+    refresh_room_timetable();
+    refresh_group_timetable();
   });
 });

@@ -48,7 +48,8 @@ class RoomsController < ApplicationController
 
   def timetable
     @room = Room.find(params[:id])
-    blocks = @room.blocks.all
+    event_id = params[:event_id]
+    blocks = @room.blocks.where(:event_id => event_id)
 
     @room_name = @room.name
     @events = convert_blocks_to_events(blocks)

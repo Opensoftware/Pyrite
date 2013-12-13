@@ -48,14 +48,17 @@ class GroupsController < ApplicationController
 
   def timetable
     group_ids = params[:group_ids]
+    event_id = params[:event_id]
     blocks = []
     groups = []
     begin
       groups << Group.find(group_ids)
+    rescue
+      # LOG
     end
     groups.flatten!
     groups.each do |group|
-      blocks << group.blocks
+      blocks << group.blocks.where(:event_id => event_id)
     end
 
     blocks.flatten!
