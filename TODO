@@ -1,8 +1,15 @@
+TODO:
+- po zmianie event_id skoczyć z kalendarzem na datę startu eventu
+- walidacje dla dat z i bez event_id
+- timepicker blocks/new uniemozliwić ustawienie godziny zakonczenia przed jego
+  rozpoczeciem. Godzina konca powinna zawsze ustawiac się + 45 minut po dacie
+  rozpoczecia jako domyslna opcja (powinno być to konfigurowalne)
+- Migracja do bootstrap 3 i jquery 3
+
 Organizacja roku akademickiego:
 - edycja rozpoczęcia i zakończenia po dodaniu bloków (sprawdzanie czy jakieś
   bloki nie kolidują, ostrzeżenie że trzeba je usunać/zmodyfikować
 - Timepicker konfiguralna opcja kroku minut, domyślnie 15 minut
-
 
 - Widok dodawania bloku
   -- AcademicYear::Event tylko z plan_to_edit, powiązać z ustawieniami
@@ -29,44 +36,29 @@ Organizacja roku akademickiego:
   struktury
 
 - Paginacja dla sal
+- Blokowanie sal (np. sala w remoncie)
+- Sala dostepna tylko dla planera (brak możliwości rezerwacji danej sali)
+- Integracja z SYLABUSEM via API
+-	Eksport do iCalendar or csv (np. google calendar)
 
-Potrzebne pakiety:
+Wyjaśnić:
 
-rails 2.2.2
-fpdf-1.53
-builder-2.1.2
-xml-simple-1.0.11
-pdf-writer
+* Czy organizacja roku akademickiego powinien być rozdzielna pomiędzy studja stacjonarne i
+niestacjonarne?
+
+* Jak dodajemy blok bez event_id czy należało by go dodać do eventu który pasuje
+do ram czasowych ?
+
+* Przenoszenie planów na nowy rok (kopiowanie planów ) czy ktoś z tego
+  kiedykolwiek będzie korzytał?
 
 
+TODO (stare - zweryfikować czy nadal aktualne)
 
-TODO
-
-	Przebudować aplikacje tak aby tablice przechowywujące informacje na temat planów nie były tworzone gdy nie ma takiej potrzeby
-
-	Rozdzielic pliki css dla kązdego modułu
-	Wyeliminować odpytywanie z bazy o kursach
-
-	Dodać panel umożliwiający blokadę rezerwacji pewnych sal.
-	Dodać słowniki sal, prowadzących i przedmiotów.
-	Poprawić wyświetlanie planów dla prowadzących zajęcia. (Dodatkowo centrowanie planu zajęć dla nich)
-	Eksport do google calendar ... :)
-	Przenoszenie planów na nowy rok (kopiowanie planów )
 	Poprawić przesyłanie danych między formularzami (tak aby wstecz pamiętało wszystkie pola wypełnione w formularzu)
 	Poprawić metode checkfreetime (normalizacja nazwy i sprawdzenie jej działa i odpowiednio jej okomentowanie
+
 WAŻNE
-
-name.capitalize - pierwsza duża litera
-
-
-gem install htmldoc
-
-w /usr/bin/gem
-
-+ require 'rubygems/gem_runner'
-
-
-
 
 NOWA WERSJA:
 
@@ -83,9 +75,6 @@ przejrzec metody pod względem dostępności dla konkretnych kont
 
 
 ZAWIESZONE: Podział na zajęcia laboratoryjne czyli grupa raz jeszcze na pół
-
----ZROBIONE:Wyświetlanie przy dopełnianiu wszystkiego co jest dostępne bez wprowadzania
-
 
 BEZPIECZEŃSTWO:Naprawienie SLQ Injection w wyszukiwanie Kursów find_by_sql
 
@@ -110,43 +99,3 @@ Konta dla użytkowników (prowadzacych) i (1 na wydział)
 Blokada rezerwacji na dane okresy czasowe ( sesja etc.. )
 Tygodniowe plany zajęć
 
-
-----------------------------------------------------------
-
-ROZWIĄZANE:możliwość wybrania kilku grup na raz (Wybór odpowiedniego kursu)
-
-ZROBIONE:dodawanie kilku grup do sali U2 , poprawne ich wyświetlanie
-ZROBIONE: Czy prowadzący ma być dodawany ? TAK
-ZROBIONE:Przeglądanie bez dostępu
-ZROBIONE:Dodać możliwość prowadzenia zajęci w sali U2 dla wielu grup
-ZROBIONE:Sortowanie godziny i sal
-ZROBIONE:Nie działa przekazywanie parametru długość i częstotliwość przy edycji
-ZROBIONE:Dodanie dodatkowych wydziałów:
-ZROBIONE:dostępność sal - zestawienie
-ZROBIONE:Wyszukiwanie sal w zależności od dostępności
-ZROBIONE: Walidacja formularza pod względem wprowadzonej grupy,sali , prowadzącego
-ZROBIONE:Konwencja w nazewnictwie Kurs_ Rok_ Grupa_ nrGrupy np. 1A1GG2
-ZROBIONE:Dodatkowe grupy (KURSY) i wyświetlanie wraz z grupami KURSÓW
-ZROBIONE: Edycja wpisów
-ZROBIONE:możliwość wpisania sali ręcznie dla innych budunków niż A0
-ZROBIONE:Pole uwagi przy dodawaniu planu
-ZROBIONE:dopełnianie wpisanych katedr, nazwisk
-ZROBIONE:Naprawienie odświeżania planów zajęć po powrocie z wpisu lub kasowania
-ZROBIONE:Zwiększyć długość zajęć do 7
-ZROBIONE:Zajecai dla grupy potem dla Kursu brak sprawdzania dostępności
-ZROBIONE:Usuwanie wpisów
-ZROBIONE:poprawienie wyświetlania
-ZROBIONE:Zapamiętywanie danych w formularzu (katedra, grupa)
-ZROBIONE:kolizja pomiędzy prowadzącymi a grupami, salami
-ZROBIONE:dwa okienka sale - grupy - możliwość zmiany zawartości dowolnego (komunikat odnośnie niedostępności grupy)
-ZROBIONE:Wyświetlanie: Nazwa przedmiotu sala Prowadzący
-ZROBIONE: Zgrać formulasz z wyswietlanie dublowanie grupy i sali usunąć
-ZROBIONE:dostępność prowadzącego , grupy, sali - zestawienie
-ZROBIONE: Godziny lekcyjne przy wprowadzaniu wielokrotność 45 min
-ZROBIONE: NAPRAWIĆ przedmioty kilku członowe ! a także nazwiska prowadzących (poprzez zmiane separatora)
-ZROBIONE:Eliminacja przenoszenia na inne strony podczas wpisów
-ZROBIONE: Poprawić wyświetlanie dat rozpoczęcie i zakończenie w dni wolne (tzn. bez godzin )
-ZROBIONE: Poprawić pozycjonowanie elementu "WYbierz salę którą chcesz zarezerwować" tak aby była równo z formularzem.
-
-
-comset
