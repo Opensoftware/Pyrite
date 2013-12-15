@@ -39,7 +39,25 @@ function refresh_group_timetable() {
   }
 }
 
+function toggleEventFormForNewBlock() {
+  var event_value = $("#block_event_id").val();
+  // if event is empty we allow for setting date for block
+  // if event is present the the block will be added to the date range from
+  // event.
+  if(event_value.length == '' ) {
+    $("#block_day").val("");
+    $("#block_day").prop('disabled', true);
+    $("#block_start_date, #block_end_date").removeClass("timepicker");
+    $("#block_start_date, #block_end_date").addClass("datetimepicker");
+  } else {
+    $("#block_day").prop('disabled', false);
+    $("#block_start_date, #block_end_date").toggleClass('datetimepicker timepicker');
+  }
+  reloadDatepicker();
+}
+
 $(document).ready(function() {
+  toggleEventFormForNewBlock();
   $("#block_group_ids").on("change", function() {
     refresh_group_timetable();
   });
@@ -51,5 +69,6 @@ $(document).ready(function() {
   $("#block_event_id").on("change", function() {
     refresh_room_timetable();
     refresh_group_timetable();
+    toggleEventFormForNewBlock();
   });
 });

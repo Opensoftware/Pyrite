@@ -89,18 +89,13 @@ var fc_defaults = {
   editable: false,
   firstDay: 1,
 	header: {
-		left: '',
+		left: 'prev,next',
 		center: '',
 		right: ''
 	},
 	defaultView: 'agendaWeek',
   allDaySlot: false,
-	columnFormat: {
-		month: 'ddd',
-		week: 'ddd',
-		day: 'dddd'
-	},
-  timeFormat: 'H:mm',
+  timeFormat: 'H:mm { - H:mm}',
   axisFormat: 'H:mm',
   minTime: 6,
   maxTime: 22

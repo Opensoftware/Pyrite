@@ -57,8 +57,18 @@ class GroupsController < ApplicationController
       # LOG
     end
     groups.flatten!
-    groups.each do |group|
-      blocks << group.blocks.where(:event_id => event_id)
+    # TODO think about what will be the best way of quering blocks with and
+    # without event_id, for example without event_id we will query whole
+    # academic year? and if event_id is available should we load new events for
+    # fullcalendar in case if the end_date will be reached?
+    if event_id.empty?
+      groups.each do |group|
+        blocks << group.blocks
+      end
+    else
+      groups.each do |group|
+        blocks << group.blocks.where(:event_id => event_id)
+      end
     end
 
     blocks.flatten!
