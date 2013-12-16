@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-gem 'thin'
 gem 'devise'
 gem 'pdfkit'
 gem "cancan"
 gem 'airbrake'
+gem 'unicorn'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,6 +24,10 @@ group :development do
   gem 'sqlite3'
   gem "better_errors"
   gem "binding_of_caller"
+  gem "capistrano"
+  gem "rvm-capistrano"
+  gem "capistrano-unicorn", :require => false
+  gem "thin"
 end
 
 group :production do
