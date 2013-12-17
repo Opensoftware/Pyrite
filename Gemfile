@@ -24,9 +24,10 @@ group :development do
   gem 'sqlite3'
   gem "better_errors"
   gem "binding_of_caller"
-  gem "capistrano"
-  gem "rvm-capistrano"
-  gem "capistrano-unicorn", :require => false
+  gem "capistrano", github: 'capistrano/capistrano', branch: 'master'
+  gem 'capistrano-rvm', github: 'capistrano/rvm'
+  gem 'capistrano-bundler', github: 'capistrano/bundler'
+  gem 'capistrano-rails', '~> 1.1.0'
   gem "thin"
 end
 
