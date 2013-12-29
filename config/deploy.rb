@@ -58,6 +58,28 @@ namespace :deploy do
     end
   end
 
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        if test("[ -f tmp/pids/unicorn/pid ]")
+          execute :kill, '-s USR2 `cat "tmp/pids/unicorn.pid"`'
+        else
+          puts "Sorry can not restart, server is not runing"
+        end
+      end
+    end
+  end
+
+  desc 'Stop application'
+  task :stop do
+    on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        execute :kill, '-s QUIT `cat "tmp/pids/unicorn.pid"`'
+      end
+    end
+  end
+
   desc 'Errbit notification about deploy'
   task :notify_errbit do
     on roles(:app) do
@@ -72,7 +94,7 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :start
+  after :publishing, :restart
   after :publishing, :notify_errbit
 
   after :restart, :clear_cache do
