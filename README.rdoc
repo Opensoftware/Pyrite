@@ -56,8 +56,7 @@ Więc informacji na temat narzędzi wykorzystanych w projekcie w dziale (narzęd
 
 Siatka
 
-=== Tworzenie planów zajęć
-=== Edycja plnaów zajęć
+=== Tworzenie i edycja planów zajęć (w trybie studiów stacjonarnych i niestacjonarnych)
 === Archiwizacja starych planów zajęc
 === Ustalanie dni wolnych od zajęć
 === Baza sal i labolatoriów w poszczególnych budynkach
