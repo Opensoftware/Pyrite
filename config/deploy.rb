@@ -49,14 +49,19 @@ before 'deploy:compile_assets', 'siatka:setup_configs'
 
 namespace :deploy do
 
-  desc 'Restart application'
-  task :restart do
+  desc 'Start application'
+  task :start do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "cd #{release_path} && bundle exec unicorn -E test -c config/unicorn/test.rb -D"
+      within release_path do
+        execute :bundle, :exec, "unicorn -E #{fetch(:rails_env)} -c config/unicorn/#{fetch(:rails_env)}.rb -D"
+      end
     end
   end
 
-  after :publishing, :restart
+    end
+  end
+
+  after :publishing, :start
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
