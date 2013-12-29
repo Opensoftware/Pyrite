@@ -58,10 +58,22 @@ namespace :deploy do
     end
   end
 
+  desc 'Errbit notification about deploy'
+  task :notify_errbit do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          airbrake_opts = "TO=#{fetch(:rails_env)} "
+          airbrake_opts += "REVISION=#{fetch(:branch)} "
+          airbrake_opts += "REPO=#{fetch(:repo_url)}"
+          execute :bundle, :exec, :rake, 'airbrake:deploy', airbrake_opts
+        end
+      end
     end
   end
 
   after :publishing, :start
+  after :publishing, :notify_errbit
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
