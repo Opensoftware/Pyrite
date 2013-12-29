@@ -1,4 +1,7 @@
 TODO:
+- dodać instalacyjny wizard tak jak jest w wordpressach i innych.
+  po wrzuceniu kodu uzytkownik configuruje sobie całą aplikację. U nas narazie
+  sprowadz się to do wypełenienia Settings.
 - po zmianie event_id skoczyć z kalendarzem na datę startu eventu
 - walidacje dla dat z i bez event_id
 - timepicker blocks/new uniemozliwić ustawienie godziny zakonczenia przed jego
