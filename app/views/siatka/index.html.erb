@@ -1,68 +1,70 @@
 <div id="time"> </div>
 
+
+
+</ul>
 <table align="center" id="panel">
   <tr>
     <td>
-      <ul>
+      <ul class="nav nav-tabs nav-stacked">
         <% if can? :manage, User %>
           <li>
-            <p> <%= link_to("Uprawnienia", {:controller => 'siatka', :action => 'admin'}) %> </p>
+            <%= link_to("Uprawnienia", {:controller => 'siatka', :action => 'admin'}) %>
           </li>
         <% end %>
         <% if can? :manage, Settings %>
           <li>
-            <p> <%= link_to t("link_settings"), edit_settings_path %> </p>
+            <%= link_to t("link_settings"), edit_settings_path %>
           </li>
         <% end %>
         <% if can? :manage, User %>
           <li>
-            <p> <%= link_to "Stwórz konto", new_user_registration_path %> </p>
+             <%= link_to "Stwórz konto", new_user_registration_path %>
           </li>
         <% end %>
         <% if can? :manage, Room %>
           <li>
-            <p> <%= link_to t("link_classrooms"), rooms_path %> </p>
+             <%= link_to t("link_classrooms"), rooms_path %>
           </li>
         <% end %>
         <% if can? :manage, AcademicYear %>
           <li>
-            <p> <%= link_to t("link_academic_years"), academic_years_path %> </p>
+             <%= link_to t("link_academic_years"), academic_years_path %>
           </li>
         <% end %>
         <% if can? :manage, Block::Type %>
           <li>
-            <p> <%= link_to t("link_block_types"), block_types_path %> </p>
+             <%= link_to t("link_block_types"), block_types_path %>
           </li>
         <% end %>
         <% if can? :manage, Group %>
           <li>
-            <p> <%= link_to t("link_groups"), groups_path %> </p>
+             <%= link_to t("link_groups"), groups_path %>
           </li>
         <% end %>
-      </ul>
     </td>
     <td>
-      <ul>
+      <ul class="nav nav-tabs nav-stacked">
         <% if can? :manage, Plan %>
           <li>
-            <p> <%= link_to("Rezerwuj salę", {:controller => 'siatka', :action => 'rezerwacja'}) %> </p>
+             <%= link_to("Rezerwuj salę", {:controller => 'siatka', :action => 'rezerwacja'}) %>
           </li>
           <li>
-            <p> <%= link_to("Wprowadź dane", {:controller => 'siatka', :action => 'add'}) %></p>
+             <%= link_to(t("link_add_new_block"), new_block_path) %>
           </li>
           <li>
-            <p> <%= link_to("Wykrywanie kolizji sal", {:controller => 'siatka', :action => 'kolizje'}) %> </p>
+             <%= link_to("Wykrywanie kolizji sal", {:controller => 'siatka', :action => 'kolizje'}) %>
           </li>
           <li>
-            <p> <%= link_to("Wykrywanie kolizji grup", {:controller => 'siatka', :action => 'kolizjegrup'}) %> </p>
+             <%= link_to("Wykrywanie kolizji grup", {:controller => 'siatka', :action => 'kolizjegrup'}) %>
           </li>
           <li>
-            <p> <%= link_to("Drukowanie planów", {:controller => 'siatka', :action => 'drukowanie'}) %> </p>
+             <%= link_to("Drukowanie planów", {:controller => 'siatka', :action => 'drukowanie'}) %>
           </li>
         <% end %>
         <% if can? :manage, :all %>
           <li>
-            <p> <%= link_to("Statystyki", {:controller => 'siatka', :action => 'statystyki'}) %> </p>
+             <%= link_to("Statystyki", {:controller => 'siatka', :action => 'statystyki'}) %>
           </li>
         <% end %>
       </ul>

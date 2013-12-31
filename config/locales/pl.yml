@@ -13,6 +13,7 @@ pl:
   link_academic_years: Organizacja roku akademickiego
   link_block_types: Typy zajęć
   link_groups: Grupy
+  link_add_new_block: Wprowadź dane
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
