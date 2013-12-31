@@ -1,14 +1,10 @@
 class CreateGroups < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :groups do |t|
-    t.column "nazwa", :string
-    t.column "liczba", :int 
+      t.string :name
 
       t.timestamps
     end
   end
 
-  def self.down
-    drop_table :groups
-  end
 end

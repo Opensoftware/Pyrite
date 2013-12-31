@@ -9,6 +9,8 @@ class Room < ActiveRecord::Base
   alias_attribute :building_id, :budynek_id
   alias_attribute :comments, :uwagi
 
+  attr_accessible :numer
+
   belongs_to :building, :foreign_key => "budynek_id"
   has_many :blocks
 end

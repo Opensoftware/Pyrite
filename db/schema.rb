@@ -66,42 +66,36 @@ ActiveRecord::Schema.define(:version => 20130911212917) do
 
   create_table "buildings", :force => true do |t|
     t.string   "nazwa"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "departments", :force => true do |t|
     t.string   "nazwa"
     t.string   "nazwa_f"
     t.string   "wydzial"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "groups", :force => true do |t|
-    t.string   "nazwa"
-    t.integer  "liczba"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "rok"
-    t.string   "kurs"
-    t.string   "kierunek"
-    t.integer  "grupa"
-    t.integer  "podgrupa"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "groups_plans", :id => false, :force => true do |t|
     t.integer  "group_id"
     t.integer  "plan_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "lecturers", :force => true do |t|
     t.string   "title"
     t.string   "lecture"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "new_plans", :force => true do |t|
@@ -117,8 +111,8 @@ ActiveRecord::Schema.define(:version => 20130911212917) do
     t.integer  "dlugosc"
     t.integer  "czestotliwosc"
     t.string   "uwagi"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "old_plans", :force => true do |t|
@@ -134,8 +128,8 @@ ActiveRecord::Schema.define(:version => 20130911212917) do
     t.integer  "dlugosc"
     t.integer  "czestotliwosc"
     t.string   "uwagi"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "plans", :force => true do |t|
@@ -151,11 +145,11 @@ ActiveRecord::Schema.define(:version => 20130911212917) do
     t.integer  "dlugosc"
     t.integer  "czestotliwosc"
     t.string   "uwagi"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.date     "wazneod"
     t.date     "waznedo"
-    t.integer  "plan_id",       :default => 0, :null => false
+    t.integer  "plan_id",       :null => false
   end
 
   create_table "reservations", :force => true do |t|
@@ -170,31 +164,31 @@ ActiveRecord::Schema.define(:version => 20130911212917) do
     t.integer  "dlugosc"
     t.datetime "waznosc"
     t.string   "uwagi"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|
     t.string   "name",              :limit => 40
     t.string   "authorizable_type", :limit => 40
     t.integer  "authorizable_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "rooms", :force => true do |t|
     t.string   "numer"
     t.string   "opiekun"
     t.string   "rodzaj"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "ilosc_miejsc"
     t.integer  "budynek_id"
     t.text     "uwagi"
@@ -203,14 +197,14 @@ ActiveRecord::Schema.define(:version => 20130911212917) do
   create_table "schedules", :force => true do |t|
     t.string   "nazwa"
     t.string   "rok"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "settings", :force => true do |t|
     t.integer  "current_plan"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "plan_to_edit"
     t.string   "unit_name"
     t.string   "email_contact"
@@ -219,8 +213,8 @@ ActiveRecord::Schema.define(:version => 20130911212917) do
   create_table "subjects", :force => true do |t|
     t.string   "nazwa"
     t.string   "katedra"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

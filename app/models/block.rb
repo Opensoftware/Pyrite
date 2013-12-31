@@ -6,7 +6,8 @@ class Block < ActiveRecord::Base
   belongs_to :block_type
   has_many :dates
 
-  has_and_belongs_to_many :groups
+  has_many :groups, :through => :blocks_groups
+  has_many :blocks_groups
 
   attr_accessible :name, :start_date, :end_date, :comments, :group_ids, :lecturer_id, :room_id, :event_id, :block_type_id, :day
   attr_accessor :day, :start_date, :end_date
