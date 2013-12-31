@@ -7,11 +7,14 @@ class Block < ActiveRecord::Base
   has_many :dates
 
   has_many :groups, :through => :blocks_groups
-  has_many :blocks_groups
+  has_many :blocks_groups, :dependent => :destroy
 
   attr_accessible :name, :start_date, :end_date, :comments, :group_ids, :lecturer_id, :room_id, :event_id, :block_type_id, :day
   attr_accessor :day, :start_date, :end_date
   after_save :populate_dates # we need to have block id before we will create all dates TODO should be done in transaction
+
+  scope :for_groups, ->(group_ids) { joins(:blocks_groups).where("#{BlocksGroup.table_name}.group_id" => group_ids) }
+  scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : self.scoped }
 
   # TODO in case if populare_dates  will fail we need fallback
   def populate_dates

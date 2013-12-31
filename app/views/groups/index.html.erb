@@ -13,8 +13,8 @@
       <tr>
         <td> <%= group.name %> </td>
         <td>
-          <%= link_to 'Edit', edit_group_path(group) %>
-          <%= link_to 'Destroy', group, method: :delete, data: { confirm: t("confirm_removing_group") } %>
+          <%= link_to t("button_edit"), edit_group_path(group), :class => "btn btn-info" %>
+          <%= link_to t("button_delete"), group, method: :delete, data: { confirm: t("confirm_removing_group") }, :class => "btn btn-danger" %>
         </td>
       </tr>
     <% end %>

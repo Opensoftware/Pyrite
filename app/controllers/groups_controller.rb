@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   include BlocksHelper
 
-  respond_to :html, :js, :only => [:timetable]
+  respond_to :html, :js, :only => [:timetables, :timetable]
 
   def index
     @groups = Group.all
@@ -47,31 +47,21 @@ class GroupsController < ApplicationController
   end
 
   def timetable
+    @group = Group.find(params[:id])
+    # TODO implement with event_id
+    @events = convert_blocks_to_events(@group.blocks)
+    respond_with @events
+  end
+
+  def timetables
     group_ids = params[:group_ids]
     event_id = params[:event_id]
-    blocks = []
-    groups = []
-    begin
-      groups << Group.find(group_ids)
-    rescue
-      # LOG
-    end
-    groups.flatten!
     # TODO think about what will be the best way of quering blocks with and
     # without event_id, for example without event_id we will query whole
     # academic year? and if event_id is available should we load new events for
     # fullcalendar in case if the end_date will be reached?
-    if event_id.empty?
-      groups.each do |group|
-        blocks << group.blocks
-      end
-    else
-      groups.each do |group|
-        blocks << group.blocks.where(:event_id => event_id)
-      end
-    end
+    blocks = Block.for_event(event_id).for_groups(group_ids)
 
-    blocks.flatten!
     @events = convert_blocks_to_events(blocks)
     respond_with @events
   end

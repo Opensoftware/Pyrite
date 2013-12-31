@@ -39,7 +39,7 @@ SiatkaGit::Application.routes.draw do
       get :timetable
     end
     collection do
-      get :timetable
+      get :timetables
     end
   end
   resources :academic_years do

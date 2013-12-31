@@ -1,5 +1,6 @@
 <%= content_for(:additional_javascript_libraries) do %>
   <%= javascript_include_tag "blocks" %>
+  <%= javascript_include_tag "blocks/new" %>
 <% end %>
 
 <h2> <%= t("header_add_new_block") %> </h2>
@@ -19,7 +20,7 @@
         <td rowspan=3>
           <%= f.collection_select :group_ids, Group.all, :id, :name,
                                   {:selected => @block.group_ids},
-                                  {:multiple => true, "data-timetable-url" => timetable_groups_path} %>
+                                  {:multiple => true, "data-timetable-url" => timetables_groups_path} %>
 
         </td>
         <td> <%= f.text_field :start_date, :class => "datetimepicker", :autocomplete => :off, :placeholder => t("placeholder_block_start") %> </td>
@@ -50,5 +51,9 @@
   <% end %>
 
 
-<div id="groups-timetable"> </div>
-<div id="room-timetable"></div>
+<div id="groups-timetable-container">
+  <div id="groups-timetable"> </div>
+</div>
+<div id="room-timetable-container">
+  <div id="room-timetable"></div>
+</div>

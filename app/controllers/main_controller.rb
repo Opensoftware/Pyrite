@@ -6,6 +6,7 @@ class MainController < ApplicationController
   before_filter :set_unit_name
 
   def index
+    @groups_with_url = Group.all.collect {|group| [group.name, timetable_group_path(group.id)]}
     render :index, :layout => "application"
   end
 

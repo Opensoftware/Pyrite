@@ -1,3 +1,7 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <%= javascript_include_tag "timetable_forms" %>
+<% end %>
+
 <%= form_tag '/main/rezerwacje', :method => 'get', :class => "show-timetable-form" do %>
   <div class="control-group">
     <label class="control-label" for="reservations_timetable"> <%= t("label_reservations") %></label>
@@ -31,13 +35,11 @@
     </div>
   </div>
 <% end %>
-<%= form_tag '/main/showgroup', {:method => 'get', :class => "show-timetable-form"} do %>
+<%= form_tag "#", {:method => :get, :id => "show-group-timetable-form", :class => "show-timetable-form"} do %>
   <div class="control-group">
-    <label class="control-label" for="group-timetable"> <%= t("label_group") %></label>
+    <label class="control-label" for=""> <%= t("label_group") %></label>
     <div class="controls">
-      <%= collection_select(:plan,:id, Group.find(:all, :group => "nazwa"),
-                            :nazwa, :nazwa, {:prompt => "Wybierz grupę"},
-                            :id => "group-timetable" ) %>
+      <%= select(:group, :id, @groups_with_url, {:prompt => t("prompt_group")}) %>
       <%= submit_tag t("button_show"), :class => "btn" %>
     </div>
   </div>

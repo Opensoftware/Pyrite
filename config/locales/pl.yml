@@ -71,6 +71,7 @@ pl:
   label_reservations: Rezerwacje
   label_classroom: Sale
   label_group: Grupa
+  label_choose_group: Wybierz grupę
   label_lecturer: Prowadzący
   label_academic_year_name: Nazwa
   label_academic_year_start_date: Data rozpoczęcia
@@ -93,6 +94,7 @@ pl:
   label_comments: Uwagi
   label_group_name: Nazwa grupy
   label_day: Dzień
+  label_timetable_for_group: "Plan zajęć dla grupy:"
 
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
   confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?
@@ -107,3 +109,4 @@ pl:
   prompt_room: Sala
   prompt_day: Wybierz dzień
   prompt_academic_event: Wybierz plan
+  prompt_group: Wybierz grupę
