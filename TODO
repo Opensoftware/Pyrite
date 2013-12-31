@@ -1,4 +1,7 @@
 TODO:
+- dodać możliwość grupowania grup (tak zwane kursy np. 5 grup ma te same
+  zajęcia) - zastanowić się czy to ma sens i skonsultować z planerami. Z racji
+  iż odkąd jest możliwość zaznaczania wielu grup chyba z tego nie korzystają.
 - dodać instalacyjny wizard tak jak jest w wordpressach i innych.
   po wrzuceniu kodu uzytkownik configuruje sobie całą aplikację. U nas narazie
   sprowadz się to do wypełenienia Settings.
