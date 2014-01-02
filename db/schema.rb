@@ -184,14 +184,13 @@ ActiveRecord::Schema.define(:version => 20130911212917) do
   end
 
   create_table "rooms", :force => true do |t|
-    t.string   "numer"
-    t.string   "opiekun"
-    t.string   "rodzaj"
+    t.string   "name"
+    t.integer  "capacity"
+    t.integer  "room_type_id"
+    t.integer  "building_id"
+    t.text     "comments"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.integer  "ilosc_miejsc"
-    t.integer  "budynek_id"
-    t.text     "uwagi"
   end
 
   create_table "schedules", :force => true do |t|

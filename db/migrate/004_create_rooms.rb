@@ -1,17 +1,14 @@
 class CreateRooms < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :rooms do |t|
-      t.column "numer", :string
-      t.column "opiekun", :string
-      t.column "godz", :string
-      t.column "dni", :string
-      t.column "rodzaj", :string
+      t.string :name
+      t.integer :capacity
+      t.integer :room_type_id
+      t.integer :building_id
+      t.text :comments
 
       t.timestamps
     end
   end
 
-  def self.down
-    drop_table :rooms
-  end
 end

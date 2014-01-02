@@ -11,6 +11,6 @@ Group.create(:name => "2ANIN")
 Group.create(:name => "3ANIN")
 
 Room.destroy_all
-Room.create(:numer => "02")
-Room.create(:numer => "03")
-Room.create(:numer => "04")
+Room.create(:name => "02")
+Room.create(:name => "03")
+Room.create(:name => "04")
