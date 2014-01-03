@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   include BlocksHelper
 
-  respond_to :js, :html, :only => [:timetable]
+  respond_to :js, :html, :only => [:timetable, :timetables]
 
   def index
     @rooms = Room.all
@@ -48,9 +48,14 @@ class RoomsController < ApplicationController
 
   def timetable
     @room = Room.find(params[:id])
-    event_id = params[:event_id]
-    blocks = @room.blocks.where(:event_id => event_id)
+    # TODO implement with event_id
+    @events = convert_blocks_to_events(@room.blocks)
+    respond_with @events
+  end
 
+  def timetables
+    @room = Room.find(params[:id])
+    blocks = @room.blocks.for_event(parmas[:event_id])
     @room_name = @room.name
     @events = convert_blocks_to_events(blocks)
     respond_with @events

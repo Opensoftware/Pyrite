@@ -95,6 +95,7 @@ pl:
   label_group_name: Nazwa grupy
   label_day: Dzień
   label_timetable_for_group: "Plan zajęć dla grupy:"
+  label_timetable_for_room: "Plan zajęć dla sali:"
 
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
   confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?

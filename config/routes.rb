@@ -56,7 +56,7 @@ SiatkaGit::Application.routes.draw do
     end
     collection do
       get :auto_complete_for_room_numer
-      get :timetable
+      get :timetables
     end
   end
   resources :siatka

@@ -29,7 +29,7 @@
         <td>
           <%= f.collection_select :room_id, Room.all, :id, :name,
                                   {:prompt => t("prompt_room") },
-                                  {"data-timetable-url" => timetable_rooms_path} %>
+                                  {"data-timetable-url" => timetables_rooms_path} %>
         </td>
         <td> <%= f.text_field :comments %> </td>
       </tr>
