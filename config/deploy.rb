@@ -80,6 +80,17 @@ namespace :deploy do
     end
   end
 
+  desc 'Erase database and feed with demo seeds'
+  task :prepare_demo do
+    on roles(:db) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, :exec, "rake db:drop db:create db:migrate db:seed:demo"
+        end
+      end
+    end
+  end
+
   desc 'Errbit notification about deploy'
   task :notify_errbit do
     on roles(:app) do
