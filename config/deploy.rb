@@ -14,7 +14,7 @@ set :rails_env, "test"
 # RVM
 
 set :rvm_type, :user
-set :rvm_ruby_version, '1.9.3@siatka2.0'
+set :rvm_ruby_version, '2.0.0@siatka2.0'
 set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 # Bundler
