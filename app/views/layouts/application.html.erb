@@ -16,7 +16,7 @@
     <div id="menu_container">
       <ul id="menu">
         <% if user_signed_in? %>
-          <li> <%= link_to t("link_siatka"), siatka_path %> </li>
+          <li> <%= link_to t("link_siatka"), dashboard_index_path %> </li>
           <li> <%= link_to t("link_sign_out", :email => current_user.email), destroy_user_session_path, :method => :delete %> </li>
         <% else %>
           <li> <%= link_to t("link_home"), root_path %> </li>
