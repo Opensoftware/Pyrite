@@ -1,4 +1,22 @@
 TODO:
+- z racji iż po dodaniu do bazy daty w bloku są konwertowane na czas CEST jak
+  się przegląda plany w okresie zimowym, czase jest wyświeltany o godzinę do
+  przodu z racji iż obowiązuje GMT+1, oczywiście po przestawieniu na czas zimowy
+  godzina będzie wyświetlała się prawidłowo. Zastanowić się jak prezentować dane
+  w czasie letnim/zimowym bez konieczności mieszania czegokolwiek.
+- Dodać flagę do bloków zajęć dla rezerwacji. Rezerwację żyją własnym życiem i
+  może zajść potrzeba wyszczególnienia tego czy blok jest z rezerwacji czy
+  też jako blok w ramach studiów.
+- możliwość wysłania propozycji rezerwacji sali do planera (skonsultować czy
+  taki ficzer jest porządany)
+- zastąpić wybierz dzień przy dodawaniu datapickerem w przypadku gdy event_id
+  jest pusty, gdy event jest wybrany datapicker zamienia się w selecta z dniami
+  tygodnia.
+- filtrowanie sal w rezerwacji w zależności od rodzaju, wielkości etc.
+- dowiedzieć się czy rezerwacje powinny być wiązane z grupami. Wszak w
+  większości przypadków grupa nie ma znaczenia dla rezerwacji i czasem prowadzi
+  tylko do niechcianych konfliktów (np. rezerwacja dwóch sal dla tej samej
+  grupy)
 - dodać możliwość grupowania grup (tak zwane kursy np. 5 grup ma te same
   zajęcia) - zastanowić się czy to ma sens i skonsultować z planerami. Z racji
   iż odkąd jest możliwość zaznaczania wielu grup chyba z tego nie korzystają.
