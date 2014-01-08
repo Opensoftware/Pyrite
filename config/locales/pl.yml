@@ -40,6 +40,8 @@ pl:
   notice_academic_year_was_created: Nowy rok akademicki został stworzony.
   notice_academic_year_was_updated: Rok akademicki został zaktualizowany.
   notice_block_has_been_created: Blok został stworzony.
+  notice_block_type_created: Nowy typ zajęć został stworzony.
+  notice_block_type_updated: Rekord został zaktualizowany.
 
   error_invalid_data: Błędne dane.
 
@@ -109,6 +111,8 @@ pl:
   label_block_type_name: Nazwa typu zajęć
   label_block_type_short_name: Skrót
   label_block_type_description: Opis
+  label_short_name: Skrót
+  label_description: Opis
   label_room: Sala
   label_groups: Grupy
   label_comments: Uwagi
