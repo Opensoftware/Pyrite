@@ -61,6 +61,7 @@ class GroupsController < ApplicationController
     # academic year? and if event_id is available should we load new events for
     # fullcalendar in case if the end_date will be reached?
     blocks = Block.for_event(event_id).for_groups(group_ids)
+    @event = AcademicYear::Event.where(:id => params[:event_id]).first
 
     @events = convert_blocks_to_events(blocks)
     respond_with @events

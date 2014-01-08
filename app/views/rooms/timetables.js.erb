@@ -1,8 +1,22 @@
 $('#room-timetable').html('');
 
 var options = {
+  <% if @event %>
+    year: <%= @event.start_date.year %>,
+    // fullCalendar count month from 0 - January = 0
+    month: <%= @event.start_date.month - 1 %>,
+    date: <%= @event.start_date.day %>,
+  <% end %>
   dayNamesShort: <%= raw fc_days %>,
-  events: <%= raw @events.to_json %>
+  events: <%= raw @events.to_json %>,
+  eventAfterAllRender: function(event, element) {
+    var current_date = $("#block_day_with_date").val();
+    var is_visible = $("#block_day_with_date").is(":visible")
+    if ( current_date.length > 0 && is_visible ) {
+      var block_date = $.fullCalendar.parseDate( current_date )
+      $("#room-timetable").fullCalendar('gotoDate', block_date);
+    }
+  }
 }
 
 $('#room-timetable').fullCalendar_with_defaults(options);
