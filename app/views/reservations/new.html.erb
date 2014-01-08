@@ -1,0 +1,50 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <%= javascript_include_tag "blocks" %>
+  <%= javascript_include_tag "reservations" %>
+<% end %>
+
+<h2> <%= t("header_room_reservation") %> </h2>
+<br>
+<br>
+<%= form_for @block, :url => reservations_path, :html => { :id => "reservation-form" } do |f| %>
+  <%= error_msgs_for @block %>
+    <table>
+      <tr>
+        <td> <span class="label"> <%= t("label_block_start_time") %> </span> </td>
+        <td> <span class="label"> <%= t("label_day") %> </span> </td>
+        <td> <span class="label"> <%= t("label_lecturer") %> </span> </td>
+        <td> <span class="label"> <%= t("label_comments") %> </span> </td>
+      </tr>
+      <tr>
+        <td> <%= f.text_field :start_time, :class => "timepicker", :autocomplete => :off, :placeholder => t("placeholder_block_start_time") %> </td>
+        <td>
+          <%= f.select :day, options_for_select(days_for_select), :prompt => t("prompt_day") %>
+          <%= f.text_field :day_with_date, :class => "datepicker", :autocomplete => :off, :placeholder => t("placeholder_day") %>
+        </td>
+        <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name, :prompt => t("prompt_lecturer") %> </td>
+        <td> <%= f.text_field :comments %> </td>
+      </tr>
+      <tr>
+        <td> <span class="label"> <%= t("label_block_end_time") %> </span> </td>
+        <td> <span class="label"> <%= t("label_academic_year_event") %> </span> </td>
+        <td> <span class="label"> <%= t("label_room") %> </span> </td>
+        <td> <span class="label"> <%= t("label_block_name") %> </span> </td>
+      </tr>
+      <tr>
+        <td> <%= f.text_field :end_time, :class => "timepicker", :autocomplete => :off, :placeholder => t("placeholder_block_end_time") %> </td>
+        <td> <%= f.collection_select :event_id, AcademicYear::Event.all, :id, :name, :include_blank => t("include_blank_academic_event") %> </td>
+        <td>
+          <%= f.collection_select :room_id, Room.all, :id, :name,
+                                  {:prompt => t("prompt_room") },
+                                  {"data-timetable-url" => timetables_rooms_path} %>
+        </td>
+        <td colspan=2> <%= f.text_field :name %> </td>
+      </tr>
+    </table>
+
+    <%= f.submit t("button_save"), :class => "submit-btn" %>
+  <% end %>
+
+
+<div id="room-timetable"></div>
+

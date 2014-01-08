@@ -1,7 +1,21 @@
 pl:
+  errors:
+    messages:
+      blank: nie może być puste
+  activerecord:
+    attributes:
+      block:
+        day: "Pole 'Dzień'"
+        start_time: "Pole 'Godzina rozpoczęcia'"
+        end_time: "Pole 'Godzina zakończenia'"
+        name: "Pole 'Nazwa bloku'"
   date:
     day_names: [Poniedziałek, Wtorek, Środa, Czwartek, Piątek, Sobota, Niedziela]
     abbr_day_names: [Pon, Wto, Śro, Czw, Pią, Sob, Nie]
+
+  error_must_be_lower_then_end_time: "musi być wcześniej niż pole 'Godzina zakończenia'"
+  error_internal_error: Coś poszło nie tak, sprawdzimy to i postaramy się naprawić jak najszybciej
+  error_day_not_present: jest puste
   link_home: Strona główna
   link_sign_in: Logowanie
   link_siatka: Siatka
@@ -14,6 +28,7 @@ pl:
   link_block_types: Typy zajęć
   link_groups: Grupy
   link_add_new_block: Wprowadź dane
+  link_add_new_reservation: Rezerwuj salę
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
@@ -55,9 +70,11 @@ pl:
   header_listing_groups: Lista grup
   header_edit_group: Edycja grupy
   header_new_group: Nowa grupa
+  header_room_reservation: Rezerwacja sali
 
   modal_header_new_academic_year_event: Dodaj nowe wydarzenie
 
+  label_error: Błąd
   label_name: Nazwa
   label_current_plan: Plan do wyświetlania
   label_plan_to_edit: Plan do edycji
@@ -83,8 +100,10 @@ pl:
   label_academic_year_event_lecture_free: Wolne od zajęć
   label_academic_year_event: Plan dla
   label_actions: Akcja
-  label_block_start: Godzina rozpoczęcia
-  label_block_end: Godzina zakończenia
+  label_block_start_time: Godzina rozpoczęcia
+  label_block_end_time: Godzina zakończenia
+  label_block_start_date: Godzina i dzień rozpoczęcia
+  label_block_end_date: Godzina i dzień zakończenia
   label_block_name: Nazwa bloku
   label_block_type: Rodzaj zajęć
   label_block_type_name: Nazwa typu zajęć
@@ -97,6 +116,7 @@ pl:
   label_day: Dzień
   label_timetable_for_group: "Plan zajęć dla grupy:"
   label_timetable_for_room: "Plan zajęć dla sali:"
+  label_reservation_timetable_for_room: "Rezerwacja dla sali:"
 
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
   confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?
@@ -104,11 +124,16 @@ pl:
   confirm_to_remove_block_type: Jesteś pewny aby usunąć dany typ zajeć? Wszystkie zajęcia posiadający ten typ zostaną usunięte.
   confirm_removing_group: Jesteś pewny aby usunać daną grupę? Wszystkie blocki z nią związaną zostaną usunięte!
 
-  placeholder_block_start: Czas rozpoczęcia
-  placeholder_block_end: Czas zakończenia
+  placeholder_block_start_time: Czas rozpoczęcia
+  placeholder_block_end_time: Czas zakończenia
+  placeholder_block_start_date: Dzień rozpoczęcia
+  placeholder_block_end_date: Dzień zakończenia
   placeholder_lecturer: Prowadzący
+  placeholder_day: Dzień
 
   prompt_room: Sala
   prompt_day: Wybierz dzień
-  prompt_academic_event: Wybierz plan
   prompt_group: Wybierz grupę
+
+
+  include_blank_academic_event: Brak

@@ -4,10 +4,10 @@ class MainController < ApplicationController
   # i trzeba go podawać w każdej metodzie przy renderowaniu
   layout "application"
   before_filter :set_unit_name
+  include BlocksHelper
 
   def index
-    @groups_with_url = Group.all.collect {|group| [group.name, timetable_group_path(group.id)]}
-    @rooms_with_url = Room.all.collect {|room| [room.name, timetable_room_path(room.id)]}
+    timetable_forms_data
     render :index, :layout => "application"
   end
 

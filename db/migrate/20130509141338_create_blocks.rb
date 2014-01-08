@@ -6,6 +6,7 @@ class CreateBlocks < ActiveRecord::Migration
       t.integer :room_id
       t.integer :building_id
       t.integer :block_type_id
+      t.boolean :reservation, :default => false
       t.string :name
       t.text :comments
       t.timestamps

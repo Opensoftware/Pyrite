@@ -53,10 +53,11 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
     t.integer  "room_id"
     t.integer  "building_id"
     t.integer  "block_type_id"
+    t.boolean  "reservation",   :default => false
     t.string   "name"
     t.text     "comments"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "blocks_groups", :id => false, :force => true do |t|
