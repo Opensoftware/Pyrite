@@ -32,7 +32,10 @@
       </tr>
       <tr>
         <td> <%= f.text_field :end_time, :class => "timepicker", :autocomplete => :off, :placeholder => t("placeholder_block_end_time") %> </td>
-        <td> <%= f.collection_select :event_id, AcademicYear::Event.all, :id, :name, :include_blank => t("include_blank_academic_event") %> </td>
+        <td>
+          <%= f.collection_select :event_id, AcademicYear::Event.currnet_for_view,
+              :id, :name, :include_blank => t("include_blank_academic_event") %>
+        </td>
         <td>
           <%= f.collection_select :room_id, Room.all, :id, :name,
                                   {:prompt => t("prompt_room") },

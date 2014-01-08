@@ -50,7 +50,10 @@
           <%= f.text_field :end_time, :class => "timepicker", :autocomplete => :off,
                                       :placeholder => t("placeholder_block_end_time") %>
         </td>
-        <td> <%= f.collection_select :event_id, AcademicYear::Event.all, :id, :name %> </td>
+        <td>
+          <%= f.collection_select :event_id,
+              AcademicYear::Event.current_for_edit, :id, :name %>
+        </td>
         <td> <%= f.collection_select :block_type_id, Block::Type.all, :id, :name %> </td>
         <td colspan=2> <%= f.text_field :name %> </td>
       </tr>
