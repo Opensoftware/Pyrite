@@ -1,4 +1,10 @@
 TODO:
+- dodać możliwość tworzenia rezerwacji cyklicznych oraz rezerwacji na dowolny
+  okres dni niekoniecznie academic event.
+- dodać walidację na eventy roku akademickiego tak aby daty były zawsze pomiędzy
+  rozpoczęciem i zakończeniem roku akademickiego.
+- Dodać blocks/new możliwość dodawania zakresu dat z dowolnego przedziału, czyli
+  datetimepicker dla start_date i end_date
 - z racji iż po dodaniu do bazy daty w bloku są konwertowane na czas CEST jak
   się przegląda plany w okresie zimowym, czase jest wyświeltany o godzinę do
   przodu z racji iż obowiązuje GMT+1, oczywiście po przestawieniu na czas zimowy
