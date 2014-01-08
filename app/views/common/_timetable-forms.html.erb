@@ -12,15 +12,17 @@
     </div>
   </div>
 <% end %>
-<%= form_tag "#", {:method => :get, :id => "show-room-timetable-form", :class => "show-timetable-form"} do %>
-  <div class="control-group">
-    <label class="control-label" for="classrooms-timetable"> <%= t("label_classroom") %></label>
-    <div class="controls">
-      <%= select(:room,:id, @rooms_with_url, {:prompt => t("prompt_room")},
-                            :id => "classrooms-timetable") %>
-      <%= submit_tag t("button_show"), :class => "btn" %>
+<% cache cache_key_for_rooms_with_url do %>
+  <%= form_tag "#", {:method => :get, :id => "show-room-timetable-form", :class => "show-timetable-form"} do %>
+    <div class="control-group">
+      <label class="control-label" for="classrooms-timetable"> <%= t("label_classroom") %></label>
+      <div class="controls">
+        <%= select(:room,:id, @rooms_with_url, {:prompt => t("prompt_room")},
+                              :id => "classrooms-timetable") %>
+        <%= submit_tag t("button_show"), :class => "btn" %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
 <%= form_tag '/main/showprow' , {:method => :get, :class => "show-timetable-form" } do %>
   <div class="control-group">
@@ -33,12 +35,14 @@
     </div>
   </div>
 <% end %>
-<%= form_tag "#", {:method => :get, :id => "show-group-timetable-form", :class => "show-timetable-form"} do %>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t("label_group") %></label>
-    <div class="controls">
-      <%= select(:group, :id, @groups_with_url, {:prompt => t("prompt_group")}) %>
-      <%= submit_tag t("button_show"), :class => "btn" %>
+<% cache cache_key_for_groups_with_url do %>
+  <%= form_tag "#", {:method => :get, :id => "show-group-timetable-form", :class => "show-timetable-form"} do %>
+    <div class="control-group">
+      <label class="control-label" for=""> <%= t("label_group") %></label>
+      <div class="controls">
+        <%= select(:group, :id, @groups_with_url, {:prompt => t("prompt_group")}) %>
+        <%= submit_tag t("button_show"), :class => "btn" %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

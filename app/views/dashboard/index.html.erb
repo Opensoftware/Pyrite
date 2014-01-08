@@ -38,7 +38,8 @@
   </ul>
 <% end %>
 
-<div class="main-control-panel">
-  <%= render :partial => "common/timetable-forms" %>
-</div>
-
+<% cache cache_key_for_timetable_forms do %>
+  <div class="main-control-panel">
+    <%= render :partial => "common/timetable-forms" %>
+  </div>
+<% end %>
