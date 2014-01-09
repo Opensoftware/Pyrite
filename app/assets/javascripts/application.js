@@ -21,7 +21,6 @@
 //= require fullcalendar/fullcalendar.min
 //= require jquery.busybox
 
-
 $(document).ready(function() {
   reloadDatepicker();
 });

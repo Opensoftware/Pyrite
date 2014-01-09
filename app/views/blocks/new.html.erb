@@ -3,6 +3,10 @@
   <%= javascript_include_tag "blocks/new" %>
 <% end %>
 
+<%= content_for(:additional_stylesheets) do %>
+  <%= stylesheet_link_tag "blocks" %>
+<% end %>
+
 <h2> <%= t("header_add_new_block") %> </h2>
 <br>
 <br>
