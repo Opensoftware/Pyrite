@@ -29,7 +29,7 @@
                            :placeholder => t("placeholder_block_start_time") %>
         </td>
         <td>
-          <%= f.select :day, options_for_select(days_for_select) %>
+          <%= f.select :day, options_for_select(days_for_select, @block.day) %>
         </td>
         <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name, :prompt => t("prompt_lecturer") %> </td>
         <td>
