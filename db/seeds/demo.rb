@@ -10,6 +10,14 @@ Group.create(:name => "1ANIN2")
 Group.create(:name => "2ANIN")
 Group.create(:name => "3ANIN")
 
+Block::Type.destroy_all
+Block::Type.create(:name => "Wykład", :short_name => "W", :description =>
+                   "Zajęcia audytoryjne", :color => "#93c47d")
+Block::Type.create(:name => "Ćwiczenia", :short_name => "Ćw", :description =>
+                   "Zajęcia praktyczne", :color => "#3c78d8")
+Block::Type.create(:name => "Laboratoria", :short_name => "Lab", :description =>
+                   "Zajęcia Laboratoryjne", :color => "#dd7e6b")
+
 RoomType.destroy_all
 room_type1 = RoomType.create(:name => "Wykładowa", :short_name => "W", :description => "Sala wykładowa z rzutnikiem")
 room_type2 = RoomType.create(:name => "Laboratorium", :short_name => "Lab", :description => "Sala laboratoryjna niezbędne ochronne obuwie")
