@@ -35,7 +35,7 @@
         <td>
           <%= f.select :day, options_for_select(days_for_select, @block.day) %>
         </td>
-        <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name, :prompt => t("prompt_lecturer") %> </td>
+        <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :full_name, :prompt => t("prompt_lecturer") %> </td>
         <td>
           <%= f.collection_select :room_id, Room.all, :id, :name,
                                   {:prompt => t("prompt_room") },

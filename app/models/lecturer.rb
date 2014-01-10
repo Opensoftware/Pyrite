@@ -1,6 +1,9 @@
 class Lecturer < ActiveRecord::Base
   has_many :blocks
 
-  # TODO replace by new migrations
-  alias_attribute :name, :lecture
+  attr_accessible :full_name, :title
+
+  def name_with_title
+    "#{title} #{full_name}"
+  end
 end

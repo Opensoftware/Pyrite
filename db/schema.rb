@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
 
   create_table "lecturers", :force => true do |t|
     t.string   "title"
-    t.string   "lecture"
+    t.string   "full_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

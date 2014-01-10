@@ -36,3 +36,7 @@ academic_year.events.build(:name => "Semestr Letni", :start_date => "2015-03-01"
 academic_year.events.build(:name => "Sesja zimowa", :start_date => "2015-02-02", :end_date => "2014-06-01", :lecture_free => true)
 academic_year.events.build(:name => "Sesja letnia", :start_date => "2015-06-02", :end_date => "2014-06-30", :lecture_free => true)
 academic_year.save
+
+Lecturer.destroy_all
+Lecturer.create(:title => "prof.", :full_name => "Andrzej Wajda")
+Lecturer.create(:title => "dr", :full_name => "Stanisław Kobuszewski")

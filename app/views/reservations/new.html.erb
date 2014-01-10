@@ -21,7 +21,7 @@
           <%= f.select :day, options_for_select(days_for_select), :prompt => t("prompt_day") %>
           <%= f.text_field :day_with_date, :class => "datepicker", :autocomplete => :off, :placeholder => t("placeholder_day") %>
         </td>
-        <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name, :prompt => t("prompt_lecturer") %> </td>
+        <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :full_name, :prompt => t("prompt_lecturer") %> </td>
         <td> <%= f.text_field :comments %> </td>
       </tr>
       <tr>

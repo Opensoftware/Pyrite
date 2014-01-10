@@ -142,6 +142,7 @@ pl:
   prompt_room: Sala
   prompt_day: Wybierz dzień
   prompt_group: Wybierz grupę
+  prompt_lecturer: Wybierz prowadzącego
 
 
   include_blank_academic_event: Brak
