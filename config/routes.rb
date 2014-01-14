@@ -9,7 +9,7 @@ SiatkaGit::Application.routes.draw do
   match "/howto" => "main#howto", :as => "howto"
   match "/contact" => "main#kontakt", :as => "contact"
 
-  resources :groups do
+  resources :groups, :except => [:show] do
     member do
       get :timetable
     end

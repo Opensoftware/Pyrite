@@ -42,6 +42,8 @@ pl:
   notice_block_has_been_created: Blok został stworzony.
   notice_block_type_created: Nowy typ zajęć został stworzony.
   notice_block_type_updated: Rekord został zaktualizowany.
+  notice_group_has_been_created: Grupa została stworzona.
+  notice_group_has_been_updated: Grupa została zaktualizowana.
 
   error_invalid_data: Błędne dane.
 

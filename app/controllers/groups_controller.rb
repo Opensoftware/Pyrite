@@ -7,10 +7,6 @@ class GroupsController < ApplicationController
     @groups = Group.all
   end
 
-  def show
-    @group = Group.find(params[:id])
-  end
-
   def new
     @group = Group.new
   end
@@ -23,7 +19,8 @@ class GroupsController < ApplicationController
     @group = Group.new(params[:group])
 
     if @group.save
-      redirect_to @group, notice: 'Group was successfully created.'
+      flash[:notice] = t("notice_group_has_been_created")
+      redirect_to groups_path
     else
       render action: "new"
     end
@@ -33,7 +30,8 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     if @group.update_attributes(params[:group])
-      redirect_to @group, notice: 'Group was successfully updated.'
+      flash[:notice] = t("notice_group_has_been_updated")
+      redirect_to groups_path
     else
       render action: "edit"
     end
