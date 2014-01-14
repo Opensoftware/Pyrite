@@ -4,7 +4,7 @@ class Block < ActiveRecord::Base
   belongs_to :building
   belongs_to :event, :class_name => "AcademicYear::Event"
   belongs_to :type, :class_name => "Block::Type"
-  has_many :dates
+  has_many :dates, :dependent => :destroy
 
   has_many :groups, :through => :blocks_groups
   has_many :blocks_groups, :dependent => :destroy
