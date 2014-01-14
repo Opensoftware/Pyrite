@@ -1,3 +1,13 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <%= javascript_include_tag "spectrum" %>
+  <%= javascript_include_tag "block/types" %>
+<% end %>
+
+<%= content_for(:additional_stylesheets) do %>
+  <%= stylesheet_link_tag "block/types" %>
+  <%= stylesheet_link_tag "spectrum" %>
+<% end %>
+
 <%= form_for @block_type, :html => { :class => "form-horizontal" } do |f| %>
   <div class="control-group">
     <label class="control-label" for=""> <%= t "label_block_type_name" %></label>
@@ -9,6 +19,12 @@
     <label class="control-label" for=""> <%= t "label_block_type_short_name" %></label>
     <div class="controls">
       <%= f.text_field :short_name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for=""> <%= t "label_block_type_color" %></label>
+    <div class="controls">
+      <%= f.text_field :color, :class => "colorpicker" %>
     </div>
   </div>
   <div class="control-group">

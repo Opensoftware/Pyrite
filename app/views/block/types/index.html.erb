@@ -1,3 +1,7 @@
+<%= content_for(:additional_stylesheets) do %>
+  <%= stylesheet_link_tag "block/types" %>
+<% end %>
+
 <h2> <%=t "header_block_types" %></h2>
 
 <%= link_to t("button_new_block_type"), new_block_type_path, :class => "btn btn-primary pull-right" %>
@@ -7,6 +11,7 @@
     <th> <%=t "label_name" %> </th>
     <th> <%=t "label_short_name" %> </th>
     <th> <%=t "label_description" %></th>
+    <th> <%=t "label_color" %></th>
     <th> <%=t "label_actions" %></th>
   </tr>
 
@@ -15,6 +20,7 @@
     <td><%= block_type.name %></td>
     <td><%= block_type.short_name %></td>
     <td><%= block_type.description %></td>
+    <td><%= raw color_box(block_type.color) %></td>
     <td>
       <%= link_to t("button_edit"), edit_block_type_path(block_type), :class => "btn btn-primary" %>
       <%= link_to t("button_delete"), block_type, method: :delete, data: { confirm: t("confirm_to_remove_block_type") }, :class => "btn delete-button" %></td>

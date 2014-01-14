@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
     t.string   "name"
     t.text     "description"
     t.string   "short_name"
+    t.string   "color"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -52,12 +53,12 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
     t.integer  "event_id"
     t.integer  "room_id"
     t.integer  "building_id"
-    t.integer  "block_type_id"
-    t.boolean  "reservation",   :default => false
+    t.integer  "type_id"
+    t.boolean  "reservation", :default => false
     t.string   "name"
     t.text     "comments"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "blocks_groups", :id => false, :force => true do |t|

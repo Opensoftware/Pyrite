@@ -4,6 +4,7 @@ class CreateBlockTypes < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :short_name
+      t.string :color
 
       t.timestamps
     end
