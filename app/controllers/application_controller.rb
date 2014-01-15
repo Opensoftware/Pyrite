@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     flash[:notice] || flash[:error] || nil
   end
 
+  def after_sign_in_path_for(resource)
+    dashboard_index_path
+  end
+
 # metoda pobiera informacje na temat obecnie ustawionego planu zajęć
 # return @baza - identyfikator oznaczający nazwę bazy danych na której operuje system
   def get_current_plan
