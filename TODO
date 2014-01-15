@@ -1,4 +1,5 @@
 TODO:
+- dodać możliwość wyświetlania planów bez niedziel i sobót
 - dodać możliwość tworzenia rezerwacji cyklicznych oraz rezerwacji na dowolny
   okres dni niekoniecznie academic event.
 - dodać walidację na eventy roku akademickiego tak aby daty były zawsze pomiędzy
