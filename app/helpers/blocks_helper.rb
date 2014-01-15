@@ -12,9 +12,15 @@ module BlocksHelper
   end
 
   def timetable_forms_data
-    @groups_with_url = Group.all.collect {|group| [group.name, timetable_group_path(group.id)]}
-    @rooms_with_url = Room.all.collect {|room| [room.name, timetable_room_path(room.id)]}
-    @rooms_reservations_with_url = Room.all.collect {|room| [room.name, show_reservations_path(room.id)]} || []
+    @groups_with_url = Group.all.collect {|group|
+      [group.name, timetable_group_path(group.id)]
+    }
+    @rooms_with_url = Room.all.collect {|room|
+      [room.name, timetable_room_path(room.id)]
+    }
+    @rooms_reservations_with_url = Room.all.collect {|room|
+      [room.name, show_reservations_path(room.id)]
+    }
     @lecturers_with_url = Lecturer.all.collect { |lecturer|
       [lecturer.name_with_title, timetable_lecturer_path(lecturer.id)]
     }
