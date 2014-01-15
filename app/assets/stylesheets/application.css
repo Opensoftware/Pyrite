@@ -16,6 +16,7 @@
  *= require jquery.ui.slider
  *= require jquery-ui-timepicker-addon
  *= require fullcalendar/fullcalendar
+ *= require fullcalendar_custom
  */
 
 #test-badge {

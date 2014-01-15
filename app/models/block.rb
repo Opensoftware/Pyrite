@@ -65,6 +65,10 @@ class Block < ActiveRecord::Base
     groups.map {|g| g.name }.join(" ")
   end
 
+  def type_name
+    type.try(:short_name).to_s
+  end
+
   private
 
     def validate_times
