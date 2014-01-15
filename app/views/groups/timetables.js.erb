@@ -8,6 +8,11 @@ var options = {
   <% end %>
   dayNamesShort: <%= raw fc_days %>,
   events: <%= raw @events.to_json %>,
+  eventRender: function(event, element) {
+    element.children(".fc-event-inner").append("<div class='fc-event-block-type'>" + event.block_type + "</div>")
+    element.children(".fc-event-inner").append("<div class='fc-event-room-name'>" + event.room_name + "</div>")
+    element.children(".fc-event-inner").append("<div class='fc-event-lecturer'>" + event.lecturer + "</div>")
+  },
   eventAfterAllRender: function(event, element) {
     var current_date = $("#block_day_with_date").val();
     var is_visible = $("#block_day_with_date").is(":visible")

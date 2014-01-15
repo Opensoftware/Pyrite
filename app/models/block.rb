@@ -57,6 +57,14 @@ class Block < ActiveRecord::Base
     save
   end
 
+  def lecturer_name
+    lecturer.try(:name_with_title).to_s
+  end
+
+  def groups_names
+    groups.map {|g| g.name }.join(" ")
+  end
+
   private
 
     def validate_times
