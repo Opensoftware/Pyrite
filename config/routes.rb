@@ -41,4 +41,6 @@ SiatkaGit::Application.routes.draw do
   end
   resources :dashboard, :only => [:index]
 
+  get "/lecturer/:id/timetable", :to => "lecturers#timetable", :as => "timetable_lecturer"
+
 end

@@ -1,0 +1,15 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <script type="text/javascript">
+    $('#lecturer-timetable').html('');
+    var options = {
+      dayNamesShort: <%= raw fc_days %>,
+      events: <%= raw @events.to_json %>
+    }
+
+    $('#lecturer-timetable').fullCalendar_with_defaults(options);
+  </script>
+<% end %>
+
+<%= t("label_timetable_for_lecturer") %> <%= @lecturer.name_with_title %>
+
+<div id="lecturer-timetable"> </div>

@@ -24,13 +24,12 @@
     </div>
   <% end %>
 <% end %>
-<%= form_tag '/main/showprow' , {:method => :get, :class => "show-timetable-form" } do %>
+<%= form_tag "#" , {:method => :get, :id => "show-lecturer-timetable-form", :class => "show-timetable-form" } do %>
   <div class="control-group">
-    <label class="control-label" for="lecturers-timetable"> <%= t("label_lecturer") %></label>
+    <label class="control-label" for="lecturer-timetable"> <%= t("label_lecturer") %></label>
     <div class="controls">
-      <%= collection_select(:lecturer,:lecture, Lecturer.find(:all),
-                            :lecture, :lecture, {:prompt => "Wybierz prowadzącego"},
-                            :id => "lecturers-timetable") %>
+      <%= select(:lecturer,:id, @lecturers_with_url, {:prompt => t("prompt_lecturer")},
+                                :id => "lecturers-timetable") %>
       <%= submit_tag t("button_show"), :class => "btn" %>
     </div>
   </div>
