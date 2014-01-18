@@ -7,7 +7,7 @@ SiatkaGit::Application.routes.draw do
   devise_for :users
 
   match "/howto" => "main#howto", :as => "howto"
-  match "/contact" => "main#kontakt", :as => "contact"
+  match "/contact" => "main#contact", :as => "contact"
 
   resources :groups, :except => [:show] do
     member do
