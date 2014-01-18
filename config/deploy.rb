@@ -62,7 +62,7 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
-        if test("[ -f tmp/pids/unicorn/pid ]")
+        if test("[ -f #{shared_path}/tmp/pids/unicorn.pid ]")
           execute :kill, '-s USR2 `cat "tmp/pids/unicorn.pid"`'
         else
           puts "Sorry can not restart, server is not runing"
@@ -107,14 +107,5 @@ namespace :deploy do
 
   after :publishing, :restart
   after :publishing, :notify_errbit
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
 
 end
