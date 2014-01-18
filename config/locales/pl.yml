@@ -126,6 +126,7 @@ pl:
   label_reservation_timetable_for_room: "Rezerwacja dla sali:"
   label_color: Kolor
   label_block_type_color: Kolor
+  label_schedule_for: "Siatka na rok:"
 
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
   confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?
@@ -144,6 +145,9 @@ pl:
   prompt_day: Wybierz dzień
   prompt_group: Wybierz grupę
   prompt_lecturer: Wybierz prowadzącego
+  prompt_academic_year: Wybierz Plan
 
 
   include_blank_academic_event: Brak
+
+  title_app_name: Siatka zajęć

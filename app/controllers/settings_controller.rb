@@ -2,13 +2,12 @@ class SettingsController < ApplicationController
 
   def edit
     authorize! :edit, Settings
-    @settings = Settings.first
+    @settings = Settings.fetch_settings
   end
 
   def update
     authorize! :update, Settings
-    @settings = Settings.first
-    if @settings.update_attributes(params[:settings])
+    if Settings.update_settings(params[:settings])
       flash[:notice] = t("notice_settings_updated")
       redirect_to edit_settings_path
     else

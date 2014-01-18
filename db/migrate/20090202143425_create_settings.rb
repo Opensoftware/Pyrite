@@ -1,13 +1,10 @@
 class CreateSettings < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :settings do |t|
-			t.column 'current_plan', :integer	
-
+      t.string :key
+      t.text :value
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :settings
+    add_index(:settings, :key, unique: true)
   end
 end

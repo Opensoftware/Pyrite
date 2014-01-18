@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # include AuthenticatedSystem
 
   protect_from_forgery
-  helper_method :current_academic_year, :flash_messages
+  helper_method :flash_messages
 
   def flash_messages
     flash[:notice] || flash[:error] || nil
@@ -17,36 +17,6 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     dashboard_index_path
   end
-
-# metoda pobiera informacje na temat obecnie ustawionego planu zajęć
-# return @baza - identyfikator oznaczający nazwę bazy danych na której operuje system
-  def get_current_plan
-    #   @config = Settings.find(:first)
-    #   case @config.current_plan
-    #       when 0 : @baza = OldPlan
-    #     when 1 : @baza = Plan
-    #       when 2 : @baza = NewPlan
-    #   end
-    @baza = Plan
-    return @baza
-  end
-
-  # Fetch current academic year
-  def current_academic_year
-    academic_year_id = Settings.first.try(:current_plan)
-    AcademicYear.find_by_id(academic_year_id)
-  end
-
-  # pobieranie id planów ustawionych do edycji
-  def getEditPlan
-    return Settings.first.plan_to_edit
-  end
-
-  # pobranie id planu ustawionego do przeglądania
-  def getViewPlan
-    return Settings.first.current_plan
-  end
-
 
   # pobranie bloków dla grup
   # bloki - tablica wpisów z bazy danych zawierająca wpisy dla grup

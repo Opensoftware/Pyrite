@@ -1,9 +1,6 @@
 User.destroy_all
 User.create(:email => "siatka@opensoftware.pl", :password => "123qweasdzxc", :password_confirmation => "123qweasdzxc")
 
-Settings.destroy_all
-Settings.create(:unit_name => "Siatka-DEMO", :email_contact => "contact@opensoftware.pl")
-
 Group.destroy_all
 Group.create(:name => "1ANIN1")
 Group.create(:name => "1ANIN2")
@@ -40,3 +37,9 @@ academic_year.save
 Lecturer.destroy_all
 Lecturer.create(:title => "prof.", :full_name => "Andrzej Wajda")
 Lecturer.create(:title => "dr", :full_name => "Stanisław Kobuszewski")
+
+Settings.destroy_all
+Settings.create(:key => "unit_name", :value => "Wydział Informatyki" )
+Settings.create(:key => "email_contact", :value => "contact@opensoftware.pl")
+Settings.create(:key => "plan_to_edit", :value => academic_year.id)
+Settings.create(:key => "plan_to_view", :value => academic_year.id)

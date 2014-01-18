@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siatka zajęć <%= @unit_name %> </title>
+    <title> <%= t("title_app_name") %> <%= Settings.unit_name %> </title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application' %>
     <%= yield :additional_stylesheets %>
@@ -12,7 +12,7 @@
 <body>
   <div id="topmenu">
     <p><b> <%= @unit_name %> </b> </br>System planów zajęć.</p>
-	  <p> SIATKA NA ROK: <%= current_academic_year.try(:name) %> </p>
+    <p> <%= t(:label_schedule_for) %> <%= Settings.current_plan_name %> </p>
     <div id="menu_container">
       <ul id="menu">
         <% if user_signed_in? %>

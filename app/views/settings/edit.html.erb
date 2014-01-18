@@ -1,27 +1,38 @@
-<h1> <%= t("header_edit_settings") %> </h1>
+<h2> <%= t("header_edit_settings") %> </h2>
+
 <div id="settings-container">
   <%= form_for @settings, :url => settings_path, :method => :put, :html => { :class => "form-horizontal" } do |f|%>
 
     <div class="control-group">
-      <label class="control-label" for="settings_current_plan"> <%= t("label_current_plan") %></label>
+      <label class="control-label" for="settings_plan_to_view">
+        <%= t("label_current_plan") %>
+      </label>
       <div class="controls">
-        <%= f.collection_select(:current_plan, AcademicYear.all, :id, :name, {:prompt => "Wybierz plan"}) %>
+        <%= f.collection_select(:plan_to_view, AcademicYear.all, :id, :name,
+                                {:prompt => t("prompt_academic_year")}) %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="settings_plan_to_edit"> <%= t("label_plan_to_edit") %></label>
+      <label class="control-label" for="settings_plan_to_edit">
+        <%= t("label_plan_to_edit") %>
+      </label>
       <div class="controls">
-        <%= f.collection_select(:plan_to_edit, AcademicYear.all, :id, :name, {:prompt => "Wybierz plan"}) %>
+        <%= f.collection_select(:plan_to_edit, AcademicYear.all, :id, :name,
+                                {:prompt => t("prompt_academic_year")}) %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="settings_unit_name"> <%= t("label_unit_name") %></label>
+      <label class="control-label" for="settings_unit_name">
+        <%= t("label_unit_name") %>
+      </label>
       <div class="controls">
         <%= f.text_field :unit_name %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="settings_email_contact"> <%= t("label_email_contact") %></label>
+      <label class="control-label" for="settings_email_contact">
+        <%= t("label_email_contact") %>
+      </label>
       <div class="controls">
         <%= f.text_field :email_contact %>
       </div>

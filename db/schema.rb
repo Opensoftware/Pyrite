@@ -211,13 +211,13 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
   end
 
   create_table "settings", :force => true do |t|
-    t.integer  "current_plan"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "plan_to_edit"
-    t.string   "unit_name"
-    t.string   "email_contact"
+    t.string   "key"
+    t.text     "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
+
+  add_index "settings", ["key"], :name => "index_settings_on_key", :unique => true
 
   create_table "subjects", :force => true do |t|
     t.string   "nazwa"

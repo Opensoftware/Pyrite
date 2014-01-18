@@ -3,7 +3,6 @@ class MainController < ApplicationController
   # TODO wyjaśnić dlaczego poniższe nie działa
   # i trzeba go podawać w każdej metodzie przy renderowaniu
   layout "application"
-  before_filter :set_unit_name
   include BlocksHelper
 
   def index
@@ -388,11 +387,5 @@ class MainController < ApplicationController
   def howto
     render :howto, :layout => "application"
   end
-
-  private
-
-    def set_unit_name
-      @unit_name = Settings.first.unit_name
-    end
 
 end
