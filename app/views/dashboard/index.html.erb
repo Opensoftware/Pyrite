@@ -25,6 +25,11 @@
          <%= link_to t("link_groups"), groups_path %>
       </li>
     <% end %>
+    <% if can? :manage, User %>
+      <li>
+         <%= link_to t("link_user_account"), user_account_path %>
+      </li>
+    <% end %>
   </ul>
   <ul class="nav nav-tabs nav-stacked">
     <% if can? :manage, Plan %>

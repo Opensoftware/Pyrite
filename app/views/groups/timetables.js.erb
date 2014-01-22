@@ -1,13 +1,6 @@
 $('#groups-timetable').html('');
 var options = {
-  <% if @event %>
-    year: <%= @event.start_date.year %>,
-    // fullCalendar count month from 0 - January = 0
-    month: <%= @event.start_date.month - 1 %>,
-    date: <%= @event.start_date.day %>,
-  <% end %>
-  dayNamesShort: <%= raw fc_days %>,
-  events: <%= raw @events.to_json %>,
+  <%= render :partial => "common/timetable_options" %>
   eventRender: function(event, element) {
     element.children(".fc-event-inner").append("<div class='fc-event-block-type'>" + event.block_type + "</div>")
     element.children(".fc-event-inner").append("<div class='fc-event-room-name'>" + event.room_name + "</div>")

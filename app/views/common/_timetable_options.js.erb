@@ -1,0 +1,9 @@
+<% if @event %>
+  year: <%= @event.start_date.year %>,
+  // fullCalendar count month from 0 - January = 0
+  month: <%= @event.start_date.month - 1 %>,
+  date: <%= @event.start_date.day %>,
+<% end %>
+weekends: <%= !current_user.preferences[:without_weekends] %>,
+dayNamesShort: <%= raw fc_days %>,
+events: <%= raw @events.to_json %>,

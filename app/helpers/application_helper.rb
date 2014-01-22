@@ -22,12 +22,6 @@ module ApplicationHelper
 		@GMz
 	end
 
-  def days_for_select
-    # Day of the week in 0-6. Sunday is 0; Saturday is 6.
-    # Monday should be always first! Monday = 1
-    available_abbr_days.zip((1..6).to_a + [0])
-  end
-
   def available_abbr_days
     # TODO this should be somehow configured by the user to be able to hide some
     # days which are not used.

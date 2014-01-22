@@ -1,4 +1,5 @@
 class BlocksController < ApplicationController
+
   def index
   end
 

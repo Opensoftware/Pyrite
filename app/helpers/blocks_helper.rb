@@ -29,4 +29,15 @@ module BlocksHelper
   def color_box(hex)
     html = "<div class='colorbox' style='background-color:#{hex}'></div>"
   end
+
+  def days_for_select
+    # Day of the week in 0-6. Sunday is 0; Saturday is 6.
+    # Monday should be always first! Monday = 1
+    if current_user.preferences[:without_weekends]
+      available_abbr_days.zip((1..6).to_a + [0]).slice(0..4)
+    else
+      available_abbr_days.zip((1..6).to_a + [0])
+    end
+  end
+
 end

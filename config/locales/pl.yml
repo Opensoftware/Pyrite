@@ -29,6 +29,7 @@ pl:
   link_groups: Grupy
   link_add_new_block: Wprowadź dane
   link_add_new_reservation: Rezerwuj salę
+  link_user_account: Konto użytkownika
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
@@ -59,6 +60,7 @@ pl:
   button_new_block_type: Dodaj nowy typ
   button_new_group: Dodaj nową grupę
 
+  header_user_account: Konto użytkownika
   header_add_new_block: Dodaj nowy blok zajęć
   header_edit_settings: Edycja ustawień systemu
   header_edit_classroom: Edycja sali
@@ -78,6 +80,7 @@ pl:
 
   modal_header_new_academic_year_event: Dodaj nowe wydarzenie
 
+  label_without_weekend: Bez weekendów
   label_error: Błąd
   label_name: Nazwa
   label_current_plan: Plan do wyświetlania
