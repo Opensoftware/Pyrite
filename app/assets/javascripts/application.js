@@ -62,7 +62,9 @@ var fc_defaults = {
   timeFormat: 'H:mm { - H:mm}',
   axisFormat: 'H:mm',
   minTime: 6,
-  maxTime: 22
+  maxTime: 22,
+  slotMinutes: 15,
+  contentHeight: 1400
 }
 
 $.fn.fullCalendar_with_defaults = function(options) {
