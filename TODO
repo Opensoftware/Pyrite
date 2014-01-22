@@ -1,5 +1,4 @@
 TODO:
-- dodać możliwość wyświetlania planów bez niedziel i sobót
 - dodać możliwość tworzenia rezerwacji cyklicznych oraz rezerwacji na dowolny
   okres dni niekoniecznie academic event.
 - dodać walidację na eventy roku akademickiego tak aby daty były zawsze pomiędzy
@@ -42,9 +41,6 @@ Organizacja roku akademickiego:
   przeszłości)
   -- wyświetlanie tylko eventów z przyszłości
 
-- Usunąć dni wolne ( zostało zastąpione przez nowy system bloków wraz z
-  organizacją roku akademickiego )
-
 - Dodać relacje do usunia wszystkich blocków gdy usunięty zostaje block_types
 
 - Refaktoring dodawnia bloku w odniesieniu do Godzina rozpoczęcia, Godzina
@@ -80,7 +76,6 @@ do ram czasowych ?
 TODO (stare - zweryfikować czy nadal aktualne)
 
 	Poprawić przesyłanie danych między formularzami (tak aby wstecz pamiętało wszystkie pola wypełnione w formularzu)
-	Poprawić metode checkfreetime (normalizacja nazwy i sprawdzenie jej działa i odpowiednio jej okomentowanie
 
 WAŻNE
 
@@ -99,8 +94,6 @@ przejrzec metody pod względem dostępności dla konkretnych kont
 
 
 ZAWIESZONE: Podział na zajęcia laboratoryjne czyli grupa raz jeszcze na pół
-
-BEZPIECZEŃSTWO:Naprawienie SLQ Injection w wyszukiwanie Kursów find_by_sql
 
 
 -----------------------
@@ -122,4 +115,3 @@ How TO
 Konta dla użytkowników (prowadzacych) i (1 na wydział)
 Blokada rezerwacji na dane okresy czasowe ( sesja etc.. )
 Tygodniowe plany zajęć
-
