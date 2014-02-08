@@ -4,59 +4,62 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <%= t("title_app_name") %> <%= Settings.unit_name %> </title>
+    <title> <%= t("title_app_name") %> <%= @unit_name = Settings.unit_name %> </title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application' %>
     <%= yield :additional_stylesheets %>
   </head>
-<body>
-  <div id="topmenu">
-    <p><b> <%= @unit_name %> </b> </br>System planów zajęć.</p>
-    <p> <%= t(:label_schedule_for) %> <%= Settings.current_plan_name %> </p>
-    <div id="menu_container">
-      <ul id="menu">
-        <% if user_signed_in? %>
-          <li> <%= link_to t("link_siatka"), dashboard_index_path %> </li>
-          <li> <%= link_to t("link_sign_out", :email => current_user.email), destroy_user_session_path, :method => :delete %> </li>
-        <% else %>
-          <li> <%= link_to t("link_home"), root_path %> </li>
-          <li> <%= link_to t("link_sign_in"), new_user_session_path %> </li>
-        <% end %>
-        <li> <%= link_to t("link_howto"), howto_path %> </li>
-        <li> <%= link_to t("link_contact"), contact_path %> </li>
-      </ul>
+  <body>
+    <div id="header">
+      <div id="header-content">
+        <div id="header-logo"> </div>
+        <div id="header-title">
+          <p> <b> <%= @unit_name %> </b> <br> System planów zajęć. </p>
+          <p> <%= t(:label_schedule_for) %> <%= Settings.current_plan_name %> </p>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+      <div id="menu_container">
+        <ul id="menu">
+          <% if user_signed_in? %>
+            <li> <%= link_to t("link_siatka"), dashboard_index_path %> </li>
+            <li> <%= link_to t("link_sign_out", :email => current_user.email), destroy_user_session_path, :method => :delete %> </li>
+          <% else %>
+            <li> <%= link_to t("link_home"), root_path %> </li>
+            <li> <%= link_to t("link_sign_in"), new_user_session_path %> </li>
+          <% end %>
+          <li> <%= link_to t("link_howto"), howto_path %> </li>
+          <li> <%= link_to t("link_contact"), contact_path %> </li>
+        </ul>
+      </div>
       <div style="clear:both;"></div>
     </div>
-  </div>
-  <hr style="background-color: green;color: green;height: 4px;"/>
 
+    <hr style="background-color: green;color: green;height: 4px;"/>
 
-  <div id="main">
-    <div class="container">
-      <% if flash_messages %>
-        <div class="alert alert-block">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash_messages %>
-        </div>
-      <% end %>
+    <div id="main">
+      <div class="container">
+        <% if flash_messages %>
+          <div class="alert alert-block">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash_messages %>
+          </div>
+        <% end %>
 
-      <%= yield  %>
+        <%= yield  %>
+      </div>
     </div>
-  </div>
-  <br />
-  <footer id="footer_bg">
-    <div id="stopka">
-      <p><%= link_to "OpenSoftware", "http://www.opensoftware.pl/" %> <br/>Kraków 2012<br />
-      <font size="0.6">siatka wersja 1.0.0rc</font>
-      </p>
-    </div>
-  </footer>
+    <br>
+    <footer id="footer_bg">
+      <div id="stopka">
+        <p><%= link_to "OpenSoftware", "http://www.opensoftware.pl/" %> <br/>Kraków 2012<br />
+        <font size="0.6">siatka wersja 1.0.0rc</font>
+        </p>
+      </div>
+    </footer>
 
-  <!-- Javascripts
-  ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <%= javascript_include_tag "application" %>
-  <%= yield :additional_javascript_libraries %>
+    <%= javascript_include_tag "application" %>
+    <%= yield :additional_javascript_libraries %>
 
-</body>
+  </body>
 </html>
