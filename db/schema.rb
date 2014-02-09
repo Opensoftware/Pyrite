@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
     t.datetime "updated_at",                     :null => false
   end
 
-  create_table "blocks_groups", :id => false, :force => true do |t|
+  create_table "blocks_groups", :force => true do |t|
     t.integer "group_id"
     t.integer "block_id"
   end

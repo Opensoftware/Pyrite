@@ -41,6 +41,8 @@ SiatkaGit::Application.routes.draw do
   end
   resources :dashboard, :only => [:index]
 
+  resources :lecturers, :except => [:show]
+
   get "/lecturer/:id/timetable", :to => "lecturers#timetable", :as => "timetable_lecturer"
 
   match "/user/account" => "users#account", :as => "user_account", :via => :get

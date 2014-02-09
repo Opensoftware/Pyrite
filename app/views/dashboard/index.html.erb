@@ -10,6 +10,11 @@
          <%= link_to t("link_classrooms"), rooms_path %>
       </li>
     <% end %>
+    <% if can? :manage, Lecturer %>
+      <li>
+         <%= link_to t("link_lecturers"), lecturers_path %>
+      </li>
+    <% end %>
     <% if can? :manage, AcademicYear %>
       <li>
          <%= link_to t("link_academic_years"), academic_years_path %>

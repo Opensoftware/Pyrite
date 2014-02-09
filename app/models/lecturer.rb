@@ -1,5 +1,5 @@
 class Lecturer < ActiveRecord::Base
-  has_many :blocks
+  has_many :blocks, :dependent => :destroy
 
   attr_accessible :full_name, :title
 

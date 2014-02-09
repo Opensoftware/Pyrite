@@ -1,0 +1,22 @@
+<h1> <%= t "header_listing_lecturers" %> </h1>
+
+<%= link_to t("button_new_lecturer"), new_lecturer_path, :class => "btn btn-primary pull-right" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>  <%= t("label_lecturer_full_name") %></th>
+      <th> <%= t("label_actions") %></th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @lecturers.each do |lecturer| %>
+      <tr>
+        <td> <%= lecturer.full_name %> </td>
+        <td>
+          <%= link_to t("button_edit"), edit_lecturer_path(lecturer), :class => "btn btn-info" %>
+          <%= link_to t("button_delete"), lecturer, method: :delete, data: { confirm: t("confirm_removing_lecturer") }, :class => "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

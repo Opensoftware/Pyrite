@@ -30,6 +30,7 @@ pl:
   link_add_new_block: Wprowadź dane
   link_add_new_reservation: Rezerwuj salę
   link_user_account: Konto użytkownika
+  link_lecturers: Zarządzaj pracownikami
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
@@ -45,6 +46,8 @@ pl:
   notice_block_type_updated: Rekord został zaktualizowany.
   notice_group_has_been_created: Grupa została stworzona.
   notice_group_has_been_updated: Grupa została zaktualizowana.
+  notice_lecturer_has_been_created: Nowy pracownik został dodany.
+  notice_lecturer_has_been_updated: Dane pracownika zaktualizowane.
 
   error_invalid_data: Błędne dane.
 
@@ -59,6 +62,7 @@ pl:
   button_new_academic_year_event: Dodaj wydarzenie
   button_new_block_type: Dodaj nowy typ
   button_new_group: Dodaj nową grupę
+  button_new_lecturer: Dodaj pracownika
 
   header_user_account: Konto użytkownika
   header_add_new_block: Dodaj nowy blok zajęć
@@ -77,6 +81,9 @@ pl:
   header_edit_group: Edycja grupy
   header_new_group: Nowa grupa
   header_room_reservation: Rezerwacja sali
+  header_listing_lecturers: Lista pracowników
+  header_new_lecturer: Nowy pracownik
+  header_edit_lecturer: Edycja danych pracownika
 
   modal_header_new_academic_year_event: Dodaj nowe wydarzenie
 
@@ -130,7 +137,10 @@ pl:
   label_color: Kolor
   label_block_type_color: Kolor
   label_schedule_for: "Siatka na rok:"
+  label_lecturer_full_name: Imię i nazwisko
+  label_lecturer_title: Tytuł naukowy
 
+  confirm_removing_lecturer: Wszystkie bloki zajęć prowadzone przez prowadzącego zostaną usunięte. Jesteś pewny aby usunąć tego prowadzącego?
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
   confirm_removing_academic_year: Wszystkie plany zajęć powiązane z danym rokiem akademickim zostaną usunięte. Czy chcesz kontynuować?
   confirm_to_remove_academic_year_event: Jesteś pewny aby usunąć wydarzenie z oragnizacji roku akademickiego?
