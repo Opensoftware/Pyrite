@@ -18,9 +18,9 @@
         <td> <%= room.type %> </td>
         <td> <%= room.capacity %> </td>
         <td>
-          <%= link_to t("button_show"), room %>
-          <%= link_to t("button_edit"), edit_room_path(room) %>
-          <%= link_to t("button_delete"), room, method: :delete, data: { confirm: t("confirm_removing_classroom") } %>
+          <%= link_to t("button_show"), room, :class => "btn" %>
+          <%= link_to t("button_edit"), edit_room_path(room), :class => "btn btn-info" %>
+          <%= link_to t("button_delete"), room, method: :delete, data: { confirm: t("confirm_removing_classroom") }, :class => "btn btn-danger" %>
         </td>
       </tr>
     <% end %>
