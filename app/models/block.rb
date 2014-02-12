@@ -20,10 +20,15 @@ class Block < ActiveRecord::Base
 
   scope :for_groups, ->(group_ids) { joins(:blocks_groups).where("#{BlocksGroup.table_name}.group_id" => group_ids) }
   scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : self.scoped }
+  scope :overlapped, ->(start_date, end_date) {
+    joins(:dates).where("block_dates.start_date < ? AND
+                         block_dates.end_date > ?", end_date , start_date)
+  }
 
   validates :start_time, :end_time, :name, :presence => true
   validate :validate_times
   validate :validate_day
+  validate :check_collisions
 
   def populate_dates
     begin
@@ -87,4 +92,60 @@ class Block < ActiveRecord::Base
         errors.add(:day, I18n.t("error_day_not_present"))
       end
     end
+
+
+  private
+
+    def check_collisions
+      begin
+        start_hour = Time.parse(start_time).hour
+        start_min = Time.parse(start_time).min
+        end_hour = Time.parse(end_time).hour
+        end_min = Time.parse(end_time).min
+
+        if event_id.nil?
+          # This will happen only for reservation
+          block_date = Time.parse(day_with_date)
+          block_start_date = block_date.advance(:hours => start_hour, :minutes => start_min)
+          block_end_date = block_date.advance(:hours => end_hour, :minutes => end_min)
+          return false unless check_blocks_collisions(block_start_date, block_end_date)
+        else
+          date_range = (event.start_date..event.end_date).select { |date|
+            day.to_i == date.wday
+          }
+          date_range.each do |date|
+            block_start_date = Time::mktime(date.year, date.month, date.day,
+                                            start_hour, start_min)
+            block_end_date = Time::mktime(date.year, date.month, date.day,
+                                          end_hour, end_min)
+            return false unless check_blocks_collisions(block_start_date, block_end_date)
+          end
+        end
+      rescue => e
+        # TODO logger
+        return false
+      end
+
+    end
+
+
+    def check_blocks_collisions(block_start_date, block_end_date)
+      room_blocks = Block
+        .where(:room_id => room_id)
+        .overlapped(block_start_date, block_end_date).count
+      lecturer_blocks = Block
+        .where(:lecturer_id => lecturer_id)
+        .overlapped(block_start_date, block_end_date).count
+      group_blocks = Block
+        .for_groups(group_ids)
+        .overlapped(block_start_date, block_end_date).count
+      blocks_count = room_blocks + lecturer_blocks + group_blocks
+      if blocks_count > 0
+        errors.add(:base, I18n.t("error_overlapped_block",
+          block_date_range: "#{block_start_date.strftime("%D %R")}
+          - #{block_end_date.strftime("%R")}"))
+        return false
+      end
+    end
+
 end
