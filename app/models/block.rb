@@ -16,19 +16,21 @@ class Block < ActiveRecord::Base
 
   # TODO split saving reservation and standard blocks
   # event_id for block/new is required
-  before_save :populate_dates
+  before_create :populate_dates
 
   scope :for_groups, ->(group_ids) { joins(:blocks_groups).where("#{BlocksGroup.table_name}.group_id" => group_ids) }
   scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : self.scoped }
+  scope :reservations, where(:reservation => true)
   scope :overlapped, ->(start_date, end_date) {
     joins(:dates).where("block_dates.start_date < ? AND
                          block_dates.end_date > ?", end_date , start_date)
   }
 
-  validates :start_time, :end_time, :name, :presence => true
-  validate :validate_times
-  validate :validate_day
-  validate :check_collisions
+  validates :start_time, :end_time, :presence => true, :on => :create
+  validates :name, :room, :presence => true
+  validate :validate_times, :on => :create
+  validate :validate_day, :on => :create
+  validate :check_collisions, :on => :create
 
   def populate_dates
     begin
@@ -58,7 +60,7 @@ class Block < ActiveRecord::Base
   end
 
   def save_reservation
-    reservation = true
+    self.reservation = true
     save
   end
 
@@ -83,7 +85,7 @@ class Block < ActiveRecord::Base
         end
       rescue => e
         # TODO logger
-        errors.add(:base, I18n.t("error_internal_error"))
+        return false
       end
     end
 
@@ -139,11 +141,16 @@ class Block < ActiveRecord::Base
       group_blocks = Block
         .for_groups(group_ids)
         .overlapped(block_start_date, block_end_date).count
-      blocks_count = room_blocks + lecturer_blocks + group_blocks
-      if blocks_count > 0
-        errors.add(:base, I18n.t("error_overlapped_block",
-          block_date_range: "#{block_start_date.strftime("%D %R")}
-          - #{block_end_date.strftime("%R")}"))
+
+      if room_blocks > 0
+        error = I18n.t("error_room_block_collision", :room => room.name)
+      elsif lecturer_blocks > 0
+        error = I18n.t("error_lecturer_block_collision", :lecturer => lecturer_name)
+      elsif group_blocks > 0
+        error = I18n.t("error_groups_block_collision", :groups => groups_names)
+      end
+      if error
+        errors.add(:base, I18n.t("error_overlapped_block", block: error))
         return false
       end
     end

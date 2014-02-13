@@ -14,4 +14,9 @@ $(document).ready(function() {
     refresh_room_timetable();
     refresh_group_timetable();
   });
+  $("#edit-block-submit-button").on("click", function() {
+    $("#modal-edit-block form").submit();
+    $("#modal-edit-block").modal("hide");
+    return false;
+  });
 });

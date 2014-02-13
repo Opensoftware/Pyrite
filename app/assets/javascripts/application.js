@@ -71,3 +71,8 @@ $.fn.fullCalendar_with_defaults = function(options) {
   var settings = $.extend({}, fc_defaults, options);
   this.fullCalendar(settings);
 };
+
+$('.modal').on('hidden', function() {
+  $(this).data('modal').$element.removeData();
+})
+

@@ -53,13 +53,12 @@ class GroupsController < ApplicationController
 
   def timetables
     group_ids = params[:group_ids]
-    event_id = params[:event_id]
+    @event = AcademicYear::Event.where(:id => params[:event_id]).first
     # TODO think about what will be the best way of quering blocks with and
     # without event_id, for example without event_id we will query whole
     # academic year? and if event_id is available should we load new events for
     # fullcalendar in case if the end_date will be reached?
-    blocks = Block.for_event(event_id).for_groups(group_ids)
-    @event = AcademicYear::Event.where(:id => params[:event_id]).first
+    blocks = Block.for_event(@event).for_groups(group_ids) + Block.reservations
 
     @events = convert_blocks_to_events(blocks)
     respond_with @events

@@ -20,7 +20,7 @@ SiatkaGit::Application.routes.draw do
   resources :academic_years do
     resources :events, :controller => "academic_years/events"
   end
-  resources :blocks, :only => [:new, :create]
+  resources :blocks, :except => [:index]
   resources :reservations, :only => [:new, :create] do
     collection do
      get  ":room_id/show", :to => "reservations#show", :as => "show"

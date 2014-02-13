@@ -1,0 +1,8 @@
+<% if @block.errors.present? %>
+  # todo stworzyć msg z html tak aby error_msg można było tu wrzucić
+  alert("<%= @block.errors.messages.inspect %>");
+<% else %>
+  refresh_room_timetable();
+  refresh_group_timetable();
+  alert("<%= flash[:notice] %>");
+<% end %>

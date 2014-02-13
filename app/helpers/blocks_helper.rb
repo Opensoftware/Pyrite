@@ -5,7 +5,9 @@ module BlocksHelper
         sum << { id: block.id, title: block.name, start: date.start_date, end: date.end_date,
                  allDay: false, backgroundColor: block.type.try(:color),
                  room_name: block.room.name, block_type: block.type_name,
-                 groups_names: block.groups_names, lecturer: block.lecturer_name }
+                 groups_names: block.groups_names, lecturer: block.lecturer_name,
+                 url: edit_block_path(block), delete_url: block_path(block)
+        }
       end
       sum
     end

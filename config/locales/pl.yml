@@ -9,6 +9,7 @@ pl:
         start_time: "Pole 'Godzina rozpoczęcia'"
         end_time: "Pole 'Godzina zakończenia'"
         name: "Pole 'Nazwa bloku'"
+        room: "Pole 'Sala'"
   date:
     day_names: [Poniedziałek, Wtorek, Środa, Czwartek, Piątek, Sobota, Niedziela]
     abbr_day_names: [Pon, Wto, Śro, Czw, Pią, Sob, Nie]
@@ -16,7 +17,13 @@ pl:
   error_must_be_lower_then_end_time: "musi być wcześniej niż pole 'Godzina zakończenia'"
   error_internal_error: Coś poszło nie tak, sprawdzimy to i postaramy się naprawić jak najszybciej
   error_day_not_present: jest puste
-  error_overlapped_block: "Kolizja bloków, blok koliduje z blokiem z dnia: %{block_date_range}"
+  error_overlapped_block: "Kolizja bloków, blok koliduje z blokiem %{block}"
+  error_room_block_collision: "sali %{room}"
+  error_lecturer_block_collision: "prowadzącego %{lecturer}"
+  error_groups_block_collision: "grupy %{group}"
+
+  error_invalid_data: Błędne dane.
+
   link_home: Strona główna
   link_sign_in: Logowanie
   link_siatka: Siatka
@@ -49,8 +56,9 @@ pl:
   notice_group_has_been_updated: Grupa została zaktualizowana.
   notice_lecturer_has_been_created: Nowy pracownik został dodany.
   notice_lecturer_has_been_updated: Dane pracownika zaktualizowane.
+  notice_please_wait: Proszę czekać ładuję dane...
+  notice_block_has_been_updated: Blok został zaktualizowany.
 
-  error_invalid_data: Błędne dane.
 
   button_save: Zapisz
   button_delete: Usuń
@@ -85,6 +93,7 @@ pl:
   header_listing_lecturers: Lista pracowników
   header_new_lecturer: Nowy pracownik
   header_edit_lecturer: Edycja danych pracownika
+  header_edit_block: Edycja bloku zajęć
 
   modal_header_new_academic_year_event: Dodaj nowe wydarzenie
 
@@ -147,6 +156,7 @@ pl:
   confirm_to_remove_academic_year_event: Jesteś pewny aby usunąć wydarzenie z oragnizacji roku akademickiego?
   confirm_to_remove_block_type: Jesteś pewny aby usunąć dany typ zajeć? Wszystkie zajęcia posiadający ten typ zostaną usunięte.
   confirm_removing_group: Jesteś pewny aby usunać daną grupę? Wszystkie blocki z nią związaną zostaną usunięte!
+  confirm_to_remove_block: Jesteś pewny aby usunać ten blok?
 
   placeholder_block_start_time: Czas rozpoczęcia
   placeholder_block_end_time: Czas zakończenia
