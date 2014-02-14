@@ -4,13 +4,15 @@
 <table class="table">
   <thead>
     <tr>
-      <th>  <%= t("label_lecturer_full_name") %></th>
+      <th> <%= t("label_lecturer_title") %> </th>
+      <th> <%= t("label_lecturer_full_name") %></th>
       <th> <%= t("label_actions") %></th>
   </tr>
   </thead>
   <tbody>
     <% @lecturers.each do |lecturer| %>
       <tr>
+        <td> <%= lecturer.title %> </td>
         <td> <%= lecturer.full_name %> </td>
         <td>
           <%= link_to t("button_edit"), edit_lecturer_path(lecturer), :class => "btn btn-info" %>
