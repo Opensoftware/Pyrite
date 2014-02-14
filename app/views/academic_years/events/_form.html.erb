@@ -7,7 +7,7 @@
 <div class="control-group">
   <label class="control-label" for=""> <%= t "label_academic_year_event_start_date" %></label>
   <div class="controls">
-    <%= event.text_field :start_date, :class => "datepicker", :value => @academic_year_event.try(:end_date).try(:strftime, "%F") %>
+    <%= event.text_field :start_date, :class => "datepicker", :value => @academic_year_event.try(:start_date).try(:strftime, "%F") %>
   </div>
 </div>
 <div class="control-group">
