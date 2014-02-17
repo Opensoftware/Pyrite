@@ -1,11 +1,42 @@
 TODO:
 
-udało mi się pogadać też z Cieplokiem, ale po kolei. Goście z  elektrycznego
-widzą w siatce także preferencje pracowników, powiązanie  rzutników z salami,
+- wprowadzić system monitoringu w celu zebrania statystyk wydajności na
+  produkcyjnym serwerze
+- wyszukiwanie lokalizacji budynku po wprowadzonym adresie i vice versa
+- zrobić własny marker do mapy (obecnie zaciągany jest z openlayer)
+- usprawnić działanie zasobów sal i budynków ( sale edytowalne z poziomu budynku
+  bez konieczności wypełniania pola budynek.)
+
+Uwagi EAIiB:
+
+- Brak możliwości przypisania/rezerwacji kilku sal w jednym terminie do jednych
+  zajęć
+- Brak możliwości rezerwacji terminu bez podania sali (np. rezerwacja terminów
+  na język obcy czy zajęcia WF) – możliwe do obejścia poprzez dodanie wirtualnej
+  sali.
+- Pomieszany język interfejsu – czasem polski, czasem angielski.
+- Brak możliwości definowania zajęć dla studiów niestacjonarnych, gdzie zajęcia prowadzone są na zjazdach – czyli rezerwowania zajęć na konkretny dzień (data, a nie dzień tygodnia, w sposób zbliżony jak przy rezerwacji sal – ale tam nie ma możliwości wybrania grupy).
+- Brak możliwości wydruku
+- Brak możliwości przeniesienia zajęć pomiędzy godzinami. Trzeba usunąć zajęcia i wprowadzić je na nowo w nowym terminie.
+
+Ergonomia:
+
+Dodawanie nowego bloku zajęć:
+  - nie pamięta ostatnio wybranego semestru (ciągle proponuje „Semestr Zimowy”,
+    mimo że ostatnio wprowadzane były zajęcia na semetr letni)
+  - nielogiczne przechodzenie tabulatorem pomiędzy polami do wyboru/wpisania
+    (np. po wprowadzeniu godziny rozpoczęcia tabulacja powoduje przejście do
+    pola „Dzień” zamiast do „Godzina zakończenia”
+  - brak możliwości „szybkiego wyszukiwania” pracownika
+  - lista pracowników nie jest posortowana
+  - w utworzonych blokach nie wyświetla się pełna informacja o pracowniku
+    (tylko jego początek) – mógłby być „dymek” po najechaniu myszką nad
+    wświetlany blok zajęć.)
+
+Dodatkowo:
+- preferencje pracowników, powiązanie  rzutników z salami,
 tj. np. aby dało się wyfiltrować salę z rzutnikiem  oraz aby uwzględniane było w
-siatce, że prowadzący chciał np. od 11 do  15. Cieplok wszedł w Unitime, dlatego
-Ci nie odpisał. Nie pytałem w  sumie kiedy i jak, ale UCI już nawet zatrudniło
-pracownika, który  zajmuje się tylko tym Unitime.
+siatce, że prowadzący chciał np. od 11 do  15.
 
 - import sal z pliku csv
 - import grup z pliku csv
