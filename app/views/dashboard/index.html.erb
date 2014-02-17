@@ -5,9 +5,9 @@
         <%= link_to t("link_settings"), edit_settings_path %>
       </li>
     <% end %>
-    <% if can? :manage, Room %>
+    <% if can? :manage, Building %>
       <li>
-         <%= link_to t("link_classrooms"), rooms_path %>
+         <%= link_to t("link_buildings_and_rooms"), buildings_path %>
       </li>
     <% end %>
     <% if can? :manage, Lecturer %>

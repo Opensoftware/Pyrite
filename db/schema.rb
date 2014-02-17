@@ -67,9 +67,12 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
   end
 
   create_table "buildings", :force => true do |t|
-    t.string   "nazwa"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "name"
+    t.decimal  "latitude",   :precision => 10, :scale => 6
+    t.decimal  "longitude",  :precision => 10, :scale => 6
+    t.string   "address"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "departments", :force => true do |t|

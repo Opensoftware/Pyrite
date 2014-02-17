@@ -10,6 +10,9 @@ pl:
         end_time: "Pole 'Godzina zakończenia'"
         name: "Pole 'Nazwa bloku'"
         room: "Pole 'Sala'"
+      building:
+        name: "Pole 'Nazwa'"
+        address: "Pole 'Adres'"
   date:
     day_names: [Poniedziałek, Wtorek, Środa, Czwartek, Piątek, Sobota, Niedziela]
     abbr_day_names: [Pon, Wto, Śro, Czw, Pią, Sob, Nie]
@@ -21,7 +24,7 @@ pl:
   error_room_block_collision: "sali %{room}"
   error_lecturer_block_collision: "prowadzącego %{lecturer}"
   error_groups_block_collision: "grupy %{group}"
-
+  error_missing_coordinates: "Brak lokalizacji, proszę wybrać lokalizację budynku na mapie."
   error_invalid_data: Błędne dane.
 
   link_home: Strona główna
@@ -39,6 +42,7 @@ pl:
   link_add_new_reservation: Rezerwuj salę
   link_user_account: Konto użytkownika
   link_lecturers: Zarządzaj pracownikami
+  link_buildings_and_rooms: Zarządzaj budynkami i salami
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
@@ -58,6 +62,8 @@ pl:
   notice_lecturer_has_been_updated: Dane pracownika zaktualizowane.
   notice_please_wait: Proszę czekać ładuję dane...
   notice_block_has_been_updated: Blok został zaktualizowany.
+  notice_building_has_been_created: Budynek został dodany.
+  notice_building_has_been_updated: Budynek został zaktualizowany.
 
 
   button_save: Zapisz
@@ -72,6 +78,8 @@ pl:
   button_new_block_type: Dodaj nowy typ
   button_new_group: Dodaj nową grupę
   button_new_lecturer: Dodaj pracownika
+  button_new_building: Nowy budynek
+  button_show_rooms: Wyświetl sale
 
   header_user_account: Konto użytkownika
   header_add_new_block: Dodaj nowy blok zajęć
@@ -94,9 +102,13 @@ pl:
   header_new_lecturer: Nowy pracownik
   header_edit_lecturer: Edycja danych pracownika
   header_edit_block: Edycja bloku zajęć
+  header_listing_buildings: Lista budynków
+  header_new_building: Nowy budynek
+  header_edit_building: Edycja budynku
 
   modal_header_new_academic_year_event: Dodaj nowe wydarzenie
 
+  label_building_address: Adres
   label_without_weekend: Bez weekendów
   label_error: Błąd
   label_name: Nazwa
@@ -157,6 +169,7 @@ pl:
   confirm_to_remove_block_type: Jesteś pewny aby usunąć dany typ zajeć? Wszystkie zajęcia posiadający ten typ zostaną usunięte.
   confirm_removing_group: Jesteś pewny aby usunać daną grupę? Wszystkie blocki z nią związaną zostaną usunięte!
   confirm_to_remove_block: Jesteś pewny aby usunać ten blok?
+  confirm_to_remove_building: Jesteś pewny aby usunąć budynek? Wszystkie sale powiązane z tym budynkiem zostaną usunięte a wraz z nimi wszytkie bloki zajęć!
 
   placeholder_block_start_time: Czas rozpoczęcia
   placeholder_block_end_time: Czas zakończenia

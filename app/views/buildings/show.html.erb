@@ -1,0 +1,57 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <%= javascript_include_tag "OpenLayers" %>
+  <%= javascript_include_tag "buildings" %>
+  <%= javascript_include_tag "buildings/show" %>
+<% end %>
+
+<%= content_for(:additional_stylesheets) do %>
+  <%= stylesheet_link_tag "buildings" %>
+<% end %>
+
+<div class="row">
+<div class="span3">
+  <dl class="dl-horizontal">
+    <dt> <%= t("label_building_name") %> </dt>
+    <dd> <%= @building.name %> </dd>
+    <dt> <%= t("label_building_address") %> </dt>
+    <dd> <%= @building.address %> </dd>
+    <%= hidden_field_tag :latitude, @building.latitude, :hiddne => true %>
+    <%= hidden_field_tag :longitude, @building.longitude %>
+
+  </dl>
+</div>
+</div>
+<div id="map"> </div>
+
+<h1> <%= t "header_listing_classrooms" %> </h1>
+
+<%= link_to t("button_new_classroom") , new_building_room_path(@building), :class => "btn btn-primary pull-right" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th> <%= t("label_classroom_name") %></th>
+      <th> <%= t("label_classroom_type") %></th>
+      <th> <%= t("label_classroom_capacity") %></th>
+      <th> <%= t("label_action") %> </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td> <%= room.name %> </td>
+        <td> <%= room.type %> </td>
+        <td> <%= room.capacity %> </td>
+        <td>
+          <%= link_to t("button_show"), room, :class => "btn" %>
+          <%= link_to t("button_edit"), edit_room_path(room), :class => "btn btn-info" %>
+          <%= link_to t("button_delete"), room, method: :delete, data: { confirm: t("confirm_removing_classroom") }, :class => "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to t("button_edit"), edit_building_path(@building) %> |
+<%= link_to t("button_back"), buildings_path %>

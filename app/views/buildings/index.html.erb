@@ -1,0 +1,27 @@
+<h1> <%= t "header_listing_buildings" %> </h1>
+
+<%= link_to t("button_new_building") , new_building_path, :class => "btn btn-primary pull-right" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th> <%= t("label_building_name") %></th>
+      <th> <%= t("label_building_address") %></th>
+      <th> <%= t("label_action") %> </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @buildings.each do |building| %>
+      <tr>
+        <td> <%= building.name %> </td>
+        <td> <%= building.address %> </td>
+        <td>
+          <%= link_to t("button_show_rooms"), building, :class => "btn" %>
+          <%= link_to t("button_edit"), edit_building_path(building), :class => "btn btn-info" %>
+          <%= link_to t("button_delete"), building, method: :delete, data: { confirm: t("confirm_to_remove_building") }, :class => "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

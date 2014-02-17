@@ -30,7 +30,10 @@ SiatkaGit::Application.routes.draw do
   resource :settings, :only => [:edit, :update]
   root :to => 'main#index'
 
-  resources :rooms do
+  resources :buildings do
+    resources :rooms, :only => [:new]
+  end
+  resources :rooms, :except => [:index] do
     member do
       get :timetable
     end
