@@ -1,4 +1,4 @@
-SiatkaGit::Application.routes.draw do
+Pyrite::Application.routes.draw do
 
   namespace :block do
     resources :types, :except => [:show]

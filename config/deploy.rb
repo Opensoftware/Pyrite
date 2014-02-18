@@ -38,7 +38,7 @@ namespace :siatka do
       # Generate unique secret token
       if test("[ ! -f #{shared_configs}/initializers/secret_token.rb ]")
         execute %Q[ cd #{release_path}
-        echo "SiatkaGit::Application.config.secret_token = '$(bundle exec rake secret)'" > #{shared_configs}/initializers/secret_token.rb]
+        echo "Pyrite::Application.config.secret_token = '$(bundle exec rake secret)'" > #{shared_configs}/initializers/secret_token.rb]
       end
     end
   end

@@ -4,7 +4,7 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-SiatkaGit::Application.load_tasks
+Pyrite::Application.load_tasks
 
 namespace 'views' do
   desc 'Renames all your rhtml views to erb'
