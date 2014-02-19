@@ -1,5 +1,10 @@
 TODO:
 
+
+- ZANIM przeniesiemy kod na githuba trzeba zmienić deploy.rb, sprawdzić czy nie
+  ma żadnych danch których niechcemy upubliczniać i wyczyścić repo z plików
+  które nie są używane. Wyczyścić historię
+
 - wprowadzić system monitoringu w celu zebrania statystyk wydajności na
   produkcyjnym serwerze
 - wyszukiwanie lokalizacji budynku po wprowadzonym adresie i vice versa
