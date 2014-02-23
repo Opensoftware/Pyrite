@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.16'
 gem 'devise'
-gem 'pdfkit'
+gem 'prawn'
 gem "cancan"
 gem 'airbrake'
 gem 'unicorn'
