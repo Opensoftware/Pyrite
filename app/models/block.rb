@@ -95,9 +95,6 @@ class Block < ActiveRecord::Base
       end
     end
 
-
-  private
-
     def check_collisions
       begin
         start_hour = Time.parse(start_time).hour
