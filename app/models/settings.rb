@@ -1,7 +1,7 @@
 class Settings < ActiveRecord::Base
 
   # Available settings
-  attr_accessor :plan_to_view, :plan_to_edit, :email_contact, :unit_name
+  attr_accessor :event_id_for_viewing, :event_id_for_editing, :email_contact, :unit_name
 
   attr_accessible :key, :value
 
@@ -10,19 +10,18 @@ class Settings < ActiveRecord::Base
 
   class << self
 
-    # If plan_to_edit is not set, default one is the first found.
-    def plan_to_edit
-      get_value_for("plan_to_edit") || AcademicYear.first.try(:id)
+    def event_id_for_editing
+      get_value_for("event_id_for_editing") || AcademicYear::Event.first.try(:id)
+    end
+
+    def event_id_for_viewing
+      get_value_for("event_id_for_viewing") || AcademicYear::Event.first.try(:id)
     end
 
     def current_plan_name
       Rails.cache.fetch("settings:current_plan_name") do
-        AcademicYear.where(:id => plan_to_view).first.try(:name)
+        AcademyYear::Event.for_viewing.try(:name)
       end
-    end
-
-    def plan_to_view
-      get_value_for("plan_to_view")
     end
 
     def email_contact
@@ -49,8 +48,8 @@ class Settings < ActiveRecord::Base
 
     def fetch_settings
       settings = Settings.new
-      settings.plan_to_view = plan_to_view
-      settings.plan_to_edit = plan_to_edit
+      settings.event_id_for_viewing = event_id_for_viewing
+      settings.event_id_for_editing = event_id_for_editing
       settings.email_contact = email_contact
       settings.unit_name = unit_name
       settings
@@ -61,9 +60,9 @@ class Settings < ActiveRecord::Base
   private
 
     def refresh_cache
-      Rails.cache.write("settings:#{self.key}", self.value)
-      if key == "plan_to_view"
-        current_name = AcademicYear.where(:id => Settings.plan_to_view).first.try(:name)
+      Rails.cache.write("settings:#{key}", value)
+      if key == "event_id_for_viewing"
+        current_name = AcademicYear::Event.for_viewing.try(:name)
         Rails.cache.write("settings:current_plan_name", current_name)
       end
     end

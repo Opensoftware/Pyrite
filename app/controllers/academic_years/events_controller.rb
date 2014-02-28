@@ -39,4 +39,9 @@ class AcademicYears::EventsController < ApplicationController
     @academic_year_event.destroy
     render :nothing => true
   end
+
+  def fetch
+    @academic_year_events = AcademicYear::Event.for_academic_year(params[:academic_year_id])
+    render :layout => false
+  end
 end

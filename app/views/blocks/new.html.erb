@@ -56,7 +56,7 @@
         </td>
         <td>
           <%= f.collection_select :event_id,
-              AcademicYear::Event.current_for_edit, :id, :name %>
+              AcademicYear.for_editing.events, :id, :name %>
         </td>
         <td> <%= f.collection_select :type_id, Block::Type.all, :id, :name %> </td>
         <td colspan=2> <%= f.text_field :name %> </td>

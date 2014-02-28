@@ -1,24 +1,42 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <%= javascript_include_tag "settings" %>
+<% end %>
 <h2> <%= t("header_edit_settings") %> </h2>
 
 <div id="settings-container">
-  <%= form_for @settings, :url => settings_path, :method => :put, :html => { :class => "form-horizontal" } do |f|%>
+  <%= form_for @settings, :url => settings_path, :method => :put,
+    :html => { "data-fetch-url" => events_for_academic_year_path, :class => "form-horizontal" } do |f|%>
 
     <div class="control-group">
-      <label class="control-label" for="settings_plan_to_view">
-        <%= t("label_current_plan") %>
+      <label class="control-label" for="settings_year_for_viewing">
+        <%= t("label_plan_for_viewing") %>
       </label>
       <div class="controls">
-        <%= f.collection_select(:plan_to_view, AcademicYear.all, :id, :name,
-                                {:prompt => t("prompt_academic_year")}) %>
+        <%= select_tag(:year_for_viewing,
+              options_from_collection_for_select(AcademicYear.all, :id, :name,
+                       AcademicYear.for_viewing.id), {"data-update" => "#settings_event_id_for_viewing" } ) %>
+      </div>
+      <br>
+      <div class="controls">
+        <%= f.collection_select(:event_id_for_viewing,
+                                AcademicYear.for_viewing.events, :id, :name) %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="settings_plan_to_edit">
-        <%= t("label_plan_to_edit") %>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="settings_year_for_editing">
+        <%= t("label_plan_for_editing") %>
       </label>
       <div class="controls">
-        <%= f.collection_select(:plan_to_edit, AcademicYear.all, :id, :name,
-                                {:prompt => t("prompt_academic_year")}) %>
+        <%= select_tag(:year_for_editing,
+              options_from_collection_for_select(AcademicYear.all, :id, :name,
+                       AcademicYear.for_editing.id), { "data-update" => "#settings_event_id_for_editing"}) %>
+      </div>
+      <br>
+      <div class="controls">
+        <%= f.collection_select(:event_id_for_editing,
+                                AcademicYear.for_editing.events, :id, :name) %>
       </div>
     </div>
     <div class="control-group">

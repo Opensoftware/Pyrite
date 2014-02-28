@@ -3,7 +3,15 @@ class AcademicYear::Event < ActiveRecord::Base
   belongs_to :academic_year
   has_many :blocks
 
+  scope :for_academic_year, ->(id) { where(:academic_year_id => id)}
 
-  scope :current_for_edit, where(:academic_year_id => Settings.plan_to_edit)
-  scope :currnet_for_view, where(:academic_year_id => Settings.plan_to_view)
+
+  def self.for_viewing
+    find(Settings.event_id_for_viewing)
+  end
+
+  def self.for_editing
+    find(Settings.event_id_for_editing)
+  end
+
 end

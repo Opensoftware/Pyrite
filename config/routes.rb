@@ -20,6 +20,7 @@ Pyrite::Application.routes.draw do
   resources :academic_years do
     resources :events, :controller => "academic_years/events"
   end
+  get "academic_years/events/fetch", :as => "events_for_academic_year", :to => "academic_years/events#fetch"
   resources :blocks, :except => [:index]
   resources :reservations, :only => [:new, :create] do
     collection do

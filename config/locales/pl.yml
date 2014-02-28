@@ -64,6 +64,7 @@ pl:
   notice_block_has_been_updated: Blok został zaktualizowany.
   notice_building_has_been_created: Budynek został dodany.
   notice_building_has_been_updated: Budynek został zaktualizowany.
+  notice_update_user_preferences_successed: Ustawienia zostały zaktualizowane.
 
 
   button_save: Zapisz
@@ -112,8 +113,8 @@ pl:
   label_without_weekend: Bez weekendów
   label_error: Błąd
   label_name: Nazwa
-  label_current_plan: Plan do wyświetlania
-  label_plan_to_edit: Plan do edycji
+  label_plan_for_viewing: Plan do wyświetlania
+  label_plan_for_editing: Plan do edycji
   label_unit_name: Nazwa wydziału
   label_email_contact: Email kontaktowy
   label_classroom_name: Numer sali
@@ -182,7 +183,7 @@ pl:
   prompt_day: Wybierz dzień
   prompt_group: Wybierz grupę
   prompt_lecturer: Wybierz prowadzącego
-  prompt_academic_year: Wybierz Plan
+  prompt_event: Wybierz okres
 
 
   include_blank_academic_event: Brak

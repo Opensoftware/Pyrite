@@ -41,5 +41,5 @@ Lecturer.create(:title => "dr", :full_name => "Stanisław Kobuszewski")
 Settings.destroy_all
 Settings.create(:key => "unit_name", :value => "Wydział Informatyki" )
 Settings.create(:key => "email_contact", :value => "contact@opensoftware.pl")
-Settings.create(:key => "plan_to_edit", :value => academic_year.id)
-Settings.create(:key => "plan_to_view", :value => academic_year.id)
+Settings.create(:key => "event_id_for_editing", :value => academic_year.id)
+Settings.create(:key => "event_id_for_viewing", :value => academic_year.id)

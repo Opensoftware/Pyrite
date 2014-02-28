@@ -33,7 +33,7 @@
       <tr>
         <td> <%= f.text_field :end_time, :class => "timepicker", :autocomplete => :off, :placeholder => t("placeholder_block_end_time") %> </td>
         <td>
-          <%= f.collection_select :event_id, AcademicYear::Event.currnet_for_view,
+          <%= f.collection_select :event_id, AcademicYear.for_viewing.events,
               :id, :name, :include_blank => t("include_blank_academic_event") %>
         </td>
         <td>
