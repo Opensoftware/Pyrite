@@ -55,6 +55,14 @@
         <%= f.text_field :email_contact %>
       </div>
     </div>
+    <div class="control-group">
+      <label class="control-label" for="settings_pdf_subtitle">
+        <%= t("label_pdf_subtitle") %>
+      </label>
+      <div class="controls">
+        <%= f.text_field :pdf_subtitle %>
+      </div>
+    </div>
 
     <%= f.submit t("button_save"), :class => "btn" %>
   <% end %>

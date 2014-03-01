@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   include BlocksHelper
+  include ApplicationHelper
 
   respond_to :html, :js, :only => [:timetables, :timetable]
 
@@ -63,4 +64,39 @@ class GroupsController < ApplicationController
     @events = convert_blocks_to_events(blocks)
     respond_with @events
   end
+
+  def print_all
+    groups = Group.all
+
+    groups_timetable = Pdf::GroupTimetable.new(groups, params[:event_id])
+    data = groups_timetable.to_pdf
+
+    send_data(data, :filename => t(:file_groups_timetable),
+              :type => 'application/pdf', :disposition => "inline")
+  end
+
+  def print
+    group = Group.find(params[:id])
+    event_id = params[:event_id]
+
+    data = Rails.cache.fetch(cache_key_for_group_timetable(group, event_id)) do
+      timetable = Pdf::GroupTimetable.new([group], event_id)
+      data = timetable.to_pdf
+      Rails.cache.write(cache_key_for_group_timetable(group, event_id), data)
+      data
+    end
+
+    send_data(data, :filename => "#{group.name}.pdf",
+              :type => 'application/pdf', :disposition => "inline")
+  end
+
+
+  private
+
+    def cache_key_for_group_timetable(group, event_id)
+      count = Block.joins(:groups).where("blocks_groups.group_id = ?", group.id).count
+      settings       = Settings.maximum(:updated_at).try(:utc).try(:to_s, :number)
+      max_block_updated_at = group.blocks.maximum(:updated_at).try(:utc).try(:to_s, :number)
+      "group-timetable/#{event_id}-#{settings}-#{group.name}-#{max_block_updated_at}-#{count}"
+    end
 end

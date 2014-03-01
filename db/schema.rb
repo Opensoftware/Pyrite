@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
     t.integer  "lecturer_id"
     t.integer  "event_id"
     t.integer  "room_id"
-    t.integer  "building_id"
     t.integer  "type_id"
     t.boolean  "reservation", :default => false
     t.string   "name"

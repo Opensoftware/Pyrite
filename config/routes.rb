@@ -9,14 +9,21 @@ Pyrite::Application.routes.draw do
   match "/howto" => "main#howto", :as => "howto"
   match "/contact" => "main#contact", :as => "contact"
 
-  resources :groups, :except => [:show] do
-    member do
-      get :timetable
-    end
-    collection do
-      get :timetables
-    end
+
+  resource :timetable, :only => [] do
+    get "groups", :to => "groups#timetables"
+    get "groups/:event_id/print", :to => "groups#print_all", :as => :print_all_groups
+    get "groups/:id/:event_id/print", :to => "groups#print", :as => :print_group
+    get "groups/:id", :to => "groups#timetable", :as => :group
+
+    get "rooms", :to => "rooms#timetables"
+    get "room/:id", :to => "rooms#timetable", :as => :room
+    get "rooms/:event_id/print", :to => "rooms#print_all", :as => :print_all_rooms
+    get "rooms/:id/:event_id/print", :to => "rooms#print", :as => :print_room
+
+    get "lecturer/:id", :to => "lecturers#timetable", :as => :lecturer
   end
+  resources :groups, :except => [:show]
   resources :academic_years do
     resources :events, :controller => "academic_years/events"
   end
@@ -34,20 +41,15 @@ Pyrite::Application.routes.draw do
   resources :buildings do
     resources :rooms, :only => [:new]
   end
-  resources :rooms, :except => [:index] do
-    member do
-      get :timetable
-    end
+  resources :rooms, :except => [:index]
+  resources :dashboard, :only => [:index] do
     collection do
-      get :auto_complete_for_room_numer
-      get :timetables
+      get :prints
     end
   end
-  resources :dashboard, :only => [:index]
 
   resources :lecturers, :except => [:show]
 
-  get "/lecturer/:id/timetable", :to => "lecturers#timetable", :as => "timetable_lecturer"
 
   match "/user/account" => "users#account", :as => "user_account", :via => :get
   match "/user/update" => "users#update", :as => "update_user_account", :via => :put

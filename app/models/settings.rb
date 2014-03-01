@@ -1,7 +1,8 @@
 class Settings < ActiveRecord::Base
 
   # Available settings
-  attr_accessor :event_id_for_viewing, :event_id_for_editing, :email_contact, :unit_name
+  attr_accessor :event_id_for_viewing, :event_id_for_editing, :email_contact, :unit_name,
+                :pdf_subtitle
 
   attr_accessible :key, :value
 
@@ -46,12 +47,17 @@ class Settings < ActiveRecord::Base
       end
     end
 
+    def pdf_subtitle
+      get_value_for("pdf_subtitle")
+    end
+
     def fetch_settings
       settings = Settings.new
       settings.event_id_for_viewing = event_id_for_viewing
       settings.event_id_for_editing = event_id_for_editing
       settings.email_contact = email_contact
       settings.unit_name = unit_name
+      settings.pdf_subtitle = pdf_subtitle
       settings
     end
   end

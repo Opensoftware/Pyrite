@@ -4,4 +4,10 @@ class Group < ActiveRecord::Base
 
   attr_accessible :name
 
+  scope :for_event, ->(event_id) { where(:event_id => event_id) }
+
+  def pdf_title
+    I18n.t("pdf.label.timetable_for_group", :name => name)
+  end
+
 end

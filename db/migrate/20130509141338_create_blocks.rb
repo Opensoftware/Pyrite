@@ -4,7 +4,6 @@ class CreateBlocks < ActiveRecord::Migration
       t.integer :lecturer_id
       t.integer :event_id #academic_years_event
       t.integer :room_id
-      t.integer :building_id
       t.integer :type_id
       t.boolean :reservation, :default => false
       t.string :name

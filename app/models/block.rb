@@ -1,7 +1,6 @@
 class Block < ActiveRecord::Base
   belongs_to :room
   belongs_to :lecturer
-  belongs_to :building
   belongs_to :event, :class_name => "AcademicYear::Event"
   belongs_to :type, :class_name => "Block::Type"
   has_many :dates, :dependent => :destroy

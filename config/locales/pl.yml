@@ -43,6 +43,9 @@ pl:
   link_user_account: Konto użytkownika
   link_lecturers: Zarządzaj pracownikami
   link_buildings_and_rooms: Zarządzaj budynkami i salami
+  link_prints: Drukuj plany
+  link_print: Drukuj plan
+  link_print_all_groups: Wszystkie grupy na
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
@@ -67,6 +70,7 @@ pl:
   notice_update_user_preferences_successed: Ustawienia zostały zaktualizowane.
 
 
+  button_save_as_pdf: Zapisz jako pdf
   button_save: Zapisz
   button_delete: Usuń
   button_edit: Edytuj
@@ -106,6 +110,7 @@ pl:
   header_listing_buildings: Lista budynków
   header_new_building: Nowy budynek
   header_edit_building: Edycja budynku
+  header_prints: Drukuj plany
 
   modal_header_new_academic_year_event: Dodaj nowe wydarzenie
 
@@ -136,6 +141,7 @@ pl:
   label_academic_year_event_end_date: Data zakończenia
   label_academic_year_event_lecture_free: Wolne od zajęć
   label_academic_year_event: Plan dla
+  label_academic_year_event_for_print: "Drukuj dla:"
   label_actions: Akcja
   label_block_start_time: Godzina rozpoczęcia
   label_block_end_time: Godzina zakończenia
@@ -162,6 +168,14 @@ pl:
   label_schedule_for: "Siatka na rok:"
   label_lecturer_full_name: Imię i nazwisko
   label_lecturer_title: Tytuł naukowy
+  label_print_groups: "Grupy na:"
+  label_pdf_subtitle: Podtytuł na wydrukach
+
+  pdf:
+    label:
+      timetable_for_group: "Grupa %{name}"
+      room: "Sala:"
+      hours: "Godz."
 
   confirm_removing_lecturer: Wszystkie bloki zajęć prowadzone przez prowadzącego zostaną usunięte. Jesteś pewny aby usunąć tego prowadzącego?
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
@@ -185,7 +199,9 @@ pl:
   prompt_lecturer: Wybierz prowadzącego
   prompt_event: Wybierz okres
 
+  file_groups_timetable: "Plan zajęć dla wszytkich grup.pdf"
 
   include_blank_academic_event: Brak
 
   title_app_name: Siatka zajęć
+  title_system_name: Pyrit - Siatka zajęć

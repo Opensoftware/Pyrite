@@ -11,5 +11,6 @@
 <% end %>
 
 <%= t("label_timetable_for_group") %> <%= @group.name %>
+<%= link_to t("link_print"), print_group_timetable_path(params[:id], AcademicYear::Event.for_viewing), :class => "btn btn-primary btn-mini pull-right" %>
 
 <div id="groups-timetable"> </div>

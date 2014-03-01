@@ -1,0 +1,21 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <script>
+     $(document).ready(function () {
+       $("#print-groups-form").on("submit", function() {
+          window.location.href = $("#groups_timetable_event_id").val();
+          return false;
+       });
+     });
+  </script>
+<% end %>
+<h2> <%= t("header_prints") %> </h2>
+
+<%= form_tag "#", {:id => "print-groups-form", :class => "print-timetable-form"} do %>
+  <div class="control-group">
+    <label class="control-label" for=""> <%= t("label_print_groups") %></label>
+    <div class="controls">
+      <%= select(:groups_timetable_event, :id, @events_with_url) %>
+      <%= submit_tag t("button_save_as_pdf"), :id => "print-groups-timetables-button", :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
