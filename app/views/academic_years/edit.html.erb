@@ -11,16 +11,20 @@
 <%= link_to t("button_new_academic_year_event"), new_academic_year_event_path(@academic_year),
             :class => "btn btn-primary pull-right", :remote => true, :id => "button-new-academic-year-event" %>
 
-<div id="academic-year-events-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="academic-year-events-modal-label" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="academic-year-events-modal-label"> <%=t "modal_header_new_academic_year_event" %></h3>
-  </div>
-  <div class="modal-body">
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true"> <%= t "button_close" %></button>
-    <button class="btn btn-primary" id="submit-academic-year-event-form"> <%= t "button_save" %> </button>
+<div id="academic-year-events-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="academic-year-events-modal-label"> <%=t "modal_header_new_academic_year_event" %></h3>
+      </div>
+
+      <div class="modal-body"> </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true"> <%= t "button_close" %></button>
+        <button class="btn btn-primary" id="submit-academic-year-event-form"> <%= t "button_save" %> </button>
+      </div>
+    </div>
   </div>
 </div>
 

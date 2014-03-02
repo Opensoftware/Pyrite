@@ -16,9 +16,9 @@
         <td> <%= academic_year.start_date %> </td>
         <td> <%= academic_year.end_date %> </td>
         <td>
-          <%= link_to t("button_show"), academic_year %>
-          <%= link_to t("button_edit"), edit_academic_year_path(academic_year) %>
-          <%= link_to t("button_delete"), academic_year, method: :delete, data: { confirm: t("confirm_removing_academic_year") } %>
+          <%= link_to t("button_show"), academic_year, :class => "btn btn-primary" %>
+          <%= link_to t("button_edit"), edit_academic_year_path(academic_year), :class => "btn btn-success" %>
+          <%= link_to t("button_delete"), academic_year, method: :delete, data: { confirm: t("confirm_removing_academic_year") }, :class => "btn btn-danger" %>
         </td>
       </tr>
     <% end %>

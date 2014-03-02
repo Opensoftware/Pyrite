@@ -16,10 +16,10 @@
         <td><%= event.end_date.strftime("%F") %></td>
         <td><%= event.lecture_free %></td>
         <td>
-          <%= link_to "<i class='icon-remove-sign'></i>".html_safe, academic_year_event_path(event.academic_year, event),
+          <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, academic_year_event_path(event.academic_year, event),
                       :method => :delete, :class => "btn btn-danger button-remove-academic-year-event" ,
                       :confirm => t("confirm_to_remove_academic_year_event"), :remote => true %>
-          <%= link_to "<i class='icon-pencil'></i>".html_safe, edit_academic_year_event_path(event.academic_year, event),
+                    <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_academic_year_event_path(event.academic_year, event),
                       :class => "btn btn-info button-edit-academic-year-event", :remote => true %>
         </td>
       </tr>
