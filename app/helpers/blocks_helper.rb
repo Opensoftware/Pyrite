@@ -4,7 +4,7 @@ module BlocksHelper
       block.dates.each do |date|
         sum << { id: block.id, title: block.name, start: date.start_date, end: date.end_date,
                  allDay: false, backgroundColor: block.type.try(:color),
-                 room_name: block.room.name, block_type: block.type_name,
+                 room_name: block.room.name_with_building, block_type: block.type_name,
                  groups_names: block.groups_names, lecturer: block.lecturer_name,
                  url: edit_block_path(block), delete_url: block_path(block)
         }
@@ -18,7 +18,7 @@ module BlocksHelper
       block.dates.each do |date|
         sum << { id: block.id, title: block.name, start: date.start_date, end: date.end_date,
                  allDay: false, backgroundColor: block.type.try(:color),
-                 room_name: block.room.name, block_type: block.type_name,
+                 room_name: block.room.name_with_building, block_type: block.type_name,
                  groups_names: block.groups_names, lecturer: block.lecturer_name
         }
       end
@@ -31,10 +31,10 @@ module BlocksHelper
       [group.name, group_timetable_path(group.id)]
     }
     @rooms_with_url = Room.all.collect {|room|
-      [room.name, room_timetable_path(room.id)]
+      [room.name_with_building, room_timetable_path(room.id)]
     }
     @rooms_reservations_with_url = Room.all.collect {|room|
-      [room.name, show_reservations_path(room.id)]
+      [room.name_with_building, show_reservations_path(room.id)]
     }
     @lecturers_with_url = Lecturer.all.collect { |lecturer|
       [lecturer.name_with_title, lecturer_timetable_path(lecturer.id)]

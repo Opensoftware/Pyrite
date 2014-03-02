@@ -37,7 +37,7 @@
         </td>
         <td> <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name_with_title, :prompt => t("prompt_lecturer") %> </td>
         <td>
-          <%= f.collection_select :room_id, Room.all, :id, :name,
+          <%= f.collection_select :room_id, Room.all, :id, :name_with_building,
                                   {:prompt => t("prompt_room") },
                                   {"data-timetable-url" => rooms_timetable_path} %>
         </td>

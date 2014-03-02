@@ -9,4 +9,8 @@ class Room < ActiveRecord::Base
   def type
     room_type.short_name
   end
+
+  def name_with_building
+    "#{name}, #{building.name}"
+  end
 end

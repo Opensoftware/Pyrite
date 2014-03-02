@@ -37,7 +37,7 @@
               :id, :name, :include_blank => t("include_blank_academic_event") %>
         </td>
         <td>
-          <%= f.collection_select :room_id, Room.all, :id, :name,
+          <%= f.collection_select :room_id, Room.all, :id, :name_with_building,
                                   {:prompt => t("prompt_room") },
                                   {"data-timetable-url" => rooms_timetable_path} %>
         </td>
