@@ -21,7 +21,7 @@ class Settings < ActiveRecord::Base
 
     def current_plan_name
       Rails.cache.fetch("settings:current_plan_name") do
-        AcademyYear::Event.for_viewing.try(:name)
+        AcademicYear::Event.for_viewing.try(:name)
       end
     end
 
