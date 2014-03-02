@@ -8,3 +8,6 @@ db/*.sqlite3
 log/*.log
 tmp/
 config/database.yml
+config/initializers/errbit.rb
+config/initializers/devise.rb
+config/initializers/secret_token.rb
