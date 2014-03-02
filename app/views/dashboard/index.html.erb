@@ -1,56 +1,80 @@
 <% cache do %>
-  <ul class="nav nav-tabs nav-stacked">
-    <% if can? :manage, Settings %>
-      <li>
-        <%= link_to t("link_settings"), edit_settings_path %>
-      </li>
-    <% end %>
-    <% if can? :manage, Building %>
-      <li>
-         <%= link_to t("link_buildings_and_rooms"), buildings_path %>
-      </li>
-    <% end %>
-    <% if can? :manage, Lecturer %>
-      <li>
-         <%= link_to t("link_lecturers"), lecturers_path %>
-      </li>
-    <% end %>
-    <% if can? :manage, AcademicYear %>
-      <li>
-         <%= link_to t("link_academic_years"), academic_years_path %>
-      </li>
-    <% end %>
-    <% if can? :manage, Block::Type %>
-      <li>
-         <%= link_to t("link_block_types"), block_types_path %>
-      </li>
-    <% end %>
-    <% if can? :manage, Group %>
-      <li>
-         <%= link_to t("link_groups"), groups_path %>
-      </li>
-    <% end %>
-    <% if can? :manage, User %>
-      <li>
-         <%= link_to t("link_user_account"), user_account_path %>
-      </li>
-    <% end %>
-  </ul>
-  <ul class="nav nav-tabs nav-stacked">
-    <% if can? :manage, Plan %>
-      <li>
-         <%= link_to(t("link_add_new_block"), new_block_path) %>
-      </li>
-      <li>
-         <%= link_to(t("link_add_new_reservation"), new_reservation_path) %>
-      </li>
-      <li>
-         <%= link_to(t("link_prints"), prints_dashboard_index_path) %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="panel panel-primary nav-system-settings">
+    <div class="panel-heading">
+      <h3 class="panel-title"> <%= t("panel.title.settings") %> </h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% if can? :manage, Settings %>
+          <li>
+            <%= link_to t("link_settings"), edit_settings_path %>
+          </li>
+        <% end %>
+        <% if can? :manage, User %>
+          <li>
+             <%= link_to t("link_user_account"), user_account_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="panel panel-primary nav-system-timetable">
+    <div class="panel-heading">
+      <h3 class="panel-title"> <%= t("panel.title.timetable") %> </h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% if can? :manage, Plan %>
+          <li>
+             <%= link_to(t("link_add_new_block"), new_block_path) %>
+          </li>
+          <li>
+             <%= link_to(t("link_add_new_reservation"), new_reservation_path) %>
+          </li>
+          <li>
+            <%= link_to(t("link_prints"), prints_dashboard_index_path) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="panel panel-primary nav-system-data">
+    <div class="panel-heading">
+      <h3 class="panel-title"> <%= t("panel.title.data") %> </h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% if can? :manage, Building %>
+          <li>
+             <%= link_to t("link_buildings_and_rooms"), buildings_path %>
+          </li>
+        <% end %>
+        <% if can? :manage, Lecturer %>
+          <li>
+             <%= link_to t("link_lecturers"), lecturers_path %>
+          </li>
+        <% end %>
+        <% if can? :manage, AcademicYear %>
+          <li>
+             <%= link_to t("link_academic_years"), academic_years_path %>
+          </li>
+        <% end %>
+        <% if can? :manage, Block::Type %>
+          <li>
+             <%= link_to t("link_block_types"), block_types_path %>
+          </li>
+        <% end %>
+        <% if can? :manage, Group %>
+          <li>
+             <%= link_to t("link_groups"), groups_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 <% end %>
 
+<div class="clearfix"> </div>
 <% cache cache_key_for_timetable_forms do %>
   <div class="main-control-panel">
     <%= render :partial => "common/timetable-forms" %>

@@ -38,7 +38,7 @@ pl:
   link_academic_years: Organizacja roku akademickiego
   link_block_types: Typy zajęć
   link_groups: Grupy
-  link_add_new_block: Wprowadź dane
+  link_add_new_block: Dodaj nowy blok zajęć
   link_add_new_reservation: Rezerwuj salę
   link_user_account: Konto użytkownika
   link_lecturers: Zarządzaj pracownikami
@@ -205,3 +205,9 @@ pl:
 
   title_app_name: Siatka zajęć
   title_system_name: Pyrit - Siatka zajęć
+
+  panel:
+    title:
+      settings: "Ustawienia"
+      timetable: "Plan zajeć"
+      data: "Dane systemu"

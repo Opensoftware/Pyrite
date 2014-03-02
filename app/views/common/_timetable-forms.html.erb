@@ -2,44 +2,55 @@
   <%= javascript_include_tag "timetable_forms" %>
 <% end %>
 
-<%= form_tag '#', {:method => :get, :id => "show-reservations-form", :class => "show-timetable-form"} do %>
-  <div class="control-group">
-    <label class="control-label" for="reservations_timetable"> <%= t("label_reservations") %></label>
-    <div class="controls">
+<%= form_tag '#', {:method => :get, :role => "form", :id => "show-reservations-form", :class => "show-timetable-form"} do %>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="reservations-timetable"> <%= t("label_reservations") %></label>
+    <div class="col-sm-7">
       <%= select(:room,:id, @rooms_reservations_with_url, {:prompt => t("prompt_room")},
                             :id => "reservations-timetable" ) %>
+    </div>
+    <div class="col-sm-2">
        <%= submit_tag t("button_show"), :class => "btn" %>
     </div>
   </div>
 <% end %>
+
 <% cache cache_key_for_rooms_with_url do %>
   <%= form_tag "#", {:method => :get, :id => "show-room-timetable-form", :class => "show-timetable-form"} do %>
-    <div class="control-group">
-      <label class="control-label" for="classrooms-timetable"> <%= t("label_classroom") %></label>
-      <div class="controls">
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="classrooms-timetable"> <%= t("label_classroom") %></label>
+      <div class="col-sm-7">
         <%= select(:room,:id, @rooms_with_url, {:prompt => t("prompt_room")},
                               :id => "classrooms-timetable") %>
+      </div>
+      <div class="col-sm-2">
         <%= submit_tag t("button_show"), :class => "btn" %>
       </div>
     </div>
   <% end %>
 <% end %>
+
 <%= form_tag "#" , {:method => :get, :id => "show-lecturer-timetable-form", :class => "show-timetable-form" } do %>
-  <div class="control-group">
-    <label class="control-label" for="lecturer-timetable"> <%= t("label_lecturer") %></label>
-    <div class="controls">
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="lecturer-timetable"> <%= t("label_lecturer") %></label>
+    <div class="col-sm-7">
       <%= select(:lecturer,:id, @lecturers_with_url, {:prompt => t("prompt_lecturer")},
                                 :id => "lecturers-timetable") %>
+      </div>
+      <div class="col-sm-2">
       <%= submit_tag t("button_show"), :class => "btn" %>
     </div>
   </div>
 <% end %>
+
 <% cache cache_key_for_groups_with_url do %>
   <%= form_tag "#", {:method => :get, :id => "show-group-timetable-form", :class => "show-timetable-form"} do %>
-    <div class="control-group">
-      <label class="control-label" for=""> <%= t("label_group") %></label>
-      <div class="controls">
+    <div class="form-group">
+      <label class="control-label col-sm-3" for=""> <%= t("label_group") %></label>
+      <div class="col-sm-7">
         <%= select(:group, :id, @groups_with_url, {:prompt => t("prompt_group")}) %>
+      </div>
+      <div class="col-sm-2">
         <%= submit_tag t("button_show"), :class => "btn" %>
       </div>
     </div>

@@ -11,10 +11,12 @@
 <h2> <%= t("header_prints") %> </h2>
 
 <%= form_tag "#", {:id => "print-groups-form", :class => "print-timetable-form"} do %>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t("label_print_groups") %></label>
-    <div class="controls">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for=""> <%= t("label_print_groups") %></label>
+    <div class="col-sm-8">
       <%= select(:groups_timetable_event, :id, @events_with_url) %>
+    </div>
+    <div class="col-sm-2">
       <%= submit_tag t("button_save_as_pdf"), :id => "print-groups-timetables-button", :class => "btn btn-primary" %>
     </div>
   </div>
