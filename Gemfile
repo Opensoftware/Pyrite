@@ -21,6 +21,8 @@ gem 'jquery-rails'
 
 group :development do
   gem 'hirb'
+  gem 'wirble'
+  gem 'interactive_editor'
   gem 'sqlite3'
   gem "better_errors"
   gem "binding_of_caller"
