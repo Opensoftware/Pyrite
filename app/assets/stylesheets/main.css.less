@@ -6,16 +6,19 @@
 #header-logo { display: block; width: 100px; height: 105px; background-image: url("pyrite_large.png"); background-repeat: no-repeat; float: left;}
 
 .form-group select,
+.form-group textarea,
 .form-group input[type=text] {
     .form-control
 }
 
-.print-table-form, .show-timetable-form {
-  .form-horizontal;
+.form-group textarea {
+  height: 100px;
 }
 
-#new_settings {
-  .form-horizontal
+.print-table-form, .show-timetable-form,
+#new_building, #new_room, #new_settings,
+.edit_building, .edit_room{
+  .form-horizontal;
 }
 
 #new_settings .form-group label {
@@ -31,6 +34,23 @@
 
 #new_settings div {
   text-align: center;
+}
+
+#new_building .form-group label,
+.edit_building .form-group label,
+#new_room .form-group label,
+.edit_room .form-group label,{
+  .form-horizontal > .control-label;
+  width: 40%;
+  float: left;
+}
+
+#new_building .form-group div,
+.edit_building .form-group div,
+#new_room .form-group div,
+.edit_room .form-group div{
+  width: 60%;
+  float: left;
 }
 
 .nav-system-data, .nav-system-settings, .nav-system-timetable {

@@ -41,7 +41,7 @@ class RoomsController < ApplicationController
     building = @room.building
     @room.destroy
 
-    redirect_to building
+    redirect_to building, notice: t("notice_room_have_been_deleted")
   end
 
   def timetable

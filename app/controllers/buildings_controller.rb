@@ -41,7 +41,7 @@ class BuildingsController < ApplicationController
     @building = Building.find(params[:id])
     @building.destroy
 
-    redirect_to buildings_url
+    redirect_to buildings_url, notice: t("notice_building_have_been_deleted")
   end
 
 end

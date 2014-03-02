@@ -74,6 +74,8 @@ pl:
   notice_building_has_been_created: Budynek został dodany.
   notice_building_has_been_updated: Budynek został zaktualizowany.
   notice_update_user_preferences_successed: Ustawienia zostały zaktualizowane.
+  notice_room_have_been_deleted: Sala została usunięta.
+  notice_building_have_been_deleted: Budynek został usunięty.
 
 
   button_save_as_pdf: Zapisz jako pdf
@@ -176,6 +178,7 @@ pl:
   label_lecturer_title: Tytuł naukowy
   label_print_groups: "Grupy na:"
   label_pdf_subtitle: Podtytuł na wydrukach
+  label_building_localization: Lokalizacja
 
   pdf:
     label:
