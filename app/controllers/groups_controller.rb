@@ -47,8 +47,7 @@ class GroupsController < ApplicationController
 
   def timetable
     @group = Group.find(params[:id])
-    # TODO implement with event_id
-    @events = convert_blocks_to_events(@group.blocks)
+    @events = convert_blocks_to_events_for_viewing(@group.blocks.for_event(AcademicYear::Event.for_viewing))
     respond_with @events
   end
 

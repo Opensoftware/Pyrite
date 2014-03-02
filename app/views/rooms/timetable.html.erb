@@ -7,6 +7,8 @@
     }
 
     $('#room-timetable').fullCalendar_with_defaults(options);
+    var block_date = $.fullCalendar.parseDate( "<%= AcademicYear::Event.for_viewing.start_date.to_i %>" )
+    $("#room-timetable").fullCalendar('gotoDate', block_date);
   </script>
 <% end %>
 

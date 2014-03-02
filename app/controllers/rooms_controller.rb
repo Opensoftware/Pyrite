@@ -46,8 +46,7 @@ class RoomsController < ApplicationController
 
   def timetable
     @room = Room.find(params[:id])
-    # TODO implement with event_id
-    @events = convert_blocks_to_events(@room.blocks)
+    @events = convert_blocks_to_events_for_viewing(@room.blocks.for_event(AcademicYear::Event.for_viewing))
     respond_with @events
   end
 

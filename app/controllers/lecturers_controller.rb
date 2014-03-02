@@ -44,6 +44,6 @@ class LecturersController < ApplicationController
 
   def timetable
     @lecturer = Lecturer.where(:id => params[:id]).first
-    @events = convert_blocks_to_events(@lecturer.blocks)
+    @events = convert_blocks_to_events_for_viewing(@lecturer.blocks.for_event(AcademicYear::Event.for_viewing))
   end
 end

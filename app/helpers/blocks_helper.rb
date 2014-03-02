@@ -13,6 +13,19 @@ module BlocksHelper
     end
   end
 
+  def convert_blocks_to_events_for_viewing(blocks)
+    blocks.reduce([]) do |sum, block|
+      block.dates.each do |date|
+        sum << { id: block.id, title: block.name, start: date.start_date, end: date.end_date,
+                 allDay: false, backgroundColor: block.type.try(:color),
+                 room_name: block.room.name, block_type: block.type_name,
+                 groups_names: block.groups_names, lecturer: block.lecturer_name
+        }
+      end
+      sum
+    end
+  end
+
   def timetable_forms_data
     @groups_with_url = Group.all.collect {|group|
       [group.name, group_timetable_path(group.id)]

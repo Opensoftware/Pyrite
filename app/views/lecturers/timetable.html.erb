@@ -7,6 +7,8 @@
     }
 
     $('#lecturer-timetable').fullCalendar_with_defaults(options);
+    var block_date = $.fullCalendar.parseDate( "<%= AcademicYear::Event.for_viewing.start_date.to_i %>" )
+    $("#lecturer-timetable").fullCalendar('gotoDate', block_date);
   </script>
 <% end %>
 
