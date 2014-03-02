@@ -25,6 +25,10 @@ Jeżeli potrzebujesz wsparcia przy wdrożeniu systemu zapraszamy na
     git clone https://github.com/Opensoftware/pyrite
     git checkout stable
 
+    # Przenieść i zmodyfikować poniższe pliki initializacyjne
+    mv config/initializers/devise.rb.template config/initializers/devise.rb
+    mv config/initializers/secret_token.rb.template config/initializers/secret_token.rb
+
     rake db:create
     rake db:migrate
     rake db:seed
