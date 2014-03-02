@@ -1,9 +1,4 @@
-@import "twitter/bootstrap/bootstrap";
-@import "twitter/bootstrap/responsive";
-
-.show-timetable-form, .print-timetable-form {
-  .form-horizontal
-}
+@import "bootstrap/less/bootstrap";
 
 body { text-align: center; }
 
@@ -12,31 +7,16 @@ body { text-align: center; }
 #header-title { width: 700px; float: right; height: 105px; margin-top: 10px; }
 #header-logo { display: block; width: 100px; height: 105px; background-image: url("pyrite_large.png"); background-repeat: no-repeat; float: left;}
 
-.button {
-   background:  #EAE8D7;
-   color: black;
-   width: 200px;
-   margin-left: 2px;
-	 margin-top:  6px;
-   border-collapse: collapse;
-   border: 1px solid #000000;
-}
-
-.button:hover {
-  border: 1px solid red;
+.form-group select {
+    .form-control
 }
 
 #main {
-background-image: url("");
-background-repeat: repeat-x;
-background: #fff;
-color: black;
-/*margin-left: 14em;*/
-padding-top: 4ex;
-width: 100%;
-min-height: 100px ;
-/* Aby działało rozciąganie maina poniżej ie 7*/
-/*_height:expression(this.clientHeight<500 ? '500px' : 'auto');*/
+  background: #fff;
+  color: black;
+  padding-top: 4ex;
+  width: 100%;
+  min-height: 100px ;
 }
 
 .warning {

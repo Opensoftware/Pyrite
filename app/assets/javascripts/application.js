@@ -17,7 +17,7 @@
 //= require jquery.ui.datepicker-pl
 //= require jquery-ui-timepicker-addon
 //= require localization/jquery-ui-timepicker-pl
-//= require twitter/bootstrap
+//= require bootstrap/js/bootstrap
 //= require fullcalendar/fullcalendar.min
 //= require jquery.busybox
 
