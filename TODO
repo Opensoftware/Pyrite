@@ -1,5 +1,9 @@
 TODO:
 
+- automatyczne przełączanie się planu zajęć na nowy semestr np. dzień/tydzień przed
+  rozpoczęciem
+- dodać mozliwość edycji bloków dla zalogowanych uzytkowników na dowolnym
+  widoku.
 - opcja bez weekendów nie aplikuje się do wyświetlania planów zajęć - naprawić
 - dodawanie nowego roku akademickiego dodać mozliwość wybrania roku w
   datapikerze żeby tak nie musieć skakać, najlepiej 3 etapowy wybór z rokiem,
@@ -28,7 +32,6 @@ Uwagi EAIiB:
 - Brak możliwości rezerwacji terminu bez podania sali (np. rezerwacja terminów
   na język obcy czy zajęcia WF) – możliwe do obejścia poprzez dodanie wirtualnej
   sali.
-- Pomieszany język interfejsu – czasem polski, czasem angielski.
 - Brak możliwości definowania zajęć dla studiów niestacjonarnych, gdzie zajęcia prowadzone są na zjazdach – czyli rezerwowania zajęć na konkretny dzień (data, a nie dzień tygodnia, w sposób zbliżony jak przy rezerwacji sal – ale tam nie ma możliwości wybrania grupy).
 - Brak możliwości przeniesienia zajęć pomiędzy godzinami. Trzeba usunąć zajęcia i wprowadzić je na nowo w nowym terminie.
 
