@@ -13,7 +13,9 @@ group :assets do
   gem 'jquery-ui-rails'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
-  gem "less-rails"
+  # Until less-rails will move to less 2.5 we have to use that temporary branch.
+  # gem "less-rails"
+  gem "less-rails", git: "https://github.com/CQQL/less-rails.git", branch: "less-2.5"
 end
 
 gem 'jquery-rails'

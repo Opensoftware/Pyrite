@@ -24,6 +24,15 @@ GIT
       capistrano (~> 3.0)
       sshkit (~> 1.2.0)
 
+GIT
+  remote: https://github.com/CQQL/less-rails.git
+  revision: 9f59d7e9b15d66a4a2f45ea94d4b8c061ae5ba11
+  branch: less-2.5
+  specs:
+    less-rails (2.4.2)
+      actionpack (>= 3.1)
+      less (~> 2.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -100,11 +109,8 @@ GEM
       railties (>= 3.1.0)
     json (1.8.1)
     kgio (2.8.1)
-    less (2.3.3)
-      commonjs (~> 0.2.6)
-    less-rails (2.3.3)
-      actionpack (>= 3.1)
-      less (~> 2.3.1)
+    less (2.5.0)
+      commonjs (~> 0.2.7)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -207,7 +213,7 @@ DEPENDENCIES
   interactive_editor
   jquery-rails
   jquery-ui-rails
-  less-rails
+  less-rails!
   pg
   prawn
   rails (= 3.2.16)
