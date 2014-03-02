@@ -11,7 +11,6 @@ gem 'unicorn'
 # in production environments by default.
 group :assets do
   gem 'jquery-ui-rails'
-  gem "twitter-bootstrap-rails"
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
   gem "less-rails"
