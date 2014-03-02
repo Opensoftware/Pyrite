@@ -67,8 +67,9 @@ pl:
   notice_block_type_updated: Rekord został zaktualizowany.
   notice_group_has_been_created: Grupa została stworzona.
   notice_group_has_been_updated: Grupa została zaktualizowana.
-  notice_lecturer_has_been_created: Nowy pracownik został dodany.
-  notice_lecturer_has_been_updated: Dane pracownika zaktualizowane.
+  notice_lecturer_have_been_created: Nowy pracownik został dodany.
+  notice_lecturer_have_been_updated: Dane pracownika zaktualizowane.
+  notice_lecturer_have_been_deleted: Pracownik został usunięty.
   notice_please_wait: Proszę czekać ładuję dane...
   notice_block_has_been_updated: Blok został zaktualizowany.
   notice_building_has_been_created: Budynek został dodany.

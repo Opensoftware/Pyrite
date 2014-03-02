@@ -17,7 +17,7 @@ class LecturersController < ApplicationController
     @lecturer = Lecturer.new(params[:lecturer])
 
     if @lecturer.save
-      flash[:notice] = t("notice_lecturer_has_been_created")
+      flash[:notice] = t("notice_lecturer_have_been_created")
       redirect_to lecturers_path
     else
       render action: "new"
@@ -28,7 +28,7 @@ class LecturersController < ApplicationController
     @lecturer = Lecturer.find(params[:id])
 
     if @lecturer.update_attributes(params[:lecturer])
-      flash[:notice] = t("notice_lecturer_has_been_updated")
+      flash[:notice] = t("notice_lecturer_have_been_updated")
       redirect_to lecturers_path
     else
       render action: "edit"
@@ -39,7 +39,7 @@ class LecturersController < ApplicationController
     @lecturer = Lecturer.find(params[:id])
     @lecturer.destroy
 
-    redirect_to lecturers_url
+    redirect_to lecturers_url, notice: t("notice_lecturer_have_been_deleted")
   end
 
   def timetable
