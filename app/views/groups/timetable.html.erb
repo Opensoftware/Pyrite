@@ -3,7 +3,12 @@
     $('#groups-timetable').html('');
     var options = {
       dayNamesShort: <%= raw fc_days %>,
-      events: <%= raw @events.to_json %>
+      events: <%= raw @events.to_json %>,
+      eventRender: function(event, element) {
+        element.children(".fc-event-inner").append("<div class='fc-event-block-type'>" + event.block_type + "</div>")
+        element.children(".fc-event-inner").append("<div class='fc-event-room-name'>" + event.room_name + "</div>")
+        element.children(".fc-event-inner").append("<div class='fc-event-lecturer'>" + event.lecturer + "</div>")
+      },
     }
 
     $('#groups-timetable').fullCalendar_with_defaults(options);
