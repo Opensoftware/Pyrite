@@ -3,6 +3,9 @@ class Lecturer < ActiveRecord::Base
 
   attr_accessible :full_name, :title
 
+
+  validates :full_name, :presence => true
+
   def name_with_title
     "#{title} #{full_name}"
   end
