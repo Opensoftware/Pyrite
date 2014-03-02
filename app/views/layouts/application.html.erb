@@ -39,10 +39,16 @@
 
     <div id="main">
       <div class="container">
-        <% if flash_messages %>
-          <div class="alert">
+        <% if flash[:error] %>
+          <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <%= flash_messages %>
+            <%= flash[:error] %>
+          </div>
+        <% end %>
+        <% if flash[:notice] %>
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:notice] %>
           </div>
         <% end %>
 
