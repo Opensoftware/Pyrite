@@ -101,25 +101,4 @@
   <div id="room-timetable"></div>
 </div>
 
-<div id="modal-edit-block" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="modalBlockEditHeader"> <%= t("header_edit_block") %></h3>
-      </div>
-      <div class="modal-body">
-        <p> <%= t("notice_please_wait") %> </p>
-      </div>
-      <div class="modal-footer">
-        <%= link_to t("button_delete"), "#", method: :delete,
-          data: { confirm: t("confirm_to_remove_block") },
-          :remote => true,
-          :id => "delete-block-button",
-          :class => "btn btn-danger" %>
-        <button class="btn" data-dismiss="modal" aria-hidden="true"><%= t("button_close") %></button>
-        <button class="btn btn-primary" id="edit-block-submit-button" > <%= t("button_save") %></button>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render :partial => "common/modal-edit-block" %>

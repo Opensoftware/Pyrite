@@ -53,7 +53,11 @@ class RoomsController < ApplicationController
   def timetables
     @room = Room.find(params[:id])
     @event = AcademicYear::Event.where(:id => params[:event_id]).first
-    blocks = @room.blocks.for_event(@event) + @room.blocks.reservations
+    if @event
+      blocks = @room.blocks.for_event(@event) + @room.blocks.reservations
+    else
+      blocks = @room.blocks.reservations
+    end
     @room_name = @room.name
     @events = convert_blocks_to_events(blocks)
     respond_with @events
