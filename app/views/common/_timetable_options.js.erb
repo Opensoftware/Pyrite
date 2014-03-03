@@ -12,8 +12,14 @@ eventClick: function(event) {
     $("#delete-block-button").prop("href", event.delete_url);
   }
   if (event.url) {
-    options = {remote: event.url}
-    $("#modal-edit-block").modal(options);
+    var modal = $('#modal-edit-block');
+    var modalBody = $('#modal-edit-block .modal-body');
+
+    modal
+        .on('show.bs.modal', function () {
+            modalBody.load(event.url)
+        })
+        .modal();
   }
   return false;
 },

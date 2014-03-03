@@ -1,42 +1,42 @@
-<%= form_for @block, :remote => true, :html => { :class => "form-horizontal" } do |f| %>
+<%= form_for @block, :remote => true do |f| %>
   <%= error_msgs_for @block %>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t "label_groups" %></label>
-    <div class="controls">
+  <div class="form-group">
+    <label> <%= t "label_groups" %></label>
+    <div>
       <%= f.collection_select :group_ids, Group.all, :id, :name,
                               {:selected => @block.group_ids},
                               {:multiple => true, "data-timetable-url" => groups_timetable_path} %>
     </div>
   </div>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t "label_lecturer" %></label>
-    <div class="controls">
+  <div class="form-group">
+    <label> <%= t "label_lecturer" %></label>
+    <div>
       <%= f.collection_select :lecturer_id, Lecturer.all, :id, :full_name, :prompt => t("prompt_lecturer") %>
     </div>
   </div>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t "label_room" %></label>
-    <div class="controls">
+  <div class="form-group">
+    <label> <%= t "label_room" %></label>
+    <div>
       <%= f.collection_select :room_id, Room.all, :id, :name_with_building,
                               {:prompt => t("prompt_room") },
                               {"data-timetable-url" => rooms_timetable_path} %>
     </div>
   </div>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t "label_comments" %></label>
-    <div class="controls">
+  <div class="form-group">
+    <label> <%= t "label_comments" %></label>
+    <div>
       <%= f.text_field :comments %>
     </div>
   </div>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t "label_block_type" %></label>
-    <div class="controls">
+  <div class="form-group">
+    <label> <%= t "label_block_type" %></label>
+    <div>
       <%= f.collection_select :type_id, Block::Type.all, :id, :name %>
     </div>
   </div>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t "label_block_name" %></label>
-    <div class="controls">
+  <div class="form-group">
+    <label> <%= t "label_block_name" %></label>
+    <div>
       <%= f.text_field :name %>
     </div>
   </div>
