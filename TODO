@@ -1,5 +1,6 @@
 TODO:
 
+- dostosować strony błędów 404, 500 etc.
 - automatyczne przełączanie się planu zajęć na nowy semestr np. dzień/tydzień przed
   rozpoczęciem
 - dodać mozliwość edycji bloków dla zalogowanych uzytkowników na dowolnym
@@ -38,9 +39,6 @@ Ergonomia:
 Dodawanie nowego bloku zajęć:
   - nie pamięta ostatnio wybranego semestru (ciągle proponuje „Semestr Zimowy”,
     mimo że ostatnio wprowadzane były zajęcia na semetr letni)
-  - nielogiczne przechodzenie tabulatorem pomiędzy polami do wyboru/wpisania
-    (np. po wprowadzeniu godziny rozpoczęcia tabulacja powoduje przejście do
-    pola „Dzień” zamiast do „Godzina zakończenia”
   - brak możliwości „szybkiego wyszukiwania” pracownika
   - lista pracowników nie jest posortowana
   - w utworzonych blokach nie wyświetla się pełna informacja o pracowniku
