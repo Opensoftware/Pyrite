@@ -16,8 +16,6 @@ TODO:
   ma żadnych danch których niechcemy upubliczniać i wyczyścić repo z plików
   które nie są używane. Wyczyścić historię
 
-- wyświetlanie sal wraz z nazwami budynków - zarówno na planie jak i w
-  formularzu tworzenia bloku
 - wprowadzić system monitoringu w celu zebrania statystyk wydajności na
   produkcyjnym serwerze
 - wyszukiwanie lokalizacji budynku po wprowadzonym adresie i vice versa

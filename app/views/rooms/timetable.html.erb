@@ -3,7 +3,12 @@
     $('#room-timetable').html('');
     var options = {
       dayNamesShort: <%= raw fc_days %>,
-      events: <%= raw @events.to_json %>
+      events: <%= raw @events.to_json %>,
+      eventRender: function(event, element) {
+        element.children(".fc-event-inner").append("<div class='fc-event-block-type'>" + event.block_type + "</div>")
+        element.children(".fc-event-inner").append("<div class='fc-event-groups-names'>" + event.groups_names + "</div>")
+        element.children(".fc-event-inner").append("<div class='fc-event-lecturer'>" + event.lecturer + "</div>")
+      },
     }
 
     $('#room-timetable').fullCalendar_with_defaults(options);
@@ -12,6 +17,6 @@
   </script>
 <% end %>
 
-<%= t("label_timetable_for_room") %> <%= @room.name %>
+<h2 class="text-center"> <%= t("label_timetable_for_room") %> <%= @room.name %> </h2>
 
 <div id="room-timetable"> </div>
