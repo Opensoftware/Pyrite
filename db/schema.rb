@@ -88,86 +88,9 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "groups_plans", :id => false, :force => true do |t|
-    t.integer  "group_id"
-    t.integer  "plan_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "lecturers", :force => true do |t|
     t.string   "title"
     t.string   "full_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "new_plans", :force => true do |t|
-    t.string   "godz"
-    t.string   "dni"
-    t.string   "prowadzacy"
-    t.string   "budynek"
-    t.integer  "sala"
-    t.string   "katedra"
-    t.string   "grupa"
-    t.string   "przedmiot"
-    t.string   "rodzaj"
-    t.integer  "dlugosc"
-    t.integer  "czestotliwosc"
-    t.string   "uwagi"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "old_plans", :force => true do |t|
-    t.string   "godz"
-    t.string   "dni"
-    t.string   "prowadzacy"
-    t.string   "budynek"
-    t.integer  "sala"
-    t.string   "katedra"
-    t.string   "grupa"
-    t.string   "przedmiot"
-    t.string   "rodzaj"
-    t.integer  "dlugosc"
-    t.integer  "czestotliwosc"
-    t.string   "uwagi"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "plans", :force => true do |t|
-    t.string   "godz"
-    t.string   "dni"
-    t.string   "prowadzacy"
-    t.string   "budynek"
-    t.string   "sala"
-    t.string   "katedra"
-    t.string   "grupa"
-    t.string   "przedmiot"
-    t.string   "rodzaj"
-    t.integer  "dlugosc"
-    t.integer  "czestotliwosc"
-    t.string   "uwagi"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.date     "wazneod"
-    t.date     "waznedo"
-    t.integer  "plan_id",       :null => false
-  end
-
-  create_table "reservations", :force => true do |t|
-    t.string   "godz"
-    t.string   "dni"
-    t.string   "prowadzacy"
-    t.string   "budynek"
-    t.string   "sala"
-    t.string   "grupa"
-    t.string   "przedmiot"
-    t.string   "rodzaj"
-    t.integer  "dlugosc"
-    t.datetime "waznosc"
-    t.string   "uwagi"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -203,13 +126,6 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
     t.text     "comments"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-  end
-
-  create_table "schedules", :force => true do |t|
-    t.string   "nazwa"
-    t.string   "rok"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "settings", :force => true do |t|

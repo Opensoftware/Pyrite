@@ -24,7 +24,7 @@
     </div>
     <div class="panel-body">
       <ul>
-        <% if can? :manage, Plan %>
+        <% if can? :manage, Block %>
           <li>
              <%= link_to(t("link_add_new_block"), new_block_path) %>
           </li>
