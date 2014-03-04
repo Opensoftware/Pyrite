@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   def show
     @room = Room.find(params[:room_id])
     # TODO implement with event_id
-    @events = convert_blocks_to_events(@room.blocks)
+    @events = convert_blocks_to_events_for_viewing(@room.blocks)
   end
 
   def new
