@@ -173,3 +173,17 @@ How TO
 Konta dla użytkowników (prowadzacych) i (1 na wydział)
 Blokada rezerwacji na dane okresy czasowe ( sesja etc.. )
 Tygodniowe plany zajęć
+
+Siatka z perspektywy studenta:
+- możliwość tworzenia swojego planu zajęć/dostosowania już istniejącego planu grupy
+- możliwość eksportu do iCalendar i synchro z kalendarzem Googla
+Uwagi IMiR do planowania niestacjonarnych:
+- widok planera powinien być inny niż studia stacjonarne. Jemu przede wszystkim
+  zależy na zjazdach, więc te powinny być wyświetlane. Do tego ma dobre
+  filtrowanie, typu 1-3,5 (wyświetla zjazdy 1,2,3,5 tak filtrowanie stron do druku).
+- Z góry określona lista przedmiotów do wrzucenia do siatek wyświetlana np. w
+  selekcie. Chodzi o to, aby planer od razu wiedział co mu jeszcze zostało do
+  dodania do planów.
+  Przykład: Analiza 15h, planer dodaje blok 2h do któregoś zjazdu; po dodaniu do
+  planu, na liście przedmiotów zostało mu Analiza 13h. Jak dojedzie do 0h, to
+  przedmiot znika z tej listy przedmiotów do za planowania.
