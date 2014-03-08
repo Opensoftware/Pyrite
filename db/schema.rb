@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140103181620) do
+ActiveRecord::Schema.define(:version => 20140306212034) do
 
   create_table "academic_year_events", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
     t.integer  "academic_year_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "academic_year_meetings", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "academic_years", :force => true do |t|
@@ -51,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20140103181620) do
   create_table "blocks", :force => true do |t|
     t.integer  "lecturer_id"
     t.integer  "event_id"
+    t.integer  "meeting_id"
     t.integer  "room_id"
     t.integer  "type_id"
     t.boolean  "reservation", :default => false
