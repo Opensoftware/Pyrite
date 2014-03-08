@@ -19,6 +19,15 @@ pl:
         address: "Pole 'Adres'"
       lecturer:
         full_name: "Pole 'Imię i nazwisko'"
+      academic_year/event:
+        start_date: "Pole 'Data rozpoczęcia'"
+        end_date: "Pole 'Data zakończenia'"
+        name: "Pole 'Nazwa bloku'"
+      academic_year/meeting:
+        start_date: "Pole 'Data rozpoczęcia'"
+        end_date: "Pole 'Data zakończenia'"
+        name: "Pole 'Nazwa bloku'"
+
   date:
     day_names: [Poniedziałek, Wtorek, Środa, Czwartek, Piątek, Sobota, Niedziela]
     abbr_day_names: [Pon, Wto, Śro, Czw, Pią, Sob, Nie]
@@ -121,8 +130,6 @@ pl:
   header_edit_building: Edycja budynku
   header_prints: Drukuj plany
 
-  modal_header_new_academic_year_event: Dodaj nowe wydarzenie
-
   label_building_address: Adres
   label_without_weekend: Bez weekendów
   label_error: Błąd
@@ -215,6 +222,23 @@ pl:
 
   title_app_name: Siatka zajęć
   title_system_name: Pyrit - Siatka zajęć
+
+  academic_year:
+    tab:
+      full-time-studies: Studia stacjonarne
+      part-time-studies: Studia niestacjonarne
+    label:
+      name: Nazwa
+      start_date: Data rozpoczęcia
+      end_date: Data zakończenia
+    button:
+      add_meeting: Dodaj zjazd
+    modal:
+      header:
+        add_new_meeting: Dodaj nowy zjazd
+        add_new_event: Dodaj nowe wydarzenie
+    confirm:
+      remove_meeting: Jesteś pewny aby usunąć spotkanie? Wszystkie bloki powiązane z nim zostaną usunięte!
 
   panel:
     title:

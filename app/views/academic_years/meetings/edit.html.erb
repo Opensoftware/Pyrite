@@ -1,0 +1,4 @@
+<%= form_for @academic_year_meeting, :url => academic_years_meeting_path(@academic_year_meeting.id), :remote => true,
+  :html => { "data-active-tab" => "#academic-year-tabs a:last" } do |meeting| %>
+  <%= render :partial => 'form', :locals => { :meeting => meeting } %>
+<% end %>

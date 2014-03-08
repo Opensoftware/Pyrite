@@ -1,0 +1,6 @@
+<div id="academic-year-events-list" class="tab-pane fade in active">
+  <%= render :partial => "academic_years/events/list", :locals => { :events => events } %>
+</div>
+<div id="academic-year-meetings-list" class="tab-pane fade">
+  <%= render :partial => "academic_years/meetings/list", :locals => { :events => events } %>
+</div>

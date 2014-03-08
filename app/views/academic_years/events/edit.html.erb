@@ -1,4 +1,3 @@
-<%= form_for @academic_year_event, :url => academic_year_event_path(@academic_year, @academic_year_event),
-             :remote => true, :html => { :id => "edit_academic_year_event" } do |event| %>
+<%= form_for @academic_year_event, :url => academic_year_event_path(@academic_year, @academic_year_event), :remote => true do |event| %>
   <%= render :partial => 'form', :locals => { :event => event } %>
 <% end %>

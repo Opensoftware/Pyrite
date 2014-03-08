@@ -25,9 +25,19 @@ Pyrite::Application.routes.draw do
   end
   resources :groups, :except => [:show]
   resources :academic_years do
-    resources :events, :controller => "academic_years/events"
+    resources :events, :controller => "academic_years/events", :except => [:index]
   end
-  get "academic_years/events/fetch", :as => "events_for_academic_year", :to => "academic_years/events#fetch"
+
+  namespace :academic_years do
+    resources :events, :only => [] do
+      resources :meetings, :only => [:new, :create]
+    end
+    resources :meetings, :only => [:destroy, :edit, :update]
+  end
+
+  get "academic_years/meetings/fetch", :as => "fetch_academic_year_meetings", :to => "academic_years/meetings#fetch"
+  get "academic_years/events/fetch", :as => "fetch_academic_year_events", :to => "academic_years/events#fetch"
+
   resources :blocks, :except => [:index]
   resources :reservations, :only => [:new, :create] do
     collection do

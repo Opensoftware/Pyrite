@@ -1,0 +1,41 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th> <%= t "academic_year.label.name" %> </th>
+      <th> <%= t "academic_year.label.start_date" %> </th>
+      <th> <%= t "academic_year.label.end_date" %> </th>
+      <th> <%= t "label_actions" %> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% events.each do |event| %>
+      <tr class="info">
+        <td><%= event.name %></td>
+        <td><%= event.start_date.strftime("%F") %></td>
+        <td><%= event.end_date.strftime("%F") %></td>
+        <td>
+          <%= link_to t("academic_year.button.add_meeting"), new_academic_years_event_meeting_path(event.id),
+              :class => "btn btn-primary pull-right academic-year-fetch-form",
+              :remote => true, "data-modal-header" => t("academic_year.modal.header.add_new_meeting") %>
+        </td>
+      </tr>
+      <% event.meetings.each do |meeting| %>
+        <tr>
+          <td><%= meeting.name %> </td>
+          <td><%= meeting.start_date.strftime("%F") %></td>
+          <td><%= meeting.end_date.strftime("%F") %></td>
+          <td>
+            <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe,
+                        academic_years_meeting_path(meeting.id),
+                        :method => :delete, :class => "btn btn-danger button-remove-academic-year-element",
+                        :confirm => t("academic_year.confirm.remove_meeting"), :remote => true,
+                        "data-active-tab" => "#academic-year-tabs a:last" %>
+            <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe,
+                        edit_academic_years_meeting_path(meeting.id),
+                        :class => "btn btn-info academic-year-fetch-form", :remote => true %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -1,32 +1,53 @@
 $(document).ready(function() {
-  bindEditAcademicYearEventButton();
-  bindRemoveAcademicYearEvent();
-  $("#submit-academic-year-event-form").click(function() {
-    bindAjaxAcademicYearEventForm();
+  bindAcademicYearFetchButton();
+  bindRemoveAcademicYearElement();
+  $("#submit-academic-year-form").on("click", function() {
     $(this).parent().parent().find("form").submit();
   });
 });
 
-function bindAjaxAcademicYearEventForm() {
-  $("#new_academic_year_event, #edit_academic_year_event").bind("ajax:success", function(evt, data, status, xhr) {
-    $("#academic-year-events-list").html(data);
-    $("#academic-year-events-modal").modal('hide');
-    bindEditAcademicYearEventButton();
-    bindRemoveAcademicYearEvent();
+function bindAcademicYearForm() {
+  $("#academic-year-modal .modal-dialog .modal-body form").on("ajax:success", function(evt, data, status, xhr) {
+    $("#list-container").html(data);
+    $("#academic-year-modal").modal('hide');
+    setActiveTabForAcademicYear(this);
+    bindAcademicYearFetchButton();
+    bindRemoveAcademicYearElement();
+  }).on("ajax:error", function(xhr, txt, error) {
+    $("#academic-year-modal .modal-errors").html(txt.responseText);
   });
 }
 
-function bindEditAcademicYearEventButton() {
-  $(".button-edit-academic-year-event, #button-new-academic-year-event").bind("ajax:success", function(evt, data, status, xhr) {
-    $("#academic-year-events-modal .modal-body").html(data);
-    $("#academic-year-events-modal").modal();
+function bindAcademicYearFetchButton() {
+  $(".academic-year-fetch-form").on("ajax:success", function(evt, data, status, xhr) {
+    var modal_header = $(this).data("modal-header");
+    $("#academic-year-modal .modal-header h3").html(modal_header);
+    $("#academic-year-modal .modal-errors").html("");
+    $("#academic-year-modal .modal-body").html(data);
+    $("#academic-year-modal").modal();
     $(".datepicker").datepicker({ dateFormat: "yy-mm-dd" });
-    bindAjaxAcademicYearEventForm();
+    bindAcademicYearForm();
   });
 }
 
-function bindRemoveAcademicYearEvent() {
-  $(".button-remove-academic-year-event").bind("ajax:success", function(evt, data, status, xhr) {
-    $(this).closest("tr").remove();
+function bindRemoveAcademicYearElement() {
+  $(".button-remove-academic-year-element").on("ajax:success", function(evt, data, status, xhr) {
+    var refresh = $(this).data("refresh");
+    if ( refresh != "undefined") {
+      $("#list-container").html(data);
+      setActiveTabForAcademicYear(this);
+      bindAcademicYearFetchButton();
+      bindRemoveAcademicYearElement();
+    } else {
+      $(this).closest("tr").remove();
+    }
   })
+}
+
+function setActiveTabForAcademicYear(element) {
+  var active_tab = $(element).data("active-tab");
+  $("#academic-year-tabs a:first").tab("show")
+  if ( active_tab != "undefined" ) {
+    $(active_tab).tab("show");
+  }
 }

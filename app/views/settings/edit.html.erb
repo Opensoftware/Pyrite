@@ -4,7 +4,7 @@
 <h2> <%= t("header_edit_settings") %> </h2>
 
 <%= form_for @settings, :url => settings_path, :method => :put,
-  :html => { "data-fetch-url" => events_for_academic_year_path } do |f|%>
+  :html => { "data-fetch-url" => fetch_academic_year_events_path } do |f|%>
 
   <div class="form-group">
     <label for="settings_year_for_viewing">

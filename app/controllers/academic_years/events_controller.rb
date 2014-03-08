@@ -14,30 +14,31 @@ class AcademicYears::EventsController < ApplicationController
 
   def create
     @academic_year = AcademicYear.find(params[:academic_year_id])
-    @academic_year.events.build(params[:academic_year_event])
+    event = @academic_year.events.build(params[:academic_year_event])
 
-    if @academic_year.save
-      render :partial => "academic_years/events/list", :locals => { :events => @academic_year.events }
+    if event.save
+      render :partial => "academic_years/list", :locals => {:events => @academic_year.events}
     else
-      render :json => @academic_year.errors
+      render :partial => "academic_years/modal_errors", :locals => { :object => event }, :status => 422
     end
   end
 
   def update
     @academic_year = AcademicYear.find(params[:academic_year_id])
-    @academic_year_event = AcademicYear::Event.find(params[:id])
+    @event = AcademicYear::Event.find(params[:id])
 
-    if @academic_year_event.update_attributes(params[:academic_year_event])
-      render :partial => "academic_years/events/list", :locals => { :events => @academic_year.events }
+    if @event.update_attributes(params[:academic_year_event])
+      render :partial => "academic_years/list", :locals => {:events => @academic_year.events}
     else
-      render :json => @academic_year_event.errors
+      render :partial => "academic_years/modal_errors", :locals => { :object => @event }, :status => 422
     end
   end
 
   def destroy
     @academic_year_event = AcademicYear::Event.find(params[:id])
+    @academic_year = @academic_year_event.academic_year
     @academic_year_event.destroy
-    render :nothing => true
+    render :partial => "academic_years/list", :locals => {:events => @academic_year.events}
   end
 
   def fetch
