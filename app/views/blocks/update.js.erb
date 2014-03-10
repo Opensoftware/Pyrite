@@ -2,7 +2,7 @@
   # todo stworzyć msg z html tak aby error_msg można było tu wrzucić
   alert("<%= @block.errors.messages.inspect %>");
 <% else %>
-  refresh_room_timetable();
-  refresh_group_timetable();
+  refresh_room_if_value_exist();
+  refresh_groups_if_value_exist();
   alert("<%= flash[:notice] %>");
 <% end %>

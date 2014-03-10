@@ -15,15 +15,15 @@ function toggleDayInput() {
 
 $(document).ready(function() {
   toggleDayInput();
-  refresh_room_timetable();
+  refresh_room_if_value_exist();
 
   $("#block_event_id").on("change", function() {
     toggleDayInput();
-    refresh_room_timetable();
+    refresh_room_if_value_exist();
   });
 
   $("#block_room_id, #block_day_with_date").on("change", function() {
-    refresh_room_timetable();
+    refresh_room_if_value_exist();
   });
 
   $("#edit-block-submit-button").on("click", function() {
@@ -34,3 +34,20 @@ $(document).ready(function() {
 
 });
 
+function prepareRoomParams() {
+  var room_id_value = $("#block_room_id").val();
+  var event_id = $("#block_event_id").val();
+  var params = {id: room_id_value, event_id: event_id};
+  if(room_id_value.length > 0) {
+    return params
+  } else {
+    return null
+  }
+}
+
+function refresh_room_if_value_exist() {
+  var params = prepareRoomParams();
+  if ( params != null ) {
+    refresh_room_timetable(params);
+  }
+}

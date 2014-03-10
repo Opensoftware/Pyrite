@@ -10,8 +10,8 @@ function refresh_group_timetable() {
 }
 
 $(document).ready(function() {
-  refresh_group_timetable();
+  refresh_groups_if_value_exist();
   $("#block_group_ids").on("change", function() {
-    refresh_group_timetable();
+    refresh_groups_if_value_exist();
   });
 });
