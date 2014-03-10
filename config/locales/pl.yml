@@ -245,3 +245,10 @@ pl:
       settings: "Ustawienia"
       timetable: "Plan zajeć"
       data: "Dane systemu"
+
+  dashboard:
+    link:
+      new_part_time_block: Dodaj nowy block zajeć
+    label:
+      full_time_studies: Studia stacjonarne
+      part_time_studies: Studia niestacjonarne

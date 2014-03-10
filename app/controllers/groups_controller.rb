@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   include BlocksHelper
   include ApplicationHelper
 
-  respond_to :html, :js, :only => [:timetables, :timetable]
+  respond_to :html, :js, :only => [:timetables, :timetable, :timetables_for_meeting]
 
   def index
     @groups = Group.all
@@ -61,6 +61,16 @@ class GroupsController < ApplicationController
     blocks = Block.for_event(@event).for_groups(group_ids) + Block.reservations
 
     @events = convert_blocks_to_events(blocks)
+    respond_with @events
+  end
+
+  def timetables_for_meeting
+    group_ids = params[:group_ids]
+    @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
+    blocks = @meeting.blocks.where(:id => group_ids) + Block.reservations
+
+    @events = convert_blocks_to_events(blocks)
+    @current_date = @meeting.start_date.strftime("%F")
     respond_with @events
   end
 

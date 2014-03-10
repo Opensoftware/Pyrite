@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   include BlocksHelper
 
-  respond_to :js, :html, :only => [:timetable, :timetables]
+  respond_to :js, :html, :only => [:timetable, :timetables, :timetables_for_meeting]
 
   def show
     @room = Room.find(params[:id])
@@ -60,6 +60,17 @@ class RoomsController < ApplicationController
     end
     @room_name = @room.name
     @events = convert_blocks_to_events(blocks)
+    respond_with @events
+  end
+
+  def timetables_for_meeting
+    @room = Room.find(params[:id])
+    blocks = @room.blocks.reservations
+    @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
+    blocks += @meeting.blocks.where(:room_id => @room.id) if @meeting
+    @room_name = @room.name
+    @events = convert_blocks_to_events(blocks)
+    @current_date = @meeting.start_date.strftime("%F")
     respond_with @events
   end
 

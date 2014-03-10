@@ -19,7 +19,7 @@
               :remote => true, "data-modal-header" => t("academic_year.modal.header.add_new_meeting") %>
         </td>
       </tr>
-      <% event.meetings.each do |meeting| %>
+      <% event.meetings.order(:start_date).each do |meeting| %>
         <tr>
           <td><%= meeting.name %> </td>
           <td><%= meeting.start_date.strftime("%F") %></td>

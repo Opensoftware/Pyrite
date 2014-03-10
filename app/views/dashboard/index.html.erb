@@ -26,10 +26,26 @@
       <ul>
         <% if can? :manage, Block %>
           <li>
+             <%= link_to(t("link_add_new_reservation"), new_reservation_path) %>
+          </li>
+        <% end %>
+      </ul>
+      <h4> <span class="label label-success"> <%= t("dashboard.label.full_time_studies") %> </span> </h4>
+      <ul>
+        <% if can? :manage, Block %>
+          <li>
              <%= link_to(t("link_add_new_block"), new_block_path) %>
           </li>
           <li>
-             <%= link_to(t("link_add_new_reservation"), new_reservation_path) %>
+            <%= link_to(t("link_prints"), prints_dashboard_index_path) %>
+          </li>
+        <% end %>
+      </ul>
+      <h4> <span class="label label-warning"> <%= t("dashboard.label.part_time_studies") %> </span> </h4>
+      <ul>
+        <% if can? :manage, Block %>
+          <li>
+             <%= link_to(t("dashboard.link.new_part_time_block"), new_part_time_block_path) %>
           </li>
           <li>
             <%= link_to(t("link_prints"), prints_dashboard_index_path) %>

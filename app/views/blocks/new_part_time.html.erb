@@ -1,0 +1,106 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <%= javascript_include_tag "blocks" %>
+  <%= javascript_include_tag "blocks/new_part_time" %>
+<% end %>
+
+<%= content_for(:additional_stylesheets) do %>
+  <%= stylesheet_link_tag "blocks" %>
+<% end %>
+
+<h2> <%= t("header_add_new_block") %> </h2>
+<br>
+<br>
+  <%= form_for @block, { :id => "new-block-form" } do |f| %>
+    <%= error_msgs_for @block %>
+    <div class="row">
+      <div class="form-group col-md-2">
+        <label> <%= t("label_groups") %> </label>
+        <div>
+          <%= f.collection_select :group_ids, Group.all, :id, :name,
+                                  {:selected => @block.group_ids},
+                                  {:multiple => true, "data-timetable-url" => groups_for_meeting_timetable_path,
+                                   :tabindex => 1 }%>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="form-group col-md-3">
+            <label> <%= t("label_block_start_time") %> </label>
+            <div>
+              <%= f.text_field :start_time, :class => "timepicker", :autocomplete => :off,
+                :placeholder => t("placeholder_block_start_time"), :tabindex => 2 %>
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <label> <%= t("label_day") %> </label>
+            <div>
+              <%= f.select :day, options_for_select(days_for_select, @block.day), {} , {:tabindex => 4} %>
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <label> <%= t("label_lecturer") %> </label>
+            <div>
+              <%= f.collection_select :lecturer_id, Lecturer.all,
+                :id, :name_with_title, {:prompt => t("prompt_lecturer")}, {:tabindex => 6} %>
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <label> <%= t("label_room") %> </label>
+            <div>
+              <%= f.collection_select :room_id, Room.all, :id, :name_with_building,
+                                      {:prompt => t("prompt_room") },
+                                      {"data-timetable-url" => rooms_for_meeting_timetable_path, :tabindex => 8} %>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label> <%= t("label_comments") %> </label>
+            <div>
+              <td> <%= f.text_field :comments, :tabindex => 10 %> </td>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-3">
+            <label> <%= t("label_block_end_time") %> </label>
+            <div>
+              <%= f.text_field :end_time, :class => "timepicker", :autocomplete => :off,
+                :placeholder => t("placeholder_block_end_time"), :tabindex => 3 %>
+
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <label> <%= t("label_academic_year_event") %> </label>
+            <div>
+              <%= f.collection_select :meeting_id,
+                AcademicYear::Meeting.for_editing, :id, :name, {}, {:tabindex => 5} %>
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <label> <%= t("label_block_type") %> </label>
+            <div>
+              <%= f.collection_select :type_id, Block::Type.all, :id, :name, {}, {:tabindex => 7} %>
+            </div>
+          </div>
+          <div class="form-group col-md-5">
+            <label> <%= t("label_block_name") %> </label>
+            <div>
+              <%= f.text_field :name, :tabindex => 9 %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="action">
+      <%= f.submit t("button_save"), :class => "submit-btn", :tabindex => 11 %>
+    </div>
+  <% end %>
+
+
+<div id="groups-timetable-container">
+  <div id="groups-timetable"> </div>
+</div>
+<div id="room-timetable-container">
+  <div id="room-timetable"></div>
+</div>
+
+<%= render :partial => "common/modal-edit-block" %>

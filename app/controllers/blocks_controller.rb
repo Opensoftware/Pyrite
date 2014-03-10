@@ -6,6 +6,10 @@ class BlocksController < ApplicationController
     @block = Block.new
   end
 
+  def new_part_time
+    @block = Block.new
+  end
+
   def edit
     @block = Block.find(params[:id])
     render :layout => false
