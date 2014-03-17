@@ -58,7 +58,7 @@ class GroupsController < ApplicationController
     # without event_id, for example without event_id we will query whole
     # academic year? and if event_id is available should we load new events for
     # fullcalendar in case if the end_date will be reached?
-    blocks = Block.for_event(@event).for_groups(group_ids) + Block.reservations
+    blocks = Block.for_event(@event).for_groups(group_ids)
 
     @events = convert_blocks_to_events(blocks)
     respond_with @events
@@ -67,7 +67,7 @@ class GroupsController < ApplicationController
   def timetables_for_meeting
     group_ids = params[:group_ids]
     @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
-    blocks = @meeting.blocks.where(:id => group_ids) + Block.reservations
+    blocks = @meeting.blocks.joins(:groups).where("groups.id = ?", group_ids)
 
     @events = convert_blocks_to_events(blocks)
     @current_date = @meeting.start_date.strftime("%F")
