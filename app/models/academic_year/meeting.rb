@@ -11,4 +11,8 @@ class AcademicYear::Meeting < ActiveRecord::Base
       .where(:event_id => Settings.event_id_for_editing)
       .order(:start_date)
   end
+
+  def available_days
+    return (start_date.to_datetime..end_date.to_datetime).to_a
+  end
 end

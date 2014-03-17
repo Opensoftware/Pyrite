@@ -8,6 +8,8 @@ class BlocksController < ApplicationController
 
   def new_part_time
     @block = Block.new
+    @meetings = AcademicYear::Meeting.for_editing
+    @days = @meetings.first.available_days
   end
 
   def edit
@@ -31,6 +33,20 @@ class BlocksController < ApplicationController
     else
       render :new
     end
+  end
+
+  def create_part_time
+    @block = Block.new(params[:block])
+    @meetings = AcademicYear::Meeting.for_editing
+    @days = @meetings.first.available_days
+
+    if @block.save
+      flash[:notice] = t("notice_block_has_been_created")
+      redirect_to new_part_time_block_path
+    else
+      render :new_part_time
+    end
+
   end
 
   def destroy

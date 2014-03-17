@@ -11,16 +11,18 @@ class Block < ActiveRecord::Base
 
   attr_accessible :name, :start_time, :end_time, :comments, :group_ids,
                   :lecturer_id, :room_id, :event_id, :type_id, :day,
-                  :day_with_date, :start_date, :end_date
+                  :day_with_date, :start_date, :end_date, :meeting_id
   attr_accessor :day, :start_time, :end_time, :day_with_date, :start_date, :end_date
 
   # TODO split saving reservation and standard blocks
   # event_id for block/new is required
-  before_create :populate_dates
+
+  before_create :populate_dates_for_event, :if => Proc.new { |block| block.event_id.present? }
+  before_create :populate_dates, :if => Proc.new { |block| block.meeting_id.present? }
 
   scope :for_groups, ->(group_ids) { joins(:blocks_groups).where("#{BlocksGroup.table_name}.group_id" => group_ids) }
   scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : self.scoped }
-  scope :reservations, where(:reservation => true)
+  scope :reservations, where(:reservation => true).where(:event_id => nil)
   scope :overlapped, ->(start_date, end_date) {
     joins(:dates).where("block_dates.start_date < ? AND
                          block_dates.end_date > ?", end_date , start_date)
@@ -34,24 +36,25 @@ class Block < ActiveRecord::Base
 
   def populate_dates
     begin
-      start_hour = Time.parse(start_time).hour
-      start_min = Time.parse(start_time).min
-      end_hour = Time.parse(end_time).hour
-      end_min = Time.parse(end_time).min
+      prepare_hours
+      block_date = Time.parse(day_with_date)
+      block_start_date = block_date.advance(:hours => @start_hour, :minutes => @start_min)
+      block_end_date = block_date.advance(:hours => @end_hour, :minutes => @end_min)
+      dates.build(:start_date => block_start_date, :end_date => block_end_date)
+    rescue => e
+      # TODO logger
+      return false
+    end
+  end
 
-      if event_id.nil?
-        # This will happen only for reservation
-        block_date = Time.parse(day_with_date)
-        block_start_date = block_date.advance(:hours => start_hour, :minutes => start_min)
-        block_end_date = block_date.advance(:hours => end_hour, :minutes => end_min)
+  def populate_dates_for_event
+    begin
+      prepare_hours
+      date_range = (event.start_date.to_date..event.end_date.to_date).select {|date| day.to_i == date.wday }
+      date_range.each do |date|
+        block_start_date = Time::mktime(date.year, date.month, date.day, @start_hour, @start_min)
+        block_end_date = Time::mktime(date.year, date.month, date.day, @end_hour, @end_min)
         dates.build(:start_date => block_start_date, :end_date => block_end_date)
-      else
-        date_range = (event.start_date.to_date..event.end_date.to_date).select {|date| day.to_i == date.wday }
-        date_range.each do |date|
-          block_start_date = Time::mktime(date.year, date.month, date.day, start_hour, start_min)
-          block_end_date = Time::mktime(date.year, date.month, date.day, end_hour, end_min)
-          dates.build(:start_date => block_start_date, :end_date => block_end_date)
-        end
       end
     rescue => e
       # TODO logger
@@ -61,6 +64,7 @@ class Block < ActiveRecord::Base
 
   def save_reservation
     self.reservation = true
+    populate_dates
     save
   end
 
@@ -77,6 +81,13 @@ class Block < ActiveRecord::Base
   end
 
   private
+
+    def prepare_hours
+      @start_hour = Time.parse(start_time).hour
+      @start_min = Time.parse(start_time).min
+      @end_hour = Time.parse(end_time).hour
+      @end_min = Time.parse(end_time).min
+    end
 
     def validate_times
       begin

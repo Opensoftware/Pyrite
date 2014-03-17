@@ -46,4 +46,9 @@ class AcademicYears::MeetingsController < ApplicationController
     @academic_year_meetings = AcademicYear::Event.find(params[:event_id]).meetings
     render :layout => false
   end
+
+  def fetch_days
+    @days = AcademicYear::Meeting.find(params[:meeting_id]).available_days
+    render :layout => false
+  end
 end

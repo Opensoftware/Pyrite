@@ -61,4 +61,12 @@ module BlocksHelper
     end
   end
 
+  def days_select_options(days)
+    options = []
+    days.each { |date|
+      options << [I18n.l(date, :format => :day_name), date.strftime("%F")]
+    }
+    return options
+  end
+
 end

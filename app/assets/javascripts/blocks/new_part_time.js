@@ -13,6 +13,7 @@ $(document).ready(function() {
   $("#block_meeting_id").on("change", function() {
     refresh_room_if_value_exist();
     refresh_groups_if_value_exist();
+    refresh_days();
   });
   $("#edit-block-submit-button").on("click", function() {
     $("#modal-edit-block form").submit();
@@ -20,6 +21,22 @@ $(document).ready(function() {
     return false;
   });
 });
+
+function refresh_days() {
+  var meeting_id = $("#block_meeting_id").val();
+  var params = { meeting_id: meeting_id };
+  $.ajax({
+      url: $("#block_day_with_date").data("refresh"),
+      dataType: 'script',
+      data: params,
+      type: "GET",
+      complete: function(jqXHR) {
+          if(jqXHR.status == 500 || jqXHR.status == 404 || jqXHR.status == 403) {
+              errorHandling(jqXHR.status);
+          }
+      }
+  });
+}
 
 function prepareRoomParams() {
   var room_id_value = $("#block_room_id").val();

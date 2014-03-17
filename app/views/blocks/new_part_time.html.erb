@@ -10,7 +10,7 @@
 <h2> <%= t("header_add_new_block") %> </h2>
 <br>
 <br>
-  <%= form_for @block, { :id => "new-block-form" } do |f| %>
+  <%= form_for @block, { :url => part_time_block_path, :id => "new-block-form" } do |f| %>
     <%= error_msgs_for @block %>
     <div class="row">
       <div class="form-group col-md-2">
@@ -34,7 +34,8 @@
           <div class="form-group col-md-2">
             <label> <%= t("label_day") %> </label>
             <div>
-              <%= f.select :day, options_for_select(days_for_select, @block.day), {} , {:tabindex => 4} %>
+              <%= f.select :day_with_date, options_for_select(days_select_options(@days), @block.day_with_date), {} ,
+                {:tabindex => 4, "data-refresh" => fetch_days_for_meeting_path} %>
             </div>
           </div>
           <div class="form-group col-md-2">
@@ -72,7 +73,7 @@
             <label> <%= t("label_academic_year_event") %> </label>
             <div>
               <%= f.collection_select :meeting_id,
-                AcademicYear::Meeting.for_editing, :id, :name, {}, {:tabindex => 5} %>
+                @meetings, :id, :name, {}, {:tabindex => 5} %>
             </div>
           </div>
           <div class="form-group col-md-2">
@@ -95,6 +96,8 @@
     </div>
   <% end %>
 
+<br>
+<br>
 
 <div id="groups-timetable-container">
   <div id="groups-timetable"> </div>

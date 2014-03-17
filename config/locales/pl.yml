@@ -1,4 +1,7 @@
 pl:
+  time:
+    formats:
+      day_name: "%a"
   errors:
     messages:
       blank: nie może być puste

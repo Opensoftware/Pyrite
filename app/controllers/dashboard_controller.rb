@@ -9,4 +9,8 @@ class DashboardController < ApplicationController
   def prints
     print_forms_data
   end
+
+  def prints_part_time
+
+  end
 end

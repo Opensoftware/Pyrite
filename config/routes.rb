@@ -36,11 +36,13 @@ Pyrite::Application.routes.draw do
     end
     resources :meetings, :only => [:destroy, :edit, :update]
   end
+  get "academic_years/meeting/fetch_days_for_select", :to => "academic_years/meetings#fetch_days", :as => :fetch_days_for_meeting
 
   get "academic_years/meetings/fetch", :as => "fetch_academic_year_meetings", :to => "academic_years/meetings#fetch"
   get "academic_years/events/fetch", :as => "fetch_academic_year_events", :to => "academic_years/events#fetch"
 
   get "/blocks/new_part_time", :as => :new_part_time_block, :to => "blocks#new_part_time"
+  post "/blocks/new_part_time", :as => :part_time_block, :to => "blocks#create_part_time"
   resources :blocks, :except => [:index]
 
   resources :reservations, :only => [:new, :create] do
@@ -59,6 +61,7 @@ Pyrite::Application.routes.draw do
   resources :dashboard, :only => [:index] do
     collection do
       get :prints
+      get :prints_part_time
     end
   end
 
