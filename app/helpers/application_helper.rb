@@ -26,8 +26,6 @@ module ApplicationHelper
   # Fullcalendar - fc
   # list of days started from Sunday
   def fc_days
-    days = available_abbr_days.dup
-    days.insert(0, days.pop)
-    days
+    available_abbr_days
   end
 end

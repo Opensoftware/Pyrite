@@ -55,9 +55,9 @@ module BlocksHelper
     # Day of the week in 0-6. Sunday is 0; Saturday is 6.
     # Monday should be always first! Monday = 1
     if current_user.preferences[:without_weekends]
-      available_abbr_days.zip((1..6).to_a + [0]).slice(0..4)
+      available_abbr_days.zip(0..7).slice(0..4)
     else
-      available_abbr_days.zip((1..6).to_a + [0])
+      available_abbr_days.zip(0..7)
     end
   end
 
