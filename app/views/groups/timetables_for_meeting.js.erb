@@ -5,14 +5,12 @@ var options = {
     element.children(".fc-event-inner").append("<div class='fc-event-block-type'>" + event.block_type + "</div>")
     element.children(".fc-event-inner").append("<div class='fc-event-room-name'>" + event.room_name + "</div>")
     element.children(".fc-event-inner").append("<div class='fc-event-lecturer'>" + event.lecturer + "</div>")
-  },
-  eventAfterAllRender: function(event, element) {
-    var current_date = "<%= @current_date %>";
-    if ( current_date.length > 0 ) {
-      var block_date = $.fullCalendar.parseDate( current_date )
-      $("#groups-timetable").fullCalendar('gotoDate', block_date);
-    }
   }
 }
 
 $('#groups-timetable').fullCalendar_with_defaults(options);
+var current_date = "<%= @current_date %>";
+if ( current_date.length > 0 ) {
+  var block_date = $.fullCalendar.parseDate( current_date )
+  $("#groups-timetable").fullCalendar('gotoDate', block_date);
+}
