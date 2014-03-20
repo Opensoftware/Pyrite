@@ -34,6 +34,8 @@ pl:
         start_date: "Pole 'Data rozpoczęcia'"
         end_date: "Pole 'Data zakończenia'"
         name: "Pole 'Nazwa bloku'"
+      room:
+        name: "Pole 'Nazwa'"
 
   error_must_be_lower_then_end_time: "musi być wcześniej niż pole 'Godzina zakończenia'"
   error_internal_error: Coś poszło nie tak, sprawdzimy to i postaramy się naprawić jak najszybciej
