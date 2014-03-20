@@ -22,6 +22,10 @@ pl:
         address: "Pole 'Adres'"
       lecturer:
         full_name: "Pole 'Imię i nazwisko'"
+      academic_year:
+        name: "Pole 'Nazwa'"
+        start_date: "Pole 'Data rozpoczęcia'"
+        end_date: "Pole 'Data zakończenia'"
       academic_year/event:
         start_date: "Pole 'Data rozpoczęcia'"
         end_date: "Pole 'Data zakończenia'"
