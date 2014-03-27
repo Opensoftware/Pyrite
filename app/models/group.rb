@@ -2,8 +2,6 @@ class Group < ActiveRecord::Base
   has_many :blocks, :through => :blocks_groups
   has_many :blocks_groups, :dependent => :destroy
 
-  attr_accessible :name
-
   scope :for_event, ->(event_id) { where(:event_id => event_id) }
 
   def pdf_title

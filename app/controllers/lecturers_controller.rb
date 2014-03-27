@@ -14,7 +14,7 @@ class LecturersController < ApplicationController
   end
 
   def create
-    @lecturer = Lecturer.new(params[:lecturer])
+    @lecturer = Lecturer.new(form_params)
 
     if @lecturer.save
       flash[:notice] = t("notice_lecturer_have_been_created")
@@ -27,7 +27,7 @@ class LecturersController < ApplicationController
   def update
     @lecturer = Lecturer.find(params[:id])
 
-    if @lecturer.update_attributes(params[:lecturer])
+    if @lecturer.update_attributes(form_params)
       flash[:notice] = t("notice_lecturer_have_been_updated")
       redirect_to lecturers_path
     else
@@ -46,4 +46,10 @@ class LecturersController < ApplicationController
     @lecturer = Lecturer.where(:id => params[:id]).first
     @events = convert_blocks_to_events_for_viewing(@lecturer.blocks.for_event(AcademicYear::Event.for_viewing))
   end
+
+  private
+
+    def form_params
+      params.required(:lecturer).permit(:full_name, :title)
+    end
 end

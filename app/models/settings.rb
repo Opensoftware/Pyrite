@@ -4,8 +4,6 @@ class Settings < ActiveRecord::Base
   attr_accessor :event_id_for_viewing, :event_id_for_editing, :email_contact, :unit_name,
                 :pdf_subtitle
 
-  attr_accessible :key, :value
-
   after_update :refresh_cache
   after_create :refresh_cache
 

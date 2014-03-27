@@ -1,5 +1,4 @@
 class Building < ActiveRecord::Base
-  attr_accessible :name, :address, :latitude, :longitude
   has_many :rooms, :dependent => :destroy
 
   validates :name, :address, :presence => true

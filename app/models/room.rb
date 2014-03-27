@@ -1,11 +1,9 @@
 class Room < ActiveRecord::Base
-  attr_accessible :name, :type, :capacity, :building_id, :comments, :room_type_id
   validates :name, :building_id, :room_type_id, :presence => true
 
   belongs_to :building
   belongs_to :room_type
   has_many :blocks, :dependent => :destroy
-
 
   def type
     room_type.short_name

@@ -18,7 +18,7 @@ class BuildingsController < ApplicationController
   end
 
   def create
-    @building = Building.new(params[:building])
+    @building = Building.new(form_params)
 
     if @building.save
       redirect_to @building, notice: t("notice_building_has_been_created")
@@ -30,7 +30,7 @@ class BuildingsController < ApplicationController
   def update
     @building = Building.find(params[:id])
 
-    if @building.update_attributes(params[:building])
+    if @building.update_attributes(form_params)
       redirect_to @building, notice: t("notice_building_has_been_updated")
     else
       render action: "edit"
@@ -44,4 +44,8 @@ class BuildingsController < ApplicationController
     redirect_to buildings_url, notice: t("notice_building_have_been_deleted")
   end
 
+
+  def form_params
+    params.required(:building).permit(:name, :address, :latitude, :longitude)
+  end
 end

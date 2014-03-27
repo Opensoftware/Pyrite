@@ -9,9 +9,6 @@ class Block < ActiveRecord::Base
   has_many :groups, :through => :blocks_groups
   has_many :blocks_groups, :dependent => :destroy
 
-  attr_accessible :name, :start_time, :end_time, :comments, :group_ids,
-                  :lecturer_id, :room_id, :event_id, :type_id, :day,
-                  :day_with_date, :start_date, :end_date, :meeting_id
   attr_accessor :day, :start_time, :end_time, :day_with_date, :start_date, :end_date
 
   # TODO split saving reservation and standard blocks

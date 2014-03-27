@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(params[:room])
+    @room = Room.new(form_params)
 
     if @room.save
       redirect_to @room.building, notice: t("notice_classroom_was_created")
@@ -29,7 +29,7 @@ class RoomsController < ApplicationController
   def update
     @room = Room.find(params[:id])
 
-    if @room.update_attributes(params[:room])
+    if @room.update_attributes(form_params)
       redirect_to @room.building, notice: t("notice_classroom_updated")
     else
       render action: "edit"
@@ -74,4 +74,9 @@ class RoomsController < ApplicationController
     respond_with @events
   end
 
+  private
+
+    def form_params
+      params.require(:room).permit(:name, :capacity, :building_id, :comments, :room_type_id)
+    end
 end

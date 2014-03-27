@@ -14,7 +14,7 @@ class AcademicYears::EventsController < ApplicationController
 
   def create
     @academic_year = AcademicYear.find(params[:academic_year_id])
-    event = @academic_year.events.build(params[:academic_year_event])
+    event = @academic_year.events.build(form_params)
 
     if event.save
       render :partial => "academic_years/list", :locals => {:events => @academic_year.events}
@@ -27,7 +27,7 @@ class AcademicYears::EventsController < ApplicationController
     @academic_year = AcademicYear.find(params[:academic_year_id])
     @event = AcademicYear::Event.find(params[:id])
 
-    if @event.update_attributes(params[:academic_year_event])
+    if @event.update_attributes(form_params)
       render :partial => "academic_years/list", :locals => {:events => @academic_year.events}
     else
       render :partial => "academic_years/modal_errors", :locals => { :object => @event }, :status => 422
@@ -45,4 +45,11 @@ class AcademicYears::EventsController < ApplicationController
     @academic_year_events = AcademicYear::Event.for_academic_year(params[:academic_year_id])
     render :layout => false
   end
+
+  private
+
+    def form_params
+      params.required(:academic_year_event).permit(:name, :start_date, :end_date, :lecture_free)
+    end
+
 end

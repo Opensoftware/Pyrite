@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
 
   serialize :preferences, Hash
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-
   # TODO check validations in devise and remove those:
   #validates_presence_of     :login, :email
   #validates_presence_of     :password,                   :if => :password_required?

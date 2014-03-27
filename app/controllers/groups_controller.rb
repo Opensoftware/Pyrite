@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(params[:group])
+    @group = Group.new(form_params)
 
     if @group.save
       flash[:notice] = t("notice_group_has_been_created")
@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
 
-    if @group.update_attributes(params[:group])
+    if @group.update_attributes(form_params)
       flash[:notice] = t("notice_group_has_been_updated")
       redirect_to groups_path
     else
@@ -101,6 +101,10 @@ class GroupsController < ApplicationController
 
 
   private
+
+    def form_params
+      params.required(:group).permit(:name)
+    end
 
     def cache_key_for_group_timetable(group, event_id)
       count = Block.joins(:groups).where("blocks_groups.group_id = ?", group.id).count

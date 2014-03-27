@@ -22,7 +22,8 @@ class AcademicYearsController < ApplicationController
 
   def create
     authorize! :manage, AcademicYear
-    @academic_year = AcademicYear.new(params[:academic_year])
+
+    @academic_year = AcademicYear.new(form_params)
 
     if @academic_year.save
       flash[:notice] = t("notice_academic_year_was_created")
@@ -36,7 +37,7 @@ class AcademicYearsController < ApplicationController
     authorize! :manage, AcademicYear
     @academic_year = AcademicYear.find(params[:id])
 
-    if @academic_year.update_attributes(params[:academic_year])
+    if @academic_year.update_attributes(form_params)
       flash[:notice] = t("notice_academic_year_was_updated")
       redirect_to @academic_year
     else
@@ -51,4 +52,10 @@ class AcademicYearsController < ApplicationController
 
     redirect_to academic_years_url
   end
+
+  private
+
+    def form_params
+      params.required(:academic_year).permit(:name, :start_date, :end_date)
+    end
 end

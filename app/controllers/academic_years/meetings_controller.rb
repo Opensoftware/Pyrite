@@ -13,7 +13,7 @@ class AcademicYears::MeetingsController < ApplicationController
 
   def create
     @academic_year_event = AcademicYear::Event.find(params[:event_id])
-    meeting = @academic_year_event.meetings.build(params[:academic_year_meeting])
+    meeting = @academic_year_event.meetings.build(form_params)
     @academic_year = @academic_year_event.academic_year
 
     if meeting.save
@@ -28,7 +28,7 @@ class AcademicYears::MeetingsController < ApplicationController
     @academic_year = @academic_year_meeting.event.academic_year
     @events = @academic_year.events
 
-    if @academic_year_meeting.update_attributes(params[:academic_year_meeting])
+    if @academic_year_meeting.update_attributes(form_params)
       render :partial => "academic_years/list", :locals => {:events => @events }
     else
       render :partial => "academic_years/modal_errors", :locals => { :object => @academic_year_meeting }, :status => 422
@@ -51,4 +51,10 @@ class AcademicYears::MeetingsController < ApplicationController
     @days = AcademicYear::Meeting.find(params[:meeting_id]).available_days
     render :layout => false
   end
+
+  private
+
+    def form_params
+      params.required(:academic_year_meeting).permit(:name, :start_date, :end_date)
+    end
 end
