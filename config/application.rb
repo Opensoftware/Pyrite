@@ -27,7 +27,7 @@ module Pyrite
     config.assets.version = '1.0'
 
     config.time_zone = 'Warsaw'
-    config.active_record.default_timezone = 'Warsaw'
+    config.active_record.default_timezone = :utc
 
   end
 end

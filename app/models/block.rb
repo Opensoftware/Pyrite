@@ -34,7 +34,7 @@ class Block < ActiveRecord::Base
   def populate_dates
     begin
       prepare_hours
-      block_date = Time.parse(day_with_date)
+      block_date = Time.zone.parse(day_with_date)
       block_start_date = block_date.advance(:hours => @start_hour, :minutes => @start_min)
       block_end_date = block_date.advance(:hours => @end_hour, :minutes => @end_min)
       dates.build(:start_date => block_start_date, :end_date => block_end_date)
@@ -47,7 +47,7 @@ class Block < ActiveRecord::Base
   def populate_dates_for_event
     begin
       prepare_hours
-      date_range = (event.start_date.to_date..event.end_date.to_date).select {|date| day.to_i == date.wday }
+      date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select {|date| day.to_i == date.wday }
       date_range.each do |date|
         block_start_date = Time::mktime(date.year, date.month, date.day, @start_hour, @start_min)
         block_end_date = Time::mktime(date.year, date.month, date.day, @end_hour, @end_min)
@@ -80,15 +80,13 @@ class Block < ActiveRecord::Base
   private
 
     def prepare_hours
-      @start_hour = Time.parse(start_time).hour
-      @start_min = Time.parse(start_time).min
-      @end_hour = Time.parse(end_time).hour
-      @end_min = Time.parse(end_time).min
+      @start_hour, @start_min = start_time.split(":").map(&:to_i)
+      @end_hour, @end_min = end_time.split(":").map(&:to_i)
     end
 
     def validate_times
       begin
-        if Time.parse(start_time) > Time.parse(end_time)
+        if Time.zone.parse(start_time) > Time.zone.parse(end_time)
           errors.add(:start_time, I18n.t("error_must_be_lower_then_end_time"))
         end
       rescue => e
@@ -105,32 +103,29 @@ class Block < ActiveRecord::Base
 
     def check_collisions
       begin
-        start_hour = Time.parse(start_time).hour
-        start_min = Time.parse(start_time).min
-        end_hour = Time.parse(end_time).hour
-        end_min = Time.parse(end_time).min
-
+        prepare_hours
         if event_id.nil?
           # This will happen only for reservation
-          block_date = Time.parse(day_with_date)
-          block_start_date = block_date.advance(:hours => start_hour, :minutes => start_min)
-          block_end_date = block_date.advance(:hours => end_hour, :minutes => end_min)
-          return false unless check_blocks_collisions(block_start_date, block_end_date)
+          block_date = Time.zone.parse(day_with_date)
+          block_start_date = block_date.advance(:hours => @start_hour, :minutes => @start_min)
+          block_end_date = block_date.advance(:hours => @end_hour, :minutes => @end_min)
+          check_blocks_collisions(block_start_date, block_end_date)
         else
-          date_range = (event.start_date..event.end_date).select { |date|
+          date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select { |date|
             day.to_i == date.wday
           }
           date_range.each do |date|
             block_start_date = Time::mktime(date.year, date.month, date.day,
-                                            start_hour, start_min)
+                                            @start_hour, @start_min)
             block_end_date = Time::mktime(date.year, date.month, date.day,
-                                          end_hour, end_min)
+                                          @end_hour, @end_min)
             return false unless check_blocks_collisions(block_start_date, block_end_date)
           end
         end
       rescue => e
         # TODO logger
-        return false
+        puts e
+        errors.add(:base, I18n.t("error_internal_error"))
       end
 
     end
