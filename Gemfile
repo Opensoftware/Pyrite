@@ -32,6 +32,7 @@ group :development do
   gem 'capistrano-bundler', github: 'capistrano/bundler'
   gem 'capistrano-rails', '~> 1.1.0'
   gem "thin"
+  gem "byebug"
 end
 
 group :production do
