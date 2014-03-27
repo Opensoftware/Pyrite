@@ -9,7 +9,14 @@ class BlocksController < ApplicationController
   def new_part_time
     @block = Block.new
     @meetings = AcademicYear::Meeting.for_editing
-    @days = @meetings.first.available_days
+    if @meetings.first
+      @days = @meetings.first.available_days
+    else
+      flash[:notice] = t("notice_missing_academic_year_meeting",
+        :url => view_context.link_to(t("link_in_flash_academic_year_edit"),
+        edit_academic_year_path(AcademicYear.for_editing))).html_safe
+      redirect_to dashboard_index_path
+    end
   end
 
   def edit

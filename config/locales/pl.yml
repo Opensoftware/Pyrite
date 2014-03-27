@@ -66,6 +66,7 @@ pl:
   link_prints: Drukuj plany
   link_print: Drukuj plan
   link_print_all_groups: Wszystkie grupy na
+  link_in_flash_academic_year_edir: tutaj
 
   notice_successfully_login: Zostałeś pomyślnie zalogowany
   notice_successfully_registered: Rejestracja zakończyła się pomyślnie
@@ -91,6 +92,7 @@ pl:
   notice_update_user_preferences_successed: Ustawienia zostały zaktualizowane.
   notice_room_have_been_deleted: Sala została usunięta.
   notice_building_have_been_deleted: Budynek został usunięty.
+  notice_missing_academic_year_meeting: Aby dodać blok zajęć dla studiów niestacjonarnych musisz najpierw dodać zjazdy dla roku akademickiego który edytujesz. Możesz to zrobić w %{url}
 
 
   button_save_as_pdf: Zapisz jako pdf
