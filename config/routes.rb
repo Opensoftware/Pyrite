@@ -6,8 +6,8 @@ Pyrite::Application.routes.draw do
 
   devise_for :users
 
-  match "/howto" => "main#howto", :as => "howto"
-  match "/contact" => "main#contact", :as => "contact"
+  match "/howto" => "main#howto", :as => "howto", :via => :get
+  match "/contact" => "main#contact", :as => "contact", :via => :get
 
 
   resource :timetable, :only => [] do
