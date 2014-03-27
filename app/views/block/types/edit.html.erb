@@ -1,5 +1,8 @@
 <h2> <%=t "header_edit_block_type" %> </h2>
 
-<%= render 'form' %>
+<%= form_for @block_type, :url => block_type_path(@block_type), :html => { :class => "form-horizontal" } do |f| %>
+  <%= error_msgs_for @block_type %>
+  <%= render 'form', :f => f %>
+<% end %>
 
 <%= link_to 'Back', block_types_path %>

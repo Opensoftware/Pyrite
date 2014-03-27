@@ -23,7 +23,9 @@
     <td><%= raw color_box(block_type.color) %></td>
     <td>
       <%= link_to t("button_edit"), edit_block_type_path(block_type), :class => "btn btn-primary" %>
-      <%= link_to t("button_delete"), block_type, method: :delete, data: { confirm: t("confirm_to_remove_block_type") }, :class => "btn delete-button" %></td>
+      <%= link_to t("button_delete"), block_type_path(block_type), method: :delete,
+        data: { confirm: t("confirm_to_remove_block_type") }, :class => "btn delete-button" %>
+    </td>
   </tr>
 <% end %>
 </table>

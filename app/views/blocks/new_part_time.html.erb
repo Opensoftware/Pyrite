@@ -79,7 +79,7 @@
           <div class="form-group col-md-2">
             <label> <%= t("label_block_type") %> </label>
             <div>
-              <%= f.collection_select :type_id, Block::Type.all, :id, :name, {}, {:tabindex => 7} %>
+              <%= f.collection_select :type_id, Block::Variant.all, :id, :name, {}, {:tabindex => 7} %>
             </div>
           </div>
           <div class="form-group col-md-5">

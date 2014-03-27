@@ -7,12 +7,12 @@ Group.create(:name => "1ANIN2")
 Group.create(:name => "2ANIN")
 Group.create(:name => "3ANIN")
 
-Block::Type.destroy_all
-Block::Type.create(:name => "Wykład", :short_name => "W", :description =>
+Block::Variant.destroy_all
+Block::Variant.create(:name => "Wykład", :short_name => "W", :description =>
                    "Zajęcia audytoryjne", :color => "#93c47d")
-Block::Type.create(:name => "Ćwiczenia", :short_name => "Ćw", :description =>
+Block::Variant.create(:name => "Ćwiczenia", :short_name => "Ćw", :description =>
                    "Zajęcia praktyczne", :color => "#3c78d8")
-Block::Type.create(:name => "Laboratoria", :short_name => "Lab", :description =>
+Block::Variant.create(:name => "Laboratoria", :short_name => "Lab", :description =>
                    "Zajęcia Laboratoryjne", :color => "#dd7e6b")
 
 RoomType.destroy_all

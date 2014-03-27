@@ -75,7 +75,7 @@
              <%= link_to t("link_academic_years"), academic_years_path %>
           </li>
         <% end %>
-        <% if can? :manage, Block::Type %>
+        <% if can? :manage, Block::Variant %>
           <li>
              <%= link_to t("link_block_types"), block_types_path %>
           </li>

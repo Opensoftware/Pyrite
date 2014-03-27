@@ -8,36 +8,31 @@
   <%= stylesheet_link_tag "spectrum" %>
 <% end %>
 
-<%= form_for @block_type, :html => { :class => "form-horizontal" } do |f| %>
-  <%= error_msgs_for @block_type %>
+<div class="control-group">
+  <label class="control-label" for=""> <%= t "label_block_type_name" %></label>
+  <div class="controls">
+    <%= f.text_field :name %>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for=""> <%= t "label_block_type_short_name" %></label>
+  <div class="controls">
+    <%= f.text_field :short_name %>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for=""> <%= t "label_block_type_color" %></label>
+  <div class="controls">
+    <%= f.text_field :color, :class => "colorpicker" %>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for=""> <%= t "label_block_type_description" %></label>
+  <div class="controls">
+    <%= f.text_area :description %>
+  </div>
+</div>
 
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t "label_block_type_name" %></label>
-    <div class="controls">
-      <%= f.text_field :name %>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t "label_block_type_short_name" %></label>
-    <div class="controls">
-      <%= f.text_field :short_name %>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t "label_block_type_color" %></label>
-    <div class="controls">
-      <%= f.text_field :color, :class => "colorpicker" %>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for=""> <%= t "label_block_type_description" %></label>
-    <div class="controls">
-      <%= f.text_area :description %>
-    </div>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t("button_save") %>
-  </div>
-<% end %>
-
+<div class="actions">
+  <%= f.submit t("button_save") %>
+</div>

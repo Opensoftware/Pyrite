@@ -3,7 +3,7 @@ class Block < ActiveRecord::Base
   belongs_to :lecturer
   belongs_to :event, :class_name => "AcademicYear::Event"
   belongs_to :meeting, :class_name => "AcademicYear::Meeting"
-  belongs_to :type, :class_name => "Block::Type"
+  belongs_to :type, :class_name => "Block::Variant"
   has_many :dates, :dependent => :destroy
 
   has_many :groups, :through => :blocks_groups
