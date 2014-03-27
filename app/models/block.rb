@@ -19,7 +19,7 @@ class Block < ActiveRecord::Base
 
   scope :for_groups, ->(group_ids) { joins(:blocks_groups).where("#{BlocksGroup.table_name}.group_id" => group_ids) }
   scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : self.scoped }
-  scope :reservations, where(:reservation => true).where(:event_id => nil)
+  scope :reservations, -> { where(:reservation => true).where(:event_id => nil) }
   scope :overlapped, ->(start_date, end_date) {
     joins(:dates).where("block_dates.start_date < ? AND
                          block_dates.end_date > ?", end_date , start_date)
