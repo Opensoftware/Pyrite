@@ -1,13 +1,10 @@
-<div class="ui-widget">
-  <div class="ui-state-error ui-corner-all" style="margin-bottom: 5px; padding: 1em;">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 .3em 0 0.5em;"></span>
-    <% if @message %>
-      <strong><%=t(:label_error)%> <%=@status%></strong><br/>
-      <%= @message %>
-    <% else %>
-      <strong><%=t :label_error%>:</strong>
-      <%= msg %>
-    <% end %>
-  </div>
+<div class="alert alert-danger walert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <% if @message %>
+    <strong><%=t(:label_error)%> <%=@status%></strong><br/>
+    <%= @message %>
+  <% else %>
+    <strong><%=t :label_error%>:</strong>
+    <%= msg %>
+  <% end %>
 </div>
