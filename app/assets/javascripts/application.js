@@ -12,6 +12,7 @@
 //
 //= require jquery-1.10.2
 //= require jquery-ui-1.10.4.custom
+//= require rails
 //= require bootstrap/js/bootstrap
 //= require fullcalendar/fullcalendar.min
 //= require jquery.busybox
