@@ -10,15 +10,12 @@ gem 'unicorn'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'jquery-ui-rails'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
   # Until less-rails will move to less 2.5 we have to use that temporary branch.
   # gem "less-rails"
   gem "less-rails", git: "https://github.com/CQQL/less-rails.git", branch: "less-2.5"
 end
-
-gem 'jquery-rails'
 
 group :development do
   gem 'hirb'

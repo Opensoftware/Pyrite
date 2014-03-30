@@ -102,12 +102,6 @@ GEM
     i18n (0.6.9)
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
-    jquery-rails (3.0.4)
-      railties (>= 3.0, < 5.0)
-      thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.0.4)
-      jquery-rails
-      railties (>= 3.1.0)
     json (1.8.1)
     kgio (2.8.1)
     less (2.5.0)
@@ -210,8 +204,6 @@ DEPENDENCIES
   devise
   hirb
   interactive_editor
-  jquery-rails
-  jquery-ui-rails
   less-rails!
   pg
   prawn
