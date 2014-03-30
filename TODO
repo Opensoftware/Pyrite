@@ -1,5 +1,10 @@
 TODO:
 
+- js alert zastąpić dialogami z UI
+- rezerwacje: Update leci do block kontroler a powinien do reservation
+- rezerwacje: formularz nie pamięta dnia jaki został wybrany.
+- Block::Type podczas edycji spectrum nie ustawia istniejącego koloru
+- Wypieprzyć AR i zastąpić przez DM i wrócić do nazwy Block::Type
 - dostosować strony błędów 404, 500 etc.
 - automatyczne przełączanie się planu zajęć na nowy semestr np. dzień/tydzień przed
   rozpoczęciem
