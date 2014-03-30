@@ -25,7 +25,7 @@ function bindAcademicYearFetchButton() {
     $("#academic-year-modal .modal-errors").html("");
     $("#academic-year-modal .modal-body").html(data);
     $("#academic-year-modal").modal();
-    $(".datepicker").datepicker({ dateFormat: "yy-mm-dd" });
+    reloadDatepicker();
     bindAcademicYearForm();
   });
 }
