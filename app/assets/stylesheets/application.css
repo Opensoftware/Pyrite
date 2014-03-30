@@ -13,6 +13,7 @@
  *= require fullcalendar/fullcalendar
  *= require fullcalendar_custom
  *= require main
+ *= require bootstrap-datetimepicker
  */
 
 #test-badge {

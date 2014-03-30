@@ -15,6 +15,8 @@
 //= require bootstrap/js/bootstrap
 //= require fullcalendar/fullcalendar.min
 //= require jquery.busybox
+//= require bootstrap-datetimepicker
+//= require localization/bootstrap-datetimepicker.pl.js
 
 $(document).ready(function() {
   reloadDatepicker();
@@ -36,10 +38,9 @@ function busyBoxOff(element) {
 }
 
 function reloadDatepicker() {
-  $(".datepicker, .datetimepicker, .timepicker").datepicker("destroy");
-  $(".datepicker").datepicker({ dateFormat: "yy-mm-dd" });
-  $(".datetimepicker").datetimepicker({ dateFormat: "yy-mm-dd, HH:mm", stepMinute: 15 });
-  $(".timepicker").timepicker({ timeFormat: "HH:mm", stepMinute: 15 });
+  $(".datepicker, .timepicker").datetimepicker("remove");
+  $(".datepicker").datetimepicker({ format: "yy-mm-dd", startView: 4, minView: 2, autoclose: true, language: 'pl' });
+  $(".timepicker").datetimepicker({ format: "hh:ii", minuteStep: 15, autoclose: true, startView: 1, language: 'pl', formatViewType: "time", showMeridian: true });
 }
 
 // Defaults for fullcalendar

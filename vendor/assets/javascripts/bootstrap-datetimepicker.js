@@ -21,6 +21,8 @@
  * ========================================================= */
 
 /*
+ * Modify by mtfk - force to use bootstrap 3 as the detection does not work
+ * properly
  * Improvement by CuGBabyBeaR @ 2013-09-12
  *
  * Make it work in bootstrap v3
@@ -53,7 +55,7 @@
 		this.isVisible = false;
 		this.isInput = this.element.is('input');
 
-		this.bootcssVer = this.isInput ? (this.element.is('.form-control') ? 3 : 2) : ( this.bootcssVer = this.element.is('.input-group') ? 3 : 2 );
+		this.bootcssVer = 3
 
 		this.component = this.element.is('.date') ? ( this.bootcssVer == 3 ? this.element.find('.input-group-addon .glyphicon-th, .input-group-addon .glyphicon-time, .input-group-addon .glyphicon-calendar').parent() : this.element.find('.add-on .icon-th, .add-on .icon-time, .add-on .icon-calendar').parent()) : false;
 		this.componentReset = this.element.is('.date') ? ( this.bootcssVer == 3 ? this.element.find('.input-group-addon .glyphicon-remove').parent() : this.element.find('.add-on .icon-remove').parent()) : false;
@@ -521,14 +523,12 @@
 			this.picker.find('.datetimepicker-days thead th:eq(1)')
 				.text(dates[this.language].months[month] + ' ' + year);
 			if (this.formatViewType == "time") {
-				var hourConverted = hours % 12 ? hours % 12 : 12;
-				var hoursDisplay = (hourConverted < 10 ? '0' : '') + hourConverted;
+				var hoursDisplay = hours;
 				var minutesDisplay = (minutes < 10 ? '0' : '') + minutes;
-				var meridianDisplay = dates[this.language].meridiem[hours < 12 ? 0 : 1];
 				this.picker.find('.datetimepicker-hours thead th:eq(1)')
-					.text(hoursDisplay + ':' + minutesDisplay + ' ' + meridianDisplay);
+					.text(hoursDisplay + ':' + minutesDisplay);
 				this.picker.find('.datetimepicker-minutes thead th:eq(1)')
-					.text(hoursDisplay + ':' + minutesDisplay + ' ' + meridianDisplay);
+					.text(hoursDisplay + ':' + minutesDisplay);
 			} else {
 				this.picker.find('.datetimepicker-hours thead th:eq(1)')
 					.text(dayMonth + ' ' + dates[this.language].months[month] + ' ' + year);

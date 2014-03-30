@@ -7,6 +7,7 @@
 weekends: <%= !current_user.preferences[:without_weekends] %>,
 dayNamesShort: <%= raw fc_days %>,
 events: <%= raw @events.to_json %>,
+editable: true,
 eventClick: function(event) {
   if (event.delete_url) {
     $("#delete-block-button").prop("href", event.delete_url);
