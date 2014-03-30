@@ -28,7 +28,7 @@
             <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe,
                         academic_years_meeting_path(meeting.id),
                         :method => :delete, :class => "btn btn-danger button-remove-academic-year-element",
-                        :confirm => t("academic_year.confirm.remove_meeting"), :remote => true,
+                        :data => { confirm: t("academic_year.confirm.remove_meeting") }, :remote => true,
                         "data-active-tab" => "#academic-year-tabs a:last" %>
             <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe,
                         edit_academic_years_meeting_path(meeting.id),

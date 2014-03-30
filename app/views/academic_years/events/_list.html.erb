@@ -18,7 +18,7 @@
         <td>
           <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, academic_year_event_path(event.academic_year, event),
                       :method => :delete, :class => "btn btn-danger button-remove-academic-year-element",
-                      :confirm => t("confirm_to_remove_academic_year_event"), :remote => true %>
+                      :data => { confirm: t("confirm_to_remove_academic_year_event") }, :remote => true %>
                     <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_academic_year_event_path(event.academic_year, event),
                       :class => "btn btn-info academic-year-fetch-form", :remote => true, "data-refresh" => "true" %>
         </td>
