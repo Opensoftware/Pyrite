@@ -77,6 +77,25 @@ class Block < ActiveRecord::Base
     type.try(:short_name).to_s
   end
 
+  def move_to(day_delta, minute_delta)
+    # convert days to minutes and create one minute delta
+    delta = minute_delta + day_delta * 1440
+    self.dates.each do |date|
+      date.start_date += delta.minutes
+      date.end_date += delta.minutes
+      date.save
+    end
+  end
+
+  def resize(day_delta, minute_delta)
+    # convert days to minutes and create one minute delta
+    delta = minute_delta + day_delta * 1440
+    self.dates.each do |date|
+      date.end_date += delta.minutes
+      date.save
+    end
+  end
+
   private
 
     def prepare_hours

@@ -43,7 +43,12 @@ Pyrite::Application.routes.draw do
 
   get "/blocks/new_part_time", :as => :new_part_time_block, :to => "blocks#new_part_time"
   post "/blocks/new_part_time", :as => :part_time_block, :to => "blocks#create_part_time"
-  resources :blocks, :except => [:index]
+  resources :blocks, :except => [:index] do
+    member do
+      patch :move
+      patch :resize
+    end
+  end
 
   resources :reservations, :only => [:new, :create] do
     collection do

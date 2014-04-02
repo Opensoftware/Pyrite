@@ -24,3 +24,33 @@ eventClick: function(event) {
   }
   return false;
 },
+eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunction, jsEvent, ui, view) {
+  var url = event.move_url;
+  var params = { day_delta: dayDelta, minute_delta: minuteDelta }
+  $.ajax({
+      url: url,
+      dataType: 'script',
+      data: params,
+      type: "PATCH",
+      complete: function(jqXHR) {
+          if(jqXHR.status == 500 || jqXHR.status == 404 || jqXHR.status == 403) {
+              errorHandling(jqXHR.status);
+          }
+      }
+  });
+},
+eventResize: function(event, dayDelta, minuteDelta, allDay, revertFunction, jsEvent, ui, view) {
+  var url = event.resize_url;
+  var params = { day_delta: dayDelta, minute_delta: minuteDelta }
+  $.ajax({
+      url: url,
+      dataType: 'script',
+      data: params,
+      type: "PATCH",
+      complete: function(jqXHR) {
+          if(jqXHR.status == 500 || jqXHR.status == 404 || jqXHR.status == 403) {
+              errorHandling(jqXHR.status);
+          }
+      }
+  });
+},

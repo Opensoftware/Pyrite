@@ -1,6 +1,6 @@
 class BlocksController < ApplicationController
 
-  respond_to :js, :only => [:update, :destroy]
+  respond_to :js, :only => [:update, :destroy, :move, :resize]
 
   def new
     @block = Block.new
@@ -60,6 +60,22 @@ class BlocksController < ApplicationController
     @block = Block.find(params[:id])
     @block.destroy
     respond_with(@block)
+  end
+
+  def move
+    @block = Block.find(params[:id])
+    day_delta = params[:day_delta]
+    minute_delta = params[:minute_delta]
+    @block.move_to(day_delta.to_i, minute_delta.to_i)
+    render nothing: true
+  end
+
+  def resize
+    @block = Block.find(params[:id])
+    day_delta = params[:day_delta]
+    minute_delta = params[:minute_delta]
+    @block.resize(day_delta.to_i, minute_delta.to_i)
+    render nothing: true
   end
 
   private

@@ -40,7 +40,7 @@ function busyBoxOff(element) {
 
 function reloadDatepicker() {
   $(".datepicker, .timepicker").datetimepicker("remove");
-  $(".datepicker").datetimepicker({ format: "yy-mm-dd", startView: 4, minView: 2, autoclose: true, language: 'pl' });
+  $(".datepicker").datetimepicker({ format: "dd-mm-yyyy", startView: 4, minView: 2, autoclose: true, language: 'pl' });
   $(".timepicker").datetimepicker({ format: "hh:ii", minuteStep: 15, autoclose: true, startView: 1, language: 'pl', formatViewType: "time", showMeridian: true });
 }
 
