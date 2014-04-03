@@ -15,15 +15,15 @@ function toggleDayInput() {
 
 $(document).ready(function() {
   toggleDayInput();
-  refresh_room_if_value_exist();
+  refresh_timetables();
 
   $("#block_event_id").on("change", function() {
     toggleDayInput();
-    refresh_room_if_value_exist();
+    refresh_timetables();
   });
 
   $("#block_room_id, #block_day_with_date").on("change", function() {
-    refresh_room_if_value_exist();
+    refresh_room_if_value_exists();
   });
 
   $("#edit-block-submit-button").on("click", function() {
@@ -45,9 +45,13 @@ function prepareRoomParams() {
   }
 }
 
-function refresh_room_if_value_exist() {
+function refresh_room_if_value_exists() {
   var params = prepareRoomParams();
   if ( params != null ) {
     refresh_room_timetable(params);
   }
+}
+
+function refresh_timetables() {
+  refresh_room_if_value_exists();
 }

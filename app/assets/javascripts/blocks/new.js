@@ -1,18 +1,16 @@
 $(document).ready(function() {
-  refresh_room_if_value_exist();
-  refresh_groups_if_value_exist();
+  refresh_timetables();
 
   $("#block_group_ids").on("change", function() {
-    refresh_groups_if_value_exist();
+    refresh_groups_if_value_exists();
   });
 
   $("#block_room_id").on("change", function() {
-    refresh_room_if_value_exist();
+    refresh_room_if_value_exists();
   });
 
   $("#block_event_id").on("change", function() {
-    refresh_room_if_value_exist();
-    refresh_groups_if_value_exist();
+    refresh_timetables();
   });
   $("#edit-block-submit-button").on("click", function() {
     $("#modal-edit-block form").submit();
@@ -43,16 +41,21 @@ function prepareGroupsParams() {
   }
 }
 
-function refresh_room_if_value_exist() {
+function refresh_room_if_value_exists() {
   var params = prepareRoomParams();
   if ( params != null ) {
     refresh_room_timetable(params);
   }
 }
 
-function refresh_groups_if_value_exist() {
+function refresh_groups_if_value_exists() {
   var params = prepareGroupsParams();
   if ( params != null ) {
     refresh_groups_timetable(params);
   }
+}
+
+function refresh_timetables() {
+  refresh_room_if_value_exists();
+  refresh_groups_if_value_exists();
 }
