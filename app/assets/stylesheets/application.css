@@ -22,7 +22,7 @@
   right: 0px;
   width: 150px;
   height: 140px;
-  background-image: url("/images/test_badge.png");
+  background-image: url("test_badge.png");
 }
 
 .container { margin: auto; }
