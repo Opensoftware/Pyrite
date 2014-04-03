@@ -7,7 +7,7 @@ set :format, :pretty
 set :log_level, :debug
 set :pty, true
 set :use_sudo, false
-set :deploy_to, "/var/www/rails_app/siatka-demo"
+set :deploy_to, "/home/www/rails_app/siatka-demo"
 set :scm, :git
 set :rails_env, "test"
 
