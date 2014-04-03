@@ -26,12 +26,12 @@ eventClick: function(event) {
 eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunction, jsEvent, ui, view) {
   var url = event.move_url;
   var params = { day_delta: dayDelta, minute_delta: minuteDelta }
-  update_block_position(url);
+  update_block_position(url, params);
   refresh_timetables();
 },
 eventResize: function(event, dayDelta, minuteDelta, allDay, revertFunction, jsEvent, ui, view) {
   var url = event.resize_url;
   var params = { day_delta: dayDelta, minute_delta: minuteDelta }
-  update_block_position(url);
+  update_block_position(url, params);
   refresh_timetables();
 },

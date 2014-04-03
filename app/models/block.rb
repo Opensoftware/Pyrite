@@ -4,7 +4,7 @@ class Block < ActiveRecord::Base
   belongs_to :event, :class_name => "AcademicYear::Event"
   belongs_to :meeting, :class_name => "AcademicYear::Meeting"
   belongs_to :type, :class_name => "Block::Variant"
-  has_many :dates, :dependent => :destroy
+  has_many :dates, :dependent => :destroy, :autosave => true
 
   has_many :groups, :through => :blocks_groups
   has_many :blocks_groups, :dependent => :destroy
@@ -79,21 +79,21 @@ class Block < ActiveRecord::Base
 
   def move_to(day_delta, minute_delta)
     # convert days to minutes and create one minute delta
-    delta = minute_delta + day_delta * 1440
-    self.dates.each do |date|
-      date.start_date += delta.minutes
-      date.end_date += delta.minutes
-      date.save
+    delta = (minute_delta + day_delta * 1440).minutes
+    dates.each do |date|
+      date.start_date += delta
+      date.end_date += delta
     end
+    save
   end
 
   def resize(day_delta, minute_delta)
     # convert days to minutes and create one minute delta
-    delta = minute_delta + day_delta * 1440
-    self.dates.each do |date|
-      date.end_date += delta.minutes
-      date.save
+    delta = (minute_delta + day_delta * 1440).minutes
+    dates.each do |date|
+      date.end_date += delta
     end
+    save
   end
 
   private
