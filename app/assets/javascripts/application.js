@@ -14,7 +14,7 @@
 //= require jquery-ui-1.10.4.custom
 //= require rails
 //= require bootstrap/js/bootstrap
-//= require fullcalendar/fullcalendar.min
+//= require fullcalendar/fullcalendar
 //= require jquery.busybox
 //= require bootstrap-datetimepicker
 //= require localization/bootstrap-datetimepicker.pl.js
