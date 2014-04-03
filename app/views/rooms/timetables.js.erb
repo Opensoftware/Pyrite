@@ -14,6 +14,6 @@ $('#room-timetable').fullCalendar_with_defaults(options);
 var current_date = $("#block_day_with_date").val();
 var is_visible = $("#block_day_with_date").is(":visible");
 if ( current_date.length > 0 && is_visible ) {
-  var block_date = $.fullCalendar.parseDate( current_date );
+  var block_date = new Date( current_date );
   $("#room-timetable").fullCalendar('gotoDate', block_date);
 }
