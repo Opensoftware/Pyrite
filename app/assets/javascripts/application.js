@@ -10,7 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery-1.10.2
+//= require jquery-1.11.0
 //= require jquery-ui-1.10.4.custom
 //= require rails
 //= require bootstrap/js/bootstrap
