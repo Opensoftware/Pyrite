@@ -1,15 +1,15 @@
 function refresh_groups_timetable(params) {
   var fetch_timetable_url = $("#block_group_ids").data("timetable-url");
-  busyBoxOn($("#groups-timetable"));
+  busyBoxOn($("#groups-timetable-container"));
   fetch_blocks(fetch_timetable_url, params);
-  busyBoxOff($("#groups-timetable"));
+  busyBoxOff($("#groups-timetable-container"));
 }
 
 function refresh_room_timetable(params) {
   var fetch_timetable_url = $("#block_room_id").data("timetable-url");
-  busyBoxOn($("#room-timetable"));
+  busyBoxOn($("#room-timetable-container"));
   fetch_blocks(fetch_timetable_url, params);
-  busyBoxOff($("#room-timetable"));
+  busyBoxOff($("#room-timetable-container"));
 }
 
 function fetch_blocks(fetch_timetable_url, params) {
