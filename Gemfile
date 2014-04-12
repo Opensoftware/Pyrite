@@ -30,6 +30,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1.0'
   gem "thin"
   gem "byebug"
+  gem 'sprockets_better_errors'
 end
 
 group :production do
