@@ -18,6 +18,7 @@
 //= require jquery.busybox
 //= require bootstrap-datetimepicker
 //= require localization/bootstrap-datetimepicker.pl.js
+//= depend_on_asset "loading.gif"
 
 $(document).ready(function() {
   reloadDatepicker();
@@ -30,7 +31,7 @@ function errorHandling(error) {
 
 function busyBoxOn(element) {
  var loading = element.busyBox({
-   spinner:  '<img src="/assets/loading.gif">'
+   spinner:  '<img src="<%= asset_path 'loading.gif' %>">'
  });
 }
 

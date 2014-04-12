@@ -14,6 +14,7 @@
  *= require fullcalendar_custom
  *= require main
  *= require bootstrap-datetimepicker
+ *= depend_on_asset "test_badge.png"
  */
 
 #test-badge {
@@ -22,9 +23,9 @@
   right: 0px;
   width: 150px;
   height: 140px;
-  background-image: url("test_badge.png");
+  background-image: url( <%= asset_path("test_badge.png") %>);
 }
 
 .container { margin: auto; }
 .main-control-panel { margin: auto; width: 500px;}
-#ui-datepicker-div { z-index: 9999999!important; } // make sure that datapicker will be always on top
+#ui-datepicker-div { z-index: 9999999!important; }
