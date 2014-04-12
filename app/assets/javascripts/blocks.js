@@ -36,6 +36,7 @@ function update_block_position(url, params) {
         if(jqXHR.status == 500 || jqXHR.status == 404 || jqXHR.status == 403) {
             errorHandling(jqXHR.status);
         }
+        refresh_timetables();
       }
   });
 }
