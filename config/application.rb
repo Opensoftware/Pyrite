@@ -4,9 +4,9 @@ require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  #Bundler.require(*Rails.groups(:assets => %w(development test)))
   # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
+  Bundler.require(:default, :assets, Rails.env)
 end
 
 module Pyrite
@@ -29,20 +29,17 @@ module Pyrite
     config.time_zone = 'Warsaw'
     config.active_record.default_timezone = :utc
 
-    config.assets.precompile << Proc.new do |path|
-      if path =~ /\.(css|js)\z/
-        full_path = Rails.application.assets.resolve(path).to_path
-        app_assets_path = Rails.root.join('app', 'assets').to_path
-        if full_path.starts_with? app_assets_path
-          puts "including asset: " + full_path
-          true
-        else
-          puts "excluding asset: " + full_path
-          false
-        end
-      else
-        false
-      end
-    end
+    # precompile assets which are not part of any manifest but are used in
+    # different views
+    config.assets.precompile += ["OpenLayers.js", "spectrum.js", "blocks.js",
+                                 "blocks/new.js", "timetable_forms.js",
+                                 "buildings.js", "buildings/edit.js",
+                                 "buildings/show.js", "blocks/new_part_time.js",
+                                 "block/types.js", "academic_years.js",
+                                 "settings.js", "reservations.js",
+                                 "buildings.css", "blocks.css",
+                                 "block/types.css", "spectrum.css", "theme/default/style.css",
+                                 "theme/default/img/*", "theme/default/google.css",
+                                 "theme/default/style.mobile.css", "theme/default/ie6-style.css"]
   end
 end

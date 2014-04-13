@@ -15,6 +15,7 @@ group :assets do
   # Until less-rails will move to less 2.5 we have to use that temporary branch.
   # gem "less-rails"
   gem "less-rails", git: "https://github.com/CQQL/less-rails.git", branch: "less-2.5"
+  gem "non-stupid-digest-assets"
 end
 
 group :development do
