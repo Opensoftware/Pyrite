@@ -28,7 +28,7 @@
       <label> <%= t("label_lecturer") %> </label>
       <div>
         <%= f.collection_select :lecturer_id, Lecturer.all, :id,
-              :full_name, :prompt => t("prompt_lecturer") %>
+              :name_with_title, :prompt => t("prompt_lecturer") %>
       </div>
     </div>
     <div class="form-group col-md-3">
