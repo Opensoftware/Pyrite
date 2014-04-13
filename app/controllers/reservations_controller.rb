@@ -1,6 +1,8 @@
 class ReservationsController < ApplicationController
   include BlocksHelper
 
+  skip_before_filter :authenticate_user!, :only => [:show]
+
   respond_to :js, :only => [:update]
 
   def show

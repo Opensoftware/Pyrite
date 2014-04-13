@@ -1,6 +1,8 @@
 class LecturersController < ApplicationController
   include BlocksHelper
 
+  skip_before_filter :authenticate_user!, :only => [:timetable]
+
   def index
     @lecturers = Lecturer.all
   end

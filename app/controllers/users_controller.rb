@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
 
   def account
     @without_weekends = current_user.preferences[:without_weekends] || false

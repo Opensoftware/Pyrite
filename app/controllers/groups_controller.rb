@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
   include BlocksHelper
   include ApplicationHelper
 
+  skip_before_filter :authenticate_user!, :only => [:timetable, :print]
   respond_to :html, :js, :only => [:timetables, :timetable, :timetables_for_meeting]
 
   def index
