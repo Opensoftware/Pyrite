@@ -1,5 +1,16 @@
 TODO:
 
+- dodanie jquery search table dla duży setów (np. prowadzących, grup, sal)
+- naprawić widok rezerwacji, podczas przesuwania bloku odświeża się
+  jakoś dziwnie i nie pamiętam daty na której obecnie jesteśmy
+- naprawić widok dodawania typu zajęć
+- naprawić cachowanie assetsów, rails4 nie radzi sobie dobrze z js/css które nie
+  korzytają z helperów jak assets_path które wygenerują poprawny link do pliku.
+  Sprwadzić czy da się to rozwiązać poprzez generowanie bez fingerprinta i
+  zostawić obsługę dla serwera www np. nginx z last-modify i ewentualnie
+  dodawanie argumentu do linku z wersją assetsów (np. ?v=1.0)
+- dodać możliwość kliknięcia w budynek/sale przez studenta aby pokazał gdzie
+  odbywają się zajęcia,
 - js alert zastąpić dialogami z UI
 - rezerwacje: Update leci do block kontroler a powinien do reservation
 - rezerwacje: formularz nie pamięta dnia jaki został wybrany.
@@ -11,9 +22,6 @@ TODO:
 - dodać mozliwość edycji bloków dla zalogowanych uzytkowników na dowolnym
   widoku.
 - opcja bez weekendów nie aplikuje się do wyświetlania planów zajęć - naprawić
-- dodawanie nowego roku akademickiego dodać mozliwość wybrania roku w
-  datapikerze żeby tak nie musieć skakać, najlepiej 3 etapowy wybór z rokiem,
-  miesiącem a na koniec dniem.
 - Dodać meta dane do wydruków pdf
 - Brak możliwości wydruku sal i prowadzących
 - Możliwość wyłączenia sobót i niedziel
@@ -33,11 +41,6 @@ Uwagi EAIiB:
 
 - Brak możliwości przypisania/rezerwacji kilku sal w jednym terminie do jednych
   zajęć
-- Brak możliwości rezerwacji terminu bez podania sali (np. rezerwacja terminów
-  na język obcy czy zajęcia WF) – możliwe do obejścia poprzez dodanie wirtualnej
-  sali.
-- Brak możliwości definowania zajęć dla studiów niestacjonarnych, gdzie zajęcia prowadzone są na zjazdach – czyli rezerwowania zajęć na konkretny dzień (data, a nie dzień tygodnia, w sposób zbliżony jak przy rezerwacji sal – ale tam nie ma możliwości wybrania grupy).
-- Brak możliwości przeniesienia zajęć pomiędzy godzinami. Trzeba usunąć zajęcia i wprowadzić je na nowo w nowym terminie.
 
 Ergonomia:
 
@@ -46,9 +49,6 @@ Dodawanie nowego bloku zajęć:
     mimo że ostatnio wprowadzane były zajęcia na semetr letni)
   - brak możliwości „szybkiego wyszukiwania” pracownika
   - lista pracowników nie jest posortowana
-  - w utworzonych blokach nie wyświetla się pełna informacja o pracowniku
-    (tylko jego początek) – mógłby być „dymek” po najechaniu myszką nad
-    wświetlany blok zajęć.)
 
 Dodatkowo:
 - preferencje pracowników, powiązanie  rzutników z salami,
@@ -64,13 +64,6 @@ siatce, że prowadzący chciał np. od 11 do  15.
   okres dni niekoniecznie academic event.
 - dodać walidację na eventy roku akademickiego tak aby daty były zawsze pomiędzy
   rozpoczęciem i zakończeniem roku akademickiego.
-- Dodać blocks/new możliwość dodawania zakresu dat z dowolnego przedziału, czyli
-  datetimepicker dla start_date i end_date
-- z racji iż po dodaniu do bazy daty w bloku są konwertowane na czas CEST jak
-  się przegląda plany w okresie zimowym, czase jest wyświeltany o godzinę do
-  przodu z racji iż obowiązuje GMT+1, oczywiście po przestawieniu na czas zimowy
-  godzina będzie wyświetlała się prawidłowo. Zastanowić się jak prezentować dane
-  w czasie letnim/zimowym bez konieczności mieszania czegokolwiek.
 - możliwość wysłania propozycji rezerwacji sali do planera (skonsultować czy
   taki ficzer jest porządany)
 - filtrowanie sal w rezerwacji w zależności od rodzaju, wielkości etc.
@@ -105,15 +98,12 @@ Organizacja roku akademickiego:
 - Refaktoring dodawnia bloku w odniesieniu do Godzina rozpoczęcia, Godzina
   zakończenia
 
-- Dostosować wygląd ładowanych podglądów w widoku blocks/new
 - Usuwanie grup wraz z blokami! Ostrzeżenie archiwizacja coś co pozwoli
   zabezpieczyć straty.
 
-- Dodać paginacie dla grup i proste wyszukiwanie (jquer table)
 - zastąpic podgrupy w grupach poprzez relacje grupa - grupa jak nadrzędne
   struktury
 
-- Paginacja dla sal
 - Blokowanie sal (np. sala w remoncie)
 - Sala dostepna tylko dla planera (brak możliwości rezerwacji danej sali)
 - Integracja z SYLABUSEM via API
@@ -162,21 +152,17 @@ Wprowadzanie przedmiotów powiązać z katedrami
 przedmioty dla katedry - wyświeltanie informacji o prowadzących zajęciach
 ilość godzin dla prowadzący - wykłady/ćwiczenia/labolatoria
 Dodanie tip do wydziałów
-Naprawienie wyświeltania sali (aby tyle nie klikać)
-Zadługie nazwy w planie ? pierwsze 3 litery : skróty
-Problem z wyświetlaniem grupy INNA
-Wypływanie na wierzch divów ????
 
 Statystyki zajęć
 Estetyka, wyglad systemu
 How TO
 Konta dla użytkowników (prowadzacych) i (1 na wydział)
 Blokada rezerwacji na dane okresy czasowe ( sesja etc.. )
-Tygodniowe plany zajęć
 
 Siatka z perspektywy studenta:
 - możliwość tworzenia swojego planu zajęć/dostosowania już istniejącego planu grupy
 - możliwość eksportu do iCalendar i synchro z kalendarzem Googla
+
 Uwagi IMiR do planowania niestacjonarnych:
 - widok planera powinien być inny niż studia stacjonarne. Jemu przede wszystkim
   zależy na zjazdach, więc te powinny być wyświetlane. Do tego ma dobre
