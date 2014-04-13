@@ -29,6 +29,11 @@ function errorHandling(error) {
     alert(error);
 }
 
+function displayMsg(content) {
+  // TODO replace by own modal UI
+  alert(content);
+}
+
 function busyBoxOn(element) {
  var loading = element.busyBox({
    spinner:  '<img src="<%= asset_path 'loading.gif' %>">'
