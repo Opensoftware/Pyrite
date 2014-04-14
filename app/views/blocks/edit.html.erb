@@ -11,7 +11,9 @@
   <div class="form-group">
     <label> <%= t "label_lecturer" %></label>
     <div>
-      <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name_with_title, :prompt => t("prompt_lecturer") %>
+      <%= f.collection_select :lecturer_id, Lecturer.all, :id,
+        :name_with_title, { :include_blank => true },
+        { "data-placeholder" => t("prompt_lecturer"), :class => "chosen-select" } %>
     </div>
   </div>
   <div class="form-group">
