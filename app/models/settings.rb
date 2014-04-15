@@ -58,6 +58,15 @@ class Settings < ActiveRecord::Base
       settings.pdf_subtitle = pdf_subtitle
       settings
     end
+
+    def reset_event_id_for_editing
+      remove_setting("event_id_for_editing")
+    end
+
+    def reset_event_id_for_viewing
+      remove_setting("event_id_for_viewing")
+    end
+
   end
 
 
@@ -77,6 +86,14 @@ class Settings < ActiveRecord::Base
         obj = Rails.cache.fetch(cache_key) {
           Settings.where(:key => key).first.try(:value)
         }
+      end
+
+      def remove_setting(key)
+        setting = Settings.where(:key => key).first
+        if setting
+          setting.destroy
+          Rails.cache.delete("settings:#{key}")
+        end
       end
     end
 end

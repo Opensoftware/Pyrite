@@ -1,6 +1,7 @@
 class BlocksController < ApplicationController
 
   respond_to :js, :only => [:update, :destroy, :move, :resize]
+  before_filter :check_settings
 
   def new
     @block = Block.new
@@ -92,5 +93,13 @@ class BlocksController < ApplicationController
 
     def form_params_update
       params.required(:block).permit(:lecturer_id, :room_id, :comments, :type_id, :name)
+    end
+
+    def check_settings
+      academic_year_for_editing = AcademicYear.for_editing
+      if academic_year_for_editing.blank?
+        flash[:notice] = t("notice.missing.academic_year")
+        redirect_to dashboard_index_path
+      end
     end
 end

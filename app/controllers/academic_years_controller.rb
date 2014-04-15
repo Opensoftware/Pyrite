@@ -48,6 +48,10 @@ class AcademicYearsController < ApplicationController
   def destroy
     authorize! :manage, AcademicYear
     @academic_year = AcademicYear.find(params[:id])
+    if @academic_year.is_used_in_settings?
+      Settings.reset_event_id_for_editing
+      Settings.reset_event_id_for_viewing
+    end
     @academic_year.destroy
 
     redirect_to academic_years_url

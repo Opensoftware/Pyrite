@@ -93,6 +93,9 @@ pl:
   notice_room_have_been_deleted: Sala została usunięta.
   notice_building_have_been_deleted: Budynek został usunięty.
   notice_missing_academic_year_meeting: Aby dodać blok zajęć dla studiów niestacjonarnych musisz najpierw dodać zjazdy dla roku akademickiego który edytujesz. Możesz to zrobić w %{url}
+  notice:
+    missing:
+      academic_year: Aby tworzyć plany musisz najpierw skonfigurować rok akademicki ( Dane systemu -> Organizacja roku akademickiego -> Nowy rok akademicki )
 
 
   button_save_as_pdf: Zapisz jako pdf

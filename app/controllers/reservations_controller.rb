@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
   include BlocksHelper
 
   skip_before_filter :authenticate_user!, :only => [:show]
+  before_filter :check_settings, :except => [:show]
 
   respond_to :js, :only => [:update]
 
@@ -33,4 +34,11 @@ class ReservationsController < ApplicationController
         :lecturer_id, :comments, :end_time, :event_id, :room_id, :name)
     end
 
+    def check_settings
+      academic_year_for_editing = AcademicYear.for_editing
+      if academic_year_for_editing.blank?
+        flash[:notice] = t("notice.missing.academic_year")
+        redirect_to dashboard_index_path
+      end
+    end
 end

@@ -13,14 +13,14 @@
     <div>
       <%= select_tag(:year_for_viewing,
             options_from_collection_for_select(AcademicYear.all, :id, :name,
-                     AcademicYear.for_viewing.id), {"data-update" => "#settings_event_id_for_viewing" } ) %>
+                     AcademicYear.for_viewing.try(:id)), {"data-update" => "#settings_event_id_for_viewing" } ) %>
     </div>
   </div>
   <div class="form-group">
     <label> </label>
     <div>
       <%= f.collection_select(:event_id_for_viewing,
-                              AcademicYear.for_viewing.events, :id, :name) %>
+                              AcademicYear.for_viewing.try(:events) || [], :id, :name) %>
     </div>
   </div>
   <div class="form-group">
@@ -30,14 +30,14 @@
     <div>
       <%= select_tag(:year_for_editing,
             options_from_collection_for_select(AcademicYear.all, :id, :name,
-                     AcademicYear.for_editing.id), { "data-update" => "#settings_event_id_for_editing"}) %>
+                     AcademicYear.for_editing.try(:id)), { "data-update" => "#settings_event_id_for_editing"}) %>
     </div>
   </div>
   <div class="form-group">
     <label> </label>
     <div>
       <%= f.collection_select(:event_id_for_editing,
-                              AcademicYear.for_editing.events, :id, :name) %>
+                              AcademicYear.for_editing.try(:events) || [], :id, :name) %>
     </div>
   </div>
   <div class="form-group">

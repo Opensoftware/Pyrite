@@ -37,6 +37,12 @@ class AcademicYears::EventsController < ApplicationController
   def destroy
     @academic_year_event = AcademicYear::Event.find(params[:id])
     @academic_year = @academic_year_event.academic_year
+    if @academic_year_event.is_for_viewing?
+      Settings.reset_event_id_for_viewing
+    end
+    if @academic_year_event.is_for_editing?
+      Settings.reset_event_id_for_editing
+    end
     @academic_year_event.destroy
     render :partial => "academic_years/list", :locals => {:events => @academic_year.events}
   end

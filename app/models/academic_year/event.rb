@@ -16,4 +16,14 @@ class AcademicYear::Event < ActiveRecord::Base
     find(Settings.event_id_for_editing)
   end
 
+  def is_for_viewing?
+    for_viewing = AcademicYear::Event.for_viewing
+    for_viewing == self
+  end
+
+  def is_for_editing?
+    for_editing = AcademicYear::Event.for_editing
+    for_editing == self
+  end
+
 end
