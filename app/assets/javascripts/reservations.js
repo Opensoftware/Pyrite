@@ -31,9 +31,6 @@ $(document).ready(function() {
     $("#modal-edit-block").modal("hide");
     return false;
   });
-  $("#modal-edit-block").on("shown.bs.modal", function() {
-    bindChosen();
-  });
 
 });
 
