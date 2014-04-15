@@ -92,7 +92,7 @@ class BlocksController < ApplicationController
     end
 
     def form_params_update
-      params.required(:block).permit(:lecturer_id, :room_id, :comments, :type_id, :name)
+      params.required(:block).permit(:lecturer_id, :room_id, :comments, :type_id, :name, { :group_ids => [] })
     end
 
     def check_settings
