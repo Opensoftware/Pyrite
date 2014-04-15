@@ -154,9 +154,13 @@ class Block < ActiveRecord::Base
       room_blocks = Block
         .where(:room_id => room_id)
         .overlapped(block_start_date, block_end_date).count
-      lecturer_blocks = Block
-        .where(:lecturer_id => lecturer_id)
-        .overlapped(block_start_date, block_end_date).count
+      if lecturer_id.blank?
+        lecturer_blocks = 0
+      else
+        lecturer_blocks = Block
+          .where(:lecturer_id => lecturer_id)
+          .overlapped(block_start_date, block_end_date).count
+      end
       group_blocks = Block
         .for_groups(group_ids)
         .overlapped(block_start_date, block_end_date).count
