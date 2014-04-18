@@ -43,7 +43,7 @@ pl:
   error_overlapped_block: "Kolizja bloków, blok koliduje z blokiem %{block}"
   error_room_block_collision: "sali %{room}"
   error_lecturer_block_collision: "prowadzącego %{lecturer}"
-  error_groups_block_collision: "grupy %{group}"
+  error_groups_block_collision: "grupy %{groups}"
   error_missing_coordinates: "Brak lokalizacji, proszę wybrać lokalizację budynku na mapie."
   error_invalid_data: Błędne dane.
 
