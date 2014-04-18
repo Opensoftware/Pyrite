@@ -10,7 +10,7 @@ class Pdf::Timetable < Prawn::Document
     @timetable_height = @height - 45
     @hours_column_size = 50
     @timetable_width = @width - @hours_column_size
-    @column_size = @timetable_width/available_days.count
+    @column_size = @timetable_width/@available_days.count
     @title_row_size = 20
     # TODO fetch start_hour and end_hour from settings
     @start_hour = Time.parse("6:00")
@@ -83,7 +83,7 @@ class Pdf::Timetable < Prawn::Document
         text_box I18n.t("pdf.label.hours"), :align => :center, :valign => :center
       end
       bounding_box [@hours_column_size, @timetable_height], :width => @width do
-        available_days.each_with_index do |day, index|
+        @available_days.each_with_index do |day, index|
           bounding_box [index * @column_size, bounds.top], :width => @column_size, :height => @title_row_size do
             stroke_bounds
             text_box day, :align => :center, :valign => :center
@@ -114,7 +114,7 @@ class Pdf::Timetable < Prawn::Document
 
     def draw_borders
       stroke_horizontal_line 0, @width, :at => 0
-      available_days.count.times do |index|
+      @available_days.count.times do |index|
         stroke_vertical_line 0, @timetable_height, :at => @hours_column_size + @column_size * (index+1)
       end
     end

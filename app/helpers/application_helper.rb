@@ -12,20 +12,43 @@ module ApplicationHelper
   end
 
   def available_abbr_days
-    # TODO this should be somehow configured by the user to be able to hide some
-    # days which are not used.
-    I18n.t("date.abbr_day_names")
+    # Day of the week in 0-6. Sunday is 0; Saturday is 6.
+    user_preferences_for_days(I18n.t("date.abbr_day_names"))
   end
 
   def available_days
-    # TODO this should be somehow configured by the user to be able to hide some
-    # days which are not used.
-    I18n.t "date.day_names"
+    # Day of the week in 0-6. Sunday is 0; Saturday is 6.
+    user_preferences_for_days(I18n.t("date.day_names"))
+  end
+
+  def available_abbr_days_for_select
+    user_preferences_for_days(I18n.t("date.abbr_day_names").zip(0..7))
+  end
+
+  def available_days_for_select
+    user_preferences_for_days(I18n.t("date.day_names").zip(0..7))
+  end
+
+  # return array with days which are configured by users
+  # right now we have only with/without weekends
+  # days_array always need to be Sunday = 0, 0..6
+  def user_preferences_for_days(days_array)
+    if current_user.preferences[:without_weekends]
+      # remove Sunday = 0 and Saturday = 6
+      days_array.slice(1..-2)
+    else
+      days_array
+    end
+  end
+
+  # Helper method to swap sunday with monday in array
+  def swap_monday(array)
+    array[1..-1] << array[0]
   end
 
   # Fullcalendar - fc
-  # list of days started from Sunday
+  # list of abbr days started from Sunday
   def fc_days
-    available_abbr_days
+    I18n.t("date.abbr_day_names")
   end
 end

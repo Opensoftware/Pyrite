@@ -78,7 +78,7 @@ class GroupsController < ApplicationController
   def print_all
     groups = Group.all
 
-    groups_timetable = Pdf::GroupTimetable.new(groups, params[:event_id])
+    groups_timetable = Pdf::GroupTimetable.new(groups, params[:event_id], available_days)
     data = groups_timetable.to_pdf
 
     send_data(data, :filename => t(:file_groups_timetable),
@@ -90,7 +90,7 @@ class GroupsController < ApplicationController
     event_id = params[:event_id]
 
     data = Rails.cache.fetch(cache_key_for_group_timetable(group, event_id)) do
-      timetable = Pdf::GroupTimetable.new([group], event_id)
+      timetable = Pdf::GroupTimetable.new([group], event_id, available_days)
       data = timetable.to_pdf
       Rails.cache.write(cache_key_for_group_timetable(group, event_id), data)
       data
