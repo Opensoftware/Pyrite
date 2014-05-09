@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.0'
 gem 'devise'
 gem 'prawn'
 gem "cancan"
@@ -28,7 +28,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1.0'
   gem "thin"
   gem "byebug"
-  gem 'sprockets_better_errors'
+  gem 'spring'
 end
 
 group :production do
