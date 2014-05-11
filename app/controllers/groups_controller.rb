@@ -68,7 +68,7 @@ class GroupsController < ApplicationController
   def timetables_for_meeting
     group_ids = params[:group_ids]
     @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
-    blocks = @meeting.blocks.joins(:groups).where("groups.id = ?", group_ids)
+    blocks = @meeting.blocks.joins(:groups).where("#{Group.table_name}.id in (?)", group_ids)
 
     @events = convert_blocks_to_events(blocks)
     @current_date = @meeting.start_date.strftime("%F")
