@@ -57,7 +57,10 @@ class RoomsController < ApplicationController
     if @event
       blocks = @room.blocks.for_event(@event) + @room.blocks.reservations
     else
-      blocks = @room.blocks.reservations
+      # TODO (fullCalendar2) this is heavy we need to reduce amount of blocks to
+      # read max +/- 3 weeks and rest will be loaded when user will change the
+      # date.  for reservations we taking all blocks for given room
+      blocks = @room.blocks
     end
     @room_name = @room.name
     @events = convert_blocks_to_events(blocks)
