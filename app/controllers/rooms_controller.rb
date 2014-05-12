@@ -54,6 +54,7 @@ class RoomsController < ApplicationController
   def timetables
     @room = Room.find(params[:id])
     @event = AcademicYear::Event.where(:id => params[:event_id]).first
+    @reset_date = params[:reset_date] || false
     if @event
       blocks = @room.blocks.for_event(@event) + @room.blocks.reservations
     else
@@ -69,6 +70,7 @@ class RoomsController < ApplicationController
 
   def timetables_for_meeting
     @room = Room.find(params[:id])
+    @reset_date = params[:reset_date] || false
     blocks = @room.blocks.reservations
     @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
     blocks += @meeting.blocks.where(:room_id => @room.id) if @meeting

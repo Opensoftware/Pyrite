@@ -54,6 +54,7 @@ class GroupsController < ApplicationController
 
   def timetables
     group_ids = params[:group_ids]
+    @reset_date = params[:reset_date] || false
     @event = AcademicYear::Event.where(:id => params[:event_id]).first
     # TODO think about what will be the best way of quering blocks with and
     # without event_id, for example without event_id we will query whole
@@ -67,6 +68,7 @@ class GroupsController < ApplicationController
 
   def timetables_for_meeting
     group_ids = params[:group_ids]
+    @reset_date = params[:reset_date] || false
     @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
     blocks = @meeting.blocks.joins(:groups).where("#{Group.table_name}.id in (?)", group_ids)
 

@@ -10,11 +10,13 @@ $(document).ready(function() {
   });
 
   $("#block_event_id").on("change", function() {
-    refresh_timetables();
+    reset_date = true;
+    refresh_timetables(reset_date);
   });
 
   $("#block_meeting_id").on("change", function() {
-    refresh_timetables();
+    reset_date = true;
+    refresh_timetables(reset_date);
   });
 
   $("#new-block-submit-button").on("click", function() {
@@ -48,9 +50,9 @@ function sendRequestToCreateNewBlock() {
   });
 }
 
-function prepareRoomParams() {
+function prepareRoomParams(reset_date) {
   var room_id_value = $("#block_room_id").val();
-  var basic_params = prepareParams();
+  var basic_params = prepareParams(reset_date);
   var room_params = {id: room_id_value};
   var params = $.extend({}, basic_params, room_params);
   if(room_id_value.length > 0) {
@@ -60,9 +62,9 @@ function prepareRoomParams() {
   }
 }
 
-function prepareGroupsParams() {
+function prepareGroupsParams(reset_date) {
   var group_ids_value = $("#block_group_ids").val();
-  var basic_params = prepareParams();
+  var basic_params = prepareParams(reset_date);
   var group_params = {group_ids: group_ids_value };
   var params = $.extend({}, basic_params, group_params);
   if(group_ids_value != null) {
@@ -72,34 +74,37 @@ function prepareGroupsParams() {
   }
 }
 
-function prepareParams() {
+function prepareParams(reset_date) {
   var event_id = $("#block_event_id").val();
   var params = {};
+  if ( reset_date == true ){
+    params = $.extend( params, { reset_date: true });
+  }
   if ( event_id != undefined ) {
-    params = {event_id: event_id };
+    params = $.extend( params, { event_id: event_id });
   }
   var meeting_id = $("#block_meeting_id").val();
   if ( meeting_id != undefined ) {
-    params = {meeting_id: meeting_id };
+    params = $.extend( params, { meeting_id: meeting_id });
   }
   return params;
 }
 
-function refresh_room_if_value_exists() {
-  var params = prepareRoomParams();
+function refresh_room_if_value_exists(reset_date) {
+  var params = prepareRoomParams(reset_date);
   if ( params != null ) {
     refresh_room_timetable(params);
   }
 }
 
-function refresh_groups_if_value_exists() {
-  var params = prepareGroupsParams();
+function refresh_groups_if_value_exists(reset_date) {
+  var params = prepareGroupsParams(reset_date);
   if ( params != null ) {
     refresh_groups_timetable(params);
   }
 }
 
-function refresh_timetables() {
-  refresh_room_if_value_exists();
-  refresh_groups_if_value_exists();
+function refresh_timetables(reset_date) {
+  refresh_room_if_value_exists(reset_date);
+  refresh_groups_if_value_exists(reset_date);
 }

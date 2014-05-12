@@ -1,9 +1,11 @@
 var groups_timetable = $("#groups-timetable");
-try {
-  current_date = groups_timetable.fullCalendar('getDate');
-} catch (error) {
-  /* fullCalendar was not initialized yet */
-}
+<% unless @reset_date %>
+  try {
+    current_date = groups_timetable.fullCalendar('getDate');
+  } catch (error) {
+    /* fullCalendar was not initialized yet */
+  }
+<% end %>
 
 groups_timetable.html('');
 var options = {
@@ -16,6 +18,8 @@ var options = {
 }
 
 groups_timetable.fullCalendar_with_defaults(options);
-if ( current_date instanceof Date ) {
-  groups_timetable.fullCalendar('gotoDate', current_date);
-}
+<% unless @reset_date %>
+  if ( current_date instanceof Date ) {
+    groups_timetable.fullCalendar('gotoDate', current_date);
+  }
+<% end %>
