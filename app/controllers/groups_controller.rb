@@ -72,7 +72,9 @@ class GroupsController < ApplicationController
 
     @events = convert_blocks_to_events(blocks)
     @current_date = @meeting.start_date.strftime("%F")
-    respond_with @events
+    respond_with @events do |format|
+      format.js { render :timetables }
+    end
   end
 
   def print_all
