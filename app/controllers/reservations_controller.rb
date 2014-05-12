@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:show]
   before_filter :check_settings, :except => [:show]
 
-  respond_to :js, :only => [:update]
+  respond_to :js, :only => [:update, :create]
 
   def show
     @room = Room.find(params[:room_id])
@@ -21,17 +21,17 @@ class ReservationsController < ApplicationController
 
     if @block.save_reservation
       flash[:notice] = t("notice_block_has_been_created")
-      redirect_to new_reservation_path
+      respond_with(@block, :status => :ok)
     else
-      render :new
+      respond_with(@block, :status => :unprocessable_entity)
     end
   end
 
   private
 
     def form_params
-      params.required(:block).permit(:start_time, :day, :day_with_date,
-        :lecturer_id, :comments, :end_time, :event_id, :room_id, :name)
+      params.required(:block).permit(:start_time, :day_with_date,
+        :lecturer_id, :comments, :end_time, :type_id, :room_id, :name)
     end
 
     def check_settings

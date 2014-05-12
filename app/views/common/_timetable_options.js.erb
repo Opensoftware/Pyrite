@@ -8,6 +8,35 @@ weekends: <%= !current_user.preferences[:without_weekends] %>,
 dayNamesShort: <%= raw fc_days %>,
 events: <%= raw @events.to_json %>,
 editable: true,
+selectable: true,
+selectHelper: true,
+select: function(start, end, allDay) {
+  /* when we will start using fullCalendar 2 this will not be needed as it will be by default moment format */
+  start_date = moment(start);
+  end_date = moment(end);
+  modal = $('#modal-new-block');
+  modalBody = $('#modal-new-block .modal-body');
+  modal.on("hide.bs.modal", function(e){
+    hideDatepicker();
+  });
+  modalBody.html("<%= escape_javascript(render :partial => "common/new_block_form") %>");
+  start_time = start_date.format("HH:mm");
+  end_time = end_date.format("HH:mm");
+  day = start_date.format("D-M-YYYY");
+  $("#block_day_with_date").val(day);
+  $("#block_start_time").val(start_time);
+  $("#block_end_time").val(end_time);
+  var groups_label = [] ;
+  var room_label = [];
+  $("#block_group_ids option:selected").each(function() {
+    groups_label.push($(this).text());
+  })
+  room_label.push($("#block_room_id option:selected").text());
+  $("#groups_label_container").append(groups_label.toString());
+  $("#room_label_container").append(room_label);
+  modal.modal();
+  reloadDatepicker();
+},
 eventClick: function(event) {
   if (event.delete_url) {
     $("#delete-block-button").prop("href", event.delete_url);

@@ -1,6 +1,6 @@
 class BlocksController < ApplicationController
 
-  respond_to :js, :only => [:update, :destroy, :move, :resize]
+  respond_to :js, :only => [:update, :destroy, :move, :resize, :create, :create_part_time]
   before_filter :check_settings
 
   def new
@@ -10,9 +10,7 @@ class BlocksController < ApplicationController
   def new_part_time
     @block = Block.new
     @meetings = AcademicYear::Meeting.for_editing
-    if @meetings.first
-      @days = @meetings.first.available_days
-    else
+    unless @meetings.first
       flash[:notice] = t("notice_missing_academic_year_meeting",
         :url => view_context.link_to(t("link_in_flash_academic_year_edit"),
         edit_academic_year_path(AcademicYear.for_editing))).html_safe
@@ -27,34 +25,34 @@ class BlocksController < ApplicationController
 
   def update
     @block = Block.find(params[:id])
-    @block.update_attributes(form_params_update)
-    flash[:notice] = t("notice_block_has_been_updated")
-    respond_with(@block)
+    if @block.update_attributes(form_params_update)
+      flash[:notice] = t("notice_block_has_been_updated")
+      respond_with(@block)
+    else
+      respond_with(@block, :status => :unprocessable_entity)
+    end
   end
 
   def create
     @block = Block.new(form_params)
-
     if @block.save
       flash[:notice] = t("notice_block_has_been_created")
-      redirect_to new_block_path
+      respond_with(@block, :status => :ok)
     else
-      render :new
+      respond_with(@block, :status => :unprocessable_entity)
     end
   end
 
   def create_part_time
     @block = Block.new(form_part_time_params)
     @meetings = AcademicYear::Meeting.for_editing
-    @days = @meetings.first.available_days
 
     if @block.save
       flash[:notice] = t("notice_block_has_been_created")
-      redirect_to new_part_time_block_path
+      respond_with(@block, :status => :ok)
     else
-      render :new_part_time
+      respond_with(@block, :status => :unprocessable_entity)
     end
-
   end
 
   def destroy
@@ -67,22 +65,28 @@ class BlocksController < ApplicationController
     @block = Block.find(params[:id])
     day_delta = params[:day_delta]
     minute_delta = params[:minute_delta]
-    @block.move_to(day_delta.to_i, minute_delta.to_i)
-    render nothing: true
+    if @block.move_to(day_delta.to_i, minute_delta.to_i)
+      respond_with(@block, :status => :ok)
+    else
+      respond_with(@block, :status => :unprocessable_entity)
+    end
   end
 
   def resize
     @block = Block.find(params[:id])
     day_delta = params[:day_delta]
     minute_delta = params[:minute_delta]
-    @block.resize(day_delta.to_i, minute_delta.to_i)
-    render nothing: true
+    if @block.resize(day_delta.to_i, minute_delta.to_i)
+      respond_with(@block, :status => :ok)
+    else
+      respond_with(@block, :status => :unprocessable_entity)
+    end
   end
 
   private
 
     def form_params
-      params.required(:block).permit(:start_time, :day, :type_id, { :group_ids => [] },
+      params.required(:block).permit(:start_time, :day_with_date, :type_id, { :group_ids => [] },
         :lecturer_id, :comments, :end_time, :event_id, :room_id, :name)
     end
 

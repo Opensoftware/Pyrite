@@ -42,7 +42,7 @@ pl:
   error_day_not_present: jest puste
   error_overlapped_block: "Kolizja bloków, blok koliduje z blokiem %{block}"
   error_room_block_collision: "sali %{room}"
-  error_lecturer_block_collision: "prowadzącego %{lecturer}"
+  error_lecturer_block_collision: "prowadzącego %{lecturer}, sala: %{room}, grupy: %{groups}"
   error_groups_block_collision: "grupy %{groups}"
   error_missing_coordinates: "Brak lokalizacji, proszę wybrać lokalizację budynku na mapie."
   error_invalid_data: Błędne dane.
@@ -140,6 +140,10 @@ pl:
   header_edit_building: Edycja budynku
   header_prints: Drukuj plany
 
+  header:
+    block:
+      new: Nowy blok zajęć
+
   label_building_address: Adres
   label_without_weekend: Bez weekendów
   label_error: Błąd
@@ -219,6 +223,7 @@ pl:
   placeholder_block_end_date: Dzień zakończenia
   placeholder_lecturer: Prowadzący
   placeholder_day: Dzień
+  placeholder_click_to_choose: Kliknij aby wybrać
 
   prompt_room: Sala
   prompt_day: Wybierz dzień

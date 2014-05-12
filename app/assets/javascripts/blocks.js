@@ -46,4 +46,13 @@ $(document).ready(function() {
   $("body").on("shown.bs.modal", ".modal", function() {
     bindChosen();
   });
+
+  /* Edit Block */
+  $("#edit-block-submit-button").on("click", function() {
+    $("#modal-edit-block form").on('ajax:success', function() {
+      $("#modal-edit-block").modal("hide");
+    })
+    $("#modal-edit-block form").submit();
+    return false;
+  });
 });

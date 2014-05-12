@@ -1,6 +1,6 @@
 <%= content_for(:additional_javascript_libraries) do %>
   <%= javascript_include_tag "blocks" %>
-  <%= javascript_include_tag "blocks/new_part_time" %>
+  <%= javascript_include_tag "blocks/new" %>
 <% end %>
 
 <%= content_for(:additional_stylesheets) do %>
@@ -13,92 +13,35 @@
   <%= form_for @block, { :url => part_time_block_path, :id => "new-block-form" } do |f| %>
     <%= error_msgs_for @block %>
     <div class="row">
-      <div class="form-group col-md-2">
+      <div class="form-group" id="academic-year-event-select">
+        <label> <%= t("label_academic_year_event") %> </label>
+        <div>
+           <%= f.collection_select :meeting_id,
+               @meetings, :id, :name, {}, {:tabindex => 5} %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group" id="groups-select">
         <label> <%= t("label_groups") %> </label>
         <div>
           <%= f.collection_select :group_ids, Group.all, :id, :name,
                                   {:selected => @block.group_ids},
                                   {:multiple => true, "data-timetable-url" => groups_for_meeting_timetable_path,
-                                   :tabindex => 1 }%>
+                                   :tabindex => 1, :class => "chosen-select",
+                                   "data-placeholder" => t("placeholder_click_to_choose")}%>
         </div>
       </div>
-      <div class="col-md-10">
-        <div class="row">
-          <div class="form-group col-md-3">
-            <label> <%= t("label_block_start_time") %> </label>
-            <div>
-              <%= f.text_field :start_time, :class => "timepicker", :autocomplete => :off,
-                :placeholder => t("placeholder_block_start_time"), :tabindex => 2 %>
-            </div>
-          </div>
-          <div class="form-group col-md-2">
-            <label> <%= t("label_day") %> </label>
-            <div>
-              <%= f.select :day_with_date, options_for_select(days_select_options(@days), @block.day_with_date), {} ,
-                {:tabindex => 4, "data-refresh" => fetch_days_for_meeting_path} %>
-            </div>
-          </div>
-          <div class="form-group col-md-2">
-            <label> <%= t("label_lecturer") %> </label>
-            <div>
-              <%= f.collection_select :lecturer_id, Lecturer.all, :id,
-                :name_with_title, { :include_blank => true },
-                { "data-placeholder" => t("prompt_lecturer"), :class => "chosen-select", :tabindex => 6 } %>
-            </div>
-          </div>
-          <div class="form-group col-md-2">
-            <label> <%= t("label_room") %> </label>
-            <div>
-              <%= f.collection_select :room_id, Room.all, :id, :name_with_building,
-                                      {:prompt => t("prompt_room") },
-                                      {"data-timetable-url" => rooms_for_meeting_timetable_path, :tabindex => 8} %>
-            </div>
-          </div>
-          <div class="form-group col-md-3">
-            <label> <%= t("label_comments") %> </label>
-            <div>
-              <td> <%= f.text_field :comments, :tabindex => 10 %> </td>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-3">
-            <label> <%= t("label_block_end_time") %> </label>
-            <div>
-              <%= f.text_field :end_time, :class => "timepicker", :autocomplete => :off,
-                :placeholder => t("placeholder_block_end_time"), :tabindex => 3 %>
-
-            </div>
-          </div>
-          <div class="form-group col-md-2">
-            <label> <%= t("label_academic_year_event") %> </label>
-            <div>
-              <%= f.collection_select :meeting_id,
-                @meetings, :id, :name, {}, {:tabindex => 5} %>
-            </div>
-          </div>
-          <div class="form-group col-md-2">
-            <label> <%= t("label_block_type") %> </label>
-            <div>
-              <%= f.collection_select :type_id, Block::Variant.all, :id, :name, {}, {:tabindex => 7} %>
-            </div>
-          </div>
-          <div class="form-group col-md-5">
-            <label> <%= t("label_block_name") %> </label>
-            <div>
-              <%= f.text_field :name, :tabindex => 9 %>
-            </div>
-          </div>
+      <div class="form-group" id="room-select">
+        <label> <%= t("label_room") %> </label>
+        <div>
+          <%= f.collection_select :room_id, Room.all, :id, :name_with_building, {},
+                                  {"data-timetable-url" => rooms_for_meeting_timetable_path, :tabindex => 8,
+                                   :class => "chosen-select"} %>
         </div>
       </div>
-    </div>
-    <div class="action">
-      <%= f.submit t("button_save"), :class => "submit-btn", :tabindex => 11 %>
     </div>
   <% end %>
-
-<br>
-<br>
 
 <div id="groups-timetable-container">
   <div id="groups-timetable"> </div>
@@ -108,3 +51,4 @@
 </div>
 
 <%= render :partial => "common/modal_edit_block" %>
+<%= render :partial => "common/modal_new_block" %>

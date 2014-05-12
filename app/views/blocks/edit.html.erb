@@ -1,11 +1,11 @@
 <%= form_for @block, :remote => true do |f| %>
-  <%= error_msgs_for @block %>
+  <div class="errors"> </div>
   <div class="form-group">
     <label> <%= t "label_groups" %></label>
     <div>
       <%= f.collection_select :group_ids, Group.all, :id, :name,
                               {:selected => @block.group_ids},
-                              {:multiple => true, "data-timetable-url" => groups_timetable_path} %>
+                              {:multiple => true} %>
     </div>
   </div>
   <div class="form-group">
@@ -20,8 +20,7 @@
     <label> <%= t "label_room" %></label>
     <div>
       <%= f.collection_select :room_id, Room.all, :id, :name_with_building,
-                              {:prompt => t("prompt_room") },
-                              {"data-timetable-url" => rooms_timetable_path} %>
+                              {:prompt => t("prompt_room") } %>
     </div>
   </div>
   <div class="form-group">

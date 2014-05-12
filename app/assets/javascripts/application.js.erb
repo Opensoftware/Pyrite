@@ -56,6 +56,10 @@ function reloadDatepicker() {
   $(".timepicker").datetimepicker({ format: "hh:ii", minuteStep: 15, autoclose: true, startView: 1, language: 'pl', formatViewType: "time", showMeridian: true });
 }
 
+function hideDatepicker() {
+  $(".datepicker, .timepicker").datetimepicker("hide");
+}
+
 // Defaults for fullcalendar
 // TODO: make it configurable from the panel
 var fc_defaults = {

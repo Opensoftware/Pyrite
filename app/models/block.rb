@@ -18,12 +18,13 @@ class Block < ActiveRecord::Base
   before_create :populate_dates, :if => Proc.new { |block| block.meeting_id.present? }
 
   scope :for_groups, ->(group_ids) { joins(:blocks_groups).where("#{BlocksGroup.table_name}.group_id" => group_ids) }
-  scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : self.scoped }
+  scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : where(nil) }
   scope :reservations, -> { where(:reservation => true).where(:event_id => nil) }
   scope :overlapped, ->(start_date, end_date) {
     joins(:dates).where("block_dates.start_date < ? AND
                          block_dates.end_date > ?", end_date , start_date)
   }
+  scope :except, ->(block) { where.not(id: block) }
 
   validates :start_time, :end_time, :presence => true, :on => :create
   validates :name, :room, :presence => true
@@ -40,6 +41,7 @@ class Block < ActiveRecord::Base
       dates.build(:start_date => block_start_date, :end_date => block_end_date)
     rescue => e
       # TODO logger
+      puts e
       return false
     end
   end
@@ -47,7 +49,8 @@ class Block < ActiveRecord::Base
   def populate_dates_for_event
     begin
       prepare_hours
-      date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select {|date| day.to_i == date.wday }
+      day = Time.zone.parse(day_with_date).wday
+      date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select {|date| day == date.wday }
       date_range.each do |date|
         block_start_date = Time::mktime(date.year, date.month, date.day, @start_hour, @start_min)
         block_end_date = Time::mktime(date.year, date.month, date.day, @end_hour, @end_min)
@@ -80,20 +83,28 @@ class Block < ActiveRecord::Base
   def move_to(day_delta, minute_delta)
     # convert days to minutes and create one minute delta
     delta = (minute_delta + day_delta * 1440).minutes
+    # set start_time, end_time and day_with_date for check collisions purpose
+    self.start_time = (dates.first.start_date + delta).strftime("%H:%M")
+    self.end_time = (dates.first.end_date + delta).strftime("%H:%M")
+    self.day_with_date = (dates.first.start_date + delta).strftime("%d-%m-%Y")
     dates.each do |date|
       date.start_date += delta
       date.end_date += delta
     end
-    save
+    save if check_collisions
   end
 
   def resize(day_delta, minute_delta)
     # convert days to minutes and create one minute delta
     delta = (minute_delta + day_delta * 1440).minutes
+    # set start_time, end_time and day_with_date for check collisions purpose
+    self.start_time = dates.first.start_date.strftime("%H:%M")
+    self.end_time = (dates.first.end_date + delta).strftime("%H:%M")
+    self.day_with_date = dates.first.start_date.strftime("%d-%m-%Y")
     dates.each do |date|
       date.end_date += delta
     end
-    save
+    save if check_collisions
   end
 
   private
@@ -115,7 +126,7 @@ class Block < ActiveRecord::Base
     end
 
     def validate_day
-      if day.blank? and day_with_date.blank?
+      if day_with_date.blank?
         errors.add(:day, I18n.t("error_day_not_present"))
       end
     end
@@ -130,9 +141,11 @@ class Block < ActiveRecord::Base
           block_end_date = block_date.advance(:hours => @end_hour, :minutes => @end_min)
           check_blocks_collisions(block_start_date, block_end_date)
         else
-          date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select { |date|
-            day.to_i == date.wday
-          }
+          event_or_meeting = event || meeting
+          day = Time.zone.parse(day_with_date).wday
+          start_date = event_or_meeting.start_date.to_datetime
+          end_date = event_or_meeting.end_date.to_datetime
+          date_range = (start_date..end_date).select { |date| day == date.wday }
           date_range.each do |date|
             block_start_date = Time::mktime(date.year, date.month, date.day,
                                             @start_hour, @start_min)
@@ -145,36 +158,43 @@ class Block < ActiveRecord::Base
         # TODO logger
         puts e
         errors.add(:base, I18n.t("error_internal_error"))
+        return false
       end
 
     end
 
-
     def check_blocks_collisions(block_start_date, block_end_date)
       room_blocks = Block
         .where(:room_id => room_id)
+        .except(self)
         .overlapped(block_start_date, block_end_date).count
       if lecturer_id.blank?
-        lecturer_blocks = 0
+        lecturer_blocks = []
       else
         lecturer_blocks = Block
           .where(:lecturer_id => lecturer_id)
-          .overlapped(block_start_date, block_end_date).count
+          .except(self)
+          .overlapped(block_start_date, block_end_date)
       end
       group_blocks = Block
         .for_groups(group_ids)
+        .except(self)
         .overlapped(block_start_date, block_end_date).count
 
       if room_blocks > 0
         error = I18n.t("error_room_block_collision", :room => room.name)
-      elsif lecturer_blocks > 0
-        error = I18n.t("error_lecturer_block_collision", :lecturer => lecturer_name)
+      elsif lecturer_blocks.count > 0
+        room = lecturer_blocks.first.room.name
+        groups = lecturer_blocks.first.groups_names
+        error = I18n.t("error_lecturer_block_collision", :lecturer => lecturer_name, :room => room, :groups => groups )
       elsif group_blocks > 0
         error = I18n.t("error_groups_block_collision", :groups => groups_names)
       end
       if error
         errors.add(:base, I18n.t("error_overlapped_block", block: error))
         return false
+      else
+        return true
       end
     end
 

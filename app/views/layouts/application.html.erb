@@ -39,18 +39,9 @@
 
     <div id="main">
       <div class="container">
-        <% if flash[:error] %>
-          <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <%= flash[:error] %>
-          </div>
-        <% end %>
-        <% if flash[:notice] %>
-          <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <%= flash[:notice] %>
-          </div>
-        <% end %>
+        <div id="notification-bar">
+          <%= render :partial => "common/flash_template" %>
+        </div>
 
         <%= yield  %>
       </div>

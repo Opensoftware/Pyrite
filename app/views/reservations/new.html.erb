@@ -1,78 +1,27 @@
 <%= content_for(:additional_javascript_libraries) do %>
   <%= javascript_include_tag "blocks" %>
-  <%= javascript_include_tag "reservations" %>
+  <%= javascript_include_tag "blocks/new" %>
+<% end %>
+
+<%= content_for(:additional_stylesheets) do %>
+  <%= stylesheet_link_tag "blocks" %>
 <% end %>
 
 <h2> <%= t("header_room_reservation") %> </h2>
 <br>
 <br>
-<%= form_for @block, :url => reservations_path, :html => { :id => "reservation-form" } do |f| %>
+<%= form_for @block, :url => reservations_path do |f| %>
   <%= error_msgs_for @block %>
-  <div class="row">
-    <div class="form-group col-md-3">
-      <label> <%= t("label_block_start_time") %> </label>
-      <div>
-        <%= f.text_field :start_time, :class => "timepicker",
-          :autocomplete => :off, :placeholder => t("placeholder_block_start_time") %>
-      </div>
-    </div>
-    <div class="form-group col-md-3">
-      <label> <%= t("label_day") %> </label>
-      <div>
-         <%= f.select :day, options_for_select(days_for_select), :prompt => t("prompt_day") %>
-         <%= f.text_field :day_with_date, :class => "datepicker", :autocomplete => :off,
-               :placeholder => t("placeholder_day") %>
-      </div>
-    </div>
-    <div class="form-group col-md-3">
-      <label> <%= t("label_lecturer") %> </label>
-      <div>
-        <%= f.collection_select :lecturer_id, Lecturer.all, :id,
-          :name_with_title, { :include_blank => true },
-          { "data-placeholder" => t("prompt_lecturer"), :class => "chosen-select" } %>
-      </div>
-    </div>
-    <div class="form-group col-md-3">
-      <label> <%= t("label_comments") %> </label>
-      <div>
-        <%= f.text_field :comments %>
-      </div>
-    </div>
 
-  </div>
   <div class="row">
-    <div class="form-group col-md-3">
-      <label> <%= t("label_block_end_time") %> </label>
-      <div>
-        <%= f.text_field :end_time, :class => "timepicker", :autocomplete => :off,
-          :placeholder => t("placeholder_block_end_time") %>
-      </div>
-    </div>
-    <div class="form-group col-md-3">
-      <label> <%= t("label_academic_year_event") %> </label>
-      <div>
-        <%= f.collection_select :event_id, AcademicYear.for_viewing.events,
-             :id, :name, :include_blank => t("include_blank_academic_event") %>
-      </div>
-    </div>
-    <div class="form-group col-md-3">
+    <div class="form-group" id="reservation-room-select">
       <label> <%= t("label_room") %> </label>
       <div>
-        <%= f.collection_select :room_id, Room.all, :id, :name_with_building,
-                                {:prompt => t("prompt_room") },
-                                {"data-timetable-url" => rooms_timetable_path} %>
+        <%= f.collection_select :room_id, Room.all, :id, :name_with_building, {},
+                                {"data-timetable-url" => rooms_timetable_path, :tabindex => 8,
+                                 :class => "chosen-select"} %>
       </div>
     </div>
-    <div class="form-group col-md-3">
-      <label> <%= t("label_block_name") %> </label>
-      <div>
-        <%= f.text_field :name %>
-      </div>
-    </div>
-
-  </div>
-  <div class="action">
-    <%= f.submit t("button_save"), :class => "submit-btn" %>
   </div>
   <% end %>
 
@@ -80,3 +29,4 @@
 
 <div id="room-timetable"></div>
 <%= render :partial => "common/modal_edit_block" %>
+<%= render :partial => "common/modal_new_block" %>
