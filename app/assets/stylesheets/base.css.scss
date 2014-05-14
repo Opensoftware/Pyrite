@@ -515,3 +515,39 @@ a.button-small {
   height: 100px;
 }
 
+.nav-system-panel {
+  @extend .panel;
+  @extend .panel-primary;
+  border-color: $dark_blue;
+}
+
+.nav-system-panel ul {
+  @extend .nav-pills;
+  @extend .nav;
+  @extend .nav-stacked;
+}
+
+.nav-system-panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  color: white;
+  background-color: $dark_blue;
+  border-color: $dark_blue;
+}
+
+.nav-system-panel h3 {
+  @extend .panel-title;
+}
+
+.nav-system-panel a:link {
+  border: none;
+}
+.content-body {
+  @extend .row;
+}
+
+.content-body > div {
+  @extend .col-md-18;
+}

@@ -1,3 +1,9 @@
 //= depend_on_asset "pyrite_small.png"
 
 .navbar > .container .navbar-brand { background: image-url("pyrite_small.png") left bottom no-repeat; width: 160px; position: relative; bottom: -3px; margin-bottom: 3px; }
+
+.nav-system-panel {
+  width: 30%;
+  float: left;
+  margin: 10px;
+}
