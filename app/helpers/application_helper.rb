@@ -33,7 +33,7 @@ module ApplicationHelper
   # right now we have only with/without weekends
   # days_array always need to be Sunday = 0, 0..6
   def user_preferences_for_days(days_array)
-    if current_user.preferences[:without_weekends]
+    if current_user && current_user.preferences[:without_weekends]
       # remove Sunday = 0 and Saturday = 6
       days_array.slice(1..-2)
     else
