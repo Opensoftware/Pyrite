@@ -1,65 +1,96 @@
 <!DOCTYPE html>
-<html lang="pl">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" land="pl"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <%= t("title_app_name") %> <%= @unit_name = Settings.unit_name %> </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application' %>
     <%= yield :additional_stylesheets %>
   </head>
   <body>
-    <div id="header">
-      <div id="header-content">
-        <div id="header-logo"> </div>
-        <div id="header-title">
-          <p> <b> <%= @unit_name %> </b> <br> System planów zajęć. </p>
-          <p> <%= t(:label_schedule_for) %> <%= Settings.current_plan_name %> </p>
-        </div>
-        <div class="clearfix"> </div>
-      </div>
-      <div id="menu_container">
-        <ul id="menu">
-          <% if user_signed_in? %>
-            <li> <%= link_to t("link_siatka"), dashboard_index_path %> </li>
-            <li> <%= link_to t("link_sign_out", :email => current_user.email), destroy_user_session_path, :method => :delete %> </li>
-          <% else %>
-            <li> <%= link_to t("link_home"), root_path %> </li>
-            <li> <%= link_to t("link_sign_in"), new_user_session_path %> </li>
-          <% end %>
-          <li> <%= link_to t("link_howto"), howto_path %> </li>
-          <li> <%= link_to t("link_contact"), contact_path %> </li>
-        </ul>
-      </div>
-      <div style="clear:both;"></div>
-    </div>
+    <!--[if lt IE 9]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-    <hr style="background-color: green;color: green;height: 4px;"/>
-
-    <div id="main">
+    <nav class="navbar" role="navigation">
       <div class="container">
-        <div id="notification-bar">
+        <div class="navbar-header">
+          <%= link_to '', user_signed_in? ? main_app.dashboard_index_path : root_path,
+                        :class => "navbar-brand" %>
+        </div>
+        <div class="navbar-nav navbar-right">
+          <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+              <li> <%= link_to t("link_dashboard"), dashboard_index_path %> </li>
+              <li> <%= link_to t("link_sign_out", :email => current_user.email),
+                               destroy_user_session_path, :method => :delete %>
+              </li>
+            <% else %>
+              <li> <%= link_to t("link_home"), root_path %> </li>
+              <li> <%= link_to t("link_sign_in"), new_user_session_path %> </li>
+            <% end %>
+            <li> <%= link_to t("link_howto"), howto_path %> </li>
+            <li> <%= link_to t("link_contact"), contact_path %> </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="container main_container">
+      <div class="breadcrumbs-box">
+        <div class="flash-messages" id="notification-bar">
           <%= render :partial => "common/flash_template" %>
         </div>
+      </div>
+      <div class="top-menu">
+        <div class="pull-right"> </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="content">
+        <% if content_for?(:content_heading) %>
+          <div class="content-heading">
+            <%= content_for(:content_heading) %>
+          </div>
+          <hr/>
+        <% end %>
 
-        <%= yield  %>
+        <div class="row content-body">
+          <div class="col-md-11">
+            <%= yield %>
+          </div>
+          <div class="col-md-5">
+            <% if content_for?(:right_column) %>
+              <div class="">
+                <%= content_for(:right_column) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <% if content_for?(:content_footnote) %>
+          <div class="content-footnote">
+            <hr />
+            <%= content_for(:content_footnote) %>
+          </div>
+        <% end %>
       </div>
+      <%= javascript_include_tag "application" %>
+      <%= yield :additional_javascript_libraries %>
+
+      <footer>
+        <p>OpenSoftware.pl 2014</p>
+      </footer>
     </div>
-    <br>
-    <footer id="footer_bg">
-      <div id="stopka">
-        <p><%= link_to "OpenSoftware", "http://www.opensoftware.pl/" %> <br/>Kraków 2012<br />
-        <font size="0.6">siatka wersja 1.0.0rc</font>
-        </p>
-      </div>
-    </footer>
     <% if Rails.env.test? %>
       <div id="test-badge"> </div>
     <% end %>
-
-    <%= javascript_include_tag "application" %>
-    <%= yield :additional_javascript_libraries %>
-
   </body>
 </html>

@@ -1,0 +1,29 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the top of the
+* compiled file, but it's generally better to create a new file per style scope.
+*
+*= require_self
+*= require busybox
+*= require fullcalendar/fullcalendar
+*= require fullcalendar_custom
+*= require bootstrap-datetimepicker
+*= depend_on_asset "test_badge.png"
+*= require base
+*= require pyrite
+*/
+
+#test-badge {
+  z-index: 9999!important;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  width: 150px;
+  height: 140px;
+  background-image: url( image-url("test_badge.png") );
+}
