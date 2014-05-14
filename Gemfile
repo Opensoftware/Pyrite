@@ -7,14 +7,13 @@ gem "cancan"
 gem 'airbrake'
 gem 'unicorn'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'therubyracer', :platforms => :ruby
-  gem 'uglifier', '>= 1.0.3'
-  gem "less-rails"
-  gem "non-stupid-digest-assets"
-end
+gem 'therubyracer', :platforms => :ruby
+gem 'uglifier'
+gem "less-rails"
+gem "non-stupid-digest-assets"
+gem "sass-rails"
+gem "bootstrap-sass"
+
 
 group :development do
   gem 'hirb'
