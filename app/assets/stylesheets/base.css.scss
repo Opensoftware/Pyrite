@@ -551,3 +551,27 @@ a.button-small {
 .content-body > div {
   @extend .col-md-18;
 }
+
+.timetable-forms {
+  @extend .form-group;
+}
+
+.timetable-forms > label {
+  @extend .control-label;
+  @include make-md-column-18(5);
+}
+
+.timetable-forms > div.input-data {
+  @include make-md-column-18(8);
+}
+
+.timetable-forms > div.action {
+  @include make-md-column-18(5);
+}
+
+#show-reservations-form,
+#show-room-timetable-form,
+#show-group-timetable-form,
+#show-lecturer-timetable-form {
+  @extend .form-horizontal;
+}
