@@ -77,16 +77,12 @@ var fc_defaults = {
   minTime: 6,
   maxTime: 22,
   slotMinutes: 15,
-  contentHeight: 1400
+  contentHeight: 1600
 }
 
 $.fn.fullCalendar_with_defaults = function(options) {
   var settings = $.extend({}, fc_defaults, options);
   this.fullCalendar(settings);
 };
-
-$('.modal').on('hidden', function() {
-  $(this).data('modal').$element.removeData();
-})
 
 bindChosen();
