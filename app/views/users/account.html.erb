@@ -1,14 +1,12 @@
 <h2> <%= t("header_user_account")%> </h2>
 
-<div id="user-account-container">
-  <%= form_tag update_user_account_path, { :method => :put } do %>
-      <div class="form-group">
-        <label class="checkbox">
-          <%= check_box_tag :without_weekends, true, @without_weekends %>
-          <%= t("label_without_weekend") %>
-        </label>
-      </div>
-    <%= submit_tag t("button_save"), :class => "btn" %>
+<%= form_tag update_user_account_path, { :method => :put } do %>
+  <div class="checkbox">
+    <label>
+      <%= check_box_tag :without_weekends, true, @without_weekends %>
+      <%= t("label_without_weekend") %>
+    </label>
+  </div>
+  <%= submit_tag t("button_save"), :class => "submit-btn" %>
 
-  <% end %>
-</div>
+<% end %>
