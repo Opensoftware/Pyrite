@@ -10,62 +10,46 @@
     <label for="settings_year_for_viewing">
       <%= t("label_plan_for_viewing") %>
     </label>
-    <div>
-      <%= select_tag(:year_for_viewing,
-            options_from_collection_for_select(AcademicYear.all, :id, :name,
-                     AcademicYear.for_viewing.try(:id)), {"data-update" => "#settings_event_id_for_viewing" } ) %>
-    </div>
+    <%= select_tag(:year_for_viewing,
+                   options_from_collection_for_select(AcademicYear.all, :id, :name,
+                   AcademicYear.for_viewing.try(:id)), {"data-update" => "#settings_event_id_for_viewing" } ) %>
   </div>
   <div class="form-group">
     <label> </label>
-    <div>
-      <%= f.collection_select(:event_id_for_viewing,
-                              AcademicYear.for_viewing.try(:events) || [], :id, :name) %>
-    </div>
+    <%= f.collection_select(:event_id_for_viewing,
+                            AcademicYear.for_viewing.try(:events) || [], :id, :name) %>
   </div>
   <div class="form-group">
     <label for="settings_year_for_editing">
       <%= t("label_plan_for_editing") %>
     </label>
-    <div>
-      <%= select_tag(:year_for_editing,
-            options_from_collection_for_select(AcademicYear.all, :id, :name,
-                     AcademicYear.for_editing.try(:id)), { "data-update" => "#settings_event_id_for_editing"}) %>
-    </div>
+    <%= select_tag(:year_for_editing,
+                   options_from_collection_for_select(AcademicYear.all, :id, :name,
+                   AcademicYear.for_editing.try(:id)), { "data-update" => "#settings_event_id_for_editing"}) %>
   </div>
   <div class="form-group">
     <label> </label>
-    <div>
-      <%= f.collection_select(:event_id_for_editing,
-                              AcademicYear.for_editing.try(:events) || [], :id, :name) %>
-    </div>
+    <%= f.collection_select(:event_id_for_editing,
+                            AcademicYear.for_editing.try(:events) || [], :id, :name) %>
   </div>
   <div class="form-group">
     <label for="settings_unit_name">
       <%= t("label_unit_name") %>
     </label>
-    <div>
-      <%= f.text_field :unit_name %>
-    </div>
+    <%= f.text_field :unit_name %>
   </div>
   <div class="form-group">
     <label for="settings_email_contact">
       <%= t("label_email_contact") %>
     </label>
-    <div>
-      <%= f.text_field :email_contact %>
-    </div>
+    <%= f.text_field :email_contact %>
   </div>
   <div class="form-group">
     <label for="settings_pdf_subtitle">
       <%= t("label_pdf_subtitle") %>
     </label>
-    <div>
-      <%= f.text_field :pdf_subtitle %>
-    </div>
+    <%= f.text_field :pdf_subtitle %>
   </div>
 
-  <div>
-    <%= f.submit t("button_save"), :class => "btn btn-default" %>
-  </div>
+  <%= f.submit t("button_save"), :class => "submit-btn" %>
 <% end %>
