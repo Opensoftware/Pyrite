@@ -1,6 +1,6 @@
 <h1> <%= t "header_listing_lecturers" %> </h1>
 
-<%= link_to t("button_new_lecturer"), new_lecturer_path, :class => "btn btn-primary pull-right" %>
+<%= link_to t("button_new_lecturer"), new_lecturer_path, :class => "submit-btn pull-right" %>
 <table class="table">
   <thead>
     <tr>
@@ -15,8 +15,8 @@
         <td> <%= lecturer.title %> </td>
         <td> <%= lecturer.full_name %> </td>
         <td>
-          <%= link_to t("button_edit"), edit_lecturer_path(lecturer), :class => "btn btn-info" %>
-          <%= link_to t("button_delete"), lecturer, method: :delete, data: { confirm: t("confirm_removing_lecturer") }, :class => "btn btn-danger" %>
+          <%= link_to t("button_edit"), edit_lecturer_path(lecturer), :class => "edit-btn" %>
+          <%= link_to t("button_delete"), lecturer, method: :delete, data: { confirm: t("confirm_removing_lecturer") }, :class => "destroy-btn" %>
         </td>
       </tr>
     <% end %>
