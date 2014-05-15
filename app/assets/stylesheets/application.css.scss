@@ -13,7 +13,9 @@
 *= require fullcalendar/fullcalendar
 *= require fullcalendar_custom
 *= require bootstrap-datetimepicker
+*= require chosen.bootstrap
 *= depend_on_asset "test_badge.png"
+*= depend_on_asset "chosen-sprite.png"
 *= require base
 *= require pyrite
 */

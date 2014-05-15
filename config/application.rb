@@ -41,7 +41,7 @@ module Pyrite
                                  "block/types.css", "spectrum.css", "theme/default/style.css",
                                  "theme/default/img/*", "theme/default/google.css",
                                  "theme/default/style.mobile.css", "theme/default/ie6-style.css",
-                                 "chosen/bootstrap/chosen-sprite.png"
+                                 "chosen-sprite.png"
    ]
   end
 end
