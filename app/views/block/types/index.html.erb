@@ -4,7 +4,7 @@
 
 <h2> <%=t "header_block_types" %></h2>
 
-<%= link_to t("button_new_block_type"), new_block_type_path, :class => "btn btn-primary pull-right" %>
+<%= link_to t("button_new_block_type"), new_block_type_path, :class => "submit-btn pull-right" %>
 
 <table class="table">
   <tr>
@@ -22,9 +22,9 @@
     <td><%= block_type.description %></td>
     <td><%= raw color_box(block_type.color) %></td>
     <td>
-      <%= link_to t("button_edit"), edit_block_type_path(block_type), :class => "btn btn-primary" %>
+      <%= link_to t("button_edit"), edit_block_type_path(block_type), :class => "edit-btn" %>
       <%= link_to t("button_delete"), block_type_path(block_type), method: :delete,
-        data: { confirm: t("confirm_to_remove_block_type") }, :class => "btn delete-button" %>
+        data: { confirm: t("confirm_to_remove_block_type") }, :class => "destroy-btn" %>
     </td>
   </tr>
 <% end %>

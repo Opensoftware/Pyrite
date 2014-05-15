@@ -13,10 +13,10 @@ pl:
         end_time: "Pole 'Godzina zakończenia'"
         name: "Pole 'Nazwa bloku'"
         room: "Pole 'Sala'"
-      block/type:
-          name: "Pole 'Nazwa'"
-          short_name: "Pole 'Skrót'"
-          color: "Pole 'Kolor'"
+      block/variant:
+        name: "Pole 'Nazwa'"
+        short_name: "Pole 'Skrót'"
+        color: "Pole 'Kolor'"
       building:
         name: "Pole 'Nazwa'"
         address: "Pole 'Adres'"
