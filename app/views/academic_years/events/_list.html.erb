@@ -17,10 +17,10 @@
         <td><%= event.lecture_free %></td>
         <td>
           <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, academic_year_event_path(event.academic_year, event),
-                      :method => :delete, :class => "btn btn-danger button-remove-academic-year-element",
+                      :method => :delete, :class => "destroy-btn button-remove-academic-year-element",
                       :data => { confirm: t("confirm_to_remove_academic_year_event") }, :remote => true %>
                     <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_academic_year_event_path(event.academic_year, event),
-                      :class => "btn btn-info academic-year-fetch-form", :remote => true, "data-refresh" => "true" %>
+                      :class => "edit-btn academic-year-fetch-form", :remote => true, "data-refresh" => "true" %>
         </td>
       </tr>
     <% end %>
@@ -28,5 +28,5 @@
 </table>
 
 <%= link_to t("button_new_academic_year_event"), new_academic_year_event_path(@academic_year),
-    :class => "btn btn-primary pull-right academic-year-fetch-form", :remote => true,
+    :class => "submit-btn pull-right academic-year-fetch-form", :remote => true,
     "data-modal-header" => t("academic_year.modal.header.add_new_event") %>

@@ -15,7 +15,7 @@
         <td><%= event.end_date.strftime("%F") %></td>
         <td>
           <%= link_to t("academic_year.button.add_meeting"), new_academic_years_event_meeting_path(event.id),
-              :class => "btn btn-primary pull-right academic-year-fetch-form",
+              :class => "submit-btn pull-right academic-year-fetch-form",
               :remote => true, "data-modal-header" => t("academic_year.modal.header.add_new_meeting") %>
         </td>
       </tr>
@@ -27,12 +27,12 @@
           <td>
             <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe,
                         academic_years_meeting_path(meeting.id),
-                        :method => :delete, :class => "btn btn-danger button-remove-academic-year-element",
+                        :method => :delete, :class => "destroy-btn button-remove-academic-year-element",
                         :data => { confirm: t("academic_year.confirm.remove_meeting") }, :remote => true,
                         "data-active-tab" => "#academic-year-tabs a:last" %>
             <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe,
                         edit_academic_years_meeting_path(meeting.id),
-                        :class => "btn btn-info academic-year-fetch-form", :remote => true %>
+                        :class => "edit-btn academic-year-fetch-form", :remote => true %>
           </td>
         </tr>
       <% end %>

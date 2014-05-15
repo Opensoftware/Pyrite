@@ -503,6 +503,10 @@ a.button-small {
   @extend .btn-primary;
 }
 
+.submit-btn {
+  color: #fff !important;
+}
+
 .cancel-btn, .back-btn {
   @extend .btn;
   @extend .btn-default;

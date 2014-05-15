@@ -25,11 +25,11 @@
       <div class="modal-errors"> </div>
       <div class="modal-body"> </div>
       <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true"> <%= t "button_close" %></button>
-        <button class="btn btn-primary" id="submit-academic-year-form"> <%= t "button_save" %> </button>
+        <button class="destroy-btn" data-dismiss="modal" aria-hidden="true"> <%= t "button_close" %></button>
+        <button class="submit-btn" id="submit-academic-year-form"> <%= t "button_save" %> </button>
       </div>
     </div>
   </div>
 </div>
-<%= link_to t("button_show"), @academic_year %>
-<%= link_to t("button_back"), academic_years_path %>
+<%= link_to t("button_back"), academic_years_path, :class => "back-btn" %>
+<%= link_to t("button_show"), @academic_year, :class => "show-btn" %>

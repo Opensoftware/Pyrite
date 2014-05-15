@@ -1,6 +1,6 @@
 <h1> <%= t "header_listing_academic_years" %> </h1>
 
-<%= link_to t("button_new_academic_year") , new_academic_year_path, :class => "btn btn-primary pull-right" %>
+<%= link_to t("button_new_academic_year") , new_academic_year_path, :class => "submit-btn pull-right" %>
 <table class="table">
   <thead>
     <tr>
@@ -17,9 +17,9 @@
         <td> <%= academic_year.start_date %> </td>
         <td> <%= academic_year.end_date %> </td>
         <td>
-          <%= link_to t("button_show"), academic_year, :class => "btn btn-primary" %>
-          <%= link_to t("button_edit"), edit_academic_year_path(academic_year), :class => "btn btn-success" %>
-          <%= link_to t("button_delete"), academic_year, method: :delete, data: { confirm: t("confirm_removing_academic_year") }, :class => "btn btn-danger" %>
+          <%= link_to t("button_show"), academic_year, :class => "show-btn" %>
+          <%= link_to t("button_edit"), edit_academic_year_path(academic_year), :class => "edit-btn" %>
+          <%= link_to t("button_delete"), academic_year, method: :delete, data: { confirm: t("confirm_removing_academic_year") }, :class => "destroy-btn" %>
         </td>
       </tr>
     <% end %>
