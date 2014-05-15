@@ -503,8 +503,14 @@ a.button-small {
   @extend .btn-primary;
 }
 
-.cancel-btn {
+.cancel-btn, .back-btn {
   @extend .btn;
+  @extend .btn-default;
+}
+
+.show-btn {
+  @extend .btn;
+  @extend .btn-default;
 }
 
 .destroy-btn {
@@ -513,6 +519,15 @@ a.button-small {
 }
 
 .destroy-btn {
+  color: #fff !important;
+}
+
+.edit-btn {
+  @extend .btn;
+  @extend .btn-info;
+}
+
+.edit-btn {
   color: #fff !important;
 }
 

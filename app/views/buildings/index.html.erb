@@ -1,6 +1,6 @@
 <h1> <%= t "header_listing_buildings" %> </h1>
 
-<%= link_to t("button_new_building") , new_building_path, :class => "btn btn-primary pull-right" %>
+<%= link_to t("button_new_building") , new_building_path, :class => "submit-btn pull-right" %>
 <table class="table">
   <thead>
     <tr>
@@ -16,9 +16,9 @@
         <td> <%= building.name %> </td>
         <td> <%= building.address %> </td>
         <td>
-          <%= link_to t("button_show_rooms"), building, :class => "btn" %>
-          <%= link_to t("button_edit"), edit_building_path(building), :class => "btn btn-info" %>
-          <%= link_to t("button_delete"), building, method: :delete, data: { confirm: t("confirm_to_remove_building") }, :class => "btn btn-danger" %>
+          <%= link_to t("button_show_rooms"), building, :class => "show-btn" %>
+          <%= link_to t("button_edit"), edit_building_path(building), :class => "edit-btn" %>
+          <%= link_to t("button_delete"), building, method: :delete, data: { confirm: t("confirm_to_remove_building") }, :class => "destroy-btn" %>
         </td>
       </tr>
     <% end %>
