@@ -32,7 +32,12 @@ select: function(start, end, allDay) {
     groups_label.push($(this).text());
   })
   room_label.push($("#block_room_id option:selected").text());
-  $("#groups_label_container").append(groups_label.toString());
+  /* if groups_label empty (reservations) then we remove groups label */
+  if ( groups_label.length > 0 ) {
+    $("#groups_label_container").append(groups_label.toString());
+  } else {
+    $("#groups_label_container").parent().find("label").remove();
+  }
   $("#room_label_container").append(room_label);
   modal.modal();
   reloadDatepicker();

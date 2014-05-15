@@ -500,7 +500,20 @@ a.button-small {
 
 .submit-btn {
   @extend .btn;
+  @extend .btn-primary;
+}
+
+.cancel-btn {
+  @extend .btn;
+}
+
+.destroy-btn {
+  @extend .btn;
   @extend .btn-danger;
+}
+
+.destroy-btn {
+  color: #fff !important;
 }
 
 .form-group select,
@@ -528,8 +541,8 @@ a.button-small {
   @include make-md-column-offset-18(4);
 }
 #reservation-room-select {
-  @include make-md-column-18(5);
-  @include make-md-column-offset(8);
+  @include make-md-column-18(6);
+  @include make-md-column-offset-18(6);
 }
 
 .nav-system-panel {
