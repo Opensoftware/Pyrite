@@ -12,3 +12,9 @@ $screen-md-min:              $screen-md;
         width: percentage(($columns / 18));
     }
 }
+
+@mixin make-md-column-offset-18($columns) {
+  @media (min-width: $screen-md-min) {
+    margin-left: percentage(($columns / 18));
+  }
+}

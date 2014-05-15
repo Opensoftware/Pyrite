@@ -1,21 +1,3 @@
-@import "bootstrap";
-
 #block_group_ids { height: 95px; }
 #room-timetable-container, #groups-timetable-container { float: left; width: 50%; min-height: 300px; margin: 0px; padding: 0px; border: 0px;}
 #groups-timetable, #room-timetable { width: 100%; margin: 0px; padding: 0px; border: 0px;}
-#academic-year-event-select {
-  @include make-md-column(4);
-  @include make-md-column-offset(4);
-}
-#groups-select {
-  @include make-md-column(4);
-  @include make-md-column-offset(1);
-}
-#room-select {
-  @include make-md-column(4);
-  @include make-md-column-offset(2);
-}
-#reservation-room-select {
-  @include make-md-column(2);
-  @include make-md-column-offset(4);
-}

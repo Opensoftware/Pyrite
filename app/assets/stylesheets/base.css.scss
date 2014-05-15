@@ -515,6 +515,23 @@ a.button-small {
   height: 100px;
 }
 
+#academic-year-event-select {
+  @include make-md-column-18(8);
+  @include make-md-column-offset-18(5);
+}
+#groups-select {
+  @include make-md-column-18(5);
+  @include make-md-column-offset-18(2);
+}
+#room-select {
+  @include make-md-column-18(5);
+  @include make-md-column-offset-18(4);
+}
+#reservation-room-select {
+  @include make-md-column-18(5);
+  @include make-md-column-offset(8);
+}
+
 .nav-system-panel {
   @extend .panel;
   @extend .panel-primary;
