@@ -1,1 +1,1 @@
-NonStupidDigestAssets.whitelist = [/theme.*/, /chosen.*/]
+NonStupidDigestAssets.whitelist = [/theme.*/, /chosen.*/, /fonts.*/]
