@@ -1,6 +1,6 @@
 <h1> <%= t "header_listing_groups" %> </h1>
 
-<%= link_to t("button_new_group"), new_group_path, :class => "btn btn-primary pull-right" %>
+<%= link_to t("button_new_group"), new_group_path, :class => "submit-btn pull-right" %>
 <table class="table">
   <thead>
     <tr>
@@ -13,8 +13,8 @@
       <tr>
         <td> <%= group.name %> </td>
         <td>
-          <%= link_to t("button_edit"), edit_group_path(group), :class => "btn btn-info" %>
-          <%= link_to t("button_delete"), group, method: :delete, data: { confirm: t("confirm_removing_group") }, :class => "btn btn-danger" %>
+          <%= link_to t("button_edit"), edit_group_path(group), :class => "edit-btn" %>
+          <%= link_to t("button_delete"), group, method: :delete, data: { confirm: t("confirm_removing_group") }, :class => "destroy-btn" %>
         </td>
       </tr>
     <% end %>

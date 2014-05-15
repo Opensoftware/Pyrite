@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to t("button_show"), @group %> |
-<%= link_to t("button_back"), groups_path %>
+<%= link_to t("button_back"), groups_path, :class => "back-btn" %>
+<%= link_to t("button_show"), @group, :class => "show-btn" %>
