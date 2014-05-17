@@ -13,7 +13,8 @@ gem "less-rails"
 gem "non-stupid-digest-assets"
 gem "sass-rails"
 gem "bootstrap-sass"
-
+gem 'simple-navigation'
+gem 'simple-navigation-bootstrap'
 
 group :development do
   gem 'hirb'
