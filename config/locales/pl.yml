@@ -1,6 +1,10 @@
 pl:
   pyrite:
     breadcrumbs:
+      reservation: Rezerwacje
+      room: Plan zajęć dla sali
+      group: Plan zajęć dla grupy
+      lecturer: Plan zajęć prowadzącego
       dashboard: Panel zarządzania
       home_page: Strona główna
       new_reservation: Rezerwacje
