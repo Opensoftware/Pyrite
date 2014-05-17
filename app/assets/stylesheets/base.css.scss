@@ -139,10 +139,10 @@ table {
     }
   }
 
-  .edit-btn:link, .save-btn:link, .add-btn:link {
+  .edit-btn:link, .save-btn:link, .add-btn:link, .print-btn:link {
     border-bottom: 2px solid $dark_blue;
   }
-  .edit-btn, .save-btn, .add-btn {
+  .edit-btn, .save-btn, .add-btn, .print-btn {
     @include btn-navy {
       color: #fff;
     }
