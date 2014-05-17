@@ -1,6 +1,7 @@
 //= depend_on_asset "pyrite_small.png"
 
-.navbar > .container .navbar-brand { background: image-url("pyrite_small.png") left bottom no-repeat; width: 160px; position: relative; bottom: -3px; margin-bottom: 3px; }
+.navbar > .container .navbar-brand { background: image-url("pyrite_small.png") left bottom no-repeat; width: 60px; position: relative; bottom: -3px; margin-bottom: 3px; }
+.navbar > .container .navbar-header > div { float: left; padding-top: 10px; }
 
 .nav-system-panel {
   width: 30%;

@@ -46,6 +46,8 @@ pl:
         name: Zarządzaj grupami
         new: Nowa
         edit: Edycja
+    title_system_name: Pyrit - Siatka zajęć
+
 
   time:
     formats:
@@ -276,9 +278,6 @@ pl:
   file_groups_timetable: "Plan zajęć dla wszytkich grup.pdf"
 
   include_blank_academic_event: Brak
-
-  title_app_name: Siatka zajęć
-  title_system_name: Pyrit - Siatka zajęć
 
   academic_year:
     tab:

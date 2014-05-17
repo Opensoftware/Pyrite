@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <%= t("title_app_name") %> <%= @unit_name = Settings.unit_name %> </title>
+    <title> <%= t("pyrite.title_system_name") %> <%= @unit_name = Settings.unit_name %> </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,6 +25,7 @@
         <div class="navbar-header">
           <%= link_to '', user_signed_in? ? main_app.dashboard_index_path : root_path,
                         :class => "navbar-brand" %>
+          <div> <%= t("pyrite.title_system_name") %> <br> <%= @unit_name %> </div>
         </div>
         <div class="navbar-nav navbar-right">
           <ul class="nav navbar-nav">

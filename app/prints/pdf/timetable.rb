@@ -48,7 +48,7 @@ class Pdf::Timetable < Prawn::Document
       bounding_box [bounds.left, bounds.top + 10], :width  => bounds.width do
         image "#{Rails.root}/app/assets/images/pyrite_large.png", :scale => 0.4
       end
-      text_box "#{I18n.t("title_system_name")}", :at => [ bounds.left + 45, bounds.top - 5]
+      text_box "#{I18n.t("pyrite.title_system_name")}", :at => [ bounds.left + 45, bounds.top - 5]
       font_size 8
       text_box "#{@subtitle}", :at => [ bounds.left + 45, bounds.top - 22]
       if title.present?
