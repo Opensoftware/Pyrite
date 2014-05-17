@@ -15,7 +15,7 @@
         <td><%= event.end_date.strftime("%F") %></td>
         <td>
           <%= link_to t("academic_year.button.add_meeting"), new_academic_years_event_meeting_path(event.id),
-              :class => "submit-btn pull-right academic-year-fetch-form",
+              :class => "add-btn pull-right academic-year-fetch-form",
               :remote => true, "data-modal-header" => t("academic_year.modal.header.add_new_meeting") %>
         </td>
       </tr>

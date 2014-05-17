@@ -12,6 +12,27 @@
 @import "custom_functions.css.scss";
 @import "bootstrap";
 
+
+/* Custom bootstrap mixins */
+
+@mixin btn-navy {
+  @extend .btn;
+  @extend .btn-primary;
+  @content;
+}
+
+@mixin btn-red {
+  @extend .btn;
+  @extend .btn-danger;
+  @content;
+}
+
+@mixin btn-white {
+  @extend .btn;
+  @extend .btn-default;
+  @content;
+}
+
 body {
   background-color: $background;
   p { font-size: 13px; }
@@ -92,6 +113,41 @@ table {
     &:link, &:hover, &:visited { color: $dark_blue; }
     &:hover { border-bottom: 1px solid $dark_blue; }
   }
+
+  .submit-btn:link, .destroy-btn:link {
+    border-bottom: 2px solid $red;
+  }
+  .submit-btn, .destroy-btn {
+    @include btn-red {
+      color: #fff;
+    }
+  }
+
+  .cancel-btn:link, .back-btn:link, .show-btn:link {
+    border: 1px solid $grey2;
+  }
+  .cancel-btn, .back-btn, .show-btn {
+    @include btn-white {
+      background: none;
+      border: 1px solid $grey2;
+      font-family: 'clear_sansregular';
+      padding: 0.5em 1em;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+      &:hover { border-color: $dark_blue; }
+    }
+  }
+
+  .edit-btn:link, .save-btn:link, .add-btn:link {
+    border-bottom: 2px solid $dark_blue;
+  }
+  .edit-btn, .save-btn, .add-btn {
+    @include btn-navy {
+      color: #fff;
+    }
+  }
+
 }
 
 .sep {
@@ -496,43 +552,6 @@ a.button-small {
   table > tbody > tr > td {
     padding: 15px 0;
   }
-}
-
-.submit-btn {
-  @extend .btn;
-  @extend .btn-primary;
-}
-
-.submit-btn {
-  color: #fff !important;
-}
-
-.cancel-btn, .back-btn {
-  @extend .btn;
-  @extend .btn-default;
-}
-
-.show-btn {
-  @extend .btn;
-  @extend .btn-default;
-}
-
-.destroy-btn {
-  @extend .btn;
-  @extend .btn-danger;
-}
-
-.destroy-btn {
-  color: #fff !important;
-}
-
-.edit-btn {
-  @extend .btn;
-  @extend .btn-info;
-}
-
-.edit-btn {
-  color: #fff !important;
 }
 
 .form-group select,

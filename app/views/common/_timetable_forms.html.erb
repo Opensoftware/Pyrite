@@ -10,7 +10,7 @@
                             :id => "reservations-timetable" ) %>
     </div>
     <div class="action">
-       <%= submit_tag t("button_show"), :class => "btn" %>
+       <%= submit_tag t("button_show"), :class => "show-btn" %>
     </div>
   </div>
 <% end %>
@@ -24,7 +24,7 @@
                               :id => "classrooms-timetable") %>
       </div>
     <div class="action">
-        <%= submit_tag t("button_show"), :class => "btn" %>
+        <%= submit_tag t("button_show"), :class => "show-btn" %>
       </div>
     </div>
   <% end %>
@@ -38,7 +38,7 @@
                                 :id => "lecturers-timetable") %>
       </div>
     <div class="action">
-      <%= submit_tag t("button_show"), :class => "btn" %>
+      <%= submit_tag t("button_show"), :class => "show-btn" %>
     </div>
   </div>
 <% end %>
@@ -51,7 +51,7 @@
         <%= select(:group, :id, @groups_with_url, {:prompt => t("prompt_group")}) %>
       </div>
       <div class="action">
-        <%= submit_tag t("button_show"), :class => "btn" %>
+        <%= submit_tag t("button_show"), :class => "show-btn" %>
       </div>
     </div>
   <% end %>
