@@ -1,5 +1,14 @@
 pl:
   pyrite:
+    pdf:
+      label:
+        timetable_for_room: "Sala %{name}"
+        timetable_for_group: "Grupa %{name}"
+        room: "Sala:"
+        hours: "Godz."
+        groups: "Grupy:"
+    label:
+      print_rooms: Sale na
     breadcrumbs:
       reservation: Rezerwacje
       room: Plan zajęć dla sali
@@ -240,12 +249,6 @@ pl:
   label_print_groups: "Grupy na:"
   label_pdf_subtitle: Podtytuł na wydrukach
   label_building_localization: Lokalizacja
-
-  pdf:
-    label:
-      timetable_for_group: "Grupa %{name}"
-      room: "Sala:"
-      hours: "Godz."
 
   confirm_removing_lecturer: Wszystkie bloki zajęć prowadzone przez prowadzącego zostaną usunięte. Jesteś pewny aby usunąć tego prowadzącego?
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?

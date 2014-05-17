@@ -1,7 +1,7 @@
-class Pdf::GroupTimetable < Pdf::Timetable
+class Pdf::RoomTimetable < Pdf::Timetable
 
-  def initialize(groups, event_id, available_days)
-    @collection = groups
+  def initialize(rooms, event_id, available_days)
+    @collection = rooms
     @event_id = event_id
     @available_days = swap_monday(available_days)
     super({})
@@ -24,14 +24,16 @@ class Pdf::GroupTimetable < Pdf::Timetable
           fill_color "#000000"
           stroke_bounds
           font_size 9
-          text_box block.name, :align => :center, :at => [0, bounds.top - 20]
+          text_box block.name, :at => [0, bounds.top - 25], :align => :center
           font_size 7
           start_hour = block.dates.first.start_date.strftime("%H:%M")
           end_hour = block.dates.first.end_date.strftime("%H:%M")
           font_size 5
           text_box "#{start_hour} - #{end_hour}", :at => [0, bounds.top - 3], :align => :center
+          text_box "#{block.type.name}", :at => [5, bounds.top - 20 ], :align => :center
           text_box block.lecturer_name, :at => [0, bounds.top - 10], :align => :center
-          text_box "#{block.type.short_name}, #{I18n.t("pyrite.pdf.label.room")} #{block.room.name}", :at => [5, bounds.bottom + 10]
+          font_size 4
+          text_box "#{block.groups_names}", :at => [5, bounds.bottom + 5], :align => :center
         end
       end
     end

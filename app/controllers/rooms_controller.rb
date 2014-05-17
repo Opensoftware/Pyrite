@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   include BlocksHelper
+  include ApplicationHelper
 
   skip_before_filter :authenticate_user!, :only => [:timetable]
   respond_to :js, :html, :only => [:timetable, :timetables, :timetables_for_meeting]
@@ -82,9 +83,41 @@ class RoomsController < ApplicationController
     end
   end
 
+  def print_all
+    rooms = Room.all
+
+    rooms_timetable = Pdf::RoomTimetable.new(rooms, params[:event_id], available_days)
+    data = rooms_timetable.to_pdf
+
+    send_data(data, :filename => t("pyrite.filename.rooms_timetable"),
+             :type => "application/pdf", :disposition => "inline")
+  end
+
+  def print
+    room = Room.find(params[:id])
+    event_id = params[:event_id]
+
+    data = Rails.cache.fetch(cache_key_for_room_timetable(room, event_id)) do
+      timetable = Pdf::RoomTimetable.new([room], event_id, available_days)
+      data = timetable.to_pdf
+      Rails.cache.write(cache_key_for_room_timetable(room, event_id), data)
+      data
+    end
+
+    send_data(data, :filename => "#{room.name}.pdf", :type => "application/pdf",
+              :disposition => "inline")
+  end
+
   private
 
     def form_params
       params.require(:room).permit(:name, :capacity, :building_id, :comments, :room_type_id)
+    end
+
+    def cache_key_for_room_timetable(room, event_id)
+      count = room.blocks.count
+      settings = Settings.maximum(:updated_at).try(:utc).try(:to_s, :number)
+      max_block_updated_at = room.blocks.maximum(:updated_at).try(:utc).try(:to_s, :number)
+      "room-timetable/#{event_id}-#{settings}-#{room.name}-#{max_block_updated_at}-#{count}"
     end
 end

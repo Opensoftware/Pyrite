@@ -80,7 +80,7 @@ class Pdf::Timetable < Prawn::Document
       font_size 9
       bounding_box [0, @timetable_height], :width => @hours_column_size, :height => @title_row_size do
         stroke_bounds
-        text_box I18n.t("pdf.label.hours"), :align => :center, :valign => :center
+        text_box I18n.t("pyrite.pdf.label.hours"), :align => :center, :valign => :center
       end
       bounding_box [@hours_column_size, @timetable_height], :width => @width do
         @available_days.each_with_index do |day, index|

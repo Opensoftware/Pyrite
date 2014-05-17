@@ -43,8 +43,12 @@ module BlocksHelper
   end
 
   def print_forms_data
-    @events_with_url = AcademicYear.for_viewing.events.collect {|event|
+    events = AcademicYear.for_viewing.events
+    @events_with_url_for_groups = events.collect {|event|
       [event.name, print_all_groups_timetable_path(event.id)]
+    }
+    @events_with_url_for_rooms = events.collect {|event|
+      [event.name, print_all_rooms_timetable_path(event.id)]
     }
   end
 

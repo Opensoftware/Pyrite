@@ -12,4 +12,8 @@ class Room < ActiveRecord::Base
   def name_with_building
     "#{name}, #{building.name}"
   end
+
+  def pdf_title
+    I18n.t("pyrite.pdf.label.timetable_for_room", :name => name)
+  end
 end

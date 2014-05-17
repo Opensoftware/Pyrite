@@ -18,5 +18,6 @@
 <% end %>
 
 <h2 class="text-center"> <%= t("label_timetable_for_room") %> <%= @room.name %> </h2>
+<%= link_to t("link_print"), print_room_timetable_path(params[:id], AcademicYear::Event.for_viewing), :class => "print-btn pull-right" %>
 
 <div id="room-timetable"> </div>

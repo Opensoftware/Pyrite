@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
   scope :for_event, ->(event_id) { where(:event_id => event_id) }
 
   def pdf_title
-    I18n.t("pdf.label.timetable_for_group", :name => name)
+    I18n.t("pyrite.pdf.label.timetable_for_group", :name => name)
   end
 
 end

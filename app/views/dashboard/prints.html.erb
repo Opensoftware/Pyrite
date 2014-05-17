@@ -1,8 +1,8 @@
 <%= content_for(:additional_javascript_libraries) do %>
   <script>
      $(document).ready(function () {
-       $("#print-groups-form").on("submit", function() {
-          window.location.href = $("#groups_timetable_event_id").val();
+       $(".print-timetable-form").on("submit", function() {
+          window.location.href = $(this).find("select").val();
           return false;
        });
      });
@@ -10,14 +10,30 @@
 <% end %>
 <h2> <%= t("header_prints") %> </h2>
 
-<%= form_tag "#", {:id => "print-groups-form", :class => "print-timetable-form"} do %>
-  <div class="form-group">
-    <label class="control-label col-sm-2" for=""> <%= t("label_print_groups") %></label>
-    <div class="col-sm-8">
-      <%= select(:groups_timetable_event, :id, @events_with_url) %>
+<div class="row">
+  <%= form_tag "#", {:id => "print-groups-form", :class => "print-timetable-form"} do %>
+    <div class="form-group">
+      <label class="col-md-offset-1 col-md-2"> <%= t("label_print_groups") %></label>
+      <div class="col-md-6">
+        <%= select(:groups_timetable_event, :id, @events_with_url_for_groups) %>
+      </div>
+      <div class="col-md-2">
+        <%= submit_tag t("button_save_as_pdf"), :id => "print-groups-timetables-button", :class => "print-btn" %>
+      </div>
     </div>
-    <div class="col-sm-2">
-      <%= submit_tag t("button_save_as_pdf"), :id => "print-groups-timetables-button", :class => "save-btn" %>
+  <% end %>
+</div>
+
+<div class="row">
+  <%= form_tag "#", {:id => "print-rooms-form", :class => "print-timetable-form"} do %>
+    <div class="form-group">
+      <label class="col-md-offset-1 col-md-2"> <%= t("pyrite.label.print_rooms") %></label>
+      <div class="col-md-6">
+        <%= select(:rooms_timetable_event, :id, @events_with_url_for_rooms) %>
+      </div>
+      <div class="col-md-2">
+        <%= submit_tag t("button_save_as_pdf"), :id => "print-groups-timetables-button", :class => "print-btn" %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
