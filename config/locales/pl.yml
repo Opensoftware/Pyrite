@@ -1,4 +1,39 @@
 pl:
+  pyrite:
+    breadcrumbs:
+      dashboard: Panel zarządzania
+      home_page: Strona główna
+      new_reservation: Rezerwacje
+      settings: Ustawienia systemu
+      user_preferences: Ustawienia użytkownika
+      lecturers: Lista prowadzących
+      buildings:
+        name: Zarządzaj budynkami
+        rooms: Lista sal
+        edit: Edycja
+        new: Dodaj nowy
+      full_time:
+        name: Studia stacjonarne
+        new_block: Bloki zajęć
+        prints: Wydruki
+      part_time:
+        name: Studia niestacjonarne
+        new_block: Bloki zajęć
+        prints: Wydruki
+      academic_years:
+        name: Organizacja roku akademickiego
+        edit: Edycja
+        show: Wyświetl
+      block:
+        type:
+          name: Typy zajęć
+          edit: Edycja
+          new: Nowy
+      groups:
+        name: Zarządzaj grupami
+        new: Nowa
+        edit: Edycja
+
   time:
     formats:
       day_name: "%a"

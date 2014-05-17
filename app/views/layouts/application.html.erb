@@ -50,6 +50,16 @@
         <div class="flash-messages" id="notification-bar">
           <%= render :partial => "common/flash_template" %>
         </div>
+        <div class="row">
+          <div class="col-md-<%=content_for?(:breadcrumbs_box_extra_content) ? 12 : 16%>">
+            <%= render_navigation(:renderer => :breadcrumbs, :context => :base, :join_with => content_tag(:span, "&middot;".html_safe, :class => "sep"), :static_leaf => true) %>
+          </div>
+          <% if content_for?(:breadcrumbs_box_extra_content) %>
+            <div class="col-md-4">
+              <%= yield(:breadcrumbs_box_extra_content) %>
+            </div>
+          <% end %>
+        </div>
       </div>
       <div class="top-menu">
         <div class="pull-right"> </div>
