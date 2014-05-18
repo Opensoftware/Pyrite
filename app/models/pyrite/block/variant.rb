@@ -1,10 +1,6 @@
 module Pyrite
   class Block::Variant < ActiveRecord::Base
-    has_many :blocks, :dependent => :destroy, :foreign_key => "type_id"
-
-    # TODO after replacing AR by DM rename model and move back to block_types by
-    # default
-    self.table_name = "block_types"
+    has_many :blocks, :dependent => :destroy
 
     validates :name, :short_name, :color, :presence => true
 
