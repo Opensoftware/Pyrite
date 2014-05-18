@@ -9,15 +9,14 @@
 * compiled file, but it's generally better to create a new file per style scope.
 *
 *= require_self
-*= require busybox
-*= require fullcalendar/fullcalendar
-*= require fullcalendar_custom
+*= require pyrite/busybox
+*= require pyrite/fullcalendar/fullcalendar
+*= require pyrite/fullcalendar_custom
 *= require bootstrap-datetimepicker
 *= require chosen.bootstrap
-*= depend_on_asset "test_badge.png"
+*= depend_on_asset "pyrite/test_badge.png"
 *= depend_on_asset "chosen-sprite.png"
-*= require base
-*= require pyrite
+*= require pyrite/pyrite
 */
 
 #test-badge {
@@ -27,5 +26,5 @@
   right: 0px;
   width: 150px;
   height: 140px;
-  background-image: image-url("test_badge.png");
+  background-image: image-url("pyrite/test_badge.png");
 }
