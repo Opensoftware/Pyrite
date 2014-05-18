@@ -1,6 +1,6 @@
 class CreateAcademicYearEvents < ActiveRecord::Migration
   def change
-    create_table :academic_year_events do |t|
+    create_table :pyrite_academic_year_events do |t|
       t.string :name
       t.datetime :start_date
       t.datetime :end_date

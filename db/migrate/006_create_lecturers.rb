@@ -1,6 +1,6 @@
 class CreateLecturers < ActiveRecord::Migration
   def change
-    create_table :lecturers do |t|
+    create_table :pyrite_lecturers do |t|
       t.string :title
       t.string :full_name
 

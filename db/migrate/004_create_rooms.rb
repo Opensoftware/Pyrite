@@ -1,6 +1,6 @@
 class CreateRooms < ActiveRecord::Migration
   def change
-    create_table :rooms do |t|
+    create_table :pyrite_rooms do |t|
       t.string :name
       t.integer :capacity
       t.integer :room_type_id
