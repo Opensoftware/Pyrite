@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <%= t("pyrite.title_system_name") %> <%= @unit_name = Settings.unit_name %> </title>
+    <title> <%= t("pyrite.title_system_name") %> <%= @unit_name = Pyrite::Settings.unit_name %> </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,23 +23,13 @@
     <nav class="navbar" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <%= link_to '', user_signed_in? ? main_app.dashboard_index_path : root_path,
+          <%= link_to '', current_user ? main_app.dashboard_index_path : root_path,
                         :class => "navbar-brand" %>
           <div> <%= t("pyrite.title_system_name") %> <br> <%= @unit_name %> </div>
         </div>
         <div class="navbar-nav navbar-right">
           <ul class="nav navbar-nav">
-            <% if user_signed_in? %>
-              <li> <%= link_to t("link_dashboard"), dashboard_index_path %> </li>
-              <li> <%= link_to t("link_sign_out", :email => current_user.email),
-                               destroy_user_session_path, :method => :delete %>
-              </li>
-            <% else %>
-              <li> <%= link_to t("link_home"), root_path %> </li>
-              <li> <%= link_to t("link_sign_in"), new_user_session_path %> </li>
-            <% end %>
-            <li> <%= link_to t("link_howto"), howto_path %> </li>
-            <li> <%= link_to t("link_contact"), contact_path %> </li>
+            <%= render_navigation(:context => :common, :expand_all => true, :renderer => :bootstrap) %>
           </ul>
         </div>
       </div>

@@ -16,6 +16,7 @@
 *= require chosen.bootstrap
 *= depend_on_asset "pyrite/test_badge.png"
 *= depend_on_asset "chosen-sprite.png"
+*= require pyrite/base
 *= require pyrite/pyrite
 */
 

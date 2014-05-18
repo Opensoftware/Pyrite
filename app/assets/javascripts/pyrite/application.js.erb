@@ -20,7 +20,7 @@
 //= require localization/bootstrap-datetimepicker.pl.js
 //= require chosen/chosen.jquery
 //= require moment-with-langs.js
-//= depend_on_asset "loading.gif"
+//= depend_on_asset "pyrite/loading.gif"
 
 $(document).ready(function() {
   reloadDatepicker();
@@ -38,7 +38,7 @@ function displayMsg(content) {
 
 function busyBoxOn(element) {
  var loading = element.busyBox({
-   spinner:  '<img src="<%= asset_path 'loading.gif' %>">'
+   spinner:  '<img src="<%= asset_path 'pyrite/loading.gif' %>">'
  });
 }
 
