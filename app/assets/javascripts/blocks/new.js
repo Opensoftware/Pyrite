@@ -41,10 +41,7 @@ function sendRequestToCreateNewBlock() {
           if(jqXHR.status == 500 || jqXHR.status == 404 || jqXHR.status == 403 || jqXHR.status == 422) {
             /* errors will be loaded by the default view direct to the form */
           } else {
-            /* send request if ok close modal and refresh tables */
             $("#modal-new-block").modal("hide");
-            refresh_timetables();
-
           }
       }
   });
