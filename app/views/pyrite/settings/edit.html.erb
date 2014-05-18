@@ -1,0 +1,55 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <%= javascript_include_tag "settings" %>
+<% end %>
+<h2> <%= t("header_edit_settings") %> </h2>
+
+<%= form_for @settings, :url => settings_path, :method => :put,
+  :html => { "data-fetch-url" => fetch_academic_year_events_path } do |f|%>
+
+  <div class="form-group">
+    <label for="settings_year_for_viewing">
+      <%= t("label_plan_for_viewing") %>
+    </label>
+    <%= select_tag(:year_for_viewing,
+                   options_from_collection_for_select(Pyrite::AcademicYear.all, :id, :name,
+                   Pyrite::AcademicYear.for_viewing.try(:id)), {"data-update" => "#settings_event_id_for_viewing" } ) %>
+  </div>
+  <div class="form-group">
+    <label> </label>
+    <%= f.collection_select(:event_id_for_viewing,
+                            Pyrite::AcademicYear.for_viewing.try(:events) || [], :id, :name) %>
+  </div>
+  <div class="form-group">
+    <label for="settings_year_for_editing">
+      <%= t("label_plan_for_editing") %>
+    </label>
+    <%= select_tag(:year_for_editing,
+                   options_from_collection_for_select(Pyrite::AcademicYear.all, :id, :name,
+                   Pyrite::AcademicYear.for_editing.try(:id)), { "data-update" => "#settings_event_id_for_editing"}) %>
+  </div>
+  <div class="form-group">
+    <label> </label>
+    <%= f.collection_select(:event_id_for_editing,
+                            Pyrite::AcademicYear.for_editing.try(:events) || [], :id, :name) %>
+  </div>
+  <div class="form-group">
+    <label for="settings_unit_name">
+      <%= t("label_unit_name") %>
+    </label>
+    <%= f.text_field :unit_name %>
+  </div>
+  <div class="form-group">
+    <label for="settings_email_contact">
+      <%= t("label_email_contact") %>
+    </label>
+    <%= f.text_field :email_contact %>
+  </div>
+  <div class="form-group">
+    <label for="settings_pdf_subtitle">
+      <%= t("label_pdf_subtitle") %>
+    </label>
+    <%= f.text_field :pdf_subtitle %>
+  </div>
+
+  <%= f.submit t("button_save"), :class => "submit-btn pull-right" %>
+<% end %>

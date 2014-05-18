@@ -1,0 +1,66 @@
+<% if event_or_meeting = @event || @meeting %>
+  year: <%= event_or_meeting.start_date.year %>,
+  // fullCalendar count month from 0 - January = 0
+  month: <%= event_or_meeting.start_date.month - 1 %>,
+  date: <%= event_or_meeting.start_date.day %>,
+<% end %>
+weekends: <%= !current_user.preferences[:without_weekends] %>,
+dayNamesShort: <%= raw fc_days %>,
+events: <%= raw @events.to_json %>,
+editable: true,
+selectable: true,
+selectHelper: true,
+select: function(start, end, allDay) {
+  /* when we will start using fullCalendar 2 this will not be needed as it will be by default moment format */
+  start_date = moment(start);
+  end_date = moment(end);
+  modal = $('#modal-new-block');
+  modalBody = $('#modal-new-block .modal-body');
+  modal.on("hide.bs.modal", function(e){
+    hideDatepicker();
+  });
+  modalBody.html("<%= escape_javascript(render :partial => "pyrite/common/new_block_form") %>");
+  start_time = start_date.format("HH:mm");
+  end_time = end_date.format("HH:mm");
+  day = start_date.format("D-M-YYYY");
+  $("#block_day_with_date").val(day);
+  $("#block_start_time").val(start_time);
+  $("#block_end_time").val(end_time);
+  var groups_label = [] ;
+  var room_label = [];
+  $("#block_group_ids option:selected").each(function() {
+    groups_label.push($(this).text());
+  })
+  room_label.push($("#block_room_id option:selected").text());
+  /* if groups_label empty (reservations) then we remove groups label */
+  if ( groups_label.length > 0 ) {
+    $("#groups_label_container").append(groups_label.toString());
+  } else {
+    $("#groups_label_container").parent().find("label").remove();
+  }
+  $("#room_label_container").append(room_label);
+  modal.modal();
+  reloadDatepicker();
+},
+eventClick: function(event) {
+  if (event.delete_url) {
+    $("#delete-block-button").prop("href", event.delete_url);
+  }
+  if (event.url) {
+    var modal = $('#modal-edit-block');
+    var modalBody = $('#modal-edit-block .modal-body');
+    modalBody.load(event.url)
+    modal.modal();
+  }
+  return false;
+},
+eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunction, jsEvent, ui, view) {
+  var url = event.move_url;
+  var params = { day_delta: dayDelta, minute_delta: minuteDelta }
+  update_block_position(url, params);
+},
+eventResize: function(event, dayDelta, minuteDelta, allDay, revertFunction, jsEvent, ui, view) {
+  var url = event.resize_url;
+  var params = { day_delta: dayDelta, minute_delta: minuteDelta }
+  update_block_position(url, params);
+},

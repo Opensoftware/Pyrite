@@ -1,0 +1,54 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <%= javascript_include_tag "blocks" %>
+  <%= javascript_include_tag "blocks/new" %>
+<% end %>
+
+<%= content_for(:additional_stylesheets) do %>
+  <%= stylesheet_link_tag "blocks" %>
+<% end %>
+
+<h2> <%= t("header_add_new_block") %> </h2>
+<br>
+<br>
+  <%= form_for @block, { :url => part_time_block_path, :id => "new-block-form" } do |f| %>
+    <%= error_msgs_for @block %>
+    <div class="row">
+      <div class="form-group" id="academic-year-event-select">
+        <label> <%= t("label_academic_year_event") %> </label>
+        <div>
+           <%= f.collection_select :meeting_id,
+               @meetings, :id, :name, {}, {:tabindex => 5} %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group" id="groups-select">
+        <label> <%= t("label_groups") %> </label>
+        <div>
+          <%= f.collection_select :group_ids, Group.all, :id, :name,
+                                  {:selected => @block.group_ids},
+                                  {:multiple => true, "data-timetable-url" => groups_for_meeting_timetable_path,
+                                   :tabindex => 1, :class => "chosen-select",
+                                   "data-placeholder" => t("placeholder_click_to_choose")}%>
+        </div>
+      </div>
+      <div class="form-group" id="room-select">
+        <label> <%= t("label_room") %> </label>
+        <div>
+          <%= f.collection_select :room_id, Room.all, :id, :name_with_building, {},
+                                  {"data-timetable-url" => rooms_for_meeting_timetable_path, :tabindex => 8,
+                                   :class => "chosen-select"} %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+<div id="groups-timetable-container">
+  <div id="groups-timetable"> </div>
+</div>
+<div id="room-timetable-container">
+  <div id="room-timetable"></div>
+</div>
+
+<%= render :partial => "pyrite/common/modal_edit_block" %>
+<%= render :partial => "pyrite/common/modal_new_block" %>

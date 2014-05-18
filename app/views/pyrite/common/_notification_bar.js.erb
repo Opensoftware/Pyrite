@@ -1,0 +1,6 @@
+<% if @block.errors.present? %>
+  $("#modal-new-block .errors").html("<%= escape_javascript(error_msgs_for @block) %>");
+<% else %>
+  refresh_timetables();
+  $("#notification-bar").html("<%= escape_javascript(render :partial => "pyrite/common/flash_template") %>");
+<% end %>

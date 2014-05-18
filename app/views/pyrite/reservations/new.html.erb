@@ -1,0 +1,30 @@
+<%= content_for(:additional_javascript_libraries) do %>
+  <%= javascript_include_tag "blocks" %>
+  <%= javascript_include_tag "blocks/new" %>
+<% end %>
+
+<%= content_for(:additional_stylesheets) do %>
+  <%= stylesheet_link_tag "blocks" %>
+<% end %>
+
+<h2> <%= t("header_room_reservation") %> </h2>
+<br>
+<br>
+<%= form_for @block, :url => reservations_path do |f| %>
+  <%= error_msgs_for @block %>
+
+  <div class="row">
+    <div class="form-group" id="reservation-room-select">
+      <label> <%= t("label_room") %> </label>
+      <div>
+        <%= f.collection_select :room_id, Room.all, :id, :name_with_building, {},
+                                {"data-timetable-url" => rooms_timetable_path, :tabindex => 8,
+                                 :class => "chosen-select"} %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+<div id="room-timetable"></div>
+<%= render :partial => "pyrite/common/modal_edit_block" %>
+<%= render :partial => "pyrite/common/modal_new_block" %>

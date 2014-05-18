@@ -1,0 +1,98 @@
+<% cache do %>
+  <div class="nav-system-panel">
+    <div class="nav-system-panel-heading">
+      <h3> <%= t("panel.title.settings") %> </h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% if can? :manage, Settings %>
+          <li>
+            <%= link_to t("link_settings"), edit_settings_path %>
+          </li>
+        <% end %>
+        <% if can? :manage, User %>
+          <li>
+             <%= link_to t("link_user_account"), user_account_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="nav-system-panel">
+    <div class="nav-system-panel-heading">
+      <h3> <%= t("panel.title.timetable") %> </h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% if can? :manage, Block %>
+          <li>
+             <%= link_to(t("link_add_new_reservation"), new_reservation_path) %>
+          </li>
+        <% end %>
+      </ul>
+      <h4> <span class="label label-success"> <%= t("dashboard.label.full_time_studies") %> </span> </h4>
+      <ul>
+        <% if can? :manage, Block %>
+          <li>
+             <%= link_to(t("link_add_new_block"), new_block_path) %>
+          </li>
+          <li>
+            <%= link_to(t("link_prints"), prints_dashboard_index_path) %>
+          </li>
+        <% end %>
+      </ul>
+      <h4> <span class="label label-warning"> <%= t("dashboard.label.part_time_studies") %> </span> </h4>
+      <ul>
+        <% if can? :manage, Block %>
+          <li>
+             <%= link_to(t("dashboard.link.new_part_time_block"), new_part_time_block_path) %>
+          </li>
+          <li>
+            <%= link_to(t("link_prints"), prints_part_time_dashboard_index_path) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="nav-system-panel">
+    <div class="nav-system-panel-heading">
+      <h3> <%= t("panel.title.data") %> </h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% if can? :manage, Pyrite::Building %>
+          <li>
+             <%= link_to t("link_buildings_and_rooms"), buildings_path %>
+          </li>
+        <% end %>
+        <% if can? :manage, Pyrite::Lecturer %>
+          <li>
+             <%= link_to t("link_lecturers"), lecturers_path %>
+          </li>
+        <% end %>
+        <% if can? :manage, Pyrite::AcademicYear %>
+          <li>
+             <%= link_to t("link_academic_years"), academic_years_path %>
+          </li>
+        <% end %>
+        <% if can? :manage, Pyrite::Block::Variant %>
+          <li>
+             <%= link_to t("link_block_types"), block_types_path %>
+          </li>
+        <% end %>
+        <% if can? :manage, Pyrite::Group %>
+          <li>
+             <%= link_to t("link_groups"), groups_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<div class="clearfix"> </div>
+<% cache cache_key_for_timetable_forms do %>
+  <div class="main-control-panel">
+    <%= render :partial => "pyrite/common/timetable_forms" %>
+  </div>
+<% end %>
