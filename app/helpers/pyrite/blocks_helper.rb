@@ -68,6 +68,5 @@ module Pyrite
       }
       return options
     end
-
   end
 end

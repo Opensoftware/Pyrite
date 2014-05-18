@@ -1,6 +1,6 @@
 class Pdf::Timetable < Prawn::Document
 
-  include ApplicationHelper
+  include PyriteHelper
 
   def initialize(options = {})
     super({:top_margin => 25, :page_size => "A4"})
