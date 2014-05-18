@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag    "pyrite/application", media: "all" %>
     <%= yield :additional_stylesheets %>
   </head>
   <body>
@@ -86,7 +86,7 @@
           </div>
         <% end %>
       </div>
-      <%= javascript_include_tag "application" %>
+      <%= javascript_include_tag "pyrite/application" %>
       <%= yield :additional_javascript_libraries %>
 
       <footer>
