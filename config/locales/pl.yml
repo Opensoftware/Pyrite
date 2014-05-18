@@ -48,6 +48,9 @@ pl:
         edit: Edycja
     title_system_name: Pyrit - Siatka zajęć
 
+    error:
+      internal_error: Coś poszło nie tak, sprawdzimy to i postaramy się naprawić jak najszybciej
+
 
   time:
     formats:
@@ -88,7 +91,6 @@ pl:
         name: "Pole 'Nazwa'"
 
   error_must_be_lower_then_end_time: "musi być wcześniej niż pole 'Godzina zakończenia'"
-  error_internal_error: Coś poszło nie tak, sprawdzimy to i postaramy się naprawić jak najszybciej
   error_day_not_present: jest puste
   error_overlapped_block: "Kolizja bloków, blok koliduje z blokiem %{block}"
   error_room_block_collision: "sali %{room}"

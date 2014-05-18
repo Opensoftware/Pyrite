@@ -28,6 +28,7 @@ module Pyrite
 
     config.time_zone = 'Warsaw'
     config.active_record.default_timezone = :utc
+    config.autoload_paths += Dir["#{config.root}/lib/"]
 
     # precompile assets which are not part of any manifest but are used in
     # different views

@@ -1,4 +1,5 @@
 class Block < ActiveRecord::Base
+  include Pyrite::Logger
   belongs_to :room
   belongs_to :lecturer
   belongs_to :event, :class_name => "AcademicYear::Event"
@@ -40,8 +41,12 @@ class Block < ActiveRecord::Base
       block_end_date = block_date.advance(:hours => @end_hour, :minutes => @end_min)
       dates.build(:start_date => block_start_date, :end_date => block_end_date)
     rescue => e
-      # TODO logger
-      puts e
+      errors.add(:base, I18n.t("pyrite.error.internal_error"))
+      params = {:block_date => block_date,
+                :block_start_date => block_start_date,
+                :block_end_date => block_end_date
+      }
+      pyrite_logger e, params
       return false
     end
   end
@@ -57,15 +62,20 @@ class Block < ActiveRecord::Base
         dates.build(:start_date => block_start_date, :end_date => block_end_date)
       end
     rescue => e
-      # TODO logger
+      errors.add(:base, I18n.t("pyrite.error.internal_error"))
+      params = {:day => day,
+                :date_range => date_range
+      }
+      pyrite_logger e, params
       return false
     end
   end
 
   def save_reservation
     self.reservation = true
-    populate_dates
-    save
+    if populate_dates
+      save
+    end
   end
 
   def lecturer_name
@@ -120,7 +130,11 @@ class Block < ActiveRecord::Base
           errors.add(:start_time, I18n.t("error_must_be_lower_then_end_time"))
         end
       rescue => e
-        # TODO logger
+        errors.add(:base, I18n.t("pyrite.error.internal_error"))
+        params = {:start_time => start_time,
+                  :end_time => end_time
+        }
+        pyrite_logger e, params
         return false
       end
     end
@@ -155,9 +169,13 @@ class Block < ActiveRecord::Base
           end
         end
       rescue => e
-        # TODO logger
-        puts e
-        errors.add(:base, I18n.t("error_internal_error"))
+        errors.add(:base, I18n.t("pyrite.error.internal_error"))
+        params = {:event_id => event_it,
+                  :day_with_date => day_with_date,
+                  :event_or_meeting => event_or_meeting,
+                  :day => day
+        }
+        pyrite_logger e, params
         return false
       end
 
