@@ -1,6 +1,3 @@
-User.destroy_all
-User.create(:email => "siatka@opensoftware.pl", :password => "123qweasdzxc", :password_confirmation => "123qweasdzxc")
-
 Group.destroy_all
 Group.create(:name => "1ANIN1")
 Group.create(:name => "1ANIN2")

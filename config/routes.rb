@@ -4,8 +4,6 @@ Pyrite::Engine.routes.draw do
     resources :types, :except => [:show]
   end
 
-  devise_for :users
-
   match "/howto" => "main#howto", :as => "howto", :via => :get
   match "/contact" => "main#contact", :as => "contact", :via => :get
 
