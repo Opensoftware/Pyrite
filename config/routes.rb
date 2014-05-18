@@ -1,4 +1,4 @@
-Pyrite::Application.routes.draw do
+Pyrite::Engine.routes.draw do
 
   namespace :block do
     resources :types, :except => [:show]
