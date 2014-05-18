@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+gemspec
+
+gem 'rails', '4.0.4'
 gem 'devise'
 gem 'prawn'
 gem "cancan"
