@@ -86,7 +86,7 @@ class RoomsController < ApplicationController
   def print_all
     rooms = Room.all
 
-    rooms_timetable = Pdf::RoomTimetable.new(rooms, params[:event_id], available_days)
+    rooms_timetable = Pdf::RoomTimetable.new(rooms, params[:event_id], swap_monday(available_days))
     data = rooms_timetable.to_pdf
 
     send_data(data, :filename => t("pyrite.filename.rooms_timetable"),
@@ -98,7 +98,7 @@ class RoomsController < ApplicationController
     event_id = params[:event_id]
 
     data = Rails.cache.fetch(cache_key_for_room_timetable(room, event_id)) do
-      timetable = Pdf::RoomTimetable.new([room], event_id, available_days)
+      timetable = Pdf::RoomTimetable.new([room], event_id, swap_monday(available_days))
       data = timetable.to_pdf
       Rails.cache.write(cache_key_for_room_timetable(room, event_id), data)
       data

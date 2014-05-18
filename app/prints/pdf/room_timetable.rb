@@ -3,7 +3,7 @@ class Pdf::RoomTimetable < Pdf::Timetable
   def initialize(rooms, event_id, available_days)
     @collection = rooms
     @event_id = event_id
-    @available_days = swap_monday(available_days)
+    @available_days = available_days
     super({})
   end
 

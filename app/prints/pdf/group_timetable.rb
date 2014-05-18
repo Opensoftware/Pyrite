@@ -3,7 +3,7 @@ class Pdf::GroupTimetable < Pdf::Timetable
   def initialize(groups, event_id, available_days)
     @collection = groups
     @event_id = event_id
-    @available_days = swap_monday(available_days)
+    @available_days = available_days
     super({})
   end
 

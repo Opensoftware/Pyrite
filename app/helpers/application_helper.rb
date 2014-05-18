@@ -43,7 +43,11 @@ module ApplicationHelper
 
   # Helper method to swap sunday with monday in array
   def swap_monday(array)
-    array[1..-1] << array[0]
+    if current_user && current_user.preferences[:without_weekends]
+      return array
+    else
+      return array[1..-1] << array[0]
+    end
   end
 
   # Fullcalendar - fc
