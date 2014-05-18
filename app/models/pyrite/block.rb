@@ -1,6 +1,6 @@
 module Pyrite
   class Block < ActiveRecord::Base
-    include Pyrite::Logger
+    include UsiLogger
     belongs_to :room
     belongs_to :lecturer
     belongs_to :event, :class_name => "AcademicYear::Event"
@@ -47,7 +47,7 @@ module Pyrite
                   :block_start_date => block_start_date,
                   :block_end_date => block_end_date
         }
-        pyrite_logger e, params
+        usi_logger e, params
         return false
       end
     end
@@ -67,7 +67,7 @@ module Pyrite
         params = {:day => day,
                   :date_range => date_range
         }
-        pyrite_logger e, params
+        usi_logger e, params
         return false
       end
     end
@@ -135,7 +135,7 @@ module Pyrite
           params = {:start_time => start_time,
                     :end_time => end_time
           }
-          pyrite_logger e, params
+          usi_logger e, params
           return false
         end
       end
@@ -176,7 +176,7 @@ module Pyrite
                     :event_or_meeting => event_or_meeting,
                     :day => day
           }
-          pyrite_logger e, params
+          usi_logger e, params
           return false
         end
 
