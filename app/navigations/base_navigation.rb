@@ -1,15 +1,17 @@
 SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.item :home_page, I18n.t("pyrite.breadcrumbs.home_page"), root_path do |home|
-      if @room
-        home.item :reservation, I18n.t("pyrite.breadcrumbs.reservation"), show_reservations_path(@room)
-        home.item :room, I18n.t("pyrite.breadcrumbs.room"), room_timetable_path(@room)
-      end
-      if @group
-        home.item :group, I18n.t("pyrite.breadcrumbs.group"), group_timetable_path(@group)
-      end
-      if @lecturer
-        home.item :lecturer, I18n.t("pyrite.breadcrumbs.lecturer"), lecturer_timetable_path(@lecturer)
+      unless current_user
+        if @room
+          home.item :reservation, I18n.t("pyrite.breadcrumbs.reservation"), show_reservations_path(@room)
+          home.item :room, I18n.t("pyrite.breadcrumbs.room"), room_timetable_path(@room)
+        end
+        if @group
+          home.item :group, I18n.t("pyrite.breadcrumbs.group"), group_timetable_path(@group)
+        end
+        if @lecturer
+          home.item :lecturer, I18n.t("pyrite.breadcrumbs.lecturer"), lecturer_timetable_path(@lecturer)
+        end
       end
       home.item :dashboard, I18n.t("pyrite.breadcrumbs.dashboard"), main_app.dashboard_index_path do |dashboard|
         dashboard.item :reservation, I18n.t("pyrite.breadcrumbs.new_reservation"), new_reservation_path
@@ -37,8 +39,12 @@ SimpleNavigation::Configuration.run do |navigation|
         dashboard.item :lecturers, I18n.t("pyrite.breadcrumbs.lecturers"), lecturers_path
         dashboard.item :academic_years, I18n.t("pyrite.breadcrumbs.academic_years.name"), academic_years_path do |academic_year|
           if @academic_year
-            academic_year.item :edit, I18n.t("pyrite.breadcrumbs.academic_years.edit"), edit_academic_year_path(@academic_year)
-            academic_year.item :show, I18n.t("pyrite.breadcrumbs.academic_years.show"), academic_year_path(@academic_year)
+            if @academic_year.new_record?
+              academic_year.item :new, I18n.t("pyrite.breadcrumbs.academic_years.new"), new_academic_year_path
+            else
+              academic_year.item :edit, I18n.t("pyrite.breadcrumbs.academic_years.edit"), edit_academic_year_path(@academic_year)
+              academic_year.item :show, I18n.t("pyrite.breadcrumbs.academic_years.show"), academic_year_path(@academic_year)
+             end
           end
         end
         dashboard.item :block_type, I18n.t("pyrite.breadcrumbs.block.type.name"),  block_types_path do |block_type|

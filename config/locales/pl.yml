@@ -37,6 +37,7 @@ pl:
         name: Organizacja roku akademickiego
         edit: Edycja
         show: Wyświetl
+        new: Nowy
       block:
         type:
           name: Typy zajęć
