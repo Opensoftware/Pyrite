@@ -3,6 +3,7 @@ module Pyrite
     include BlocksHelper
 
     def index
+      authorize! :read, :dashboard
       timetable_forms_data
     end
 

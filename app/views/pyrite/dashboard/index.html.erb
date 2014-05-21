@@ -5,12 +5,10 @@
     </div>
     <div class="panel-body">
       <ul>
-        <% if can? :manage, Settings %>
+        <% if can? :manage, Pyrite::Settings %>
           <li>
             <%= link_to t("link_settings"), edit_settings_path %>
           </li>
-        <% end %>
-        <% if can? :manage, User %>
           <li>
              <%= link_to t("link_user_account"), user_account_path %>
           </li>
@@ -24,7 +22,7 @@
     </div>
     <div class="panel-body">
       <ul>
-        <% if can? :manage, Block %>
+        <% if can? :manage, Pyrite::Block %>
           <li>
              <%= link_to(t("link_add_new_reservation"), new_reservation_path) %>
           </li>
@@ -32,7 +30,7 @@
       </ul>
       <h4> <span class="label label-success"> <%= t("dashboard.label.full_time_studies") %> </span> </h4>
       <ul>
-        <% if can? :manage, Block %>
+        <% if can? :manage, Pyrite::Block %>
           <li>
              <%= link_to(t("link_add_new_block"), new_block_path) %>
           </li>
@@ -43,7 +41,7 @@
       </ul>
       <h4> <span class="label label-warning"> <%= t("dashboard.label.part_time_studies") %> </span> </h4>
       <ul>
-        <% if can? :manage, Block %>
+        <% if can? :manage, Pyrite::Block %>
           <li>
              <%= link_to(t("dashboard.link.new_part_time_block"), new_part_time_block_path) %>
           </li>

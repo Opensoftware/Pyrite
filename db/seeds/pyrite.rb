@@ -1,4 +1,21 @@
 ActiveRecord::Base.transaction do
+
+
+  pyrite_admin = Role.create!(:name => "Planer", :const_name => :pyrite_admin)
+
+  user = User.new
+  user.email = "siatka@opensoftware.pl"
+  user.password = "123qweasdzxc"
+  user.password_confirmation = "123qweasdzxc"
+  user.role = pyrite_admin
+  employee = Employee.new(surname: "Kozioł", name: "Adam", room: "13",
+                          academy_unit_id: Faculty.first.id,
+                          employee_title_id: EmployeeTitle.first.id,
+                          language_id: Language.first.id)
+  user.verifable = employee
+  user.save!
+  user.silent_activate!
+
   Pyrite::Group.destroy_all
   Pyrite::Group.create(:name => "1ANIN1")
   Pyrite::Group.create(:name => "1ANIN2")
