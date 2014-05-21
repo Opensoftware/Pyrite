@@ -29,6 +29,7 @@ PATH
   remote: .
   specs:
     pyrite (1.0.0)
+      prawn
       rails (~> 4.0.4)
 
 GEM
@@ -206,9 +207,7 @@ DEPENDENCIES
   less-rails
   non-stupid-digest-assets
   pg
-  prawn
   pyrite!
-  rails (= 4.0.4)
   sass-rails
   simple-navigation
   simple-navigation-bootstrap
