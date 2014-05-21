@@ -12,10 +12,10 @@
 *= require pyrite/busybox
 *= require pyrite/fullcalendar/fullcalendar
 *= require pyrite/fullcalendar_custom
-*= require bootstrap-datetimepicker
-*= require chosen.bootstrap
+*= require pyrite/bootstrap-datetimepicker
+*= require pyrite/chosen.bootstrap
 *= depend_on_asset "pyrite/test_badge.png"
-*= depend_on_asset "chosen-sprite.png"
+*= depend_on_asset "pyrite/chosen-sprite.png"
 *= require pyrite/base
 *= require pyrite/pyrite
 */
