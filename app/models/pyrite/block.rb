@@ -171,7 +171,7 @@ module Pyrite
           end
         rescue => e
           errors.add(:base, I18n.t("pyrite.error.internal_error"))
-          params = {:event_id => event_it,
+          params = {:event_id => event_id,
                     :day_with_date => day_with_date,
                     :event_or_meeting => event_or_meeting,
                     :day => day
