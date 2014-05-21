@@ -3,7 +3,7 @@ module PyriteHelper
     if obj.errors.any?
       s = ''
       obj.errors.full_messages.each do |msg|
-        s << render(:partial => "common/flash_form_error_template", :locals => { :msg => msg})
+        s << render(:partial => "pyrite/common/flash_form_error_template", :locals => { :msg => msg})
       end
       s.html_safe
     end
