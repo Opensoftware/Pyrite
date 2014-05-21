@@ -3,7 +3,7 @@
   <div class="form-group">
     <label> <%= t "label_groups" %></label>
     <div>
-      <%= f.collection_select :group_ids, Group.all, :id, :name,
+      <%= f.collection_select :group_ids, @groups, :id, :name,
                               {:selected => @block.group_ids},
                               {:multiple => true} %>
     </div>
@@ -11,7 +11,7 @@
   <div class="form-group">
     <label> <%= t "label_lecturer" %></label>
     <div>
-      <%= f.collection_select :lecturer_id, Lecturer.all, :id,
+      <%= f.collection_select :lecturer_id, @lecturers, :id,
         :name_with_title, { :include_blank => true },
         { "data-placeholder" => t("prompt_lecturer"), :class => "chosen-select" } %>
     </div>
@@ -19,7 +19,7 @@
   <div class="form-group">
     <label> <%= t "label_room" %></label>
     <div>
-      <%= f.collection_select :room_id, Room.all, :id, :name_with_building,
+      <%= f.collection_select :room_id, @rooms, :id, :name_with_building,
                               {:prompt => t("prompt_room") } %>
     </div>
   </div>
@@ -32,7 +32,7 @@
   <div class="form-group">
     <label> <%= t "label_block_type" %></label>
     <div>
-      <%= f.collection_select :type_id, Block::Variant.all, :id, :name %>
+      <%= f.collection_select :variant_id, @block_variants, :id, :name %>
     </div>
   </div>
   <div class="form-group">

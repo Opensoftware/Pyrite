@@ -5,10 +5,14 @@ module Pyrite
     before_filter :check_settings
 
     def new
+      authorize! :manage, Block
       @block = Block.new
+      @groups = Group.all
+      @rooms = Room.all
     end
 
     def new_part_time
+      authorize! :manage, Block
       @block = Block.new
       @meetings = AcademicYear::Meeting.for_editing
       unless @meetings.first
@@ -20,11 +24,17 @@ module Pyrite
     end
 
     def edit
+      authorize! :manage, Block
       @block = Block.find(params[:id])
+      @groups = Group.all
+      @rooms = Room.all
+      @lecturers = Lecturer.all
+      @block_variants = Block::Variant.all
       render :layout => false
     end
 
     def update
+      authorize! :manage, Block
       @block = Block.find(params[:id])
       if @block.update_attributes(form_params_update)
         flash[:notice] = t("notice_block_has_been_updated")
@@ -35,6 +45,7 @@ module Pyrite
     end
 
     def create
+      authorize! :manage, Block
       @block = Block.new(form_params)
       if @block.save
         flash[:notice] = t("notice_block_has_been_created")
@@ -45,6 +56,7 @@ module Pyrite
     end
 
     def create_part_time
+      authorize! :manage, Block
       @block = Block.new(form_part_time_params)
       @meetings = AcademicYear::Meeting.for_editing
 
@@ -57,12 +69,14 @@ module Pyrite
     end
 
     def destroy
+      authorize! :manage, Block
       @block = Block.find(params[:id])
       @block.destroy
       respond_with(@block)
     end
 
     def move
+      authorize! :manage, Block
       @block = Block.find(params[:id])
       day_delta = params[:day_delta]
       minute_delta = params[:minute_delta]
@@ -74,6 +88,7 @@ module Pyrite
     end
 
     def resize
+      authorize! :manage, Block
       @block = Block.find(params[:id])
       day_delta = params[:day_delta]
       minute_delta = params[:minute_delta]
@@ -87,17 +102,17 @@ module Pyrite
     private
 
       def form_params
-        params.required(:block).permit(:start_time, :day_with_date, :type_id, { :group_ids => [] },
+        params.required(:block).permit(:start_time, :day_with_date, :variant_id, { :group_ids => [] },
           :lecturer_id, :comments, :end_time, :event_id, :room_id, :name)
       end
 
       def form_part_time_params
-        params.required(:block).permit(:start_time, :day_with_date, :type_id, { :group_ids => [] },
+        params.required(:block).permit(:start_time, :day_with_date, :variant_id, { :group_ids => [] },
           :lecturer_id, :comments, :end_time, :meeting_id, :room_id, :name)
       end
 
       def form_params_update
-        params.required(:block).permit(:lecturer_id, :room_id, :comments, :type_id, :name, { :group_ids => [] })
+        params.required(:block).permit(:lecturer_id, :room_id, :comments, :variant_id, :name, { :group_ids => [] })
       end
 
       def check_settings

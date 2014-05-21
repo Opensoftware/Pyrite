@@ -5,7 +5,7 @@ module Pyrite
     belongs_to :lecturer
     belongs_to :event, :class_name => "AcademicYear::Event"
     belongs_to :meeting, :class_name => "AcademicYear::Meeting"
-    belongs_to :type, :class_name => "Block::Variant"
+    belongs_to :variant, :class_name => "Block::Variant"
     has_many :dates, :dependent => :destroy, :autosave => true
 
     has_many :groups, :through => :blocks_groups
@@ -87,8 +87,8 @@ module Pyrite
       groups.map {|g| g.name }.join(" ")
     end
 
-    def type_name
-      type.try(:short_name).to_s
+    def variant_name
+      variant.try(:short_name).to_s
     end
 
     def move_to(day_delta, minute_delta)

@@ -39,7 +39,7 @@ module Pyrite
 
       def form_params
         params.required(:block).permit(:start_time, :day_with_date,
-          :lecturer_id, :comments, :end_time, :type_id, :room_id, :name)
+          :lecturer_id, :comments, :end_time, :variant_id, :room_id, :name)
       end
 
       def check_settings

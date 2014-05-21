@@ -54,8 +54,12 @@ module Pyrite
     end
 
     def timetables
+      authorize! :read, :timetables
       group_ids = params[:group_ids]
       @reset_date = params[:reset_date] || false
+      @block_variants = Block::Variant.all
+      @lecturers = Lecturer.all
+      @block = Block.new
       @event = AcademicYear::Event.where(:id => params[:event_id]).first
       # TODO think about what will be the best way of quering blocks with and
       # without event_id, for example without event_id we will query whole

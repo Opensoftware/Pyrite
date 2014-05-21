@@ -19,7 +19,7 @@ class Pdf::RoomTimetable < Pdf::Timetable
         next if block_start_distance < 0
         block_start_point = @timetable_content_height - @minute_row * block_start_distance/15
         bounding_box [column_position(block), block_start_point], :width => @column_size, :height => block_length do
-          fill_color block.type.color_number
+          fill_color block.variant.color_number
           fill_rectangle [bounds.left, bounds.top], @column_size, block_length
           fill_color "#000000"
           stroke_bounds
