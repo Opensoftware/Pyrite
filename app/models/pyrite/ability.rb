@@ -4,6 +4,12 @@ module Pyrite
 
     def initialize(user)
       user ||= Pyrite::User.new # guest user (not logged in)
+      if user.new_record?
+        user.role = Role.where(const_name: 'anonymous').first
+      else
+        can :manage, :my
+      end
+
       if user.pyrite_admin?
         can :read, :dashboard
         can :manage, Settings

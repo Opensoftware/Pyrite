@@ -2,9 +2,10 @@ module Pyrite
   class MainController < PyriteController
     include Pyrite::BlocksHelper
 
-    skip_before_filter :authenticate_user!, :only => [:index, :contact, :howto]
+    skip_authorization_check :only => [:index, :contact, :howto]
 
     def index
+      redirect_to dashboard_index_path if current_user
       timetable_forms_data
     end
 
