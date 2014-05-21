@@ -13,7 +13,7 @@ SimpleNavigation::Configuration.run do |navigation|
           home.item :lecturer, I18n.t("pyrite.breadcrumbs.lecturer"), lecturer_timetable_path(@lecturer)
         end
       end
-      home.item :dashboard, I18n.t("pyrite.breadcrumbs.dashboard"), main_app.dashboard_index_path do |dashboard|
+      home.item :dashboard, I18n.t("pyrite.breadcrumbs.dashboard"), dashboard_index_path do |dashboard|
         dashboard.item :reservation, I18n.t("pyrite.breadcrumbs.new_reservation"), new_reservation_path
         dashboard.item :full_time, I18n.t("pyrite.breadcrumbs.full_time.name") do |full_time|
           full_time.item :new_block, I18n.t("pyrite.breadcrumbs.full_time.new_block"), new_block_path
