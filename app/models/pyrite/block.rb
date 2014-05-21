@@ -23,8 +23,8 @@ module Pyrite
     scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : where(nil) }
     scope :reservations, -> { where(:reservation => true).where(:event_id => nil) }
     scope :overlapped, ->(start_date, end_date) {
-      joins(:dates).where("block_dates.start_date < ? AND
-                           block_dates.end_date > ?", end_date , start_date)
+      joins(:dates).where("#{Block::Date.table_name}.start_date < ? AND
+                          #{Block::Date.table_name}.end_date > ?", end_date , start_date)
     }
     scope :except_me, ->(block) { where.not(id: block) }
 

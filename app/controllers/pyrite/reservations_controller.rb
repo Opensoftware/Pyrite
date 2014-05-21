@@ -9,17 +9,22 @@ module Pyrite
     respond_to :js, :only => [:update, :create]
 
     def show
+      authorize! :read, :timetables
       @room = Room.find(params[:room_id])
       # TODO implement with event_id
       @events = convert_blocks_to_events_for_viewing(@room.blocks)
     end
 
     def new
+      authorize! :manage, :reservations
+      @rooms = Room.all
       @block = Block.new
     end
 
     def create
+      authorize! :manage, :reservations
       @block = Block.new(form_params)
+      @rooms = Room.all
 
       if @block.save_reservation
         flash[:notice] = t("notice_block_has_been_created")

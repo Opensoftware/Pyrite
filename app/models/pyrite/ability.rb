@@ -13,6 +13,10 @@ module Pyrite
         can :manage, AcademicYear
         can :manage, Block::Variant
         can :manage, Group
+        can :read, :timetables
+        can :manage, :reservations
+
+        can :manage, :own_settings
       else
         can :read, :timetables
       end

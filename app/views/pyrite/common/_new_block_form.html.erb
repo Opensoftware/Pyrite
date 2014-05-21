@@ -1,4 +1,4 @@
-<%= form_for Block.new, :html => { :id => "new-block-form-modal" } do |f| %>
+<%= form_for @block, :html => { :id => "new-block-form-modal" } do |f| %>
   <div class="errors"> </div>
   <div class="row">
     <div class="form-group col-md-8">
@@ -14,7 +14,7 @@
     <div class="form-group col-md-8">
       <label> <%= t("label_lecturer") %> </label>
       <div>
-        <%= f.collection_select :lecturer_id, Lecturer.all, :id,
+        <%= f.collection_select :lecturer_id, @lecturers, :id,
           :name_with_title, { :include_blank => true },
           { "data-placeholder" => t("prompt_lecturer"), :class => "chosen-select", :tabindex => 6 } %>
       </div>
@@ -30,7 +30,7 @@
     <div class="form-group col-md-8">
       <label> <%= t("label_block_type") %> </label>
       <div>
-        <%= f.collection_select :type_id, Block::Variant.all, :id, :name, {}, {:tabindex => 7} %>
+        <%= f.collection_select :variant_id, @block_variants, :id, :name, {}, {:tabindex => 7} %>
       </div>
     </div>
     <div class="form-group col-md-8">

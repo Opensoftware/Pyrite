@@ -17,7 +17,7 @@
     <div class="form-group" id="reservation-room-select">
       <label> <%= t("label_room") %> </label>
       <div>
-        <%= f.collection_select :room_id, Room.all, :id, :name_with_building, {},
+        <%= f.collection_select :room_id, @rooms, :id, :name_with_building, {},
                                 {"data-timetable-url" => rooms_timetable_path, :tabindex => 8,
                                  :class => "chosen-select"} %>
       </div>
