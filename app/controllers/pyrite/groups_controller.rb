@@ -89,6 +89,7 @@ module Pyrite
     end
 
     def print_all
+      authorize! :print, :timetables
       groups = Group.all
 
       groups_timetable = Pdf::GroupTimetable.new(groups, params[:event_id], swap_monday(available_days))
@@ -99,6 +100,7 @@ module Pyrite
     end
 
     def print
+      authorize! :print, :timetables
       group = Group.find(params[:id])
       event_id = params[:event_id]
 

@@ -9,11 +9,12 @@ module Pyrite
     end
 
     def prints
+      authorize! :print, :timetables
       print_forms_data
     end
 
     def prints_part_time
-
+      authorize! :print, :timetables
     end
   end
 end

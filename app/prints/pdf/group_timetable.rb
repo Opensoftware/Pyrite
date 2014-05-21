@@ -19,7 +19,7 @@ class Pdf::GroupTimetable < Pdf::Timetable
         next if block_start_distance < 0
         block_start_point = @timetable_content_height - @minute_row * block_start_distance/15
         bounding_box [column_position(block), block_start_point], :width => @column_size, :height => block_length do
-          fill_color block.type.color_number
+          fill_color block.variant.color_number
           fill_rectangle [bounds.left, bounds.top], @column_size, block_length
           fill_color "#000000"
           stroke_bounds
@@ -31,7 +31,7 @@ class Pdf::GroupTimetable < Pdf::Timetable
           font_size 5
           text_box "#{start_hour} - #{end_hour}", :at => [0, bounds.top - 3], :align => :center
           text_box block.lecturer_name, :at => [0, bounds.top - 10], :align => :center
-          text_box "#{block.type.short_name}, #{I18n.t("pyrite.pdf.label.room")} #{block.room.name}", :at => [5, bounds.bottom + 10]
+          text_box "#{block.variant.short_name}, #{I18n.t("pyrite.pdf.label.room")} #{block.room.name}", :at => [5, bounds.bottom + 10]
         end
       end
     end

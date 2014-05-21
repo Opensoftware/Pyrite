@@ -23,10 +23,12 @@ module Pyrite
         can :manage, Group
         can :read, :timetables
         can :manage, :reservations
+        can :print, :timetables
 
         can :manage, :own_settings
       else
         can :read, :timetables
+        can :print, :timetables
       end
     end
   end
