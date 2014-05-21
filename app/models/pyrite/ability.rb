@@ -17,6 +17,8 @@ module Pyrite
         can :manage, Building
         can :manage, Lecturer
         can :manage, AcademicYear
+        can :manage, AcademicYear::Event
+        can :manage, AcademicYear::Meeting
         can :manage, Block::Variant
         can :manage, Group
         can :read, :timetables
