@@ -14,6 +14,8 @@ module Pyrite
     def new_part_time
       authorize! :manage, Block
       @block = Block.new
+      @groups = Group.all
+      @rooms = Room.all
       @meetings = AcademicYear::Meeting.for_editing
       unless @meetings.first
         flash[:notice] = t("notice_missing_academic_year_meeting",

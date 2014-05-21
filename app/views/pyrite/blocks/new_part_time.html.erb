@@ -4,7 +4,7 @@
 <% end %>
 
 <%= content_for(:additional_stylesheets) do %>
-  <%= stylesheet_link_tag "blocks" %>
+  <%= stylesheet_link_tag "pyrite/blocks" %>
 <% end %>
 
 <h2> <%= t("header_add_new_block") %> </h2>
@@ -25,7 +25,7 @@
       <div class="form-group" id="groups-select">
         <label> <%= t("label_groups") %> </label>
         <div>
-          <%= f.collection_select :group_ids, Group.all, :id, :name,
+          <%= f.collection_select :group_ids, @groups, :id, :name,
                                   {:selected => @block.group_ids},
                                   {:multiple => true, "data-timetable-url" => groups_for_meeting_timetable_path,
                                    :tabindex => 1, :class => "chosen-select",
@@ -35,7 +35,7 @@
       <div class="form-group" id="room-select">
         <label> <%= t("label_room") %> </label>
         <div>
-          <%= f.collection_select :room_id, Room.all, :id, :name_with_building, {},
+          <%= f.collection_select :room_id, @rooms, :id, :name_with_building, {},
                                   {"data-timetable-url" => rooms_for_meeting_timetable_path, :tabindex => 8,
                                    :class => "chosen-select"} %>
         </div>

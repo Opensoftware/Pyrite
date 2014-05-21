@@ -72,10 +72,14 @@ module Pyrite
     end
 
     def timetables_for_meeting
+      authorize! :read, :timetables
       group_ids = params[:group_ids]
       @reset_date = params[:reset_date] || false
+      @block_variants = Block::Variant.all
+      @lecturers = Lecturer.all
+      @block = Block.new
       @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
-      blocks = @meeting.blocks.joins(:groups).where("groups.id in (?)", group_ids)
+      blocks = @meeting.blocks.joins(:groups).where("#{Group.table_name}.id in (?)", group_ids)
 
       @events = convert_blocks_to_events(blocks)
       @current_date = @meeting.start_date.strftime("%F")
@@ -117,7 +121,7 @@ module Pyrite
       end
 
       def cache_key_for_group_timetable(group, event_id)
-        count = Block.joins(:groups).where("blocks_groups.group_id = ?", group.id).count
+        count = Block.joins(:groups).where("#{BlocksGroup.table_name}.group_id = ?", group.id).count
         settings       = Settings.maximum(:updated_at).try(:utc).try(:to_s, :number)
         max_block_updated_at = group.blocks.maximum(:updated_at).try(:utc).try(:to_s, :number)
         "group-timetable/#{event_id}-#{settings}-#{group.name}-#{max_block_updated_at}-#{count}"

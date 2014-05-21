@@ -75,9 +75,13 @@ module Pyrite
     end
 
     def timetables_for_meeting
+      authorize! :read, :timetables
       @room = Room.find(params[:id])
       @reset_date = params[:reset_date] || false
       blocks = @room.blocks.reservations
+      @block_variants = Block::Variant.all
+      @lecturers = Lecturer.all
+      @block = Block.new
       @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
       blocks += @meeting.blocks.where(:room_id => @room.id) if @meeting
       @room_name = @room.name
