@@ -3,7 +3,7 @@ module Pyrite
     include BlocksHelper
     include PyriteHelper
 
-    skip_before_filter :authenticate_user!, :only => [:timetable]
+    skip_authorization_check :only => [:timetable]
     respond_to :js, :html, :only => [:timetable, :timetables, :timetables_for_meeting]
 
     def show

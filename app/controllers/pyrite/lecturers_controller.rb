@@ -2,7 +2,7 @@ module Pyrite
   class LecturersController < PyriteController
     include BlocksHelper
 
-    skip_before_filter :authenticate_user!, :only => [:timetable]
+    skip_authorization_check :only => [:timetable]
 
     def index
       @lecturers = Lecturer.all

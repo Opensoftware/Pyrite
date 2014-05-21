@@ -1,6 +1,7 @@
 module Pyrite
   class DashboardController < PyriteController
     include BlocksHelper
+    helper "pyrite/main"
 
     def index
       authorize! :read, :dashboard

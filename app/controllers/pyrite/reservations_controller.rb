@@ -3,7 +3,8 @@ module Pyrite
     helper "pyrite/application"
     include BlocksHelper
 
-    skip_before_filter :authenticate_user!, :only => [:show]
+    skip_authorization_check :only => [:show]
+
     before_filter :check_settings, :except => [:show]
 
     respond_to :js, :only => [:update, :create]
