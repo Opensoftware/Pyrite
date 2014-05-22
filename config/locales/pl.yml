@@ -61,34 +61,36 @@ pl:
       blank: nie może być puste
   activerecord:
     attributes:
-      block:
+      pyrite/block:
         day: "Pole 'Dzień'"
         start_time: "Pole 'Godzina rozpoczęcia'"
         end_time: "Pole 'Godzina zakończenia'"
         name: "Pole 'Nazwa bloku'"
         room: "Pole 'Sala'"
-      block/variant:
+      pyrite/block/variant:
         name: "Pole 'Nazwa'"
         short_name: "Pole 'Skrót'"
         color: "Pole 'Kolor'"
-      building:
+      pyrite/building:
         name: "Pole 'Nazwa'"
         address: "Pole 'Adres'"
-      lecturer:
+      pyrite/lecturer:
         full_name: "Pole 'Imię i nazwisko'"
-      academic_year:
+      pyrite/academic_year:
         name: "Pole 'Nazwa'"
         start_date: "Pole 'Data rozpoczęcia'"
         end_date: "Pole 'Data zakończenia'"
-      academic_year/event:
+      pyrite/academic_year/event:
         start_date: "Pole 'Data rozpoczęcia'"
         end_date: "Pole 'Data zakończenia'"
         name: "Pole 'Nazwa bloku'"
-      academic_year/meeting:
+      pyrite/academic_year/meeting:
         start_date: "Pole 'Data rozpoczęcia'"
         end_date: "Pole 'Data zakończenia'"
         name: "Pole 'Nazwa bloku'"
-      room:
+      pyrite/room:
+        name: "Pole 'Nazwa'"
+      pyrite/group:
         name: "Pole 'Nazwa'"
 
   error_must_be_lower_then_end_time: "musi być wcześniej niż pole 'Godzina zakończenia'"
