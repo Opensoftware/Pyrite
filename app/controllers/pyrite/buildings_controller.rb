@@ -2,23 +2,28 @@ module Pyrite
   class BuildingsController < PyriteController
 
     def index
+      authorize! :manage, Building
       @buildings = Building.all
     end
 
     def show
+      authorize! :manage, Building
       @building = Building.find(params[:id])
       @rooms = @building.rooms
     end
 
     def new
+      authorize! :manage, Building
       @building = Building.new
     end
 
     def edit
+      authorize! :manage, Building
       @building = Building.find(params[:id])
     end
 
     def create
+      authorize! :manage, Building
       @building = Building.new(form_params)
 
       if @building.save
@@ -29,6 +34,7 @@ module Pyrite
     end
 
     def update
+      authorize! :manage, Building
       @building = Building.find(params[:id])
 
       if @building.update_attributes(form_params)
@@ -39,6 +45,7 @@ module Pyrite
     end
 
     def destroy
+      authorize! :manage, Building
       @building = Building.find(params[:id])
       @building.destroy
 
