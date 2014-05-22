@@ -7,18 +7,22 @@ module Pyrite
     respond_to :html, :js, :only => [:timetables, :timetable, :timetables_for_meeting]
 
     def index
+      authorize! :manage, Group
       @groups = Group.all
     end
 
     def new
+      authorize! :manage, Group
       @group = Group.new
     end
 
     def edit
+      authorize! :manage, Group
       @group = Group.find(params[:id])
     end
 
     def create
+      authorize! :manage, Group
       @group = Group.new(form_params)
 
       if @group.save
@@ -30,6 +34,7 @@ module Pyrite
     end
 
     def update
+      authorize! :manage, Group
       @group = Group.find(params[:id])
 
       if @group.update_attributes(form_params)
@@ -41,10 +46,11 @@ module Pyrite
     end
 
     def destroy
+      authorize! :manage, Group
       @group = Group.find(params[:id])
       @group.destroy
 
-      redirect_to groups_url
+      redirect_to groups_path
     end
 
     def timetable
