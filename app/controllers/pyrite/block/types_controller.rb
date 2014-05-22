@@ -1,19 +1,24 @@
 module Pyrite
   class Block::TypesController < PyriteController
+    helper "pyrite/blocks"
 
     def index
+      authorize! :manage, Block
       @block_types = Block::Variant.all
     end
 
     def new
+      authorize! :manage, Block
       @block_type = Block::Variant.new
     end
 
     def edit
+      authorize! :manage, Block
       @block_type = Block::Variant.find(params[:id])
     end
 
     def create
+      authorize! :manage, Block
       @block_type = Block::Variant.new(form_params)
 
       if @block_type.save
@@ -25,6 +30,7 @@ module Pyrite
     end
 
     def update
+      authorize! :manage, Block
       @block_type = Block::Variant.find(params[:id])
 
       if @block_type.update_attributes(form_params)
@@ -36,10 +42,11 @@ module Pyrite
     end
 
     def destroy
+      authorize! :manage, Block
       @block_type = Block::Variant.find(params[:id])
       @block_type.destroy
 
-      redirect_to block_types_url
+      redirect_to block_types_path
     end
 
     private
