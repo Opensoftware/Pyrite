@@ -6,48 +6,55 @@ module Pyrite
     skip_authorization_check :only => [:timetable]
     respond_to :js, :html, :only => [:timetable, :timetables, :timetables_for_meeting]
 
-    def show
-      @room = Room.find(params[:id])
-    end
-
     def new
+      authorize! :manage, Room
       @building = Building.find(params[:building_id])
       @room = @building.rooms.build
+      prepare_variables
     end
 
     def edit
+      authorize! :manage, Room
       @room = Room.find(params[:id])
+      prepare_variables
     end
 
     def create
+      authorize! :manage, Room
       @room = Room.new(form_params)
+      @building = Building.find(params[:room][:building_id])
+      prepare_variables
 
       if @room.save
-        redirect_to @room.building, notice: t("notice_classroom_was_created")
+        redirect_to building_path(@room.building), notice: t("notice_classroom_was_created")
       else
         render action: "new"
       end
     end
 
     def update
+      authorize! :manage, Room
       @room = Room.find(params[:id])
+      prepare_variables
 
       if @room.update_attributes(form_params)
-        redirect_to @room.building, notice: t("notice_classroom_updated")
+        redirect_to building_path(@room.building), notice: t("notice_classroom_updated")
       else
         render action: "edit"
       end
     end
 
     def destroy
+      authorize! :manage, Room
       @room = Room.find(params[:id])
       building = @room.building
       @room.destroy
 
-      redirect_to building, notice: t("notice_room_have_been_deleted")
+      redirect_to building_path(building), notice: t("notice_room_have_been_deleted")
     end
 
     def timetable
+      authorize! :read, :timetables
       @room = Room.find(params[:id])
       @events = convert_blocks_to_events_for_viewing(@room.blocks.for_event(AcademicYear::Event.for_viewing))
       respond_with @events
@@ -120,6 +127,11 @@ module Pyrite
     end
 
     private
+
+      def prepare_variables
+        @room_types = RoomType.all
+        @buildings = Building.all
+      end
 
       def form_params
         params.require(:room).permit(:name, :capacity, :building_id, :comments, :room_type_id)

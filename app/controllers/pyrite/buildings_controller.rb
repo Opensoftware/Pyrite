@@ -27,7 +27,7 @@ module Pyrite
       @building = Building.new(form_params)
 
       if @building.save
-        redirect_to @building, notice: t("notice_building_has_been_created")
+        redirect_to building_path(@building), notice: t("notice_building_has_been_created")
       else
         render action: "new"
       end
@@ -38,7 +38,7 @@ module Pyrite
       @building = Building.find(params[:id])
 
       if @building.update_attributes(form_params)
-        redirect_to @building, notice: t("notice_building_has_been_updated")
+        redirect_to building_path(@building), notice: t("notice_building_has_been_updated")
       else
         render action: "edit"
       end
@@ -49,7 +49,7 @@ module Pyrite
       @building = Building.find(params[:id])
       @building.destroy
 
-      redirect_to buildings_url, notice: t("notice_building_have_been_deleted")
+      redirect_to buildings_path, notice: t("notice_building_have_been_deleted")
     end
 
 

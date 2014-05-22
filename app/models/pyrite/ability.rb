@@ -21,6 +21,7 @@ module Pyrite
         can :manage, AcademicYear::Meeting
         can :manage, Block::Variant
         can :manage, Group
+        can :manage, Room
         can :read, :timetables
         can :manage, :reservations
         can :print, :timetables

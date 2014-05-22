@@ -5,7 +5,7 @@
 <% end %>
 
 <%= content_for(:additional_stylesheets) do %>
-  <%= stylesheet_link_tag "buildings" %>
+  <%= stylesheet_link_tag "pyrite/buildings" %>
 <% end %>
 
 <div class="row">
@@ -43,7 +43,6 @@
         <td> <%= room.type %> </td>
         <td> <%= room.capacity %> </td>
         <td>
-          <%= link_to t("button_show"), room, :class => "show-btn" %>
           <%= link_to t("button_edit"), edit_room_path(room), :class => "edit-btn" %>
           <%= link_to t("button_delete"), room, method: :delete, data: { confirm: t("confirm_removing_classroom") }, :class => "destroy-btn" %>
         </td>

@@ -11,7 +11,7 @@ module Pyrite
     end
 
     def name_with_building
-      "#{name}, #{building.name}"
+      "#{name}, #{building.try(:name)}"
     end
 
     def pdf_title

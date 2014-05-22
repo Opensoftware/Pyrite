@@ -60,7 +60,7 @@ Pyrite::Engine.routes.draw do
   resources :buildings do
     resources :rooms, :only => [:new]
   end
-  resources :rooms, :except => [:index]
+  resources :rooms, :except => [:index, :show]
   resources :dashboard, :only => [:index] do
     collection do
       get :prints

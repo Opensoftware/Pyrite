@@ -10,7 +10,7 @@
   <div class="form-group">
     <label> <%= t "label_classroom_type" %></label>
     <div>
-      <%= f.collection_select :room_type_id, RoomType.all, :id, :short_name %>
+      <%= f.collection_select :room_type_id, @room_types, :id, :short_name %>
     </div>
   </div>
   <div class="form-group">
@@ -22,7 +22,7 @@
   <div class="form-group">
     <label> <%= t "label_building_name" %></label>
     <div>
-      <%= f.collection_select :building_id, Building.all, :id, :name %>
+      <%= f.collection_select :building_id, @buildings, :id, :name %>
     </div>
   </div>
   <div class="form-group">
