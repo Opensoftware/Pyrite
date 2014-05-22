@@ -5,18 +5,22 @@ module Pyrite
     skip_authorization_check :only => [:timetable]
 
     def index
+      authorize! :manage, Lecturer
       @lecturers = Lecturer.all
     end
 
     def new
+      authorize! :manage, Lecturer
       @lecturer = Lecturer.new
     end
 
     def edit
+      authorize! :manage, Lecturer
       @lecturer = Lecturer.find(params[:id])
     end
 
     def create
+      authorize! :manage, Lecturer
       @lecturer = Lecturer.new(form_params)
 
       if @lecturer.save
@@ -28,6 +32,7 @@ module Pyrite
     end
 
     def update
+      authorize! :manage, Lecturer
       @lecturer = Lecturer.find(params[:id])
 
       if @lecturer.update_attributes(form_params)
@@ -39,10 +44,11 @@ module Pyrite
     end
 
     def destroy
+      authorize! :manage, Lecturer
       @lecturer = Lecturer.find(params[:id])
       @lecturer.destroy
 
-      redirect_to lecturers_url, notice: t("notice_lecturer_have_been_deleted")
+      redirect_to lecturers_path, notice: t("notice_lecturer_have_been_deleted")
     end
 
     def timetable
