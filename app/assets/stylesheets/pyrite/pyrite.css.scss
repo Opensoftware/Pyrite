@@ -1,7 +1,26 @@
-//= depend_on_asset "pyrite/pyrite_small.png"
+//= depend_on_asset "pyrite/logo.png"
 
-.navbar > .container .navbar-brand { background: image-url("pyrite/pyrite_small.png") left bottom no-repeat; width: 60px; position: relative; bottom: -3px; margin-bottom: 3px; }
-.navbar > .container .navbar-header > div { float: left; padding-top: 10px; }
+
+@import "variables.css.scss";
+
+.navbar > .container .navbar-brand {
+  background: image-url("pyrite/logo.png") left no-repeat;
+  width: 220px;
+  position: relative;
+  margin: 0px; padding: 0px;
+  margin-right: 10px;
+  height: 58px;
+  bottom: 0px;
+}
+
+.navbar > .container .navbar-header > div {
+  float: left;
+  line-height: 38px;
+  border-left: 1px solid $pink;
+  margin: 10px 0px;
+  padding-left: 15px;
+  color: white;
+}
 
 .nav-system-panel {
   width: 30%;
