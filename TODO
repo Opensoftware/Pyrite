@@ -1,8 +1,40 @@
 TODO:
 
+SUPER PRIORYTET:
+- przy ładowaniu bloków dla wielu grup łączyć bloki razem czy wyświetlać
+  osobno dla każdego?
+- UWAGI z uwagi_opensoftware.doc od EAIiB
+- Zastąpić lecturer employee z usi/core (sprawdzić czy inne model też są
+  kompatybilne)
+
+- wyróżnić rezerwacje na planach!
+- dodawanie/edycja sal poprzez modal i ajax
+- po przekształceniu w engin dodać wersję do stopki
+- zablokować możliwość modyfikowania bloków na rezerwacji które nie
+  są rezerwacjami
+- edycja bloku w rezerwacji pozwala zmodyfikować grupę nie powinno być to
+  możliwe gdyż rezerwacja nie jest związana z grupą
+- ładowanie danych do fullCalendara na 3 tygodnie wstecz i w przód, następnie,
+  zamist ładowania za każdym razem wszystkich eventów można ładować tylko te
+  które się zmieniły poprzez refetchEvent, updateEvent.
+  doładowywanie danych w locie.
+- po usunięciu wszystkich grup z selecta plan zostaje dla ostatniej z listy - powinien
+  być pusty
+- ustawić form z wyborem sali i grupy jako fix tak żeby przy przesuwaniu strony
+  ciągle był na górze.
+- dodać znikanie bootstrap alert po upływie określonego czasu
+- w rezerwacji, podczas edycji bloku ładuje się widok z block#edit który zawiera
+  grupy. Obecnie w rezerwacji nie da się dopiąć grupy. Dodać taką możliwość
+- dodanie możliwości kopiowania roku akademickiego z poprzednich lat.
+- academic_year _form - wyświetl dialog z datą kliknij na inpucie raz jeszcze,
+  dialog znika, ponowne klikniecie na inpucie nie sprawia że się pojawi. input
+  musi zgubić focus żeby kliknięcie zadziałało.
+- przenieść wydruki do blocks/prints controller i dodać sprawdzanie czy
+  rok akademicki został ustawiony
+- requesty ajaxowe lecące z academic_year w razie internal error nie informują o
+  błędzie, brak error handling w razie dostanie statusu 500
+- dorobić changelog gem
 - dodanie jquery search table dla duży setów (np. prowadzących, grup, sal)
-- naprawić widok rezerwacji, podczas przesuwania bloku odświeża się
-  jakoś dziwnie i nie pamiętam daty na której obecnie jesteśmy
 - naprawić widok dodawania typu zajęć
 - naprawić cachowanie assetsów, rails4 nie radzi sobie dobrze z js/css które nie
   korzytają z helperów jak assets_path które wygenerują poprawny link do pliku.
@@ -13,7 +45,6 @@ TODO:
   odbywają się zajęcia,
 - js alert zastąpić dialogami z UI
 - rezerwacje: Update leci do block kontroler a powinien do reservation
-- rezerwacje: formularz nie pamięta dnia jaki został wybrany.
 - Block::Type podczas edycji spectrum nie ustawia istniejącego koloru
 - Wypieprzyć AR i zastąpić przez DM i wrócić do nazwy Block::Type
 - dostosować strony błędów 404, 500 etc.
@@ -21,10 +52,8 @@ TODO:
   rozpoczęciem
 - dodać mozliwość edycji bloków dla zalogowanych uzytkowników na dowolnym
   widoku.
-- opcja bez weekendów nie aplikuje się do wyświetlania planów zajęć - naprawić
 - Dodać meta dane do wydruków pdf
-- Brak możliwości wydruku sal i prowadzących
-- Możliwość wyłączenia sobót i niedziel
+- Brak możliwości wydruku prowadzących
 
 - ZANIM przeniesiemy kod na githuba trzeba zmienić deploy.rb, sprawdzić czy nie
   ma żadnych danch których niechcemy upubliczniać i wyczyścić repo z plików
@@ -41,13 +70,23 @@ Uwagi EAIiB:
 
 - Brak możliwości przypisania/rezerwacji kilku sal w jednym terminie do jednych
   zajęć
+- dalej brak możliwości przypisania kilku prowadzących do jednych
+zajęć.
+- dalej brak możliwości przypisania kilku sal do jednego bloku zajęć
 
 Ergonomia:
 
+- zarządzanie pracownikami:
+    - brak sortowania - dane wyświetlane są w kolejności wprowadzenia
+do systemu
+    - brak rozdzielenia imienia i nazwiska -> brak możliwości
+posortowania po nazwisku (albo można zmienić kolejność wprowadzania na
+Nazwisko i imię/imiona)
+- dodawanie nowego bloku zajęć:
+    - brak sortowania przy wyborze prowadzącego zajęcia i przy wyborze
+sali (znowu kolejność wprowadzenia do systemu)
+
 Dodawanie nowego bloku zajęć:
-  - nie pamięta ostatnio wybranego semestru (ciągle proponuje „Semestr Zimowy”,
-    mimo że ostatnio wprowadzane były zajęcia na semetr letni)
-  - brak możliwości „szybkiego wyszukiwania” pracownika
   - lista pracowników nie jest posortowana
 
 Dodatkowo:
