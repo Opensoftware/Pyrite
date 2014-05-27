@@ -1,5 +1,11 @@
 module Pyrite
   class Block < ActiveRecord::Base
+
+    # NOTICE: we have to require it here due to fact how ruby/rails load the files
+    # Read more at: http://stackoverflow.com/a/17699275/421860
+    # The problem is with the name of the class Date
+    require 'pyrite/block/date'
+
     include UsiLogger
     belongs_to :room
     belongs_to :lecturer
