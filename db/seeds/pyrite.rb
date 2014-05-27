@@ -57,10 +57,6 @@ ActiveRecord::Base.transaction do
   academic_year.events.build(:name => "Sesja letnia", :start_date => "2015-06-02", :end_date => "2014-06-30", :lecture_free => true)
   academic_year.save
 
-  Pyrite::Lecturer.destroy_all
-  Pyrite::Lecturer.create(:title => "prof.", :full_name => "Andrzej Wajda")
-  Pyrite::Lecturer.create(:title => "dr", :full_name => "Stanisław Kobuszewski")
-
   Settings.destroy_all
   Settings.create(:key => "unit_name", :value => "Wydział Informatyki" )
   Settings.create(:key => "email_contact", :value => "contact@opensoftware.pl")

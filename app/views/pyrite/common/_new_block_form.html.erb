@@ -15,7 +15,7 @@
       <label> <%= t("label_lecturer") %> </label>
       <div>
         <%= f.collection_select :lecturer_id, @lecturers, :id,
-          :name_with_title, { :include_blank => true },
+          :full_name, { :include_blank => true },
           { "data-placeholder" => t("prompt_lecturer"), :class => "chosen-select", :tabindex => 6 } %>
       </div>
     </div>

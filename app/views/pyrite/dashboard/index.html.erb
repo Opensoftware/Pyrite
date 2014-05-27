@@ -65,7 +65,7 @@
         <% end %>
         <% if can? :manage, Pyrite::Lecturer %>
           <li>
-             <%= link_to t("link_lecturers"), lecturers_path %>
+             <%= link_to t("link_lecturers"), main_app.employees_path %>
           </li>
         <% end %>
         <% if can? :manage, Pyrite::AcademicYear %>

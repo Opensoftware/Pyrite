@@ -68,9 +68,6 @@ Pyrite::Engine.routes.draw do
     end
   end
 
-  resources :lecturers, :except => [:show]
-
-
   match "/user/account" => "users#account", :as => "user_account", :via => :get
   match "/user/update" => "users#update", :as => "update_user_account", :via => :put
 

@@ -36,7 +36,6 @@ SimpleNavigation::Configuration.run do |navigation|
             end
           end
         end
-        dashboard.item :lecturers, I18n.t("pyrite.breadcrumbs.lecturers"), lecturers_path
         dashboard.item :academic_years, I18n.t("pyrite.breadcrumbs.academic_years.name"), academic_years_path do |academic_year|
           if @academic_year
             if @academic_year.new_record?

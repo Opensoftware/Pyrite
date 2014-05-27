@@ -86,7 +86,7 @@ module Pyrite
     end
 
     def lecturer_name
-      lecturer.try(:name_with_title).to_s
+      lecturer.try(:full_name).to_s
     end
 
     def groups_names

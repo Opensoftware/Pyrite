@@ -39,7 +39,7 @@ module Pyrite
         [room.name_with_building, show_reservations_path(room.id)]
       }
       @lecturers_with_url = Lecturer.all.collect { |lecturer|
-        [lecturer.name_with_title, lecturer_timetable_path(lecturer.id)]
+        [lecturer.full_name, lecturer_timetable_path(lecturer.id)]
       }
     end
 
