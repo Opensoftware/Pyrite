@@ -1,8 +1,5 @@
 //= depend_on_asset "logo.png"
 //= depend_on_asset "button_reload.png"
-//= depend_on_asset "icons/icons_sprite_white.png"
-//= depend_on_asset "icons/icons_sprite_navy.png"
-//= depend_on_asset "icons/icons_sprite_red.png"
 //= depend_on_asset "icons/icon_email_sprite.png"
 //= depend_on_asset "button_red_small.png"
 //= depend_on_asset "button_navy_small.png"
@@ -363,6 +360,7 @@ table {
   h5, h4 { margin: 0; margin-bottom: .3em;}
   hr { margin: 0 0 1.8em 0; border-width: 2px; border-bottom: 1px solid $grey3; }
 }
+
 .section-header {
   margin-top: 10px;
   a {
@@ -414,46 +412,6 @@ table {
 }
 h4.section-title { border-bottom: 1px solid $grey3; padding-bottom: .4em; margin-bottom: 1.5em; }
 
-
-.icon {
-  width: 14px;
-  height: 14px;
-}
-.inline-icon:before {
-  @extend .icon;
-  display: inline-block;
-  content: ' ';
-  margin: 0 5px 0 0;
-  position: relative;
-  left: 0;
-  top: 3px;
-}
-.icon-white { background: image-url("icons/icons_sprite_white.png") no-repeat; }
-.icon-navy { background: image-url("icons/icons_sprite_navy.png") no-repeat; }
-.icon-red, .inline-icon-red:before { background: image-url("icons/icons_sprite_red.png") no-repeat; }
-.icon-elective-blocks, .inline-icon-elective-blocks:before { background-position: -3px -4px;  }
-.icon-thesis-list, .inline-icon-thesis-list:before { background-position: -23px -4px;  }
-.icon-manage, .inline-icon-manage:before { background-position: -43px -4px;  }
-.icon-user { background-position: -63px -4px;  }
-.icon-left-arrow, .inline-icon-left-arrow:before { background-position: -3px -24px;  }
-.icon-callendar { background-position: -23px -24px;  }
-.icon-plus, .inline-icon-plus:before { background-position: -43px -24px;  }
-.icon-accept { background-position: -63px -24px;  }
-.icon-right-arrow { background-position: -3px -43px;  }
-.icon-checkbox-accept { background-position: -23px -43px;  }
-.icon-export, .inline-icon-export:before { background-position: -23px -63px;  }
-.icon-pen, .inline-icon-pen:before { background-position: -43px -43px;  }
-.icon-delete { background-position: -63px -43px;  }
-.icon-email {
-  width: 15px;
-  height: 10px;
-  border: none;
-  background: image-url("icons/icon_email_sprite.png") 0 0 no-repeat;
-  display: inline-block;
-}
-.icon-email-visited {
-  background-position: 0px -10px;
-}
 
 .button-small {
   width: 30px;
@@ -583,35 +541,6 @@ a.button-small {
   @include make-md-column-offset-18(6);
 }
 
-.nav-system-panel {
-  @extend .panel;
-  @extend .panel-primary;
-  border-color: $dark_blue;
-}
-
-.nav-system-panel ul {
-  @extend .nav-pills;
-  @extend .nav;
-  @extend .nav-stacked;
-}
-
-.nav-system-panel-heading {
-  padding: 10px 15px;
-  border-bottom: 1px solid transparent;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-  color: white;
-  background-color: $dark_blue;
-  border-color: $dark_blue;
-}
-
-.nav-system-panel h3 {
-  @extend .panel-title;
-}
-
-.nav-system-panel a:link {
-  border: none;
-}
 .content-body {
   @extend .row;
 }

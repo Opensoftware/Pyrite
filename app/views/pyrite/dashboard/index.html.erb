@@ -1,96 +1,133 @@
+<% content_for :top_menu do %>
+  <%= link_to t("link_user_account"), user_account_path, :class => "inline-icon-manage" %>
+<% end %>
+
 <% cache do %>
-  <div class="nav-system-panel">
-    <div class="nav-system-panel-heading">
-      <h3> <%= t("panel.title.settings") %> </h3>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="dashboard-section">
+        <div class="section-header">
+          <h4> <%= t("panel.title.timetable") %> </h4>
+          <div class="clearfix"></div>
+          <hr>
+        </div>
+        <div class="subsection">
+          <ul>
+            <% if can? :manage, Pyrite::Block %>
+              <li class="inline-icon-callendar">
+                 <%= link_to(t("link_add_new_reservation"), new_reservation_path) %>
+              </li>
+            <% end %>
+          </ul>
+          <div class="row">
+             <div class="col-md-8">
+               <div class="subsection-header">
+                 <h5> <%= t("dashboard.label.full_time_studies") %> </h5>
+                 <hr>
+               </div>
+               <ul>
+                 <% if can? :manage, Pyrite::Block %>
+                   <li class="inline-icon-plus">
+                      <%= link_to(t("link_add_new_block"), new_block_path) %>
+                   </li>
+                   <li class="inline-icon-print">
+                     <%= link_to(t("link_prints"), prints_dashboard_index_path) %>
+                   </li>
+                 <% end %>
+               </ul>
+             </div>
+             <div class="col-md-8">
+               <div class="subsection-header">
+                 <h5> <%= t("dashboard.label.part_time_studies") %> </h5>
+                 <hr>
+               </div>
+               <ul>
+                 <% if can? :manage, Pyrite::Block %>
+                   <li class="inline-icon-plus">
+                      <%= link_to(t("dashboard.link.new_part_time_block"), new_part_time_block_path) %>
+                   </li>
+                   <li class="inline-icon-print">
+                     <%= link_to(t("link_prints"), prints_part_time_dashboard_index_path) %>
+                   </li>
+                 <% end %>
+               </ul>
+             </div>
+          </div>
+        </div>
+        <hr>
+      </div>
     </div>
-    <div class="panel-body">
-      <ul>
-        <% if can? :manage, Pyrite::Settings %>
-          <li>
-            <%= link_to t("link_settings"), edit_settings_path %>
-          </li>
-          <li>
-             <%= link_to t("link_user_account"), user_account_path %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <div class="nav-system-panel">
-    <div class="nav-system-panel-heading">
-      <h3> <%= t("panel.title.timetable") %> </h3>
-    </div>
-    <div class="panel-body">
-      <ul>
-        <% if can? :manage, Pyrite::Block %>
-          <li>
-             <%= link_to(t("link_add_new_reservation"), new_reservation_path) %>
-          </li>
-        <% end %>
-      </ul>
-      <h4> <span class="label label-success"> <%= t("dashboard.label.full_time_studies") %> </span> </h4>
-      <ul>
-        <% if can? :manage, Pyrite::Block %>
-          <li>
-             <%= link_to(t("link_add_new_block"), new_block_path) %>
-          </li>
-          <li>
-            <%= link_to(t("link_prints"), prints_dashboard_index_path) %>
-          </li>
-        <% end %>
-      </ul>
-      <h4> <span class="label label-warning"> <%= t("dashboard.label.part_time_studies") %> </span> </h4>
-      <ul>
-        <% if can? :manage, Pyrite::Block %>
-          <li>
-             <%= link_to(t("dashboard.link.new_part_time_block"), new_part_time_block_path) %>
-          </li>
-          <li>
-            <%= link_to(t("link_prints"), prints_part_time_dashboard_index_path) %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <div class="nav-system-panel">
-    <div class="nav-system-panel-heading">
-      <h3> <%= t("panel.title.data") %> </h3>
-    </div>
-    <div class="panel-body">
-      <ul>
-        <% if can? :manage, Pyrite::Building %>
-          <li>
-             <%= link_to t("link_buildings_and_rooms"), buildings_path %>
-          </li>
-        <% end %>
-        <% if can? :manage, Pyrite::Lecturer %>
-          <li>
-             <%= link_to t("link_lecturers"), main_app.employees_path %>
-          </li>
-        <% end %>
-        <% if can? :manage, Pyrite::AcademicYear %>
-          <li>
-             <%= link_to t("link_academic_years"), academic_years_path %>
-          </li>
-        <% end %>
-        <% if can? :manage, Pyrite::Block::Variant %>
-          <li>
-             <%= link_to t("link_block_types"), block_types_path %>
-          </li>
-        <% end %>
-        <% if can? :manage, Pyrite::Group %>
-          <li>
-             <%= link_to t("link_groups"), groups_path %>
-          </li>
-        <% end %>
-      </ul>
+    <div class="col-md-8">
+      <div class="dashboard-section">
+        <div class="section-header">
+          <h4> <%= t("panel.title.data") %> </h4>
+          <div class="clearfix"></div>
+          <hr>
+        </div>
+        <div class="subsection">
+          <div class="row">
+
+            <div class="col-md-8">
+              <ul>
+                <% if can? :manage, Pyrite::Building %>
+                  <li class="inline-icon-home">
+                     <%= link_to t("link_buildings_and_rooms"), buildings_path %>
+                  </li>
+                <% end %>
+                <% if can? :manage, Pyrite::Lecturer %>
+                  <li class="inline-icon-user">
+                     <%= link_to t("link_lecturers"), main_app.employees_path %>
+                  </li>
+                <% end %>
+                <% if can? :manage, Pyrite::AcademicYear %>
+                  <li class="inline-icon-list">
+                     <%= link_to t("link_academic_years"), academic_years_path %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="col-md-8">
+              <ul>
+                <% if can? :manage, Pyrite::Block::Variant %>
+                  <li class="inline-icon-type">
+                     <%= link_to t("link_block_types"), block_types_path %>
+                  </li>
+                <% end %>
+                <% if can? :manage, Pyrite::Group %>
+                  <li class="inline-icon-blocks">
+                     <%= link_to t("link_groups"), groups_path %>
+                  </li>
+                <% end %>
+                <% if can? :manage, Pyrite::Settings %>
+                  <li class="inline-icon-manage">
+                    <%= link_to t("link_settings"), edit_settings_path %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
     </div>
   </div>
 <% end %>
 
-<div class="clearfix"> </div>
-<% cache cache_key_for_timetable_forms do %>
-  <div class="main-control-panel">
-    <%= render :partial => "pyrite/common/timetable_forms" %>
+<div class="row">
+  <div class="col-md-8">
+    <div class="section">
+      <div class="section-header">
+        <h4> <%= t("panel.title.show") %> </h4>
+        <div class="clearfix"></div>
+        <hr>
+      </div>
+
+      <% cache cache_key_for_timetable_forms do %>
+        <div class="main-control-panel">
+          <%= render :partial => "pyrite/common/timetable_forms" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
+

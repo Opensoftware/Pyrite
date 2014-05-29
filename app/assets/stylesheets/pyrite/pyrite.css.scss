@@ -2,6 +2,7 @@
 
 
 @import "variables.css.scss";
+@import "mixins.css.scss";
 
 .navbar > .container .navbar-brand {
   background: image-url("pyrite/logo.png") left no-repeat;
@@ -32,4 +33,71 @@
   a { text-decoration: none; color: #fff; padding-bottom: 0.1em; }
   a:link { border-bottom: 0px; }
   a:hover { border-bottom: 0px; }
+}
+
+.inline-icon-red {
+  @include inline-icon;
+  @include icon-red;
+}
+.inline-icon-plus:before {
+  @extend .inline-icon-red;
+  @include icon-plus;
+}
+
+.inline-icon-callendar:before {
+  @extend .inline-icon-red;
+  @include icon-callendar;
+}
+
+.inline-icon-print:before {
+  @extend .inline-icon-red;
+  @include icon-print;
+}
+
+.inline-icon-home:before {
+  @extend .inline-icon-red;
+  @include icon-home;
+}
+
+.inline-icon-user:before {
+  @extend .inline-icon-red;
+  @include icon-user;
+}
+
+.inline-icon-manage:before {
+  @extend .inline-icon-red;
+  @include icon-manage;
+}
+
+.inline-icon-blocks:before {
+  @extend .inline-icon-red;
+  @include icon-blocks;
+}
+
+.inline-icon-type:before {
+  @extend .inline-icon-red;
+  @include icon-type;
+}
+
+.inline-icon-list:before {
+  @extend .inline-icon-red;
+  @include icon-list;
+}
+
+.dashboard-section {
+  line-height: 30px;
+  ul { list-style: none; margin: 20px 0px; padding: 0px; }
+  hr { margin: 0 0 5px 0; border-width: 2px; border-bottom: 1px solid $grey3; }
+  .subsection-header {
+    hr { margin: 0; border-width: 0; border-bottom-width: 1px; margin-bottom: 0.3em;  }
+  }
+
+  .subsection {
+    margin: 0px;
+  }
+}
+
+.dashboard-section {
+  a:link, a:hover, a:visited { text-decoration: none; border: none; color: $dark_blue; }
+  a:hover { color: $dark_blue2 }
 }
