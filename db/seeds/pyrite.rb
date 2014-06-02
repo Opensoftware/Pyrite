@@ -8,6 +8,12 @@ ActiveRecord::Base.transaction do
   user.password = "123qweasdzxc"
   user.password_confirmation = "123qweasdzxc"
   user.role = pyrite_admin
+
+  base_unit = AcademyUnit.where(code: 'AT').first
+
+  faculty = Faculty.new(short_name: 'IS', code: 'I', name: 'Informatyka Stosowana', overriding_id: base_unit.id, annual_id: Annual.first.id)
+  faculty.save!
+
   employee = Employee.new(surname: "Kozioł", name: "Adam", room: "13",
                           academy_unit_id: Faculty.first.id,
                           employee_title_id: EmployeeTitle.first.id,
