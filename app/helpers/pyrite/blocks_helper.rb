@@ -30,16 +30,16 @@ module Pyrite
 
     def timetable_forms_data
       @groups_with_url = Group.all.collect {|group|
-        [group.name, group_timetable_path(group.id)]
+        [group.name, pyrite.group_timetable_path(group.id)]
       }
       @rooms_with_url = Room.all.collect {|room|
-        [room.name_with_building, room_timetable_path(room.id)]
+        [room.name_with_building, pyrite.room_timetable_path(room.id)]
       }
       @rooms_reservations_with_url = Room.all.collect {|room|
-        [room.name_with_building, show_reservations_path(room.id)]
+        [room.name_with_building, pyrite.show_reservations_path(room.id)]
       }
       @lecturers_with_url = Lecturer.all.collect { |lecturer|
-        [lecturer.full_name, lecturer_timetable_path(lecturer.id)]
+        [lecturer.full_name, pyrite.lecturer_timetable_path(lecturer.id)]
       }
     end
 
