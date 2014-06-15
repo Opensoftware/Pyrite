@@ -1,8 +1,8 @@
 //= depend_on_asset "pyrite/logo.png"
 
-
 @import "variables.css.scss";
 @import "mixins.css.scss";
+@import 'custom_functions.css.scss';
 
 .navbar > .container .navbar-brand {
   background: image-url("pyrite/logo.png") left no-repeat;
