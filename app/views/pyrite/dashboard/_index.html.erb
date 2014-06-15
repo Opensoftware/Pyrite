@@ -1,0 +1,19 @@
+<% if can? :read, :pyrite_dashboard %>
+  <% content_for :top_menu do %>
+    <%= link_to t("pyrite.dashboard"), pyrite.dashboard_index_path, :class => "inline-icon-manage" %>
+  <% end %>
+
+  <div class="col-md-8">
+    <div class="dashboard-section">
+      <div class="section-header">
+        <h4> <%= t("pyrite.title_system_name") %> </h4>
+        <div class="clearfix"></div>
+        <hr>
+      </div>
+      <div class="subsection">
+        Siatka Dashboard
+      </div>
+      <hr>
+    </div>
+  </div>
+<% end %>

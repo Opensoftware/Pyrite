@@ -5,6 +5,12 @@ module Pyrite
     path = File.join(Pyrite::Engine.root, "app", "navigations", "pyrite")
     SimpleNavigation.config_file_paths << path
 
+    config.to_prepare do
+      Dir.glob(Pyrite::Engine.root + "app/decorators/**/*_decorator*.rb").each do |c|
+        require_dependency(c)
+      end
+    end
+
     initializer "pyrite.assets.precompile" do |app|
       app.config.assets.precompile += ["pyrite/OpenLayers.js", "pyrite/spectrum.js", "pyrite/blocks.js",
                                                      "pyrite/blocks/new.js", "pyrite/timetable_forms.js",

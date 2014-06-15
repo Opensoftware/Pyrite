@@ -8,6 +8,7 @@ module Pyrite
         user.role = Role.where(const_name: 'anonymous').first
       else
         can :manage, :my
+        can :read, :pyrite_dashboard
       end
 
       if user.pyrite_admin?

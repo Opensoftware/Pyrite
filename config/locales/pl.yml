@@ -48,6 +48,7 @@ pl:
         new: Nowa
         edit: Edycja
     title_system_name: Pyrit - Siatka zajęć
+    dashboard: Pyrite - Panel zarządzania
 
     error:
       internal_error: Coś poszło nie tak, sprawdzimy to i postaramy się naprawić jak najszybciej

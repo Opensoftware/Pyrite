@@ -1,0 +1,11 @@
+<% content_for :additional_stylesheets do %>
+  <%= stylesheet_link_tag "pyrite/application" %>
+<% end %>
+
+<% content_for :common_menu do %>
+  <%= render_navigation(:context => :pyrite_common, :expand_all => true, :renderer => :bootstrap) %>
+<% end %>
+
+<% content_for :engine_javascript_libraries do %>
+  <%= javascript_include_tag "pyrite/application" %>
+<% end %>
