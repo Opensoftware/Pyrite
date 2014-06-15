@@ -48,7 +48,12 @@ pl:
         new: Nowa
         edit: Edycja
     title_system_name: Pyrit - Siatka zajęć
-    dashboard: Pyrite - Panel zarządzania
+    control_panel: Pyrite - Panel zarządzania
+    dashboard:
+      current_academic_year:
+        for_viewing: "Plan zajęć dostępny dla studentów: %{academic_year}"
+        for_editing: "Plan zajęć ustawiony do edycji: %{academic_year}"
+      statistics: Statystyki
 
     error:
       internal_error: Coś poszło nie tak, sprawdzimy to i postaramy się naprawić jak najszybciej
