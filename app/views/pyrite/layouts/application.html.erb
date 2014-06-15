@@ -23,13 +23,13 @@
     <nav class="navbar" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <%= link_to '', current_user ? main_app.dashboard_index_path : root_path,
+          <%= link_to '', current_user ? main_app.dashboard_path : root_path,
                         :class => "navbar-brand" %>
           <div> <%= @unit_name %> </div>
         </div>
         <div class="navbar-nav navbar-right">
           <ul class="nav navbar-nav">
-            <%= render_navigation(:context => :header, :expand_all => true, :renderer => :bootstrap) %>
+            <%= render_navigation(:context => :pyrite_common, :expand_all => true, :renderer => :bootstrap) %>
           </ul>
         </div>
       </div>
