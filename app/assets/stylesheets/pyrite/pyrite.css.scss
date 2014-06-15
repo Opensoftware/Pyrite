@@ -64,6 +64,12 @@
   @include icon-user;
 }
 
+.icon-user-white {
+  @include icon;
+  @include icon-white;
+  @include icon-user;
+}
+
 .inline-icon-manage:before {
   @extend .inline-icon-red;
   @include icon-manage;
