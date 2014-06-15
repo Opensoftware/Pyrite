@@ -1,15 +1,17 @@
 SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.item :home_page, I18n.t("pyrite.breadcrumbs.home_page"), root_path do |home|
-      if @room
-        home.item :reservation, I18n.t("pyrite.breadcrumbs.reservation"), show_reservations_path(@room)
-        home.item :room, I18n.t("pyrite.breadcrumbs.room"), room_timetable_path(@room)
-      end
-      if @group
-        home.item :group, I18n.t("pyrite.breadcrumbs.group"), group_timetable_path(@group)
-      end
-      if @lecturer
-        home.item :lecturer, I18n.t("pyrite.breadcrumbs.lecturer"), lecturer_timetable_path(@lecturer)
+      if action_name =~ /timetable/
+        if @room
+          home.item :reservation, I18n.t("pyrite.breadcrumbs.reservation"), show_reservations_path(@room)
+          home.item :room, I18n.t("pyrite.breadcrumbs.room"), room_timetable_path(@room)
+        end
+        if @group
+          home.item :group, I18n.t("pyrite.breadcrumbs.group"), group_timetable_path(@group)
+        end
+        if @lecturer
+          home.item :lecturer, I18n.t("pyrite.breadcrumbs.lecturer"), lecturer_timetable_path(@lecturer)
+        end
       end
       home.item :dashboard, I18n.t("pyrite.breadcrumbs.dashboard"), dashboard_index_path do |dashboard|
         dashboard.item :reservation, I18n.t("pyrite.breadcrumbs.new_reservation"), new_reservation_path
