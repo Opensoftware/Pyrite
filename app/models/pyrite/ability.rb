@@ -2,8 +2,8 @@ module Pyrite
   class Ability
     include CanCan::Ability
 
-    def initialize(user)
-      user ||= Pyrite::User.new # guest user (not logged in)
+    def initialize(usi_user)
+      user = Pyrite::User.where(:id => usi_user.try(:id)).first || Pyrite::User.new
       if user.new_record?
         user.role = Role.where(const_name: 'anonymous').first
       else
@@ -23,6 +23,7 @@ module Pyrite
         can :manage, Block::Variant
         can :manage, Group
         can :manage, Room
+        can :manage, Employee
         can :read, :timetables
         can :manage, :reservations
         can :print, :timetables

@@ -4,12 +4,7 @@ class PyriteController < ApplicationController
   check_authorization
 
   def current_ability
-    # TODO
-    # For ability we have to ues Pyrite::User not ::User this is why we have to
-    # translate current_user to Pyrite::User, maybe there is a better way of doing
-    # that?
-    user = Pyrite::User.where(:id => current_user.try(:id)).first
-    @current_ability ||= Pyrite::Ability.new(user)
+    @current_ability ||= Pyrite::Ability.new(current_user)
   end
 
   def default_url_options(options={})
