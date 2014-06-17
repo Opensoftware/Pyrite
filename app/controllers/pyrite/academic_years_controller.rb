@@ -28,7 +28,7 @@ module Pyrite
 
       if @academic_year.save
         flash[:notice] = t("notice_academic_year_was_created")
-        redirect_to @academic_year
+        redirect_to academic_year_path(@academic_year)
       else
         render action: "new"
       end
@@ -40,7 +40,7 @@ module Pyrite
 
       if @academic_year.update_attributes(form_params)
         flash[:notice] = t("notice_academic_year_was_updated")
-        redirect_to @academic_year
+        redirect_to academic_year_path(@academic_year)
       else
         render action: "edit"
       end
@@ -55,7 +55,7 @@ module Pyrite
       end
       @academic_year.destroy
 
-      redirect_to academic_years_url
+      redirect_to academic_years_path
     end
 
     private
