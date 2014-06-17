@@ -1,7 +1,7 @@
 SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.item :home_page, I18n.t("pyrite.breadcrumbs.home_page"), root_path do |home|
-      if action_name =~ /timetable/
+      if action_name =~ /timetable/ or controller.controller_name =~ /reservations/
         if @room
           home.item :reservation, I18n.t("pyrite.breadcrumbs.reservation"), show_reservations_path(@room)
           home.item :room, I18n.t("pyrite.breadcrumbs.room"), room_timetable_path(@room)
