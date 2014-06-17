@@ -17,7 +17,7 @@
         <label> <%= t("label_academic_year_event") %> </label>
         <div>
           <%= f.collection_select :event_id,
-            Pyrite::AcademicYear.for_editing.events, :id, :name, {}, {:tabindex => 5} %>
+            AcademicYear.for_editing.events, :id, :name, {}, {:tabindex => 5} %>
         </div>
       </div>
     </div>

@@ -24,21 +24,6 @@ Pyrite::Engine.routes.draw do
     get "lecturer/:id", :to => "lecturers#timetable", :as => :lecturer
   end
   resources :groups, :except => [:show]
-  resources :academic_years do
-    resources :events, :controller => "academic_years/events", :except => [:index]
-  end
-
-  namespace :academic_years do
-    resources :events, :only => [] do
-      resources :meetings, :only => [:new, :create]
-    end
-    resources :meetings, :only => [:destroy, :edit, :update]
-  end
-  get "academic_years/meeting/fetch_days_for_select", :to => "academic_years/meetings#fetch_days", :as => :fetch_days_for_meeting
-
-  get "academic_years/meetings/fetch", :as => "fetch_academic_year_meetings", :to => "academic_years/meetings#fetch"
-  get "academic_years/events/fetch", :as => "fetch_academic_year_events", :to => "academic_years/events#fetch"
-
   get "/blocks/new_part_time", :as => :new_part_time_block, :to => "blocks#new_part_time"
   post "/blocks/new_part_time", :as => :part_time_block, :to => "blocks#create_part_time"
   resources :blocks, :except => [:index] do

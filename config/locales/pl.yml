@@ -33,11 +33,6 @@ pl:
         name: Studia niestacjonarne
         new_block: Bloki zajęć
         prints: Wydruki
-      academic_years:
-        name: Organizacja roku akademickiego
-        edit: Edycja
-        show: Wyświetl
-        new: Nowy
       block:
         type:
           name: Typy zajęć
@@ -82,18 +77,6 @@ pl:
         address: "Pole 'Adres'"
       pyrite/lecturer:
         full_name: "Pole 'Imię i nazwisko'"
-      pyrite/academic_year:
-        name: "Pole 'Nazwa'"
-        start_date: "Pole 'Data rozpoczęcia'"
-        end_date: "Pole 'Data zakończenia'"
-      pyrite/academic_year/event:
-        start_date: "Pole 'Data rozpoczęcia'"
-        end_date: "Pole 'Data zakończenia'"
-        name: "Pole 'Nazwa bloku'"
-      pyrite/academic_year/meeting:
-        start_date: "Pole 'Data rozpoczęcia'"
-        end_date: "Pole 'Data zakończenia'"
-        name: "Pole 'Nazwa bloku'"
       pyrite/room:
         name: "Pole 'Nazwa'"
       pyrite/group:
@@ -116,7 +99,6 @@ pl:
   link_contact: Kontakt
   link_settings: Ustawienia systemu
   link_classrooms: Zarządzaj salami
-  link_academic_years: Organizacja roku akademickiego
   link_block_types: Typy zajęć
   link_groups: Grupy
   link_add_new_block: Dodaj nowy blok zajęć
@@ -136,8 +118,6 @@ pl:
   notice_successfully_saved: Wpis poprawnie zapisany.
   notice_classroom_updated: Sala została zaktualizowana.
   notice_classroom_was_created: Nowa sala została utworzona.
-  notice_academic_year_was_created: Nowy rok akademicki został stworzony.
-  notice_academic_year_was_updated: Rok akademicki został zaktualizowany.
   notice_block_has_been_created: Blok został stworzony.
   notice_block_type_created: Nowy typ zajęć został stworzony.
   notice_block_type_updated: Rekord został zaktualizowany.
@@ -167,8 +147,6 @@ pl:
   button_back: Wstecz
   button_close: Anuluj
   button_new_classroom: Dodaj nową salę
-  button_new_academic_year: Nowy rok akademicki
-  button_new_academic_year_event: Dodaj wydarzenie
   button_new_block_type: Dodaj nowy typ
   button_new_group: Dodaj nową grupę
   button_new_lecturer: Dodaj pracownika
@@ -181,10 +159,6 @@ pl:
   header_edit_classroom: Edycja sali
   header_listing_classrooms: Lista sal
   header_new_classroom: Dodaj nową salę
-  header_listing_academic_years: Plany akademickie
-  header_new_academic_year: Nowy rok akademicki
-  header_edit_academic_year: Edycja roku akademickiego
-  header_academic_year_events: Organizacja roku akademickiego
   header_block_types: Dostępne typy zajęć
   header_new_block_type: Nowy typ zajęć
   header_edit_block_type: Edytuj typ zajęć
@@ -224,14 +198,6 @@ pl:
   label_group: Grupa
   label_choose_group: Wybierz grupę
   label_lecturer: Prowadzący
-  label_academic_year_name: Nazwa
-  label_academic_year_start_date: Data rozpoczęcia
-  label_academic_year_end_date: Data zakończenia
-  label_academic_year_event_name: Nazwa
-  label_academic_year_event_start_date: Data rozpoczęcia
-  label_academic_year_event_end_date: Data zakończenia
-  label_academic_year_event_lecture_free: Wolne od zajęć
-  label_academic_year_event: Plan dla
   label_academic_year_event_for_print: "Drukuj dla:"
   label_actions: Akcja
   label_block_start_time: Godzina rozpoczęcia
@@ -289,23 +255,6 @@ pl:
   file_groups_timetable: "Plan zajęć dla wszytkich grup.pdf"
 
   include_blank_academic_event: Brak
-
-  academic_year:
-    tab:
-      full-time-studies: Studia stacjonarne
-      part-time-studies: Studia niestacjonarne
-    label:
-      name: Nazwa
-      start_date: Data rozpoczęcia
-      end_date: Data zakończenia
-    button:
-      add_meeting: Dodaj zjazd
-    modal:
-      header:
-        add_new_meeting: Dodaj nowy zjazd
-        add_new_event: Dodaj nowe wydarzenie
-    confirm:
-      remove_meeting: Jesteś pewny aby usunąć spotkanie? Wszystkie bloki powiązane z nim zostaną usunięte!
 
   panel:
     title:

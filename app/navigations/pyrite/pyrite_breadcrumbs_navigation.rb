@@ -36,16 +36,6 @@ SimpleNavigation::Configuration.run do |navigation|
             end
           end
         end
-        dashboard.item :academic_years, I18n.t("pyrite.breadcrumbs.academic_years.name"), academic_years_path do |academic_year|
-          if @academic_year
-            if @academic_year.new_record?
-              academic_year.item :new, I18n.t("pyrite.breadcrumbs.academic_years.new"), new_academic_year_path
-            else
-              academic_year.item :edit, I18n.t("pyrite.breadcrumbs.academic_years.edit"), edit_academic_year_path(@academic_year)
-              academic_year.item :show, I18n.t("pyrite.breadcrumbs.academic_years.show"), academic_year_path(@academic_year)
-             end
-          end
-        end
         dashboard.item :block_type, I18n.t("pyrite.breadcrumbs.block.type.name"),  block_types_path do |block_type|
           if @block_type
             if @block_type.new_record?

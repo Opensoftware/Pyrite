@@ -12,12 +12,12 @@
     }
 
     $('#groups-timetable').fullCalendar_with_defaults(options);
-    var block_date = $.fullCalendar.parseDate( "<%= Pyrite::AcademicYear::Event.for_viewing.start_date.to_i %>" )
+    var block_date = $.fullCalendar.parseDate( "<%= AcademicYear::Event.for_viewing.start_date.to_i %>" )
     $("#groups-timetable").fullCalendar('gotoDate', block_date);
   </script>
 <% end %>
 
 <h2 class="text-center"> <%= t("label_timetable_for_group") %> <%= @group.name %> </h2>
-<%= link_to t("link_print"), print_group_timetable_path(params[:id], Pyrite::AcademicYear::Event.for_viewing), :class => "print-btn pull-right" %>
+<%= link_to t("link_print"), print_group_timetable_path(params[:id], AcademicYear::Event.for_viewing), :class => "print-btn pull-right" %>
 
 <div id="groups-timetable"> </div>

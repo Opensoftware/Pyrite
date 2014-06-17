@@ -20,7 +20,7 @@ module Pyrite
       unless @meetings.first
         flash[:notice] = t("notice_missing_academic_year_meeting",
           :url => view_context.link_to(t("link_in_flash_academic_year_edit"),
-          edit_academic_year_path(AcademicYear.for_editing))).html_safe
+          main_app.edit_academic_year_path(AcademicYear.for_editing))).html_safe
         redirect_to dashboard_index_path
       end
     end
