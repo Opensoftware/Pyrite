@@ -35,6 +35,7 @@
   a:hover { border-bottom: 0px; }
 }
 
+/* TODO remove as soon as we will move to usi/base */
 .inline-icon-red {
   @include inline-icon;
   @include icon-red;
