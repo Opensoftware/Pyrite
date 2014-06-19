@@ -42,7 +42,7 @@ Pyrite::Engine.routes.draw do
   resource :settings, :only => [:edit, :update]
   root :to => 'main#index'
 
-  resources :buildings do
+  resources :buildings, :only => :show do
     resources :rooms, :only => [:new]
   end
   resources :rooms, :except => [:index, :show]

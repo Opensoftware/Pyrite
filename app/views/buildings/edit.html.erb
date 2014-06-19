@@ -1,0 +1,6 @@
+<h1> <%= t "header_edit_building" %> </h1>
+
+<%= render 'form' %>
+
+<%= link_to t("button_back"), main_app.buildings_path, :class => "back-btn" %>
+<%= link_to t("button_show"), main_app.building_path(@building), :class => "show-btn" %>

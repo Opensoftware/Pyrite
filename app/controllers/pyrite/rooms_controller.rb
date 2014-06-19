@@ -26,7 +26,7 @@ module Pyrite
       prepare_variables
 
       if @room.save
-        redirect_to building_path(@room.building), notice: t("notice_classroom_was_created")
+        redirect_to main_app.building_path(@room.building), notice: t("notice_classroom_was_created")
       else
         render action: "new"
       end
@@ -38,7 +38,7 @@ module Pyrite
       prepare_variables
 
       if @room.update_attributes(form_params)
-        redirect_to building_path(@room.building), notice: t("notice_classroom_updated")
+        redirect_to main_app.building_path(@room.building), notice: t("notice_classroom_updated")
       else
         render action: "edit"
       end
@@ -50,7 +50,7 @@ module Pyrite
       building = @room.building
       @room.destroy
 
-      redirect_to building_path(building), notice: t("notice_room_have_been_deleted")
+      redirect_to main_app.building_path(building), notice: t("notice_room_have_been_deleted")
     end
 
     def timetable

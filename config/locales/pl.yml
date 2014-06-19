@@ -72,9 +72,6 @@ pl:
         name: "Pole 'Nazwa'"
         short_name: "Pole 'Skrót'"
         color: "Pole 'Kolor'"
-      pyrite/building:
-        name: "Pole 'Nazwa'"
-        address: "Pole 'Adres'"
       pyrite/lecturer:
         full_name: "Pole 'Imię i nazwisko'"
       pyrite/room:
@@ -128,11 +125,8 @@ pl:
   notice_lecturer_have_been_deleted: Pracownik został usunięty.
   notice_please_wait: Proszę czekać ładuję dane...
   notice_block_has_been_updated: Blok został zaktualizowany.
-  notice_building_has_been_created: Budynek został dodany.
-  notice_building_has_been_updated: Budynek został zaktualizowany.
   notice_update_user_preferences_successed: Ustawienia zostały zaktualizowane.
   notice_room_have_been_deleted: Sala została usunięta.
-  notice_building_have_been_deleted: Budynek został usunięty.
   notice_missing_academic_year_meeting: Aby dodać blok zajęć dla studiów niestacjonarnych musisz najpierw dodać zjazdy dla roku akademickiego który edytujesz. Możesz to zrobić w %{url}
   notice:
     missing:
@@ -150,7 +144,6 @@ pl:
   button_new_block_type: Dodaj nowy typ
   button_new_group: Dodaj nową grupę
   button_new_lecturer: Dodaj pracownika
-  button_new_building: Nowy budynek
   button_show_rooms: Wyświetl sale
 
   header_user_account: Konto użytkownika
@@ -170,16 +163,12 @@ pl:
   header_new_lecturer: Nowy pracownik
   header_edit_lecturer: Edycja danych pracownika
   header_edit_block: Edycja bloku zajęć
-  header_listing_buildings: Lista budynków
-  header_new_building: Nowy budynek
-  header_edit_building: Edycja budynku
   header_prints: Drukuj plany
 
   header:
     block:
       new: Nowy blok zajęć
 
-  label_building_address: Adres
   label_without_weekend: Bez weekendów
   label_error: Błąd
   label_name: Nazwa
@@ -192,7 +181,6 @@ pl:
   label_classroom_capacity: Ilość miejsc
   label_classroom_comments: Uwagi
   label_action: Akcja
-  label_building_name: Budynek
   label_reservations: Rezerwacje
   label_classroom: Sale
   label_group: Grupa
@@ -227,7 +215,6 @@ pl:
   label_lecturer_title: Tytuł naukowy
   label_print_groups: "Grupy na:"
   label_pdf_subtitle: Podtytuł na wydrukach
-  label_building_localization: Lokalizacja
 
   confirm_removing_lecturer: Wszystkie bloki zajęć prowadzone przez prowadzącego zostaną usunięte. Jesteś pewny aby usunąć tego prowadzącego?
   confirm_removing_classroom: Wszystkie bloki zajęć na tej sali zostaną usunięte wraz z nią. Jesteś pewny aby usunąć tą salę?
@@ -236,7 +223,6 @@ pl:
   confirm_to_remove_block_type: Jesteś pewny aby usunąć dany typ zajęć? Wszystkie zajęcia posiadający ten typ zostaną usunięte.
   confirm_removing_group: Jesteś pewny aby usunać daną grupę? Wszystkie blocki z nią związaną zostaną usunięte!
   confirm_to_remove_block: Jesteś pewny aby usunać ten blok?
-  confirm_to_remove_building: Jesteś pewny aby usunąć budynek? Wszystkie sale powiązane z tym budynkiem zostaną usunięte a wraz z nimi wszytkie bloki zajęć!
 
   placeholder_block_start_time: Czas rozpoczęcia
   placeholder_block_end_time: Czas zakończenia

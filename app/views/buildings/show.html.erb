@@ -25,7 +25,7 @@
 
 <h1> <%= t "header_listing_classrooms" %> </h1>
 
-<%= link_to t("button_new_classroom") , new_building_room_path(@building), :class => "submit-btn pull-right" %>
+<%= link_to t("button_new_classroom") , pyrite.new_building_room_path(@building), :class => "submit-btn pull-right" %>
 <table class="table">
   <thead>
     <tr>
@@ -43,8 +43,8 @@
         <td> <%= room.type %> </td>
         <td> <%= room.capacity %> </td>
         <td>
-          <%= link_to t("button_edit"), edit_room_path(room), :class => "edit-btn" %>
-          <%= link_to t("button_delete"), room, method: :delete, data: { confirm: t("confirm_removing_classroom") }, :class => "destroy-btn" %>
+          <%= link_to t("button_edit"), pyrite.edit_room_path(room), :class => "edit-btn" %>
+          <%= link_to t("button_delete"), pyrite.room_path(room), method: :delete, data: { confirm: t("confirm_removing_classroom") }, :class => "destroy-btn" %>
         </td>
       </tr>
     <% end %>
@@ -52,5 +52,5 @@
 </table>
 
 
-<%= link_to t("button_edit"), edit_building_path(@building), :class => "edit-btn" %>
-<%= link_to t("button_back"), buildings_path, :class => "cancel-btn" %>
+<%= link_to t("button_edit"), main_app.edit_building_path(@building), :class => "edit-btn" %>
+<%= link_to t("button_back"), main_app.buildings_path, :class => "cancel-btn" %>

@@ -2,4 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to t("button_back"), @room.building, :class => "back-btn" %>
+<%= link_to t("button_back"), main_app.building_path(@room.building), :class => "back-btn" %>

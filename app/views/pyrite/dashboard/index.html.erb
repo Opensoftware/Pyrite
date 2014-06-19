@@ -69,9 +69,9 @@
 
             <div class="col-md-8">
               <ul>
-                <% if can? :manage, Pyrite::Building %>
+                <% if can? :manage, Building %>
                   <li class="inline-icon-home">
-                     <%= link_to t("link_buildings_and_rooms"), buildings_path %>
+                     <%= link_to t("link_buildings_and_rooms"), main_app.buildings_path %>
                   </li>
                 <% end %>
                 <% if can? :manage, Pyrite::Lecturer %>

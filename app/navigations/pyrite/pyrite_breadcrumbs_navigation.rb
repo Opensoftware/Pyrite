@@ -26,13 +26,13 @@ SimpleNavigation::Configuration.run do |navigation|
 
         dashboard.item :settings, I18n.t("pyrite.breadcrumbs.settings"), edit_settings_path
         dashboard.item :user_preferences, I18n.t("pyrite.breadcrumbs.user_preferences"), user_account_path
-        dashboard.item :buildings, I18n.t("pyrite.breadcrumbs.buildings.name"), buildings_path  do |building|
+        dashboard.item :buildings, I18n.t("pyrite.breadcrumbs.buildings.name"), main_app.buildings_path  do |building|
           if @building
             if @building.new_record?
-              building.item :new, I18n.t("pyrite.breadcrumbs.buildings.new"), new_building_path
+              building.item :new, I18n.t("pyrite.breadcrumbs.buildings.new"), main_app.new_building_path
             else
-              building.item :rooms, I18n.t("pyrite.breadcrumbs.buildings.rooms"), building_path(@building)
-              building.item :edit, I18n.t("pyrite.breadcrumbs.buildings.edit"), edit_building_path(@building)
+              building.item :rooms, I18n.t("pyrite.breadcrumbs.buildings.rooms"), main_app.building_path(@building)
+              building.item :edit, I18n.t("pyrite.breadcrumbs.buildings.edit"), main_app.edit_building_path(@building)
             end
           end
         end
