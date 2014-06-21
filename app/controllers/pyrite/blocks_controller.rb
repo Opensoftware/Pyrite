@@ -104,17 +104,18 @@ module Pyrite
     private
 
       def form_params
-        params.required(:block).permit(:start_time, :day_with_date, :variant_id, { :group_ids => [] },
-          :lecturer_id, :comments, :end_time, :event_id, :room_id, :name)
+        params.required(:block).permit(:start_time, :day_with_date, :variant_id, { :group_ids => [],
+          :lecturer_ids => [] }, :comments, :end_time, :event_id, :room_id, :name)
       end
 
       def form_part_time_params
-        params.required(:block).permit(:start_time, :day_with_date, :variant_id, { :group_ids => [] },
-          :lecturer_id, :comments, :end_time, :meeting_id, :room_id, :name)
+        params.required(:block).permit(:start_time, :day_with_date, :variant_id, { :group_ids => [],
+          :lecturer_ids => [] }, :comments, :end_time, :meeting_id, :room_id, :name)
       end
 
       def form_params_update
-        params.required(:block).permit(:lecturer_id, :room_id, :comments, :variant_id, :name, { :group_ids => [] })
+        params.required(:block).permit(:room_id, :comments, :variant_id, :name,
+                                       {:lecturer_ids => [], :group_ids => [] })
       end
 
       def check_settings

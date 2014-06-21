@@ -14,9 +14,13 @@
     <div class="form-group col-md-8">
       <label> <%= t("label_lecturer") %> </label>
       <div>
-        <%= f.collection_select :lecturer_id, @lecturers, :id,
-          :full_name, { :include_blank => true },
-          { "data-placeholder" => t("prompt_lecturer"), :class => "chosen-select", :tabindex => 6 } %>
+        <%= f.collection_select :lecturer_ids, @lecturers, :id,
+          :full_name, { :selected => @block.lecturer_ids },
+          {
+            :multiple => true, "data-placeholder" => t("prompt_lecturer"),
+            :class => "chosen-select", :tabindex => 6
+          } %>
+
       </div>
     </div>
     <div class="form-group col-md-8">

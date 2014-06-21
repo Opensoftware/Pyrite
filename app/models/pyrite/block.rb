@@ -8,7 +8,8 @@ module Pyrite
 
     include UsiLogger
     belongs_to :room
-    belongs_to :lecturer
+    has_many :blocks_lecturers
+    has_many :lecturers, :through => :blocks_lecturers
     belongs_to :event, :class_name => "AcademicYear::Event"
     belongs_to :meeting, :class_name => "AcademicYear::Meeting"
     belongs_to :variant, :class_name => "Block::Variant"
@@ -27,6 +28,9 @@ module Pyrite
 
     scope :for_groups, ->(group_ids) { joins(:blocks_groups).where("#{BlocksGroup.table_name}.group_id" => group_ids) }
     scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : where(nil) }
+    scope :for_lecturers, ->(lecturer_ids) {
+      joins(:blocks_lecturers).where("#{BlocksLecturer.table_name}.lecturer_id" => lecturer_ids)
+    }
     scope :reservations, -> { where(:reservation => true).where(:event_id => nil) }
     scope :overlapped, ->(start_date, end_date) {
       joins(:dates).where("#{Block::Date.table_name}.start_date < ? AND
@@ -86,7 +90,7 @@ module Pyrite
     end
 
     def lecturer_name
-      lecturer.try(:full_name).to_s
+      lecturers.map(&:full_name).join("<br>")
     end
 
     def groups_names
@@ -193,11 +197,11 @@ module Pyrite
           .where(:room_id => room_id)
           .except_me(self)
           .overlapped(block_start_date, block_end_date).count
-        if lecturer_id.blank?
+        if lecturer_ids.blank?
           lecturer_blocks = []
         else
           lecturer_blocks = Block
-            .where(:lecturer_id => lecturer_id)
+            .for_lecturers(lecturer_ids)
             .except_me(self)
             .overlapped(block_start_date, block_end_date)
         end
