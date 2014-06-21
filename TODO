@@ -1,11 +1,9 @@
 TODO:
 
 SUPER PRIORYTET:
-- przy ładowaniu bloków dla wielu grup łączyć bloki razem czy wyświetlać
-  osobno dla każdego?
-- UWAGI z uwagi_opensoftware.doc od EAIiB
-- Zastąpić lecturer employee z usi/core (sprawdzić czy inne model też są
-  kompatybilne)
+- Brak możliwości przypisania/rezerwacji kilku sal w jednym terminie do jednych zajęć
+- dalej brak możliwości przypisania kilku prowadzących do jednych zajęć.
+- dalej brak możliwości przypisania kilku sal do jednego bloku zajęć
 
 - wyróżnić rezerwacje na planach!
 - dodawanie/edycja sal poprzez modal i ajax
@@ -29,8 +27,6 @@ SUPER PRIORYTET:
 - academic_year _form - wyświetl dialog z datą kliknij na inpucie raz jeszcze,
   dialog znika, ponowne klikniecie na inpucie nie sprawia że się pojawi. input
   musi zgubić focus żeby kliknięcie zadziałało.
-- przenieść wydruki do blocks/prints controller i dodać sprawdzanie czy
-  rok akademicki został ustawiony
 - requesty ajaxowe lecące z academic_year w razie internal error nie informują o
   błędzie, brak error handling w razie dostanie statusu 500
 - dorobić changelog gem
@@ -66,28 +62,6 @@ SUPER PRIORYTET:
 - usprawnić działanie zasobów sal i budynków ( sale edytowalne z poziomu budynku
   bez konieczności wypełniania pola budynek.)
 
-Uwagi EAIiB:
-
-- Brak możliwości przypisania/rezerwacji kilku sal w jednym terminie do jednych
-  zajęć
-- dalej brak możliwości przypisania kilku prowadzących do jednych
-zajęć.
-- dalej brak możliwości przypisania kilku sal do jednego bloku zajęć
-
-Ergonomia:
-
-- zarządzanie pracownikami:
-    - brak sortowania - dane wyświetlane są w kolejności wprowadzenia
-do systemu
-    - brak rozdzielenia imienia i nazwiska -> brak możliwości
-posortowania po nazwisku (albo można zmienić kolejność wprowadzania na
-Nazwisko i imię/imiona)
-- dodawanie nowego bloku zajęć:
-    - brak sortowania przy wyborze prowadzącego zajęcia i przy wyborze
-sali (znowu kolejność wprowadzenia do systemu)
-
-Dodawanie nowego bloku zajęć:
-  - lista pracowników nie jest posortowana
 
 Dodatkowo:
 - preferencje pracowników, powiązanie  rzutników z salami,
