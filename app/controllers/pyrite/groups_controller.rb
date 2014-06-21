@@ -64,7 +64,7 @@ module Pyrite
       group_ids = params[:group_ids]
       @reset_date = params[:reset_date] || false
       @block_variants = Block::Variant.all
-      @lecturers = Lecturer.all
+      @lecturers = Lecturer.order(:surname)
       @block = Block.new
       @event = AcademicYear::Event.where(:id => params[:event_id]).first
       # TODO think about what will be the best way of quering blocks with and
@@ -82,7 +82,7 @@ module Pyrite
       group_ids = params[:group_ids]
       @reset_date = params[:reset_date] || false
       @block_variants = Block::Variant.all
-      @lecturers = Lecturer.all
+      @lecturers = Lecturer.order(:surname)
       @block = Block.new
       @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
       blocks = @meeting.blocks.joins(:groups).where("#{Group.table_name}.id in (?)", group_ids)

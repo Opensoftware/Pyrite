@@ -30,7 +30,7 @@ module Pyrite
       @block = Block.find(params[:id])
       @groups = Group.all
       @rooms = Room.all
-      @lecturers = Lecturer.all
+      @lecturers = Lecturer.order(:surname)
       @block_variants = Block::Variant.all
       render :layout => false
     end

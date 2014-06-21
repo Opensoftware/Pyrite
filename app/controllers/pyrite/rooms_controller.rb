@@ -64,7 +64,7 @@ module Pyrite
       authorize! :read, :timetables
       @room = Room.find(params[:id])
       @block_variants = Block::Variant.all
-      @lecturers = Lecturer.all
+      @lecturers = Lecturer.order(:surname)
       @block = Block.new
       @event = AcademicYear::Event.where(:id => params[:event_id]).first
       @reset_date = params[:reset_date] || false
@@ -87,7 +87,7 @@ module Pyrite
       @reset_date = params[:reset_date] || false
       blocks = @room.blocks.reservations
       @block_variants = Block::Variant.all
-      @lecturers = Lecturer.all
+      @lecturers = Lecturer.order(:surname)
       @block = Block.new
       @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
       blocks += @meeting.blocks.where(:room_id => @room.id) if @meeting
