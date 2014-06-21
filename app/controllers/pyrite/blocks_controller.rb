@@ -39,7 +39,7 @@ module Pyrite
       authorize! :manage, Block
       @block = Block.find(params[:id])
       if @block.update_attributes(form_params_update)
-        flash[:notice] = t("notice_block_has_been_updated")
+        flash.now[:notice] = t("notice_block_has_been_updated")
         respond_with(@block)
       else
         respond_with(@block, :status => :unprocessable_entity)
@@ -50,7 +50,7 @@ module Pyrite
       authorize! :manage, Block
       @block = Block.new(form_params)
       if @block.save
-        flash[:notice] = t("notice_block_has_been_created")
+        flash.now[:notice] = t("notice_block_has_been_created")
         respond_with(@block, :status => :ok)
       else
         respond_with(@block, :status => :unprocessable_entity)

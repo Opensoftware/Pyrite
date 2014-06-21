@@ -28,7 +28,7 @@ module Pyrite
       @rooms = Room.all
 
       if @block.save_reservation
-        flash[:notice] = t("notice_block_has_been_created")
+        flash.now[:notice] = t("notice_block_has_been_created")
         respond_with(@block, :status => :ok)
       else
         respond_with(@block, :status => :unprocessable_entity)
