@@ -7,6 +7,12 @@
       <%= f.text_field :name %>
     </div>
   </div>
+  <div class="form-group">
+    <label for=""> <%= t "label_group_size" %></label>
+    <div>
+      <%= f.number_field :size %>
+    </div>
+  </div>
   <div class="actions">
     <%= f.submit t("button_save"), :class => "submit-btn pull-right" %>
   </div>

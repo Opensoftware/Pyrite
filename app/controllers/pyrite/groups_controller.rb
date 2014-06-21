@@ -8,7 +8,7 @@ module Pyrite
 
     def index
       authorize! :manage, Group
-      @groups = Group.all
+      @groups = Group.order(:name)
     end
 
     def new
@@ -96,7 +96,7 @@ module Pyrite
 
     def print_all
       authorize! :print, :timetables
-      groups = Group.all
+      groups = Group.order(:name)
 
       groups_timetable = Pdf::GroupTimetable.new(groups, params[:event_id], swap_monday(available_days))
       data = groups_timetable.to_pdf
@@ -125,7 +125,7 @@ module Pyrite
     private
 
       def form_params
-        params.required(:group).permit(:name)
+        params.required(:group).permit(:name, :size)
       end
 
       def cache_key_for_group_timetable(group, event_id)

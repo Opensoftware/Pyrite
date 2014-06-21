@@ -203,6 +203,7 @@ pl:
   label_groups: Grupy
   label_comments: Uwagi
   label_group_name: Nazwa grupy
+  label_group_size: Rozmiar
   label_day: Dzień
   label_timetable_for_group: "Plan zajęć dla grupy:"
   label_timetable_for_room: "Plan zajęć dla sali:"

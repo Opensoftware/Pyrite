@@ -5,6 +5,7 @@
   <thead>
     <tr>
       <th>  <%= t("label_group_name") %></th>
+      <th> <%= t("label_group_size") %></th>
       <th> <%= t("label_actions") %></th>
   </tr>
   </thead>
@@ -12,6 +13,7 @@
     <% @groups.each do |group| %>
       <tr>
         <td> <%= group.name %> </td>
+        <td> <%= group.size %> </td>
         <td>
           <%= link_to t("button_edit"), edit_group_path(group), :class => "edit-btn" %>
           <%= link_to t("button_delete"), group, method: :delete, data: { confirm: t("confirm_removing_group") }, :class => "destroy-btn" %>
