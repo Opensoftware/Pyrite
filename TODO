@@ -1,10 +1,5 @@
 TODO:
 
-SUPER PRIORYTET:
-- Brak możliwości przypisania/rezerwacji kilku sal w jednym terminie do jednych zajęć
-- dalej brak możliwości przypisania kilku prowadzących do jednych zajęć.
-- dalej brak możliwości przypisania kilku sal do jednego bloku zajęć
-
 - wyróżnić rezerwacje na planach!
 - dodawanie/edycja sal poprzez modal i ajax
 - po przekształceniu w engin dodać wersję do stopki

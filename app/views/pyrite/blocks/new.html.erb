@@ -17,7 +17,7 @@
         <label> <%= t("label_academic_year_event") %> </label>
         <div>
           <%= f.collection_select :event_id,
-            AcademicYear.for_editing.events, :id, :name, {}, {:tabindex => 5} %>
+            AcademicYear.for_editing.events, :id, :name, {}, {:tabindex => 1} %>
         </div>
       </div>
     </div>
@@ -28,16 +28,18 @@
           <%= f.collection_select :group_ids, @groups, :id, :name,
                                   {:selected => @block.group_ids},
                                   {:multiple => true, "data-timetable-url" => groups_timetable_path,
-                                   :tabindex => 1, :class => "chosen-select",
+                                   :tabindex => 2, :class => "chosen-select",
                                    "data-placeholder" => t("placeholder_click_to_choose")}%>
         </div>
       </div>
       <div class="form-group" id="room-select">
         <label> <%= t("label_room") %> </label>
         <div>
-          <%= f.collection_select :room_id, @rooms, :id, :name_with_building, {},
-                                  {"data-timetable-url" => rooms_timetable_path, :tabindex => 8,
-                                   :class => "chosen-select"} %>
+          <%= f.collection_select :room_ids, @rooms, :id, :name_with_building,
+                                  {:selected => @block.room_ids},
+                                  {:multiple => true, "data-timetable-url" => rooms_timetable_path,
+                                   :tabindex => 3, :class => "chosen-select",
+                                   "data-placeholder" => t("placeholder_click_to_choose")}%>
         </div>
       </div>
     </div>

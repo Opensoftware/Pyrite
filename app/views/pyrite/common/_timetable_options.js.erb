@@ -27,18 +27,20 @@ select: function(start, end, allDay) {
   $("#block_start_time").val(start_time);
   $("#block_end_time").val(end_time);
   var groups_label = [] ;
-  var room_label = [];
+  var rooms_label = [];
   $("#block_group_ids option:selected").each(function() {
     groups_label.push($(this).text());
   })
-  room_label.push($("#block_room_id option:selected").text());
+  $("#block_room_ids option:selected").each(function() {
+    rooms_label.push($(this).text());
+  })
   /* if groups_label empty (reservations) then we remove groups label */
   if ( groups_label.length > 0 ) {
     $("#groups_label_container").append(groups_label.toString());
   } else {
     $("#groups_label_container").parent().find("label").remove();
   }
-  $("#room_label_container").append(room_label);
+  $("#room_label_container").append(rooms_label.toString());
   modal.modal();
   reloadDatepicker();
 },

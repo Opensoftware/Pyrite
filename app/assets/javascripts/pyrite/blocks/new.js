@@ -5,7 +5,7 @@ $(document).ready(function() {
     refresh_groups_if_value_exists();
   });
 
-  $("#block_room_id").on("change", function() {
+  $("#block_room_ids").on("change", function() {
     refresh_room_if_value_exists();
   });
 
@@ -48,11 +48,11 @@ function sendRequestToCreateNewBlock() {
 }
 
 function prepareRoomParams(reset_date) {
-  var room_id_value = $("#block_room_id").val();
+  var room_ids_value = $("#block_room_ids").val();
   var basic_params = prepareParams(reset_date);
-  var room_params = {id: room_id_value};
+  var room_params = {room_ids: room_ids_value};
   var params = $.extend({}, basic_params, room_params);
-  if(room_id_value.length > 0) {
+  if(room_ids_value != null ) {
     return params
   } else {
     return null

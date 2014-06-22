@@ -4,7 +4,8 @@ module Pyrite
 
     belongs_to :building
     belongs_to :room_type
-    has_many :blocks, :dependent => :destroy
+    has_many :blocks_rooms
+    has_many :blocks, :through => :blocks_rooms, :dependent => :destroy
 
     def type
       room_type.short_name

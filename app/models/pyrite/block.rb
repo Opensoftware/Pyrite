@@ -7,7 +7,8 @@ module Pyrite
     require 'pyrite/block/date'
 
     include UsiLogger
-    belongs_to :room
+    has_many :blocks_rooms
+    has_many :rooms, :through => :blocks_rooms
     has_many :blocks_lecturers
     has_many :lecturers, :through => :blocks_lecturers
     belongs_to :event, :class_name => "AcademicYear::Event"
@@ -31,15 +32,18 @@ module Pyrite
     scope :for_lecturers, ->(lecturer_ids) {
       joins(:blocks_lecturers).where("#{BlocksLecturer.table_name}.lecturer_id" => lecturer_ids)
     }
+    scope :for_rooms, ->(room_ids) {
+      joins(:blocks_rooms).where("#{BlocksRoom.table_name}.room_id" => room_ids)
+    }
     scope :reservations, -> { where(:reservation => true).where(:event_id => nil) }
     scope :overlapped, ->(start_date, end_date) {
-      joins(:dates).where("#{Block::Date.table_name}.start_date < ? AND
-                          #{Block::Date.table_name}.end_date > ?", end_date , start_date)
+      joins(:dates).where("#{Pyrite::Block::Date.table_name}.start_date < ? AND
+                          #{Pyrite::Block::Date.table_name}.end_date > ?", end_date , start_date)
     }
     scope :except_me, ->(block) { where.not(id: block) }
 
     validates :start_time, :end_time, :presence => true, :on => :create
-    validates :name, :room, :presence => true
+    validates :name, :room_ids, :presence => true
     validate :validate_times, :on => :create
     validate :validate_day, :on => :create
     validate :check_collisions, :on => :create
@@ -95,6 +99,10 @@ module Pyrite
 
     def groups_names
       groups.map {|g| g.name }.join(" ")
+    end
+
+    def rooms_names
+      rooms.map {|r| r.name_with_building }.join(" ")
     end
 
     def variant_name
@@ -194,7 +202,7 @@ module Pyrite
 
       def check_blocks_collisions(block_start_date, block_end_date)
         room_blocks = Block
-          .where(:room_id => room_id)
+          .for_rooms(room_ids)
           .except_me(self)
           .overlapped(block_start_date, block_end_date).count
         if lecturer_ids.blank?
@@ -211,11 +219,11 @@ module Pyrite
           .overlapped(block_start_date, block_end_date).count
 
         if room_blocks > 0
-          error = I18n.t("error_room_block_collision", :room => room.name)
+          error = I18n.t("error_room_block_collision", :room => rooms_names)
         elsif lecturer_blocks.count > 0
-          room = lecturer_blocks.first.room.name
+          rooms = lecturer_blocks.first.rooms_names
           groups = lecturer_blocks.first.groups_names
-          error = I18n.t("error_lecturer_block_collision", :lecturer => lecturer_name, :room => room, :groups => groups )
+          error = I18n.t("error_lecturer_block_collision", :lecturer => lecturer_name, :room => rooms, :groups => groups )
         elsif group_blocks > 0
           error = I18n.t("error_groups_block_collision", :groups => groups_names)
         end

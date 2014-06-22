@@ -67,7 +67,7 @@ pl:
         start_time: "Pole 'Godzina rozpoczęcia'"
         end_time: "Pole 'Godzina zakończenia'"
         name: "Pole 'Nazwa bloku'"
-        room: "Pole 'Sala'"
+        room_ids: "Pole 'Sala'"
       pyrite/block/variant:
         name: "Pole 'Nazwa'"
         short_name: "Pole 'Skrót'"
@@ -208,7 +208,7 @@ pl:
   label_timetable_for_group: "Plan zajęć dla grupy:"
   label_timetable_for_room: "Plan zajęć dla sali:"
   label_timetable_for_lecturer: "Plan zajęć prowadzącego:"
-  label_reservation_timetable_for_room: "Rezerwacja dla sali:"
+  label_reservation_timetable_for_room: "Rezerwacje dla sali:"
   label_color: Kolor
   label_block_type_color: Kolor
   label_schedule_for: "Siatka na rok:"

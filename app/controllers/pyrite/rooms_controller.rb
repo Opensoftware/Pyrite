@@ -56,42 +56,40 @@ module Pyrite
     def timetable
       authorize! :read, :timetables
       @room = Room.find(params[:id])
-      @events = convert_blocks_to_events_for_viewing(@room.blocks.for_event(AcademicYear::Event.for_viewing))
+      @events = convert_blocks_to_events_for_viewing(@room.blocks)
       respond_with @events
     end
 
     def timetables
       authorize! :read, :timetables
-      @room = Room.find(params[:id])
+      room_ids = params[:room_ids]
       @block_variants = Block::Variant.all
       @lecturers = Lecturer.order(:surname)
       @block = Block.new
       @event = AcademicYear::Event.where(:id => params[:event_id]).first
       @reset_date = params[:reset_date] || false
       if @event
-        blocks = @room.blocks.for_event(@event) + @room.blocks.reservations
+        blocks = Block.for_event(@event).for_rooms(room_ids) + Block.for_rooms(room_ids).reservations
       else
         # TODO (fullCalendar2) this is heavy we need to reduce amount of blocks to
         # read max +/- 3 weeks and rest will be loaded when user will change the
         # date.  for reservations we taking all blocks for given room
-        blocks = @room.blocks
+        blocks = Block.for_rooms(room_ids)
       end
-      @room_name = @room.name
       @events = convert_blocks_to_events(blocks)
       respond_with @events
     end
 
     def timetables_for_meeting
       authorize! :read, :timetables
-      @room = Room.find(params[:id])
+      room_ids = params[:room_ids]
       @reset_date = params[:reset_date] || false
-      blocks = @room.blocks.reservations
+      blocks = Block.for_rooms(room_ids).reservations
       @block_variants = Block::Variant.all
       @lecturers = Lecturer.order(:surname)
       @block = Block.new
       @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
-      blocks += @meeting.blocks.where(:room_id => @room.id) if @meeting
-      @room_name = @room.name
+      blocks += @meeting.blocks.for_rooms(room_ids) if @meeting
       @events = convert_blocks_to_events(blocks)
       @current_date = @meeting.start_date.strftime("%F")
       respond_with @events do |format|

@@ -5,7 +5,7 @@
     <div>
       <%= f.collection_select :group_ids, @groups, :id, :name,
                               {:selected => @block.group_ids},
-                              {:multiple => true} %>
+                              {:multiple => true, :tabindex => 1} %>
     </div>
   </div>
   <div class="form-group">
@@ -15,15 +15,18 @@
         :full_name, { :selected => @block.lecturer_ids },
         {
           :multiple => true, "data-placeholder" => t("prompt_lecturer"),
-          :class => "chosen-select", :tabindex => 6
+          :class => "chosen-select", :tabindex => 2
         } %>
     </div>
   </div>
   <div class="form-group">
     <label> <%= t "label_room" %></label>
     <div>
-      <%= f.collection_select :room_id, @rooms, :id, :name_with_building,
-                              {:prompt => t("prompt_room") } %>
+       <%= f.collection_select :room_ids, @rooms, :id, :name_with_building,
+                               {:selected => @block.room_ids},
+                               {:multiple => true, "data-timetable-url" => rooms_timetable_path,
+                               :tabindex => 3, :class => "chosen-select",
+                               "data-placeholder" => t("placeholder_click_to_choose")}%>
     </div>
   </div>
   <div class="form-group">
