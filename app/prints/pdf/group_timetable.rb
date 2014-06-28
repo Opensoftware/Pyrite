@@ -31,7 +31,7 @@ class Pdf::GroupTimetable < Pdf::Timetable
           font_size 5
           text_box "#{start_hour} - #{end_hour}", :at => [0, bounds.top - 3], :align => :center
           text_box block.lecturer_name, :at => [0, bounds.top - 10], :align => :center
-          text_box "#{block.variant.short_name}, #{I18n.t("pyrite.pdf.label.room")} #{block.room.name}", :at => [5, bounds.bottom + 10]
+          text_box "#{block.variant.short_name}, #{I18n.t("pyrite.pdf.label.room")} #{block.rooms_names}", :at => [5, bounds.bottom + 10]
         end
       end
     end
