@@ -14,7 +14,7 @@ ActiveRecord::Base.transaction do
   faculty = Faculty.new(short_name: 'IS', code: 'I', name: 'Informatyka Stosowana', overriding_id: base_unit.id, annual_id: Annual.first.id)
   faculty.save!
 
-  employee = Employee.new(surname: "Adam", name: "Kowalski", room: "13",
+  employee = Employee.new(surname: "Kowalski", name: "Adam", room: "13",
                           academy_unit_id: Faculty.first.id,
                           employee_title_id: EmployeeTitle.first.id,
                           language_id: Language.first.id)
