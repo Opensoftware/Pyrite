@@ -6,9 +6,14 @@ module Pyrite
     validates :name, :presence => true, :uniqueness => true
 
     scope :for_event, ->(event_id) { where(:event_id => event_id) }
+    scope :part_time, -> { where(:part_time => true) }
 
     def pdf_title
       I18n.t("pyrite.pdf.label.timetable_for_group", :name => name)
+    end
+
+    def is_part_time?
+      part_time
     end
 
   end

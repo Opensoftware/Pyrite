@@ -8,7 +8,10 @@ pl:
         hours: "Godz."
         groups: "Grupy:"
     label:
+      all: Wszystkie
       print_rooms: Sale na
+      groups:
+        is_part_time: Studia niestacjonarne
     breadcrumbs:
       reservation: Rezerwacje
       room: Plan zajęć dla sali

@@ -14,7 +14,7 @@ module Pyrite
     def new_part_time
       authorize! :manage, Block
       @block = Block.new
-      @groups = Group.all
+      @groups = Group.part_time.order(:name)
       @rooms = Room.all
       @meetings = AcademicYear::Meeting.for_editing
       unless @meetings.first

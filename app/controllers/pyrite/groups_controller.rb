@@ -125,7 +125,7 @@ module Pyrite
     private
 
       def form_params
-        params.required(:group).permit(:name, :size)
+        params.required(:group).permit(:name, :size, :part_time)
       end
 
       def cache_key_for_group_timetable(group, event_id)
