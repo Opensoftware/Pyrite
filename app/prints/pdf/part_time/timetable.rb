@@ -1,6 +1,5 @@
 require 'prawn'
-class Pdf::Timetable < Prawn::Document
-
+class Pdf::PartTime::Timetable < Prawn::Document
   include PyriteHelper
   include Pyrite::PdfHelper
 
@@ -12,13 +11,12 @@ class Pdf::Timetable < Prawn::Document
     @timetable_height = @height - 45
     @hours_column_size = 50
     @timetable_width = @width - @hours_column_size
-    @column_size = @timetable_width/@available_days.count
     @title_row_size = 20
     # TODO fetch start_hour and end_hour from settings
     @start_hour = Time.parse("6:00")
-    @end_hour = Time.parse("22:00")
+    end_hour = Time.parse("22:00")
 
-    diff = @end_hour - @start_hour
+    diff = end_hour - @start_hour
     @hour_slices = diff / 3600
     @minute_slices = diff / 900 # 15 minute slices
 
@@ -27,15 +25,17 @@ class Pdf::Timetable < Prawn::Document
     # TODO size of the rows should be much more elastic not tide to 15 minutes
     # blocks, and should be linked with fullcalendar options.
     @minute_row = @hour_row/4
+    @columns_positions = {}
   end
 
 
   def to_pdf
     set_font_family
     @collection.each_with_index do |object, index|
-      blocks = object.blocks.for_event(@event_id)
+      @column_size = @timetable_width/@available_days[object.id].count
+      blocks = object.blocks
       draw_logo_with_title(object.pdf_title, @subtitle, @height)
-      draw_timetable(blocks)
+      draw_timetable(blocks, object.id)
       if index+1 != @collection.size
         start_new_page
       end
@@ -45,27 +45,30 @@ class Pdf::Timetable < Prawn::Document
 
   private
 
-    def draw_timetable(blocks)
+    def draw_timetable(blocks, meeting)
       bounding_box [0, @timetable_height], :width => @width, :height => @timetable_height do
-        timetable_header
+        columns = @available_days[meeting].map { |day| day.strftime("%F") }
+        timetable_header(columns)
         timetable_hours_column
         draw_helper_lines
-        draw_borders
-        draw_blocks(blocks)
+        draw_borders(columns.count)
+        draw_blocks(blocks, meeting)
       end
     end
 
-    def timetable_header
+    def timetable_header(columns)
       font_size 9
       bounding_box [0, @timetable_height], :width => @hours_column_size, :height => @title_row_size do
         stroke_bounds
         text_box I18n.t("pyrite.pdf.label.hours"), :align => :center, :valign => :center
       end
       bounding_box [@hours_column_size, @timetable_height], :width => @width do
-        @available_days.each_with_index do |day, index|
-          bounding_box [index * @column_size, bounds.top], :width => @column_size, :height => @title_row_size do
+        columns.each_with_index do |name, index|
+          position = index * @column_size
+          @columns_positions[name] = position + @hours_column_size
+          bounding_box [position, bounds.top], :width => @column_size, :height => @title_row_size do
             stroke_bounds
-            text_box day, :align => :center, :valign => :center
+            text_box name, :align => :center, :valign => :center
           end
         end
       end
@@ -91,33 +94,11 @@ class Pdf::Timetable < Prawn::Document
       end
     end
 
-    def draw_borders
+    def draw_borders(number_of_columns)
       stroke_horizontal_line 0, @width, :at => 0
-      @available_days.count.times do |index|
+      number_of_columns.times do |index|
         stroke_vertical_line 0, @timetable_height, :at => @hours_column_size + @column_size * (index+1)
       end
     end
-
-    # return position of the column for the block base on the day
-    # Day of the week in 0-6. Sunday is 0; Saturday is 6.
-    def column_position(block)
-      case block.dates.first.start_date.wday
-        when 1
-          return @hours_column_size
-        when 2
-          return @hours_column_size + @column_size
-        when 3
-          return @hours_column_size + @column_size * 2
-        when 4
-          return @hours_column_size + @column_size * 3
-        when 5
-          return @hours_column_size + @column_size * 4
-        when 6
-          return @hours_column_size + @column_size * 5
-        when 0
-          return @hours_column_size + @column_size * 6
-      end
-    end
-
 
 end

@@ -11,6 +11,7 @@ Pyrite::Engine.routes.draw do
   resource :timetable, :only => [] do
     get "groups", :to => "groups#timetables"
     get "groups_for_meeting", :to => "groups#timetables_for_meeting"
+    get "groups/:event_id/print_part_time", :to => "groups#print_part_time_all", :as => :print_part_time_all_groups
     get "groups/:event_id/print", :to => "groups#print_all", :as => :print_all_groups
     get "groups/:id/:event_id/print", :to => "groups#print", :as => :print_group
     get "groups/:id", :to => "groups#timetable", :as => :group

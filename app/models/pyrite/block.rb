@@ -29,6 +29,7 @@ module Pyrite
 
     scope :for_groups, ->(group_ids) { joins(:blocks_groups).where("#{BlocksGroup.table_name}.group_id" => group_ids) }
     scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : where(nil) }
+    scope :for_meeting, ->(meeting_id) { meeting_id.present? ? where(:meeting_id => meeting_id) : where(nil) }
     scope :for_lecturers, ->(lecturer_ids) {
       joins(:blocks_lecturers).where("#{BlocksLecturer.table_name}.lecturer_id" => lecturer_ids)
     }
@@ -40,6 +41,9 @@ module Pyrite
       joins(:dates).where("#{Pyrite::Block::Date.table_name}.start_date < ? AND
                           #{Pyrite::Block::Date.table_name}.end_date > ?", end_date , start_date)
     }
+    scope :for_day, ->(day) { joins(:dates).where("#{Pyrite::Block::Date.table_name}.start_date > ? AND
+                                                  #{Pyrite::Block::Date.table_name}.end_date < ?",
+                                                  day.beginning_of_day, day.end_of_day) }
     scope :except_me, ->(block) { where.not(id: block) }
 
     validates :start_time, :end_time, :presence => true, :on => :create

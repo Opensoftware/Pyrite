@@ -1,5 +1,7 @@
 pl:
   pyrite:
+    notice:
+      missing_academic_year_meeting: Brak zjazdów dla studiów niestacjonarnych, musisz je dodać dla roku akademickiego który edytujesz. Możesz to zrobić w %{url}
     pdf:
       label:
         timetable_for_room: "Sala %{name}"

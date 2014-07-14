@@ -105,6 +105,23 @@ module Pyrite
                 :type => 'application/pdf', :disposition => "inline")
     end
 
+    def print_part_time_all
+      authorize! :print, :timetables
+      groups = Group.part_time.order(:name)
+      event_params = params[:event_id]
+      if event_params == "all"
+        event_ids = AcademicYear::Meeting.for_viewing.ids
+      else
+        event_ids = [event_params]
+      end
+
+      groups_timetable = Pdf::PartTime::GroupTimetable.new(groups, event_ids)
+      data = groups_timetable.to_pdf
+
+      send_data(data, :filename => t(:file_groups_timetable),
+                :type => 'application/pdf', :disposition => "inline")
+    end
+
     def print
       authorize! :print, :timetables
       group = Group.find(params[:id])
