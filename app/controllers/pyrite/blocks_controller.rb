@@ -7,16 +7,18 @@ module Pyrite
     def new
       authorize! :manage, Block
       @block = Block.new
-      @groups = Group.all
+      @groups = Group.includes(:studies).order(:name)
+      @optgroup = Studies.all
       @rooms = Room.all
     end
 
     def new_part_time
       authorize! :manage, Block
       @block = Block.new
-      @groups = Group.part_time.order(:name)
+      @groups = Group.includes(:studies).order(:name)
       @rooms = Room.all
       @meetings = AcademicYear::Meeting.for_editing
+      @optgroup = Studies.all
       unless @meetings.first
         flash[:notice] = t("notice_missing_academic_year_meeting",
           :url => view_context.link_to(t("link_in_flash_academic_year_edit"),

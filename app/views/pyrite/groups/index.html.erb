@@ -2,18 +2,35 @@
 
 <%= link_to t("button_new_group"), new_group_path, :class => "add-btn pull-right" %>
 
-
 <ul class="nav nav-tabs" id="groups-tabs">
-  <li class="active"> <a href="#full-time-group-list" data-toggle="tab"> <%= t("pyrite.groups.tab.full-time-studies") %> </a> </li>
-  <li> <a href="#part-time-group-list" data-toggle="tab"> <%= t("pyrite.groups.tab.part-time-studies") %> </a> </li>
+  <% @study_types.each_with_index do |study_type, index| %>
+    <li class=" <%= index == 0 ? 'active' : ''%> dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <%= study_type.name %>
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <% @study_degrees.each do |study_degree| %>
+          <li>
+            <a href="#<%= study_type.code + study_degree.code %>" data-toggle="tab">
+              <%= study_degree.name %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
 </ul>
 
 <div class="tab-content", id="list-container">
-  <div id="full-time-group-list" class="tab-pane active">
-    <%= render :partial => "pyrite/groups/list", :locals => { :groups => @groups } %>
-  </div>
-  <div id="part-time-group-list" class="tab-pane">
-    <%= render :partial => "pyrite/groups/list", :locals => { :groups => @part_time_groups } %>
-  </div>
+  <% @study_types.each_with_index do |study_type, study_index| %>
+    <% study_type_key = study_type.code.to_sym %>
+    <% @study_degrees.each_with_index do |study_degree, index| %>
+      <% study_degree_key = study_degree.code.to_sym %>
+      <div id="<%= study_type.code + study_degree.code %>" class="tab-pane <%= index + study_index == 0 ? 'active' : '' %>">
+        <%= render :partial => "pyrite/groups/list", :locals => { :groups => @groups[study_type_key][study_degree_key] || [] } %>
+      </div>
+    <% end %>
+  <% end %>
 
 </div>

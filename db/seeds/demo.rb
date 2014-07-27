@@ -1,8 +1,9 @@
 ActiveRecord::Base.transaction do
-  Pyrite::Group.create(:name => "1ANIN1")
-  Pyrite::Group.create(:name => "1ANIN2")
-  Pyrite::Group.create(:name => "2ANIN")
-  Pyrite::Group.create(:name => "3ANIN")
+  studies = Studies.first
+  Pyrite::Group.create(:studies_id => studies.id, :name => "IN1")
+  Pyrite::Group.create(:studies_id => studies.id, :name => "IN2")
+  Pyrite::Group.create(:studies_id => studies.id, :name => "E1")
+  Pyrite::Group.create(:studies_id => studies.id, :name => "E2")
 
   Pyrite::Block::Variant.destroy_all
   Pyrite::Block::Variant.create(:name => "Wykład", :short_name => "W", :description =>

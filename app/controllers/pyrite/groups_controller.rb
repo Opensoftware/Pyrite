@@ -8,8 +8,18 @@ module Pyrite
 
     def index
       authorize! :manage, Group
-      @groups = Group.full_time.order(:name)
-      @part_time_groups = Group.part_time.order(:name)
+      @groups = {}
+      @study_types = StudyType.all
+      @study_degrees = StudyDegree.all
+      # TODO improve sql query
+      @study_types.each do |study_type|
+        study_type_key = study_type.code.to_sym
+        @groups[study_type_key] = {}
+        @study_degrees.each do |study_degree|
+          study_degree_key = study_degree.code.to_sym
+          @groups[study_type_key].merge!({ study_degree_key => Group.for_studies_like(study_type.id, study_degree.id) })
+        end
+      end
     end
 
     def new
@@ -108,7 +118,7 @@ module Pyrite
 
     def print_part_time_all
       authorize! :print, :timetables
-      groups = Group.part_time.order(:name)
+      groups = Group.includes(:studies).order(:name)
       event_params = params[:event_id]
       if event_params == "all"
         event_ids = AcademicYear::Meeting.for_viewing.ids
@@ -143,7 +153,7 @@ module Pyrite
     private
 
       def form_params
-        params.required(:group).permit(:name, :size, :part_time)
+        params.required(:group).permit(:name, :size, :studies_id)
       end
 
       def cache_key_for_group_timetable(group, event_id)

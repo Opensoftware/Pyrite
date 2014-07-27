@@ -14,9 +14,9 @@
     </div>
   </div>
   <div class="form-group">
-    <label for=""> <%= t "pyrite.label.groups.is_part_time" %></label>
+    <label for=""> <%= t "pyrite.label.group_studies" %></label>
     <div>
-      <%= f.check_box :part_time %>
+      <%= f.collection_select :studies_id, Studies.all, :id, :full_name %>
     </div>
   </div>
   <div class="actions">

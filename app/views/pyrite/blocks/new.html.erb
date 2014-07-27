@@ -25,7 +25,7 @@
       <div class="form-group" id="groups-select">
         <label> <%= t("label_groups") %> </label>
         <div>
-          <%= f.collection_select :group_ids, @groups, :id, :name,
+          <%= f.grouped_collection_select :group_ids, Studies.all, :groups, :full_name, :id, :name,
                                   {:selected => @block.group_ids},
                                   {:multiple => true, "data-timetable-url" => groups_timetable_path,
                                    :tabindex => 2, :class => "chosen-select",
