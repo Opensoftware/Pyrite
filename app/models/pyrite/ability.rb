@@ -11,7 +11,7 @@ module Pyrite
         can :read, :pyrite_dashboard
       end
 
-      if user.pyrite_admin?
+      if user.pyrite_admin? || user.superadmin?
         can :read, :dashboard
         can :manage, Settings
         can :manage, Block
