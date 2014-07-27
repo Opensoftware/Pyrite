@@ -1,11 +1,11 @@
 <%= content_for(:additional_javascript_libraries) do %>
-  <%= javascript_include_tag "pyrite/OpenLayers" %>
-  <%= javascript_include_tag "pyrite/buildings" %>
-  <%= javascript_include_tag "pyrite/buildings/edit" %>
+  <%= javascript_include_tag "OpenLayers" %>
+  <%= javascript_include_tag "buildings" %>
+  <%= javascript_include_tag "buildings/edit" %>
 <% end %>
 
 <%= content_for(:additional_stylesheets) do %>
-  <%= stylesheet_link_tag "pyrite/buildings" %>
+  <%= stylesheet_link_tag "buildings" %>
 <% end %>
 
 <%= form_for @building do |f| %>
