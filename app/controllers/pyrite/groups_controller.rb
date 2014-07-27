@@ -8,7 +8,8 @@ module Pyrite
 
     def index
       authorize! :manage, Group
-      @groups = Group.order(:name)
+      @groups = Group.full_time.order(:name)
+      @part_time_groups = Group.part_time.order(:name)
     end
 
     def new

@@ -1,5 +1,9 @@
 pl:
   pyrite:
+    groups:
+      tab:
+        full-time-studies: Studja stacjonarne
+        part-time-studies: Studja niestacjonarne
     notice:
       missing_academic_year_meeting: Brak zjazdów dla studiów niestacjonarnych, musisz je dodać dla roku akademickiego który edytujesz. Możesz to zrobić w %{url}
     pdf:

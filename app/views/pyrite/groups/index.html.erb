@@ -1,24 +1,19 @@
 <h1> <%= t "header_listing_groups" %> </h1>
 
 <%= link_to t("button_new_group"), new_group_path, :class => "add-btn pull-right" %>
-<table class="table">
-  <thead>
-    <tr>
-      <th>  <%= t("label_group_name") %></th>
-      <th> <%= t("label_group_size") %></th>
-      <th> <%= t("label_actions") %></th>
-  </tr>
-  </thead>
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td> <%= group.name %> </td>
-        <td> <%= group.size %> </td>
-        <td>
-          <%= link_to t("button_edit"), edit_group_path(group), :class => "edit-btn" %>
-          <%= link_to t("button_delete"), group, method: :delete, data: { confirm: t("confirm_removing_group") }, :class => "destroy-btn" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+
+<ul class="nav nav-tabs" id="groups-tabs">
+  <li class="active"> <a href="#full-time-group-list" data-toggle="tab"> <%= t("pyrite.groups.tab.full-time-studies") %> </a> </li>
+  <li> <a href="#part-time-group-list" data-toggle="tab"> <%= t("pyrite.groups.tab.part-time-studies") %> </a> </li>
+</ul>
+
+<div class="tab-content", id="list-container">
+  <div id="full-time-group-list" class="tab-pane active">
+    <%= render :partial => "pyrite/groups/list", :locals => { :groups => @groups } %>
+  </div>
+  <div id="part-time-group-list" class="tab-pane">
+    <%= render :partial => "pyrite/groups/list", :locals => { :groups => @part_time_groups } %>
+  </div>
+
+</div>
