@@ -12,8 +12,8 @@
       </div>
       <div class="subsection">
         <ul>
-          <li> <%= t("pyrite.dashboard.current_academic_year.for_viewing", :academic_year => AcademicYear.for_viewing.name) %></li>
-          <li> <%= t("pyrite.dashboard.current_academic_year.for_editing", :academic_year => AcademicYear.for_editing.name) %></li>
+          <li> <%= t("pyrite.dashboard.current_academic_year.for_viewing", :academic_year => AcademicYear.for_viewing.try(:name)) %></li>
+          <li> <%= t("pyrite.dashboard.current_academic_year.for_editing", :academic_year => AcademicYear.for_editing.try(:name)) %></li>
         </ul>
       </div>
       <hr>
