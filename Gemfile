@@ -13,6 +13,7 @@ gem "sass-rails"
 gem "bootstrap-sass"
 gem 'simple-navigation'
 gem 'simple-navigation-bootstrap'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development do
   gem 'hirb'
