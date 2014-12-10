@@ -9,7 +9,8 @@ Gem::Specification.new do |s|
   s.version     = Pyrite::VERSION
   s.authors     = ["opensoftwre.pl"]
   s.email       = ["contact@opensoftware.pl"]
-  s.homepage    = "mine.opensoftware.pl"
+  s.homepage    = "http://mine.opensoftware.pl"
+  s.summary     = "Pyrite - schedule management system"
 
   s.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
