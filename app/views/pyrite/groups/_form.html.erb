@@ -19,7 +19,26 @@
       <%= f.collection_select :studies_id, Studies.all, :id, :full_name %>
     </div>
   </div>
+  <div class="form-group">
+    <label for=""> <%= t "pyrite.label.group_categories" %></label>
+    <div>
+      <%= f.text_field :category_list, :class => "select2", :style => "width: 100%", "data-placeholder" => t("placeholder_click_to_choose")%>
+    </div>
+  </div>
   <div class="actions">
     <%= f.submit t("button_save"), :class => "submit-btn pull-right" %>
   </div>
+<% end %>
+
+<%= content_for(:additional_javascript_libraries) do %>
+  <script type="text/javascript">
+    function bindSelec2() {
+      $(".select2").select2({
+        tags: <%= raw @categories %>,
+        tokenSeparators: [",", " "],
+        maximumInputLength: 10
+      });
+    }
+    bindSelec2();
+  </script>
 <% end %>

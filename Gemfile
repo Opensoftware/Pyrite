@@ -5,6 +5,8 @@ gemspec
 gem 'airbrake'
 gem 'unicorn'
 
+# TODO remove that since this is anyway part of the core and is not loaded from
+# gemfile. All should be in gemspec
 gem 'therubyracer', :platforms => :ruby
 gem 'uglifier'
 gem "less-rails"
@@ -13,7 +15,6 @@ gem "sass-rails"
 gem "bootstrap-sass"
 gem 'simple-navigation'
 gem 'simple-navigation-bootstrap'
-gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development do
   gem 'hirb'

@@ -11,7 +11,8 @@ module Pyrite
       @groups = {}
       @study_types = StudyType.all
       @study_degrees = StudyDegree.all
-      # TODO improve sql query
+      # TODO REFACTOR: replace that with join query in sql and return already
+      # prepared table.
       @study_types.each do |study_type|
         study_type_key = study_type.code.to_sym
         @groups[study_type_key] = {}
@@ -25,11 +26,13 @@ module Pyrite
     def new
       authorize! :manage, Group
       @group = Group.new
+      @categories = Group.categories
     end
 
     def edit
       authorize! :manage, Group
       @group = Group.find(params[:id])
+      @categories = Group.categories
     end
 
     def create
@@ -149,11 +152,10 @@ module Pyrite
                 :type => 'application/pdf', :disposition => "inline")
     end
 
-
     private
 
       def form_params
-        params.required(:group).permit(:name, :size, :studies_id)
+        params.required(:group).permit(:name, :size, :studies_id, :category_list)
       end
 
       def cache_key_for_group_timetable(group, event_id)

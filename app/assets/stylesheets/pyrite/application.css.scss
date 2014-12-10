@@ -14,10 +14,14 @@
 *= require pyrite/fullcalendar_custom
 *= require pyrite/bootstrap-datetimepicker
 *= require pyrite/chosen.bootstrap
-*= depend_on_asset "pyrite/test_badge.png"
-*= depend_on_asset "pyrite/chosen-sprite.png"
 *= require pyrite/base
 *= require pyrite/pyrite
+*= require pyrite/select2
+*= depend_on_asset "pyrite/test_badge.png"
+*= depend_on_asset "pyrite/chosen-sprite.png"
+*= depend_on_asset "pyrite/select2-spinner.gif"
+*= depend_on_asset "pyrite/select2x2.png"
+*= depend_on_asset "pyrite/select2.png"
 */
 
 #test-badge {

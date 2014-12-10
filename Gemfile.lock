@@ -29,6 +29,7 @@ PATH
   remote: .
   specs:
     pyrite (1.0.0)
+      acts-as-taggable-on
       prawn
       rails (~> 4.0.4)
 
@@ -113,12 +114,12 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
     non-stupid-digest-assets (1.0.4)
-    pdf-core (0.2.5)
+    pdf-core (0.4.0)
     pg (0.17.1)
-    polyglot (0.3.4)
-    prawn (1.0.0)
-      pdf-core (~> 0.2.2)
-      ttfunk (~> 1.1.1)
+    polyglot (0.3.5)
+    prawn (1.3.0)
+      pdf-core (~> 0.4.0)
+      ttfunk (~> 1.4.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -180,7 +181,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    ttfunk (1.1.1)
+    ttfunk (1.4.0)
     tzinfo (0.3.39)
     uglifier (2.5.0)
       execjs (>= 0.3.0)
@@ -195,7 +196,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts-as-taggable-on (~> 3.4)
   airbrake
   better_errors
   binding_of_caller

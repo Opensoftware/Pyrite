@@ -15,6 +15,7 @@ pl:
         groups: "Grupy:"
     label:
       group_studies: Studia
+      group_categories: Grupy wirtualne
       all: Wszystkie
       print_rooms: Sale na
       groups:

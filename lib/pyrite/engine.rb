@@ -19,7 +19,7 @@ module Pyrite
                                    "pyrite/settings.js", "pyrite/reservations.js",
                                    "pyrite/buildings.css", "pyrite/blocks.css",
                                    "pyrite/block/types.css", "pyrite/spectrum.css",
-                                   "pyrite/chosen-sprite.png", "fonts/*"
+                                   "pyrite/chosen-sprite.png", "fonts/*", "pyrite/select2.png"
       ]
     end
   end

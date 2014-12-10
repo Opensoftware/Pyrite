@@ -3,6 +3,7 @@
     <tr>
       <th>  <%= t("label_group_name") %></th>
       <th> <%= t("label_group_size") %></th>
+      <th> <%= t("pyrite.label.group_categories") %></th>
       <th> <%= t("label_actions") %></th>
   </tr>
   </thead>
@@ -11,6 +12,7 @@
       <tr>
         <td> <%= group.name %> </td>
         <td> <%= group.size %> </td>
+        <td> <%= group.category_list %> </td>
         <td>
           <%= link_to t("button_edit"), edit_group_path(group), :class => "edit-btn" %>
           <%= link_to t("button_delete"), group, method: :delete, data: { confirm: t("confirm_removing_group") }, :class => "destroy-btn" %>
