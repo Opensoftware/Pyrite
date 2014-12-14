@@ -16,6 +16,27 @@ module Pyrite
       includes(:studies).where("studies.study_type_id = ? and studies.study_degree_id = ?", study_type_id, study_degree_id).order(:name)
     }
 
+
+    # Return a hash with tag id as key and the array of group ids as the value.
+    # It is used to produce data-group-ids for optgroups in select box.
+    def self.category_aggregate
+      categories = joins("LEFT OUTER JOIN taggings
+                          ON taggings.taggable_id = pyrite_groups.id")
+                     .joins("LEFT OUTER JOIN tags
+                             ON taggings.tag_id = tags.id ")
+                     .select("pyrite_groups.id, tags.name ")
+      result = {}
+      categories.each do |element|
+        next unless element.name
+        if result[element.name]
+          result[element.name] << element.id
+        else
+          result[element.name] = [element.id]
+        end
+      end
+      result
+    end
+
     def self.categories
       ActsAsTaggableOn::Tag.joins("LEFT OUTER JOIN taggings on taggings.context = 'categoriesa'")
         .select("name").map(&:name)

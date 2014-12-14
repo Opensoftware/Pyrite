@@ -26,6 +26,22 @@ $(document).ready(function() {
   $("#new-block-form-modal").submit(function(e) {
     e.preventDefault();
   });
+
+  $("#block_group_ids").on("select2-selecting", function(e) {
+    if(e.choice.css == "group_category") {
+      // TODO we could do it better
+      // we are + "" to get always a string, in some case when there is just one
+      // number data will parse it and return integer and then split will fail.
+      group_ids = ($(e.choice.element).data("group-ids") + "").split(",");
+      selected_options = $(this).select2("val");
+      options = $.merge(selected_options, group_ids);
+      $(this).select2("val", options);
+      $(this).select2("close");
+      refresh_groups_if_value_exists();
+      e.preventDefault();
+    }
+  });
+  bindSelect2();
 });
 
 function sendRequestToCreateNewBlock() {
@@ -104,4 +120,11 @@ function refresh_groups_if_value_exists(reset_date) {
 function refresh_timetables(reset_date) {
   refresh_room_if_value_exists(reset_date);
   refresh_groups_if_value_exists(reset_date);
+}
+
+function bindSelect2() {
+  $(".select2").select2();
+}
+function unbindSelect2() {
+  $(".select2").select2("destroy");
 }

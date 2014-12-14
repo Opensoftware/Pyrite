@@ -8,8 +8,9 @@ module Pyrite
       authorize! :manage, Block
       @block = Block.new
       @groups = Group.includes(:studies).order(:name)
-      @optgroup = Studies.all
+      @optgroups = Studies.all
       @rooms = Room.all
+      prepare_group_categories
     end
 
     def new_part_time
@@ -18,7 +19,8 @@ module Pyrite
       @groups = Group.includes(:studies).order(:name)
       @rooms = Room.all
       @meetings = AcademicYear::Meeting.for_editing
-      @optgroup = Studies.all
+      @optgroups = Studies.all
+      prepare_group_categories
       unless @meetings.first
         flash[:notice] = t("notice_missing_academic_year_meeting",
           :url => view_context.link_to(t("link_in_flash_academic_year_edit"),
@@ -104,6 +106,20 @@ module Pyrite
     end
 
     private
+      def prepare_group_categories
+        category_groups_aggregate = Group.category_aggregate
+        optgroup_name = I18n.t("pyrite.label.group_categories")
+        optgroup_elements = []
+        category_groups_aggregate.each do |category_name, groups_ids|
+          # We are adding v_ prefix to the value to avoid problems with id
+          # conflicts between tags and group_id. When tag will have the same name
+          # as group_id, selec2 will remove it from the list if the group_id will
+          # be selected.
+          optgroup_elements << [category_name, "v_" + category_name, :class => "group_category", "data-group-ids" => groups_ids.to_a.join(",")]
+        end
+        @optgroups_hash = { optgroup_name => optgroup_elements }
+      end
+
 
       def form_params
         params.required(:block).permit(:start_time, :day_with_date, :variant_id, { :group_ids => [],
