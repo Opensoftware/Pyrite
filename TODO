@@ -1,5 +1,27 @@
 TODO:
 
+
+Ustawić monit na resque workers oraz serwer aplikacji (unicorn)
+
+po restarcie apki trzeba postawić też workery bo nie działają  wszystko z cap
+tasków unicorn:restart i resque:start
+
+- zastąpić chosen - > select2
+- dodać select2 do edycji bloku
+- Układanie planów zajęć per StudyType, obecnie grupy są wycągane wszystkie bez
+  względu an to jaki plan układamy czy stacjonarne czy niestacjonarne.
+- wyświetlanie komentarzy na bloku
+- lista przedmiotów CRUD
+- dni wolne w środku semestru
+- naprawić przypominacz haseł ( wina braku resque ), dodatkowo hasła nie można
+  zmienić z poziomu panelu użytkownika trzeba korzystać z przypominacza hasła
+  przy logowaniu
+- move fonts from pyrite into usi/core
+- dodać optgroup dla sal
+- dodawanie planów zajęć ze względu na StudyType i StudyDegree
+- dodać do widoku budynków nazwę wydziału
+- rozdzielić widok tworzenia grup na studja stacjonarne i niestacjonarne
+  (kontrolery też pozamykać odpowiednich namespacach?)
 - wyróżnić rezerwacje na planach!
 - dodawanie/edycja sal poprzez modal i ajax
 - po przekształceniu w engin dodać wersję do stopki
