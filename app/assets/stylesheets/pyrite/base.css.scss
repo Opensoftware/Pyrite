@@ -546,7 +546,7 @@ a.button-small {
 }
 
 .content-body > div {
-  @extend .col-md-18;
+  @extend .col-md-18 !optional;
 }
 
 .timetable-forms {
