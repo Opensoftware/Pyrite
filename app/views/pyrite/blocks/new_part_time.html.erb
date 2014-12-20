@@ -28,7 +28,7 @@
           <%
              opt_group_from_collection =  option_groups_from_collection_for_select(@optgroups, :groups, :full_name, :id, :name)
              opt_group_from_hash = grouped_options_for_select( @optgroups_hash )
-             opt = opt_group_from_collection + opt_group_from_hash
+             opt = opt_group_from_hash + opt_group_from_collection
           %>
 
 
