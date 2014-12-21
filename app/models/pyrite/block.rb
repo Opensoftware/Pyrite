@@ -98,6 +98,10 @@ module Pyrite
       end
     end
 
+    def name
+      subject.try(:name)
+    end
+
     def lecturer_name
       lecturers.map(&:full_name).join("<br>")
     end

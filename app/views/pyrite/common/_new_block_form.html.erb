@@ -24,9 +24,12 @@
       </div>
     </div>
     <div class="form-group col-md-8">
-      <label> <%= t("label_block_name") %> </label>
+      <label> <%= t("pyrite.label.subject.name") %> </label>
       <div>
-        <%= f.text_field :name, :tabindex => 9 %>
+        <%= f.collection_select :subject_id, @subjects, :id, :name,
+                                {:selected => @block.subject_id, :include_blank => true},
+                                { :tabindex => 9, :style => "width: 100%",
+                                 "data-placeholder" => t("placeholder_click_to_choose")}%>
       </div>
     </div>
   </div>

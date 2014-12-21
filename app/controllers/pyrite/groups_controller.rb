@@ -80,6 +80,7 @@ module Pyrite
       @block_variants = Block::Variant.all
       @lecturers = Lecturer.order(:surname)
       @block = Block.new
+      @subjects = Subject.all
       @event = AcademicYear::Event.where(:id => params[:event_id]).first
       # TODO think about what will be the best way of quering blocks with and
       # without event_id, for example without event_id we will query whole
@@ -98,6 +99,7 @@ module Pyrite
       @block_variants = Block::Variant.all
       @lecturers = Lecturer.order(:surname)
       @block = Block.new
+      @subjects = Subject.all
       @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
       blocks = @meeting.blocks.joins(:groups).where("#{Group.table_name}.id in (?)", group_ids)
 

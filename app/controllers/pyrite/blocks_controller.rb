@@ -10,6 +10,7 @@ module Pyrite
       @groups = Group.includes(:studies).order(:name)
       @optgroups = Studies.all
       @rooms = Room.all
+      @subjects = Subject.all
       prepare_group_categories
     end
 
@@ -20,6 +21,7 @@ module Pyrite
       @rooms = Room.all
       @meetings = AcademicYear::Meeting.for_editing
       @optgroups = Studies.all
+      @subjects = Subject.all
       prepare_group_categories
       unless @meetings.first
         flash[:notice] = t("notice_missing_academic_year_meeting",
@@ -34,6 +36,7 @@ module Pyrite
       @block = Block.find(params[:id])
       @groups = Group.all
       @rooms = Room.all
+      @subjects = Subject.all
       @lecturers = Lecturer.order(:surname)
       @block_variants = Block::Variant.all
       render :layout => false
@@ -123,16 +126,16 @@ module Pyrite
 
       def form_params
         params.required(:block).permit(:start_time, :day_with_date, :variant_id, { :group_ids => [],
-          :lecturer_ids => [], :room_ids => [] }, :comments, :end_time, :event_id, :name)
+          :lecturer_ids => [], :room_ids => [] }, :comments, :end_time, :event_id, :subject_id)
       end
 
       def form_part_time_params
         params.required(:block).permit(:start_time, :day_with_date, :variant_id, { :group_ids => [],
-          :lecturer_ids => [], :room_ids => [] }, :comments, :end_time, :meeting_id, :name)
+          :lecturer_ids => [], :room_ids => [] }, :comments, :end_time, :meeting_id, :subject_id)
       end
 
       def form_params_update
-        params.required(:block).permit(:comments, :variant_id, :name,
+        params.required(:block).permit(:comments, :variant_id, :subject_id,
                                        {:room_ids => [], :lecturer_ids => [], :group_ids => [] })
       end
 

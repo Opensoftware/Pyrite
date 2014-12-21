@@ -44,6 +44,8 @@ function update_block_position(url, params) {
 $(document).ready(function() {
   /* bind staff related with modal for edit block */
   $("body").on("shown.bs.modal", ".modal", function() {
+    bindSelect2($("#block_subject_id"));
+    // TODO replace Chosen by select2
     bindChosen();
   });
 

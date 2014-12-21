@@ -52,6 +52,10 @@ function bindChosen() {
   $(".chosen-select").chosen();
 }
 
+function bindSelect2(element) {
+  element.select2({allowClear: true});
+}
+
 function reloadDatepicker() {
   $(".datepicker, .timepicker").datetimepicker("remove");
   $(".datepicker").datetimepicker({ format: "yyyy/mm/dd", startView: 4, minView: 2, autoclose: true, language: 'pl' });

@@ -66,6 +66,7 @@ module Pyrite
       @block_variants = Block::Variant.all
       @lecturers = Lecturer.order(:surname)
       @block = Block.new
+      @subjects = Subject.all
       @event = AcademicYear::Event.where(:id => params[:event_id]).first
       @reset_date = params[:reset_date] || false
       if @event
@@ -88,6 +89,7 @@ module Pyrite
       @block_variants = Block::Variant.all
       @lecturers = Lecturer.order(:surname)
       @block = Block.new
+      @subjects = Subject.all
       @meeting = AcademicYear::Meeting.where(:id => params[:meeting_id]).first
       blocks += @meeting.blocks.for_rooms(room_ids) if @meeting
       @events = convert_blocks_to_events(blocks)

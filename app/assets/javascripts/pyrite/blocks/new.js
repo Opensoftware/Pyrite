@@ -41,7 +41,7 @@ $(document).ready(function() {
       e.preventDefault();
     }
   });
-  bindSelect2();
+  bindSelect2($("#block_group_ids"));
 });
 
 function sendRequestToCreateNewBlock() {
@@ -120,11 +120,4 @@ function refresh_groups_if_value_exists(reset_date) {
 function refresh_timetables(reset_date) {
   refresh_room_if_value_exists(reset_date);
   refresh_groups_if_value_exists(reset_date);
-}
-
-function bindSelect2() {
-  $(".select2").select2();
-}
-function unbindSelect2() {
-  $(".select2").select2("destroy");
 }
