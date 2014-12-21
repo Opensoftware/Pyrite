@@ -15,6 +15,7 @@ module Pyrite
     belongs_to :meeting, :class_name => "AcademicYear::Meeting"
     belongs_to :variant, :class_name => "Block::Variant"
     has_many :dates, :dependent => :destroy, :autosave => true
+    belongs_to :subject
 
     has_many :groups, :through => :blocks_groups
     has_many :blocks_groups, :dependent => :destroy
@@ -47,7 +48,7 @@ module Pyrite
     scope :except_me, ->(block) { where.not(id: block) }
 
     validates :start_time, :end_time, :presence => true, :on => :create
-    validates :name, :room_ids, :presence => true
+    validates :room_ids, :presence => true
     validate :validate_times, :on => :create
     validate :validate_day, :on => :create
     validate :check_collisions, :on => :create
