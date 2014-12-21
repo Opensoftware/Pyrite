@@ -40,6 +40,7 @@
   @include inline-icon;
   @include icon-red;
 }
+
 .inline-icon-plus:before {
   @extend .inline-icon-red;
   @include icon-plus;
@@ -48,6 +49,11 @@
 .inline-icon-callendar:before {
   @extend .inline-icon-red;
   @include icon-callendar;
+}
+
+.inline-icon-stats:before {
+  @extend .inline-icon-red;
+  @include icon-stats;
 }
 
 .inline-icon-print:before {
