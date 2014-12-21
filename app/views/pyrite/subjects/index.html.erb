@@ -1,0 +1,29 @@
+<h1> <%= t "pyrite.header.listing_subjects" %> </h1>
+
+<%= link_to t("pyrite.button.new_subject"), new_subject_path, :class => "add-btn pull-right" %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>  <%= t("pyrite.label.subject.name") %></th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subjects.each do |subject| %>
+      <tr>
+        <td> <%= subject.name %> </td>
+        <td>
+          <%= link_to t("pyrite.button.edit"), edit_subject_path(subject), :class => "edit-btn" %>
+          <%= link_to t("pyrite.button.delete"), subject, method: :delete, data: { confirm: t("pyrite.confirm.removing_subject") }, :class => "destroy-btn" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% content_for :content_footnote do %>
+  <div class="paginator">
+    <%= will_paginate @subjects, :renderer => BootstrapPagination::Rails %>
+  </div>
+  <div class="clearfix"></div>
+<% end %>

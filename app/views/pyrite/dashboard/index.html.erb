@@ -78,6 +78,11 @@
                    <%= link_to t("link_lecturers"), main_app.employees_path %>
                 </li>
               <% end %>
+              <% if can? :manage, Pyrite::Subject %>
+                <li class="inline-icon-stats">
+                   <%= link_to t("pyrite.link.subjects"), subjects_path %>
+                </li>
+              <% end %>
               <% if can? :manage, AcademicYear %>
                 <li class="inline-icon-list">
                    <%= link_to t("link_academic_years"), main_app.academic_years_path %>

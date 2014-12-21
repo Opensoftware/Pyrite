@@ -24,6 +24,7 @@ module Pyrite
         can :manage, Group
         can :manage, Room
         can :manage, Employee
+        can :manage, Subject
         can :read, :timetables
         can :manage, :reservations
         can :print, :timetables

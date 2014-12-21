@@ -1,11 +1,26 @@
 pl:
   pyrite:
+    header:
+      listing_subjects: Lista przedmiotów
+      subject:
+        new: Dodaj nowy przedmiot
+        edit: Edytuj przedmiot
+    link:
+      subjects: Zarządzaj przedmiotami
+    button:
+      new_subject: Nowa nazwa bloku/przedmiotu
+      edit: Edycja
+      delete: Usuń
+    confirm:
+      removing_subject: Jesteś pewny że chcesz usunąć przedmiot z listy?
     groups:
       tab:
         full-time-studies: Studja stacjonarne
         part-time-studies: Studja niestacjonarne
     notice:
       missing_academic_year_meeting: Brak zjazdów dla studiów niestacjonarnych, musisz je dodać dla roku akademickiego który edytujesz. Możesz to zrobić w %{url}
+      subject_has_been_created: Przedmiot został dodany
+      subject_has_been_updated: Przedmiot został zaktualizowany
     pdf:
       label:
         timetable_for_room: "Sala %{name}"
@@ -14,6 +29,8 @@ pl:
         hours: "Godz."
         groups: "Grupy:"
     label:
+      subject:
+        name: Nazwa
       group_studies: Studia
       group_categories: Grupy wirtualne
       all: Wszystkie
@@ -53,6 +70,10 @@ pl:
         name: Zarządzaj grupami
         new: Nowa
         edit: Edycja
+      subjects:
+        name: Zarządzaj przedmiotami
+        new: Nowy
+        edit: Edycja
     title_system_name: Pyrit - Siatka zajęć
     control_panel: Pyrite - Panel zarządzania
     dashboard:
@@ -88,6 +109,8 @@ pl:
       pyrite/room:
         name: "Pole 'Nazwa'"
       pyrite/group:
+        name: "Pole 'Nazwa'"
+      pyrite/subject:
         name: "Pole 'Nazwa'"
 
   error_must_be_lower_then_end_time: "musi być wcześniej niż pole 'Godzina zakończenia'"

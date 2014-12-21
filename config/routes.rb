@@ -27,6 +27,7 @@ Pyrite::Engine.routes.draw do
   resources :groups, :except => [:show]
   get "/blocks/new_part_time", :as => :new_part_time_block, :to => "blocks#new_part_time"
   post "/blocks/new_part_time", :as => :part_time_block, :to => "blocks#create_part_time"
+  resources :subjects
   resources :blocks, :except => [:index] do
     member do
       patch :move

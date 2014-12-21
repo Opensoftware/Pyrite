@@ -54,6 +54,15 @@ SimpleNavigation::Configuration.run do |navigation|
             end
           end
         end
+        dashboard.item :subjects, I18n.t("pyrite.breadcrumbs.subjects.name"), subjects_path do |subject|
+          if @subject
+            if @subject.new_record?
+              subject.item :new, I18n.t("pyrite.breadcrumbs.subjects.new"), new_subject_path
+            else
+              subject.item :edit, I18n.t("pyrite.breadcrumbs.subjects.edit"), edit_subject_path(@subject)
+            end
+          end
+        end
       end
     end
   end
