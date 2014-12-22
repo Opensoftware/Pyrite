@@ -24,7 +24,7 @@ module Pyrite
                           ON taggings.taggable_id = pyrite_groups.id")
                      .joins("LEFT OUTER JOIN tags
                              ON taggings.tag_id = tags.id ")
-                     .select("pyrite_groups.id, tags.name ")
+        .select("pyrite_groups.id, tags.name ").order("tags.name")
       result = {}
       categories.each do |element|
         next unless element.name
