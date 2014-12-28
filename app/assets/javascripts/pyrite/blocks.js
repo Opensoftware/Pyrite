@@ -7,9 +7,9 @@ function refresh_groups_timetable(params) {
 
 function refresh_room_timetable(params) {
   var fetch_timetable_url = $("#block_room_ids").data("timetable-url");
-  busyBoxOn($("#room-timetable-container"));
+  busyBoxOn($("#rooms-timetable-container"));
   fetch_blocks(fetch_timetable_url, params);
-  busyBoxOff($("#room-timetable-container"));
+  busyBoxOff($("#rooms-timetable-container"));
 }
 
 function fetch_blocks(fetch_timetable_url, params) {

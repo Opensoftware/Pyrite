@@ -1,0 +1,26 @@
+var timetable_element = $("<%= timetable_element_name %>");
+<% unless @reset_date %>
+  try {
+    current_date = timetable_element.fullCalendar('getDate');
+  } catch (error) {
+    /* fullCalendar was not initialized yet */
+  }
+<% end %>
+
+timetable_element.html('');
+var options = {
+  <%= render :partial => "pyrite/common/timetable_options" %>
+  eventRender: function(event, element) {
+    element.children(".fc-event-inner").append("<div class='fc-event-block-type'>" + event.block_type + "</div>")
+    element.children(".fc-event-inner").append("<div class='fc-event-block-subtitle'>" + event.<%= block_subtitle %> + "</div>")
+    element.children(".fc-event-inner").append("<div class='fc-event-lecturer'>" + event.lecturer + "</div>")
+  }
+}
+
+timetable_element.fullCalendar_with_defaults(options);
+// TODO: make it as a event after rendering the calendar
+<% unless @reset_date %>
+  if ( current_date instanceof Date ) {
+    timetable_element.fullCalendar('gotoDate', current_date);
+  }
+<% end %>

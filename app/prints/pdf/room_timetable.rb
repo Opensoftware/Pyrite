@@ -33,7 +33,7 @@ class Pdf::RoomTimetable < Pdf::Timetable
           text_box "#{block.variant.name}", :at => [5, bounds.top - 20 ], :align => :center
           text_box block.lecturer_name, :at => [0, bounds.top - 10], :align => :center
           font_size 4
-          text_box "#{block.groups_names}", :at => [5, bounds.bottom + 5], :align => :center
+          text_box "#{block.group_names}", :at => [5, bounds.bottom + 5], :align => :center
         end
       end
     end

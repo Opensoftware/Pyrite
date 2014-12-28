@@ -6,7 +6,7 @@
       events: <%= raw @events.to_json %>,
       eventRender: function(event, element) {
         element.children(".fc-event-inner").append("<div class='fc-event-block-type'>" + event.block_type + "</div>")
-        element.children(".fc-event-inner").append("<div class='fc-event-groups-names'>" + event.groups_names + "</div>")
+        element.children(".fc-event-inner").append("<div class='fc-event-group-names'>" + event.group_names + "</div>")
         element.children(".fc-event-inner").append("<div class='fc-event-lecturer'>" + event.lecturer + "</div>")
       },
     }
@@ -20,4 +20,4 @@
 <h2 class="text-center"> <%= t("label_timetable_for_room") %> <%= @room.name %> </h2>
 <%= link_to t("link_print"), print_room_timetable_path(params[:id], AcademicYear::Event.for_viewing), :class => "print-btn pull-right" %>
 
-<div id="room-timetable"> </div>
+<div class="timetable" id="room-timetable"> </div>

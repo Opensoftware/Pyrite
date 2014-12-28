@@ -29,7 +29,7 @@ class Pdf::PartTime::GroupTimetable < Pdf::PartTime::Timetable
           font_size 9
           text_box block.name, :align => :center, :at => [0, bounds.top - 20]
           font_size 7
-          text_box block.groups_names, :align => :center, :at => [0, bounds.top - 35]
+          text_box block.group_names, :align => :center, :at => [0, bounds.top - 35]
           start_hour = block.dates.first.start_date.strftime("%H:%M")
           end_hour = block.dates.first.end_date.strftime("%H:%M")
           font_size 5

@@ -106,7 +106,7 @@ module Pyrite
       lecturers.map(&:full_name).join("<br>")
     end
 
-    def groups_names
+    def group_names
       groups.map {|g| g.name }.join(" ")
     end
 
@@ -231,10 +231,10 @@ module Pyrite
           error = I18n.t("error_room_block_collision", :room => rooms_names)
         elsif lecturer_blocks.count > 0
           rooms = lecturer_blocks.first.rooms_names
-          groups = lecturer_blocks.first.groups_names
+          groups = lecturer_blocks.first.group_names
           error = I18n.t("error_lecturer_block_collision", :lecturer => lecturer_name, :room => rooms, :groups => groups )
         elsif group_blocks > 0
-          error = I18n.t("error_groups_block_collision", :groups => groups_names)
+          error = I18n.t("error_groups_block_collision", :groups => group_names)
         end
         if error
           errors.add(:base, I18n.t("error_overlapped_block", block: error))
