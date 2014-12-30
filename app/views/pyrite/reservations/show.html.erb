@@ -3,7 +3,15 @@
     $('#room-timetable').html('');
     var options = {
       dayNamesShort: <%= raw fc_days %>,
-      events: <%= raw @events.to_json %>
+      events: <%= raw @events.to_json %>,
+      eventRender: function(event, element) {
+        element.children(".fc-event-inner").append("<div class='fc-event-block-type'>" + event.block_type + "</div>")
+        element.children(".fc-event-inner").append("<div class='fc-event-group-names'>" + event.group_names + "</div>")
+        element.children(".fc-event-inner").append("<div class='fc-event-lecturer'>" + event.lecturer + "</div>")
+        if(event.comments.length > 0) {
+          element.children(".fc-event-inner").prepend("<div class='fc-event-comments' title='" + event.comments +"'></div>")
+        }
+      },
     }
 
     $('#room-timetable').fullCalendar_with_defaults(options);
@@ -13,3 +21,4 @@
 <h2 class="text-center"> <%= t("label_reservation_timetable_for_room") %> <%= @room.name %> </h2>
 
 <div class="timetable" id="room-timetable"></div>
+<!-- TODO: Refactor that with regular timetable view -->
