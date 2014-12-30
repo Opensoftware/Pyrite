@@ -8,6 +8,9 @@
         element.children(".fc-event-inner").append("<div class='fc-event-block-type'>" + event.block_type + "</div>")
         element.children(".fc-event-inner").append("<div class='fc-event-group-names'>" + event.group_names + "</div>")
         element.children(".fc-event-inner").append("<div class='fc-event-lecturer'>" + event.lecturer + "</div>")
+        if(event.comments.length > 0) {
+          element.children(".fc-event-inner").prepend("<div class='fc-event-comments' title='" + event.comments +"'></div>")
+        }
       },
     }
 

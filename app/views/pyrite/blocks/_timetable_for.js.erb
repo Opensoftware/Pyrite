@@ -14,11 +14,14 @@ var options = {
     element.children(".fc-event-inner").append("<div class='fc-event-block-type'>" + event.block_type + "</div>")
     element.children(".fc-event-inner").append("<div class='fc-event-block-subtitle'>" + event.<%= block_subtitle %> + "</div>")
     element.children(".fc-event-inner").append("<div class='fc-event-lecturer'>" + event.lecturer + "</div>")
+    if(event.comments.length > 0) {
+      element.children(".fc-event-inner").prepend("<div class='fc-event-comments' title='" + event.comments +"'></div>")
+    }
   }
 }
 
 timetable_element.fullCalendar_with_defaults(options);
-// TODO: make it as a event after rendering the calendar
+// TODO: make it as an event after rendering the calendar
 <% unless @reset_date %>
   if ( current_date instanceof Date ) {
     timetable_element.fullCalendar('gotoDate', current_date);

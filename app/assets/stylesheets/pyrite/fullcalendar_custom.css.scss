@@ -1,3 +1,6 @@
+@import "mixins.css.scss";
+
 .fc-event-title {text-align: center; font-weight: bold; margin: 10px 0px;}
 .fc-event-lecturer {text-align: center; font-size: x-small}
 .fc-event-block-type {text-align: right; font-size: x-small}
+.fc-event-comments { float: right; @include icon; @include icon-white; @include icon-help }

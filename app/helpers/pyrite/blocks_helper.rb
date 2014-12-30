@@ -8,7 +8,8 @@ module Pyrite
                    room_name: block.rooms_names, block_type: block.variant_name,
                    group_names: block.group_names, lecturer: block.lecturer_name,
                    url: edit_block_path(block), delete_url: block_path(block),
-                   move_url: move_block_path(block), resize_url: resize_block_path(block)
+                   move_url: move_block_path(block), resize_url: resize_block_path(block),
+                   comments: block.comments
           }
         end
         sum
@@ -21,7 +22,8 @@ module Pyrite
           sum << { id: block.id, title: block.name, start: date.start_date, end: date.end_date,
                    allDay: false, backgroundColor: block.variant.try(:color),
                    room_name: block.rooms_names, block_type: block.variant_name,
-                   group_names: block.group_names, lecturer: block.lecturer_name
+                   group_names: block.group_names, lecturer: block.lecturer_name,
+                   comments: block.comments
           }
         end
         sum
