@@ -74,8 +74,7 @@ module Pyrite
     def populate_dates_for_event
       begin
         prepare_hours
-        day = Time.zone.parse(day_with_date).wday
-        date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select {|date| day == date.wday }
+        date_range = prepare_date_range_for_event
         date_range.each do |date|
           block_start_date = Time::mktime(date.year, date.month, date.day, @start_hour, @start_min)
           block_end_date = Time::mktime(date.year, date.month, date.day, @end_hour, @end_min)
@@ -150,6 +149,13 @@ module Pyrite
       def prepare_hours
         @start_hour, @start_min = start_time.split(":").map(&:to_i)
         @end_hour, @end_min = end_time.split(":").map(&:to_i)
+      end
+
+      def prepare_date_range_for_event
+        day = Time.zone.parse(day_with_date).wday
+        lecture_free = AcademicYear::Event.lecture_free_date_range
+        date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select {|date| day == date.wday }
+        date_range - lecture_free
       end
 
       def validate_times
