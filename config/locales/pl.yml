@@ -1,5 +1,8 @@
 pl:
   pyrite:
+    placeholder:
+      block:
+        custom_dates: Wprowadź daty po przecinku w formacie rok/miesiąc/dzień
     header:
       listing_subjects: Lista przedmiotów
       subject:
@@ -7,6 +10,8 @@ pl:
         edit: Edytuj przedmiot
     link:
       subjects: Zarządzaj przedmiotami
+      custom_blocks_dates_show: Wprowadź niestandardowe terminy dla bloku
+      custom_blocks_dates_hide: Usuń niestandardowe terminy dla bloku
     button:
       new_subject: Nowa nazwa bloku/przedmiotu
       edit: Edycja
@@ -29,6 +34,8 @@ pl:
         hours: "Godz."
         groups: "Grupy:"
     label:
+      block:
+        custom_dates: Niestandardowe daty
       subject:
         name: Nazwa
       group_studies: Studia
@@ -84,6 +91,8 @@ pl:
 
     error:
       internal_error: Coś poszło nie tak, sprawdzimy to i postaramy się naprawić jak najszybciej
+      block:
+        invalid_custom_dates: Niepoprawny format daty dla bloku.
 
 
   time:

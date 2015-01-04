@@ -62,4 +62,21 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="form-group col-md-16">
+      <label> <%= link_to t("pyrite.link.custom_blocks_dates_show"), "#",
+                  "data-text" => t("pyrite.link.custom_blocks_dates_hide"),
+                  :id => "custom-blocks-dates-control" %>
+      </label>
+    </div>
+  </div>
+  <div class="row" id="custom-blocks-dates-container" style="display: none">
+    <div class="form-group col-md-16">
+      <label> <%= t("pyrite.label.block.custom_dates") %> </label>
+      <div>
+        <%= f.text_field :custom_block_dates, :autocomplete => :off, :placeholder => t("pyrite.placeholder.block.custom_dates") %>
+      </div>
+    </div>
+  </div>
 <% end %>

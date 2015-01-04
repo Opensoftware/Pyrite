@@ -126,7 +126,7 @@ module Pyrite
 
       def form_params
         params.required(:block).permit(:start_time, :day_with_date, :variant_id, { :group_ids => [],
-          :lecturer_ids => [], :room_ids => [] }, :comments, :end_time, :event_id, :subject_id)
+          :lecturer_ids => [], :room_ids => [] }, :comments, :end_time, :event_id, :subject_id, :custom_block_dates)
       end
 
       def form_part_time_params

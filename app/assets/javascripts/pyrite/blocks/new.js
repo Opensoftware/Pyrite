@@ -5,6 +5,17 @@ $(document).ready(function() {
     refresh_groups_if_value_exists();
   });
 
+  $("body").on("click", "a#custom-blocks-dates-control", function(e) {
+    link_element = $(this);
+    element = $("#custom-blocks-dates-container");
+    originText = link_element.text();
+    link_element.text(link_element.data("text"));
+    link_element.data("text", originText);
+    $("#block_custom_block_dates").val("");
+    element.toggle();
+    e.preventDefault();
+  });
+
   $("#block_room_ids").on("change", function() {
     refresh_room_if_value_exists();
   });

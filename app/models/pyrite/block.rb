@@ -20,7 +20,8 @@ module Pyrite
     has_many :groups, :through => :blocks_groups
     has_many :blocks_groups, :dependent => :destroy
 
-    attr_accessor :day, :start_time, :end_time, :day_with_date, :start_date, :end_date
+    attr_accessor :day, :start_time, :end_time, :day_with_date, :start_date, :end_date,
+                  :custom_block_dates
 
     # TODO split saving reservation and standard blocks
     # event_id for block/new is required
@@ -52,6 +53,7 @@ module Pyrite
     validate :validate_times, :on => :create
     validate :validate_day, :on => :create
     validate :check_collisions, :on => :create
+    validate :validate_custom_dates, :on => :create
 
     def populate_dates
       begin
@@ -152,10 +154,32 @@ module Pyrite
       end
 
       def prepare_date_range_for_event
-        day = Time.zone.parse(day_with_date).wday
-        lecture_free = AcademicYear::Event.lecture_free_date_range
-        date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select {|date| day == date.wday }
-        date_range - lecture_free
+        dates = []
+        if custom_block_dates.present?
+          custom_block_dates.split(",").each do |date|
+            dates << Time.zone.parse(date)
+          end
+        else
+          day = Time.zone.parse(day_with_date).wday
+          lecture_free = AcademicYear::Event.lecture_free_date_range
+          date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select {|date| day == date.wday }
+          dates = date_range - lecture_free
+        end
+        return dates
+      end
+
+      def validate_custom_dates
+        if custom_block_dates.present?
+          begin
+            custom_block_dates.split(",").each do |date|
+              Time.zone.parse(date)
+              throw unless /\d{4}\/\d{2}\/\d{2}/ =~ date
+            end
+          rescue => e
+            errors.add(:base, I18n.t("pyrite.error.block.invalid_custom_dates"))
+            return false
+          end
+        end
       end
 
       def validate_times
