@@ -27,7 +27,8 @@ module Pyrite
       @block = Block.new(form_params)
       @rooms = Room.all
 
-      if @block.save_reservation
+      @block.reservation = true
+      if @block.save
         flash.now[:notice] = t("notice_block_has_been_created")
         respond_with(@block, :status => :ok)
       else
@@ -39,7 +40,7 @@ module Pyrite
 
       def form_params
         params.required(:block).permit(:start_time, :day_with_date,
-          { :lecturer_ids => [], :room_ids => []}, :comments, :end_time, :variant_id, :name)
+          { :lecturer_ids => [], :room_ids => []}, :comments, :end_time, :variant_id, :name, :custom_block_dates)
       end
 
       def check_settings

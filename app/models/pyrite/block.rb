@@ -21,13 +21,13 @@ module Pyrite
     has_many :blocks_groups, :dependent => :destroy
 
     attr_accessor :day, :start_time, :end_time, :day_with_date, :start_date, :end_date,
-                  :custom_block_dates
+                  :custom_block_dates, :date_range
 
     # TODO split saving reservation and standard blocks
     # event_id for block/new is required
 
-    before_create :populate_dates_for_event, :if => Proc.new { |block| block.event_id.present? }
-    before_create :populate_dates, :if => Proc.new { |block| block.meeting_id.present? }
+    before_validation :generate_date_range
+    before_create :populate_dates
 
     scope :for_groups, ->(group_ids) { joins(:blocks_groups).where("#{BlocksGroup.table_name}.group_id" => group_ids) }
     scope :for_event, ->(event_id) { event_id.present? ? where(:event_id => event_id) : where(nil) }
@@ -52,52 +52,8 @@ module Pyrite
     validates :room_ids, :presence => true
     validate :validate_times, :on => :create
     validate :validate_day, :on => :create
+    validate :validate_custom_dates, :on => :create, :if => Proc.new {|block| block.custom_block_dates.present? }
     validate :check_collisions, :on => :create
-    validate :validate_custom_dates, :on => :create
-
-    def populate_dates
-      begin
-        prepare_hours
-        block_date = Time.zone.parse(day_with_date)
-        block_start_date = block_date.advance(:hours => @start_hour, :minutes => @start_min)
-        block_end_date = block_date.advance(:hours => @end_hour, :minutes => @end_min)
-        dates.build(:start_date => block_start_date, :end_date => block_end_date)
-      rescue => e
-        errors.add(:base, I18n.t("pyrite.error.internal_error"))
-        params = {:block_date => block_date,
-                  :block_start_date => block_start_date,
-                  :block_end_date => block_end_date
-        }
-        usi_logger e, params
-        return false
-      end
-    end
-
-    def populate_dates_for_event
-      begin
-        prepare_hours
-        date_range = prepare_date_range_for_event
-        date_range.each do |date|
-          block_start_date = Time::mktime(date.year, date.month, date.day, @start_hour, @start_min)
-          block_end_date = Time::mktime(date.year, date.month, date.day, @end_hour, @end_min)
-          dates.build(:start_date => block_start_date, :end_date => block_end_date)
-        end
-      rescue => e
-        errors.add(:base, I18n.t("pyrite.error.internal_error"))
-        params = {:day => day,
-                  :date_range => date_range
-        }
-        usi_logger e, params
-        return false
-      end
-    end
-
-    def save_reservation
-      self.reservation = true
-      if populate_dates
-        save
-      end
-    end
 
     def name
       subject.try(:name)
@@ -130,6 +86,7 @@ module Pyrite
         date.start_date += delta
         date.end_date += delta
       end
+      self.date_range = dates.map(&:start_date)
       save if check_collisions
     end
 
@@ -143,6 +100,7 @@ module Pyrite
       dates.each do |date|
         date.end_date += delta
       end
+      self.date_range = dates.map(&:start_date)
       save if check_collisions
     end
 
@@ -153,32 +111,68 @@ module Pyrite
         @end_hour, @end_min = end_time.split(":").map(&:to_i)
       end
 
+      def populate_dates
+        begin
+          prepare_hours
+          date_range.each do |date|
+            block_start_date = Time::mktime(date.year, date.month, date.day, @start_hour, @start_min)
+            block_end_date = Time::mktime(date.year, date.month, date.day, @end_hour, @end_min)
+            dates.build(:start_date => block_start_date, :end_date => block_end_date)
+          end
+        rescue => e
+          errors.add(:base, I18n.t("pyrite.error.internal_error"))
+          params = {:day => day,
+                    :date_range => date_range
+          }
+          usi_logger e, params
+          return false
+        end
+      end
+
       def prepare_date_range_for_event
         dates = []
-        if custom_block_dates.present?
-          custom_block_dates.split(",").each do |date|
-            dates << Time.zone.parse(date)
-          end
-        else
-          day = Time.zone.parse(day_with_date).wday
-          lecture_free = AcademicYear::Event.lecture_free_date_range
-          date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select {|date| day == date.wday }
-          dates = date_range - lecture_free
+        day = Time.zone.parse(day_with_date).wday
+        lecture_free = AcademicYear::Event.lecture_free_date_range
+        date_range = (event.start_date.to_datetime..event.end_date.to_datetime).select {|date| day == date.wday }
+        dates = date_range - lecture_free
+        dates
+      end
+
+      def prepare_date_range
+        dates = []
+        dates << Time.zone.parse(day_with_date)
+        dates
+      end
+
+      def prepare_custom_date_range
+        dates = []
+        custom_block_dates.split(",").each do |date|
+          dates << Time.zone.parse(date)
         end
-        return dates
+        dates
+      end
+
+      def generate_date_range
+        if custom_block_dates.present?
+          self.date_range = prepare_custom_date_range
+        else
+          if event_id.present?
+            self.date_range = prepare_date_range_for_event
+          else
+            self.date_range = prepare_date_range
+          end
+        end
       end
 
       def validate_custom_dates
-        if custom_block_dates.present?
-          begin
-            custom_block_dates.split(",").each do |date|
-              Time.zone.parse(date)
-              throw unless /\d{4}\/\d{2}\/\d{2}/ =~ date
-            end
-          rescue => e
-            errors.add(:base, I18n.t("pyrite.error.block.invalid_custom_dates"))
-            return false
+        begin
+          custom_block_dates.split(",").each do |date|
+            Time.zone.parse(date)
+            throw unless /\d{4}\/\d{2}\/\d{2}/ =~ date
           end
+        rescue => e
+          errors.add(:base, I18n.t("pyrite.error.block.invalid_custom_dates"))
+          return false
         end
       end
 
@@ -200,37 +194,30 @@ module Pyrite
       def validate_day
         if day_with_date.blank?
           errors.add(:day, I18n.t("error_day_not_present"))
+        else
+          begin
+            Time.zone.parse(day_with_date)
+          rescue => e
+            errors.add(:base, I18n.t("pyrite.error.internal_error"))
+            params = {:day_with_date => day_with_date }
+            usi_logger e, params
+            return false
+          end
         end
       end
 
       def check_collisions
         begin
           prepare_hours
-          if event_id.nil?
-            # This will happen only for reservation
-            block_date = Time.zone.parse(day_with_date)
-            block_start_date = block_date.advance(:hours => @start_hour, :minutes => @start_min)
-            block_end_date = block_date.advance(:hours => @end_hour, :minutes => @end_min)
-            check_blocks_collisions(block_start_date, block_end_date)
-          else
-            event_or_meeting = event || meeting
-            day = Time.zone.parse(day_with_date).wday
-            start_date = event_or_meeting.start_date.to_datetime
-            end_date = event_or_meeting.end_date.to_datetime
-            date_range = (start_date..end_date).select { |date| day == date.wday }
-            date_range.each do |date|
-              block_start_date = Time::mktime(date.year, date.month, date.day,
-                                              @start_hour, @start_min)
-              block_end_date = Time::mktime(date.year, date.month, date.day,
-                                            @end_hour, @end_min)
-              return false unless check_blocks_collisions(block_start_date, block_end_date)
-            end
+          date_range.each do |date|
+            block_start_date = Time::mktime(date.year, date.month, date.day, @start_hour, @start_min)
+            block_end_date = Time::mktime(date.year, date.month, date.day, @end_hour, @end_min)
+            return false unless check_blocks_collisions(block_start_date, block_end_date)
           end
         rescue => e
           errors.add(:base, I18n.t("pyrite.error.internal_error"))
           params = {:event_id => event_id,
                     :day_with_date => day_with_date,
-                    :event_or_meeting => event_or_meeting,
                     :day => day
           }
           usi_logger e, params
