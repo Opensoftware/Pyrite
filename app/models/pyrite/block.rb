@@ -56,7 +56,7 @@ module Pyrite
     validate :check_collisions, :on => :create
 
     def name
-      subject.try(:name)
+      subject.try(:name).to_s
     end
 
     def lecturer_name
