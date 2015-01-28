@@ -7,7 +7,7 @@
     <label for="reservations-timetable"> <%= t("label_reservations") %></label>
     <div class="input-data">
       <%= select(:room,:id, @rooms_reservations_with_url, {:prompt => t("prompt_room")},
-                            :id => "reservations-timetable" ) %>
+                 :id => "reservations-timetable", :class => "chosen-select" ) %>
     </div>
     <div class="action">
        <%= submit_tag t("button_show"), :class => "show-btn" %>
@@ -21,7 +21,7 @@
       <label for="classrooms-timetable"> <%= t("label_classroom") %></label>
       <div class="input-data">
         <%= select(:room,:id, @rooms_with_url, {:prompt => t("prompt_room")},
-                              :id => "classrooms-timetable") %>
+                   :id => "classrooms-timetable", :class => "chosen-select") %>
       </div>
     <div class="action">
         <%= submit_tag t("button_show"), :class => "show-btn" %>
@@ -35,7 +35,7 @@
     <label for="lecturer-timetable"> <%= t("label_lecturer") %></label>
     <div class="input-data">
       <%= select(:lecturer,:id, @lecturers_with_url, {:prompt => t("prompt_lecturer")},
-                                :id => "lecturers-timetable") %>
+                 :id => "lecturers-timetable", :class => "chosen-select") %>
       </div>
     <div class="action">
       <%= submit_tag t("button_show"), :class => "show-btn" %>
@@ -48,7 +48,7 @@
     <div class="timetable-forms">
       <label for="group_id"> <%= t("label_group") %></label>
       <div class="input-data">
-        <%= select(:group, :id, @groups_with_url, {:prompt => t("prompt_group")}) %>
+        <%= select(:group, :id, @groups_with_url, {:prompt => t("prompt_group")}, :class => "chosen-select") %>
       </div>
       <div class="action">
         <%= submit_tag t("button_show"), :class => "show-btn" %>
