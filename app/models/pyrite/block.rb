@@ -26,7 +26,7 @@ module Pyrite
     # TODO split saving reservation and standard blocks
     # event_id for block/new is required
 
-    before_validation :generate_date_range
+    before_validation :generate_date_range, :on => [:create]
     before_create :populate_dates
 
     scope :for_groups, ->(group_ids) { joins(:blocks_groups).where("#{BlocksGroup.table_name}.group_id" => group_ids) }
