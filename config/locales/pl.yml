@@ -30,6 +30,7 @@ pl:
       label:
         timetable_for_room: "Sala %{name}"
         timetable_for_group: "Grupa %{name}"
+        timetable_for_lecturer: "%{name}"
         room: "Sala:"
         hours: "Godz."
         groups: "Grupy:"

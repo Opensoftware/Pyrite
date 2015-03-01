@@ -113,6 +113,8 @@ module Pyrite
     def print
       authorize! :print, :timetables
       room = Room.find(params[:id])
+      # TODO replace that with  AcademicYear::Event.for_viewing
+      # otherwise restrict to specific events allowed by administrator.
       event_id = params[:event_id]
 
       data = Rails.cache.fetch(cache_key_for_room_timetable(room, event_id)) do
