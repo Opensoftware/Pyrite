@@ -101,6 +101,7 @@ table {
   a { text-decoration: none; color: $red; padding-bottom: 0.1em; }
   a:link { border-bottom: 1px $red dotted; }
   a:hover { border-bottom: 1px $red solid; }
+  width: 100%;
   h4 {
     a:link, a:hover {
     border-bottom-color: $dark_blue; }
