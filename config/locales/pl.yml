@@ -1,5 +1,9 @@
 pl:
   pyrite:
+    filename:
+      rooms_timetable: "Plan zajęć wszystkich sal - %{event_name}.pdf"
+      lecturers_timetable: "Plan zajęć wszystkich prowadzących - %{event_name}.pdf"
+      groups_timetable: "Plan zajęć wszystkich grup - %{event_name}.pdf"
     placeholder:
       block:
         custom_dates: Wprowadź daty po przecinku w formacie rok/miesiąc/dzień
@@ -43,6 +47,7 @@ pl:
       group_categories: Grupy wirtualne
       all: Wszystkie
       print_rooms: Sale na
+      print_lecturers: Prowadzących na
       groups:
         is_part_time: Studia niestacjonarne
     breadcrumbs:
@@ -282,8 +287,6 @@ pl:
   prompt_group: Wybierz grupę
   prompt_lecturer: Wybierz prowadzącego
   prompt_event: Wybierz okres
-
-  file_groups_timetable: "Plan zajęć dla wszytkich grup.pdf"
 
   include_blank_academic_event: Brak
 

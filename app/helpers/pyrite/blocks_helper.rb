@@ -53,6 +53,9 @@ module Pyrite
       @events_with_url_for_rooms = events.collect {|event|
         [event.name, print_all_rooms_timetable_path(event.id)]
       }
+      @events_with_url_for_lecturers= events.collect {|event|
+        [event.name, print_all_lecturers_timetable_path(event.id)]
+      }
     end
 
     def color_box(hex)

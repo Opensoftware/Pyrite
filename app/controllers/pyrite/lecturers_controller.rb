@@ -10,6 +10,18 @@ module Pyrite
       @events = convert_blocks_to_events_for_viewing(@lecturer.blocks.for_event(AcademicYear::Event.for_viewing))
     end
 
+    def print_all
+      authorize! :print, :timetables
+      lecturers = Lecturer.all
+      event_name = AcademicYear::Event.where(:id => params[:event_id]).first.try(:full_name)
+
+      lecturers_timetable = Pdf::LecturerTimetable.new(lecturers, params[:event_id], swap_monday(available_days))
+      data = lecturers_timetable.to_pdf
+
+      send_data(data, :filename => t("pyrite.filename.lecturers_timetable", :event_name => event_name),
+               :type => "application/pdf", :disposition => "inline")
+    end
+
     def print
       authorize! :print, :timetables
       lecturer = Lecturer.where(:id => params[:id]).first

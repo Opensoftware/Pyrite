@@ -102,11 +102,12 @@ module Pyrite
     def print_all
       authorize! :print, :timetables
       rooms = Room.all
+      event_name = AcademicYear::Event.where(:id => params[:event_id]).first.try(:full_name)
 
       rooms_timetable = Pdf::RoomTimetable.new(rooms, params[:event_id], swap_monday(available_days))
       data = rooms_timetable.to_pdf
 
-      send_data(data, :filename => t("pyrite.filename.rooms_timetable"),
+      send_data(data, :filename => t("pyrite.filename.rooms_timetable", :event_name => event_name),
                :type => "application/pdf", :disposition => "inline")
     end
 

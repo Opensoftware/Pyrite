@@ -113,11 +113,12 @@ module Pyrite
     def print_all
       authorize! :print, :timetables
       groups = Group.order(:name)
+      event_name = AcademicYear::Event.where(:id => params[:event_id]).first.try(:full_name)
 
       groups_timetable = Pdf::GroupTimetable.new(groups, params[:event_id], swap_monday(available_days))
       data = groups_timetable.to_pdf
 
-      send_data(data, :filename => t(:file_groups_timetable),
+      send_data(data, :filename => t("pyrite.filename.groups_timetable", :event_name => event_name),
                 :type => 'application/pdf', :disposition => "inline")
     end
 

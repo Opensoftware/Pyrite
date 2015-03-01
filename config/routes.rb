@@ -24,6 +24,7 @@ Pyrite::Engine.routes.draw do
 
     get "lecturer/:id", :to => "lecturers#timetable", :as => :lecturer
     get "lecturer/:id/print", :to => "lecturers#print", :as => :print_lecturer
+    get "lecturers/:event_id/print", :to => "lecturers#print_all", :as => :print_all_lecturers
   end
   resources :groups, :except => [:show]
   get "/blocks/new_part_time", :as => :new_part_time_block, :to => "blocks#new_part_time"

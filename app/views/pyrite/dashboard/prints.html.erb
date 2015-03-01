@@ -37,3 +37,17 @@
     </div>
   <% end %>
 </div>
+
+<div class="row">
+  <%= form_tag "#", {:id => "print-lecturers-form", :class => "print-timetable-form"} do %>
+    <div class="form-group">
+      <label class="col-md-offset-1 col-md-2"> <%= t("pyrite.label.print_lecturers") %></label>
+      <div class="col-md-6">
+        <%= select(:lecturers_timetable_event, :id, @events_with_url_for_lecturers) %>
+      </div>
+      <div class="col-md-2">
+        <%= submit_tag t("button_save_as_pdf"), :id => "print-groups-timetables-button", :class => "print-btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
