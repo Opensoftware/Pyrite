@@ -22,4 +22,7 @@
 
 <h2 class="text-center"> <%= t("label_timetable_for_lecturer") %> <%= @lecturer.full_name %> </h2>
 
+<%= link_to t("link_print"), print_lecturer_timetable_path(params[:id]), :class => "print-btn pull-right" %>
 <div id="lecturer-timetable"> </div>
+
+<!-- TODO: refactor that with regular timetable -->
