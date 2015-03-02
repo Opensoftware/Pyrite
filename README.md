@@ -46,6 +46,7 @@ Wersja demonstracyjna systemu dostępna jest [tutaj][2].
 # Instalacja
 
 Patrz [USI][3].
+Uwaga!! Moduł Pyrite jest kompatybilny z usi-core tylko z branchem "integration"
 
 Jeżeli potrzebujesz wsparcia przy wdrożeniu systemu zapraszamy na
 [stronę projektu][1] po więcej szczegółów.
